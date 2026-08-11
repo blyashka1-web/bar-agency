@@ -2,12 +2,69 @@
 
 export default function CasesPage() {
   const cases = [
-    { slug: 'beauty-story', emoji: '🧴', tag: 'Косметика', title: 'Beauty Story', desc: '+280% продаж за 4 месяца', color: 'haki' },
-    { slug: 'moscow-coffee', emoji: '☕', tag: 'F&B', title: 'Moscow Coffee', desc: '12 млн просмотров за 7 дней', color: 'burgundy' },
-    { slug: 'urban-sneakers', emoji: '👟', tag: 'Одежда', title: 'Urban Sneakers', desc: '5000 заявок с нулевым бюджетом', color: 'gold' },
-    { slug: 'luxe-jewelry', emoji: '💎', tag: 'Ювелирка', title: 'Luxe Jewelry', desc: '+150% вовлечения, охват х3', color: 'haki' },
-    { slug: 'wine-people', emoji: '🍷', tag: 'Напитки', title: 'Wine & People', desc: '+200% продаж за 2 месяца', color: 'burgundy' },
-    { slug: 'appvision', emoji: '📱', tag: 'IT', title: 'AppVision', desc: '50 000 установок за месяц', color: 'gold' },
+    {
+      slug: 'yandex-food',
+      emoji: '🍔',
+      tag: 'Вирусный контент',
+      title: 'Яндекс Еда',
+      desc: 'Вирусный ролик с 2+ млн просмотров',
+      image: '/cases/yandex-food/screenshot-1.jpg',
+      color: 'haki',
+    },
+    {
+      slug: 'beauty-story',
+      emoji: '🧴',
+      tag: 'Косметика',
+      title: 'Beauty Story',
+      desc: '+280% продаж за 4 месяца',
+      image: '',
+      color: 'haki',
+    },
+    {
+      slug: 'moscow-coffee',
+      emoji: '☕',
+      tag: 'F&B',
+      title: 'Moscow Coffee',
+      desc: '12 млн просмотров за 7 дней',
+      image: '',
+      color: 'burgundy',
+    },
+    {
+      slug: 'urban-sneakers',
+      emoji: '👟',
+      tag: 'Одежда',
+      title: 'Urban Sneakers',
+      desc: '5000 заявок с нулевым бюджетом',
+      image: '',
+      color: 'gold',
+    },
+    {
+      slug: 'luxe-jewelry',
+      emoji: '💎',
+      tag: 'Ювелирка',
+      title: 'Luxe Jewelry',
+      desc: '+150% вовлечения, охват х3',
+      image: '',
+      color: 'haki',
+    },
+    {
+      slug: 'wine-people',
+      emoji: '🍷',
+      tag: 'Напитки',
+      title: 'Wine & People',
+      desc: '+200% продаж за 2 месяца',
+      image: '',
+      color: 'burgundy',
+    },
+    {
+      slug: 'appvision',
+      emoji: '📱',
+      tag: 'IT',
+      title: 'AppVision',
+      desc: '50 000 установок за месяц',
+      image: '',
+      color: 'gold',
+    },
   ];
 
   const colorMap = {
@@ -44,7 +101,7 @@ export default function CasesPage() {
         }
 
         body {
-          font-family: 'JetBrains Mono', 'SF Pro Display', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+          font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', sans-serif;
           background: #121212;
           color: #ffffff;
           -webkit-font-smoothing: antialiased;
@@ -67,15 +124,14 @@ export default function CasesPage() {
           font-weight: 700;
           letter-spacing: -0.03em;
           color: #ffffff;
-          font-family: 'JetBrains Mono', 'SF Pro Display', monospace;
+          font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
         }
 
         .subtitle {
           font-size: 20px;
           color: #b0b0b0;
           margin-bottom: 48px;
-          font-family: 'Inter', sans-serif;
-          font-weight: 400;
+          font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
         }
 
         .cases-grid {
@@ -92,7 +148,6 @@ export default function CasesPage() {
           color: inherit;
           transition: all 0.3s ease;
           display: block;
-          font-family: 'Inter', sans-serif;
         }
 
         .case-card:hover {
@@ -118,7 +173,7 @@ export default function CasesPage() {
           letter-spacing: 0.04em;
           text-transform: uppercase;
           margin-bottom: 8px;
-          font-family: 'JetBrains Mono', monospace;
+          font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
         }
 
         .case-card h3 {
@@ -126,14 +181,14 @@ export default function CasesPage() {
           font-weight: 600;
           color: #ffffff;
           margin-bottom: 4px;
-          font-family: 'JetBrains Mono', monospace;
+          font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
         }
 
         .case-card p {
           font-size: 16px;
           color: #b0b0b0;
           margin-bottom: 16px;
-          font-family: 'Inter', sans-serif;
+          font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
         }
 
         .case-link {
@@ -142,7 +197,7 @@ export default function CasesPage() {
           border-bottom: 2px solid #2a2a2a;
           padding-bottom: 2px;
           transition: 0.2s;
-          font-family: 'JetBrains Mono', monospace;
+          font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
           font-size: 14px;
           letter-spacing: 0.02em;
         }
