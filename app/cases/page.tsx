@@ -4,7 +4,7 @@ export default function CasesPage() {
   const cases = [
     {
       slug: 'yandex-food',
-      emoji: '🍔',
+      logo: '/cases/yandex-food/logo.png',
       tag: 'Вирусный контент',
       title: 'Яндекс Еда',
       desc: 'Вирусный ролик с суммарным охватом 50+ млн',
@@ -75,7 +75,11 @@ export default function CasesPage() {
           <div className="cases-grid">
             {cases.map((c) => (
               <a href={`/cases/${c.slug}`} key={c.slug} className="case-card" style={{ background: colorMap[c.color as keyof typeof colorMap] }}>
-                <span className="case-emoji">{c.emoji}</span>
+                {c.logo ? (
+                  <img src={c.logo} alt={c.title} className="case-logo-thumb" />
+                ) : (
+                  <span className="case-emoji">{c.emoji}</span>
+                )}
                 <span className="case-tag">{c.tag}</span>
                 <h3>{c.title}</h3>
                 <p>{c.desc}</p>
@@ -155,6 +159,13 @@ export default function CasesPage() {
           margin-bottom: 12px;
         }
 
+        .case-logo-thumb {
+          max-width: 80px;
+          height: auto;
+          margin-bottom: 12px;
+          display: block;
+        }
+
         .case-tag {
           display: inline-block;
           background: rgba(255, 255, 255, 0.06);
@@ -211,6 +222,9 @@ export default function CasesPage() {
           }
           .subtitle {
             font-size: 17px;
+          }
+          .case-logo-thumb {
+            max-width: 60px;
           }
         }
       `}</style>
