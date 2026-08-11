@@ -8,7 +8,7 @@ const casesData = {
   'yandex-food': {
     title: 'Яндекс Еда',
     tag: 'Вирусный контент',
-    emoji: '🍔',
+    logo: '/cases/yandex-food/logo.png',
     description: 'Вирусный ролик с суммарным охватом 50+ млн',
     full: 'Мы создали вирусный ролик для сервиса доставки Яндекс Еда. Задача — показать, как быстро и вкусно можно получить заказ, используя юмор и неожиданный поворот. Ролик завирусился в TikTok и Instagram, набрав суммарный охват более 50 миллионов просмотров.',
     stats: ['50+ млн суммарный охват'],
@@ -135,6 +135,9 @@ export default function CasePage() {
 
           {/* Заголовок */}
           <div className="case-header">
+            {data.logo && (
+              <img src={data.logo} alt={data.title} className="case-logo" />
+            )}
             <span className="badge" style={{ background: colors.accent }}>{data.tag}</span>
             <h1>{data.title}</h1>
             <p className="subtitle">{data.description}</p>
@@ -236,6 +239,13 @@ export default function CasePage() {
 
         .case-header {
           margin-bottom: 40px;
+        }
+
+        .case-logo {
+          max-width: 200px;
+          height: auto;
+          margin-bottom: 16px;
+          display: block;
         }
 
         .badge {
@@ -423,6 +433,10 @@ export default function CasePage() {
 
           .container {
             padding: 0 16px;
+          }
+
+          .case-logo {
+            max-width: 150px;
           }
         }
       `}</style>
