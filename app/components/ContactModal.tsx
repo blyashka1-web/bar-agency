@@ -10,7 +10,6 @@ interface ContactModalProps {
 export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
   const modalRef = useRef<HTMLDivElement>(null);
 
-  // Закрытие по клику вне модалки
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       if (modalRef.current && !modalRef.current.contains(e.target as Node)) {
@@ -31,7 +30,6 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
     };
   }, [isOpen, onClose]);
 
-  // Закрытие по Escape
   useEffect(() => {
     const handleEsc = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose();
@@ -48,6 +46,30 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
 
   if (!isOpen) return null;
 
+  const contacts = [
+    {
+      name: 'Telegram',
+      icon: '✈️',
+      url: 'https://t.me/ваш_логин',
+      username: '@ваш_логин',
+      color: '#0088cc',
+    },
+    {
+      name: 'WhatsApp',
+      icon: '💬',
+      url: 'https://wa.me/7XXXXXXXXXX',
+      username: '+7 XXX XXX-XX-XX',
+      color: '#25D366',
+    },
+    {
+      name: 'Instagram',
+      icon: '📸',
+      url: 'https://instagram.com/ваш_логин',
+      username: '@ваш_логин',
+      color: '#E4405F',
+    },
+  ];
+
   return (
     <div className="modal-overlay">
       <div className="modal" ref={modalRef}>
@@ -55,29 +77,36 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
         <div className="modal-content">
           <h2>Свяжитесь с нами</h2>
           <p className="modal-subtitle">
-            Обсудим ваш проект за 15 минут
+            Мы на связи 24/7 — пишите в любой мессенджер
           </p>
-          <form className="contact-form" onSubmit={(e) => e.preventDefault()}>
-            <div className="form-group">
-              <label htmlFor="name">Имя</label>
-              <input type="text" id="name" placeholder="Алексей" required />
-            </div>
-            <div className="form-group">
-              <label htmlFor="email">Email</label>
-              <input type="email" id="email" placeholder="alex@example.com" required />
-            </div>
-            <div className="form-group">
-              <label htmlFor="message">Сообщение</label>
-              <textarea id="message" rows={4} placeholder="Расскажите о своём проекте..." required />
-            </div>
-            <button type="submit" className="submit-btn">Отправить</button>
-          </form>
-          <p className="footer-text">
-            Или напишите нам напрямую:{' '}
-            <a href="mailto:hello@bar-agency.ru" className="email-link">
-              hello@bar-agency.ru
-            </a>
-          </p>
+
+          <div className="contacts-grid">
+            {contacts.map((contact, index) => (
+              <a
+                key={index}
+                href={contact.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="contact-card"
+                style={{ '--accent': contact.color } as React.CSSProperties}
+              >
+                <span className="contact-icon">{contact.icon}</span>
+                <div className="contact-info">
+                  <span className="contact-name">{contact.name}</span>
+                  <span className="contact-username">{contact.username}</span>
+                </div>
+                <span className="contact-arrow">→</span>
+              </a>
+            ))}
+          </div>
+
+          <div className="divider">
+            <span>или</span>
+          </div>
+
+          <a href="mailto:hello@bar-agency.ru" className="email-link-big">
+            📧 hello@bar-agency.ru
+          </a>
         </div>
       </div>
 
@@ -111,7 +140,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
           background: #1a1a1a;
           border-radius: 32px;
           padding: 48px;
-          max-width: 520px;
+          max-width: 480px;
           width: 90%;
           border: 1px solid #2a2a2a;
           position: relative;
@@ -152,7 +181,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
         }
 
         .modal-content {
-          text-align: left;
+          text-align: center;
         }
 
         .modal-content h2 {
@@ -167,100 +196,112 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
         .modal-subtitle {
           color: #b0b0b0;
           font-size: 16px;
-          margin-bottom: 28px;
+          margin-bottom: 32px;
           font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
         }
 
-        .contact-form {
+        .contacts-grid {
           display: flex;
           flex-direction: column;
-          gap: 18px;
+          gap: 12px;
+          margin-bottom: 24px;
         }
 
-        .form-group {
+        .contact-card {
           display: flex;
-          flex-direction: column;
-          gap: 6px;
-        }
-
-        .form-group label {
-          font-size: 13px;
-          font-weight: 600;
-          color: #b0b0b0;
-          letter-spacing: 0.04em;
-          text-transform: uppercase;
-          font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
-        }
-
-        .form-group input,
-        .form-group textarea {
+          align-items: center;
+          gap: 16px;
+          padding: 16px 20px;
           background: #121212;
+          border-radius: 16px;
           border: 1px solid #2a2a2a;
-          border-radius: 12px;
-          padding: 14px 16px;
-          font-size: 16px;
-          color: #ffffff;
-          font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
-          transition: border-color 0.2s;
-          outline: none;
-          width: 100%;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-          border-color: #c4b5a0;
-          box-shadow: 0 0 0 3px rgba(196, 181, 160, 0.1);
-        }
-
-        .form-group input::placeholder,
-        .form-group textarea::placeholder {
-          color: #555;
-        }
-
-        .form-group textarea {
-          resize: vertical;
-          min-height: 80px;
-        }
-
-        .submit-btn {
-          background: #7a2e2a;
-          color: #ffffff;
-          padding: 16px 32px;
-          border: none;
-          border-radius: 40px;
-          font-size: 17px;
-          font-weight: 600;
+          text-decoration: none;
+          transition: all 0.3s ease;
           cursor: pointer;
-          transition: all 0.25s ease;
-          margin-top: 8px;
+        }
+
+        .contact-card:hover {
+          transform: translateX(4px);
+          border-color: var(--accent);
+          box-shadow: 0 0 20px rgba(255,255,255,0.03);
+        }
+
+        .contact-icon {
+          font-size: 28px;
+          width: 44px;
+          height: 44px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: rgba(255,255,255,0.04);
+          border-radius: 12px;
+          flex-shrink: 0;
+        }
+
+        .contact-info {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 2px;
+        }
+
+        .contact-name {
+          font-size: 16px;
+          font-weight: 600;
+          color: #ffffff;
           font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
-          box-shadow: 0 4px 20px rgba(122, 46, 42, 0.3);
         }
 
-        .submit-btn:hover {
-          background: #5a2220;
-          transform: scale(1.02);
-          box-shadow: 0 6px 30px rgba(122, 46, 42, 0.4);
-        }
-
-        .footer-text {
-          margin-top: 24px;
+        .contact-username {
           font-size: 14px;
           color: #6e6e6e;
-          text-align: center;
           font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
         }
 
-        .email-link {
-          color: #c4b5a0;
-          text-decoration: none;
-          transition: color 0.2s;
-          font-weight: 500;
+        .contact-arrow {
+          color: #6e6e6e;
+          font-size: 18px;
+          transition: 0.2s;
         }
 
-        .email-link:hover {
-          color: #d4c5b0;
-          text-decoration: underline;
+        .contact-card:hover .contact-arrow {
+          color: #ffffff;
+          transform: translateX(4px);
+        }
+
+        .divider {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin: 20px 0 16px;
+        }
+
+        .divider span {
+          color: #4a4a4a;
+          font-size: 13px;
+          font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
+          padding: 0 16px;
+          background: #1a1a1a;
+        }
+
+        .email-link-big {
+          display: inline-block;
+          color: #c4b5a0;
+          font-size: 18px;
+          font-weight: 500;
+          text-decoration: none;
+          padding: 12px 24px;
+          border: 1px solid #2a2a2a;
+          border-radius: 40px;
+          transition: all 0.3s ease;
+          font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
+        }
+
+        .email-link-big:hover {
+          border-color: #c4b5a0;
+          background: rgba(196, 181, 160, 0.06);
+          transform: scale(1.02);
         }
 
         @media (max-width: 768px) {
@@ -273,15 +314,23 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
             font-size: 26px;
           }
 
-          .form-group input,
-          .form-group textarea {
-            font-size: 15px;
-            padding: 12px 14px;
+          .contact-card {
+            padding: 14px 16px;
           }
 
-          .submit-btn {
+          .contact-icon {
+            font-size: 24px;
+            width: 38px;
+            height: 38px;
+          }
+
+          .contact-name {
             font-size: 15px;
-            padding: 14px 24px;
+          }
+
+          .email-link-big {
+            font-size: 16px;
+            padding: 10px 20px;
           }
         }
       `}</style>
