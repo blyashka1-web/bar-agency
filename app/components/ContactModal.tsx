@@ -50,22 +50,15 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
     {
       name: 'Telegram',
       icon: '✈️',
-      url: 'https://t.me/ваш_логин',
-      username: '@ваш_логин',
+      url: 'https://t.me/lawayasha',
+      username: '@lawayasha',
       color: '#0088cc',
-    },
-    {
-      name: 'WhatsApp',
-      icon: '💬',
-      url: 'https://wa.me/7XXXXXXXXXX',
-      username: '+7 XXX XXX-XX-XX',
-      color: '#25D366',
     },
     {
       name: 'Instagram',
       icon: '📸',
-      url: 'https://instagram.com/ваш_логин',
-      username: '@ваш_логин',
+      url: 'https://www.instagram.com/agency_bar?igsh=MTRlZDB6cmFqdXh1bw==',
+      username: '@agency_bar',
       color: '#E4405F',
     },
   ];
@@ -77,7 +70,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
         <div className="modal-content">
           <h2>Свяжитесь с нами</h2>
           <p className="modal-subtitle">
-            Мы на связи 24/7 — пишите в любой мессенджер
+            Мы на связи — пишите в любой мессенджер
           </p>
 
           <div className="contacts-grid">
@@ -104,8 +97,8 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
             <span>или</span>
           </div>
 
-          <a href="mailto:hello@bar-agency.ru" className="email-link-big">
-            📧 hello@bar-agency.ru
+          <a href="mailto:blyashka1@gmail.com" className="email-link-big">
+            📧 blyashka1@gmail.com
           </a>
         </div>
       </div>
