@@ -8,7 +8,6 @@ export default function CasesPage() {
       tag: 'Вирусный контент',
       title: 'Яндекс Еда',
       desc: 'Вирусный ролик с 2+ млн просмотров',
-      image: '/cases/yandex-food/screenshot-1.jpg',
       color: 'haki',
     },
     {
@@ -17,7 +16,6 @@ export default function CasesPage() {
       tag: 'Косметика',
       title: 'Beauty Story',
       desc: '+280% продаж за 4 месяца',
-      image: '',
       color: 'haki',
     },
     {
@@ -26,7 +24,6 @@ export default function CasesPage() {
       tag: 'F&B',
       title: 'Moscow Coffee',
       desc: '12 млн просмотров за 7 дней',
-      image: '',
       color: 'burgundy',
     },
     {
@@ -35,7 +32,6 @@ export default function CasesPage() {
       tag: 'Одежда',
       title: 'Urban Sneakers',
       desc: '5000 заявок с нулевым бюджетом',
-      image: '',
       color: 'gold',
     },
     {
@@ -44,7 +40,6 @@ export default function CasesPage() {
       tag: 'Ювелирка',
       title: 'Luxe Jewelry',
       desc: '+150% вовлечения, охват х3',
-      image: '',
       color: 'haki',
     },
     {
@@ -53,7 +48,6 @@ export default function CasesPage() {
       tag: 'Напитки',
       title: 'Wine & People',
       desc: '+200% продаж за 2 месяца',
-      image: '',
       color: 'burgundy',
     },
     {
@@ -62,7 +56,6 @@ export default function CasesPage() {
       tag: 'IT',
       title: 'AppVision',
       desc: '50 000 установок за месяц',
-      image: '',
       color: 'gold',
     },
   ];
@@ -98,13 +91,6 @@ export default function CasesPage() {
           margin: 0;
           padding: 0;
           box-sizing: border-box;
-        }
-
-        body {
-          font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', sans-serif;
-          background: #121212;
-          color: #ffffff;
-          -webkit-font-smoothing: antialiased;
         }
 
         .container {
