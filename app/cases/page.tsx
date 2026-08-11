@@ -1,86 +1,87 @@
 'use client';
 
-export default function Home() {
-  const clients = [
-    { name: 'Beauty Story', emoji: '🧴', color: '#d4c5b2' },
-    { name: 'Moscow Coffee', emoji: '☕', color: '#c4b5a0' },
-    { name: 'Urban Sneakers', emoji: '👟', color: '#b8a99a' },
-    { name: 'Luxe Jewelry', emoji: '💎', color: '#d1c4b8' },
-    { name: 'Wine & People', emoji: '🍷', color: '#e8d5c4' },
-    { name: 'AppVision', emoji: '📱', color: '#d5c4b8' },
+export default function CasesPage() {
+  const cases = [
+    {
+      slug: 'yandex-food',
+      emoji: '🍔',
+      tag: 'Вирусный контент',
+      title: 'Яндекс Еда',
+      desc: 'Вирусный ролик с суммарным охватом 50+ млн',
+      color: 'haki',
+    },
+    {
+      slug: 'beauty-story',
+      emoji: '🧴',
+      tag: 'Косметика',
+      title: 'Beauty Story',
+      desc: '+280% продаж за 4 месяца',
+      color: 'haki',
+    },
+    {
+      slug: 'moscow-coffee',
+      emoji: '☕',
+      tag: 'F&B',
+      title: 'Moscow Coffee',
+      desc: '12 млн просмотров за 7 дней',
+      color: 'burgundy',
+    },
+    {
+      slug: 'urban-sneakers',
+      emoji: '👟',
+      tag: 'Одежда',
+      title: 'Urban Sneakers',
+      desc: '5000 заявок с нулевым бюджетом',
+      color: 'gold',
+    },
+    {
+      slug: 'luxe-jewelry',
+      emoji: '💎',
+      tag: 'Ювелирка',
+      title: 'Luxe Jewelry',
+      desc: '+150% вовлечения, охват х3',
+      color: 'haki',
+    },
+    {
+      slug: 'wine-people',
+      emoji: '🍷',
+      tag: 'Напитки',
+      title: 'Wine & People',
+      desc: '+200% продаж за 2 месяца',
+      color: 'burgundy',
+    },
+    {
+      slug: 'appvision',
+      emoji: '📱',
+      tag: 'IT',
+      title: 'AppVision',
+      desc: '50 000 установок за месяц',
+      color: 'gold',
+    },
   ];
+
+  const colorMap = {
+    haki: 'linear-gradient(145deg, #2a2a2a, #1a1a1a)',
+    burgundy: 'linear-gradient(145deg, #2a1a1a, #1a0a0a)',
+    gold: 'linear-gradient(145deg, #2a2a1a, #1a1a0a)',
+  };
 
   return (
     <main>
-      {/* HERO */}
-      <section className="hero">
+      <section className="cases-page">
         <div className="container">
-          <span className="badge">SMM‑агентство</span>
-          <h1>Вирусный контент<br />и стратегия</h1>
-          <p className="hero-text">
-            Не понимаете как устроены соцсети и для чего они —<br />
-            мы тоже, давайте это исправлять!
-          </p>
-          <a href="/cases" className="btn-primary">Наши проекты</a>
-        </div>
-      </section>
-
-      {/* ABOUT */}
-      <section className="about">
-        <div className="container">
-          <h2>Что мы делаем</h2>
-          <p className="subtitle">
-            Стратегия, контент, аналитика — всё, чтобы бренд звучал громко.
-          </p>
-          <div className="grid">
-            <div className="card card-haki">
-              <h3>📊 Стратегия</h3>
-              <p>Аналитика, позиционирование, план на 12 месяцев.</p>
-            </div>
-            <div className="card card-burgundy">
-              <h3>🔥 Вирусный контент</h3>
-              <p>Сценарии, мемы, тренды — только то, что летит.</p>
-            </div>
-            <div className="card card-gold">
-              <h3>🎯 Комьюнити</h3>
-              <p>Работаем с аудиторией, создаём лояльность.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CLIENTS */}
-      <section className="clients">
-        <div className="container">
-          <h2>Наши клиенты</h2>
-          <p className="subtitle">Бренды, которым мы помогли вырасти</p>
-          <div className="clients-grid">
-            {clients.map((client, index) => (
-              <div key={index} className="client-card">
-                <div className="client-logo" style={{ background: client.color }}>
-                  <span className="client-emoji">{client.emoji}</span>
-                </div>
-                <span className="client-name">{client.name}</span>
-              </div>
+          <h1>Кейсы</h1>
+          <p className="subtitle">Все проекты, которыми мы гордимся</p>
+          <div className="cases-grid">
+            {cases.map((c) => (
+              <a href={`/cases/${c.slug}`} key={c.slug} className="case-card" style={{ background: colorMap[c.color as keyof typeof colorMap] }}>
+                <span className="case-emoji">{c.emoji}</span>
+                <span className="case-tag">{c.tag}</span>
+                <h3>{c.title}</h3>
+                <p>{c.desc}</p>
+                <span className="case-link">Подробнее →</span>
+              </a>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* КЕЙСЫ НА ГЛАВНОЙ */}
-      <section className="main-cases">
-        <div className="container">
-          <h2>Кейсы</h2>
-          <p className="subtitle">Наши последние работы</p>
-          <div className="main-cases-grid">
-            <a href="/cases/yandex-food" className="main-case-card">
-              <span className="main-case-emoji">🍔</span>
-              <span className="main-case-tag">Вирусный контент</span>
-              <h3>Яндекс Еда</h3>
-              <p>Вирусный ролик с суммарным охватом 50+ млн</p>
-              <span className="main-case-link">Смотреть кейс →</span>
-            </a>
-            {/* Здесь можно добавить другие кейсы */}
           </div>
         </div>
       </section>
@@ -97,7 +98,6 @@ export default function Home() {
           background: #121212;
           color: #ffffff;
           -webkit-font-smoothing: antialiased;
-          -moz-osx-font-smoothing: grayscale;
         }
 
         .container {
@@ -106,25 +106,16 @@ export default function Home() {
           padding: 0 30px;
         }
 
-        section {
-          padding: 120px 0;
+        .cases-page {
+          padding: 120px 0 100px;
+          background: #121212;
+          min-height: 100vh;
         }
 
         h1 {
-          font-size: clamp(56px, 10vw, 96px);
-          font-weight: 700;
-          letter-spacing: -0.04em;
-          line-height: 1.05;
-          margin: 16px 0 24px;
-          color: #ffffff;
-          font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
-        }
-
-        h2 {
-          font-size: clamp(40px, 5vw, 64px);
+          font-size: 64px;
           font-weight: 700;
           letter-spacing: -0.03em;
-          margin-bottom: 16px;
           color: #ffffff;
           font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
         }
@@ -132,199 +123,19 @@ export default function Home() {
         .subtitle {
           font-size: 20px;
           color: #b0b0b0;
-          max-width: 600px;
-          font-weight: 400;
+          margin-bottom: 48px;
           font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
         }
 
-        .badge {
-          display: inline-block;
-          background: #7a2e2a;
-          color: #fff;
-          padding: 6px 20px;
-          border-radius: 40px;
-          font-size: 13px;
-          font-weight: 600;
-          letter-spacing: 0.06em;
-          text-transform: uppercase;
-          font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
-        }
-
-        .btn-primary {
-          display: inline-block;
-          background: #7a2e2a;
-          color: #fff;
-          padding: 16px 44px;
-          border-radius: 40px;
-          text-decoration: none;
-          font-weight: 600;
-          font-size: 17px;
-          transition: all 0.25s ease;
-          margin-top: 24px;
-          border: none;
-          cursor: pointer;
-          box-shadow: 0 4px 20px rgba(122, 46, 42, 0.3);
-          font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
-        }
-
-        .btn-primary:hover {
-          transform: scale(1.02);
-          background: #5a2220;
-          box-shadow: 0 6px 30px rgba(122, 46, 42, 0.4);
-        }
-
-        /* HERO */
-        .hero {
-          background: #1a1a1a;
-          padding: 160px 0 140px;
-          text-align: left;
-          border-bottom: 1px solid #2a2a2a;
-        }
-
-        .hero-text {
-          font-size: 22px;
-          color: #b0b0b0;
-          max-width: 560px;
-          font-weight: 400;
-          line-height: 1.5;
-          margin: 16px 0 8px;
-          font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
-        }
-
-        /* ABOUT */
-        .about {
-          background: #121212;
-        }
-
-        .grid {
+        .cases-grid {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-          gap: 40px;
-          margin-top: 56px;
-        }
-
-        .card {
-          padding: 32px 28px;
-          border-radius: 24px;
-          transition: all 0.3s ease;
-          border: 1px solid #2a2a2a;
-          background: #1a1a1a;
-        }
-
-        .card:hover {
-          transform: translateY(-6px);
-          box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-          border-color: #c4b5a0;
-        }
-
-        .card-haki {
-          border-color: #c4b5a0;
-        }
-
-        .card-burgundy {
-          border-color: #7a2e2a;
-        }
-
-        .card-gold {
-          border-color: #d4af37;
-        }
-
-        .card h3 {
-          font-size: 24px;
-          font-weight: 600;
-          margin-bottom: 8px;
-          color: #ffffff;
-          font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
-        }
-
-        .card p {
-          font-size: 17px;
-          color: #b0b0b0;
-          line-height: 1.5;
-          font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
-        }
-
-        /* CLIENTS */
-        .clients {
-          background: #0a0a0a;
-          border-top: 1px solid #2a2a2a;
-          border-bottom: 1px solid #2a2a2a;
-        }
-
-        .clients-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+          grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
           gap: 32px;
-          margin-top: 48px;
         }
 
-        .client-card {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 12px;
-          padding: 24px 16px;
-          background: #1a1a1a;
-          border-radius: 20px;
-          border: 1px solid #2a2a2a;
-          transition: all 0.3s ease;
-        }
-
-        .client-card:hover {
-          transform: translateY(-4px);
-          border-color: #c4b5a0;
-          box-shadow: 0 12px 32px rgba(0,0,0,0.3);
-        }
-
-        .client-logo {
-          width: 80px;
-          height: 80px;
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          transition: transform 0.3s ease;
-        }
-
-        .client-card:hover .client-logo {
-          transform: scale(1.05);
-        }
-
-        .client-emoji {
-          font-size: 36px;
-        }
-
-        .client-name {
-          font-size: 14px;
-          font-weight: 500;
-          color: #b0b0b0;
-          text-align: center;
-          font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
-          letter-spacing: 0.02em;
-        }
-
-        .client-card:hover .client-name {
-          color: #ffffff;
-        }
-
-        /* КЕЙСЫ НА ГЛАВНОЙ */
-        .main-cases {
-          padding: 60px 0;
-          background: #121212;
-          border-top: 1px solid #2a2a2a;
-        }
-
-        .main-cases-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-          gap: 32px;
-          margin-top: 40px;
-        }
-
-        .main-case-card {
-          background: #1a1a1a;
+        .case-card {
           padding: 32px 24px;
-          border-radius: 24px;
+          border-radius: 28px;
           border: 1px solid #2a2a2a;
           text-decoration: none;
           color: inherit;
@@ -332,33 +143,33 @@ export default function Home() {
           display: block;
         }
 
-        .main-case-card:hover {
-          transform: translateY(-4px);
+        .case-card:hover {
+          transform: translateY(-6px);
+          box-shadow: 0 20px 40px rgba(0,0,0,0.4);
           border-color: #c4b5a0;
-          box-shadow: 0 12px 32px rgba(0,0,0,0.3);
         }
 
-        .main-case-emoji {
-          font-size: 40px;
+        .case-emoji {
+          font-size: 44px;
           display: block;
           margin-bottom: 12px;
         }
 
-        .main-case-tag {
+        .case-tag {
           display: inline-block;
-          background: rgba(255,255,255,0.06);
+          background: rgba(255, 255, 255, 0.06);
           padding: 4px 14px;
           border-radius: 40px;
           font-size: 12px;
           font-weight: 500;
           color: #b0b0b0;
-          text-transform: uppercase;
           letter-spacing: 0.04em;
+          text-transform: uppercase;
           margin-bottom: 8px;
           font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
         }
 
-        .main-case-card h3 {
+        .case-card h3 {
           font-size: 22px;
           font-weight: 600;
           color: #ffffff;
@@ -366,14 +177,14 @@ export default function Home() {
           font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
         }
 
-        .main-case-card p {
+        .case-card p {
           font-size: 16px;
           color: #b0b0b0;
           margin-bottom: 16px;
           font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
         }
 
-        .main-case-link {
+        .case-link {
           font-weight: 500;
           color: #c4b5a0;
           border-bottom: 2px solid #2a2a2a;
@@ -381,53 +192,25 @@ export default function Home() {
           transition: 0.2s;
           font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
           font-size: 14px;
+          letter-spacing: 0.02em;
         }
 
-        .main-case-link:hover {
+        .case-link:hover {
           border-bottom-color: #c4b5a0;
         }
 
         @media (max-width: 768px) {
-          section {
-            padding: 60px 0;
-          }
-          .hero {
-            padding: 120px 0 80px;
+          .cases-page {
+            padding: 80px 0 60px;
           }
           h1 {
-            font-size: 44px;
+            font-size: 40px;
           }
-          .grid {
+          .cases-grid {
             grid-template-columns: 1fr;
-          }
-          .hero-text {
-            font-size: 18px;
           }
           .subtitle {
             font-size: 17px;
-          }
-          .clients-grid {
-            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-            gap: 16px;
-          }
-          .client-logo {
-            width: 60px;
-            height: 60px;
-          }
-          .client-emoji {
-            font-size: 28px;
-          }
-          .client-name {
-            font-size: 12px;
-          }
-          .client-card {
-            padding: 16px 12px;
-          }
-          .main-cases {
-            padding: 40px 0;
-          }
-          .main-cases-grid {
-            grid-template-columns: 1fr;
           }
         }
       `}</style>
