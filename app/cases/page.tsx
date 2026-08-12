@@ -1,21 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-
 export default function Home() {
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 300);
-    return () => clearTimeout(timer);
-  }, []);
-
-  if (isLoading) {
-    return null;
-  }
-
   const stats = [
     { number: '128', label: 'Публикации' },
     { number: '893K', label: 'Подписчики' },
@@ -23,22 +8,23 @@ export default function Home() {
   ];
 
   const cards = [
-    { id: 1, title: 'Beauty Story', category: 'Косметика', image: '🧴' },
-    { id: 2, title: 'Moscow Coffee', category: 'F&B', image: '☕' },
-    { id: 3, title: 'Urban Sneakers', category: 'Одежда', image: '👟' },
-    { id: 4, title: 'Luxe Jewelry', category: 'Ювелирка', image: '💎' },
-    { id: 5, title: 'Wine & People', category: 'Напитки', image: '🍷' },
-    { id: 6, title: 'AppVision', category: 'IT', image: '📱' },
+    { id: 1, title: 'Beauty Story', category: 'Косметика', emoji: '🧴' },
+    { id: 2, title: 'Moscow Coffee', category: 'F&B', emoji: '☕' },
+    { id: 3, title: 'Urban Sneakers', category: 'Одежда', emoji: '👟' },
+    { id: 4, title: 'Luxe Jewelry', category: 'Ювелирка', emoji: '💎' },
+    { id: 5, title: 'Wine & People', category: 'Напитки', emoji: '🍷' },
+    { id: 6, title: 'AppVision', category: 'IT', emoji: '📱' },
   ];
 
   return (
     <main>
+      {/* HERO */}
       <section className="hero">
         <div className="container">
           <span className="tagline">ВИРУСНЫЙ КОНТЕНТ • РЕАЛЬНЫЙ ОХВАТ</span>
           <h1>BAR AGENCY</h1>
           <p className="subtitle">Viral Content Company</p>
-          
+
           <div className="stats">
             {stats.map((stat, index) => (
               <div key={index} className="stat-item">
@@ -52,12 +38,13 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="cards">
+      {/* CARDS */}
+      <section className="cards-section">
         <div className="container">
           <div className="cards-grid">
             {cards.map((card) => (
               <a href={`/cases/${card.title.toLowerCase().replace(/ /g, '-')}`} key={card.id} className="card-item">
-                <div className="card-image">{card.image}</div>
+                <div className="card-emoji">{card.emoji}</div>
                 <h3>{card.title}</h3>
                 <span className="card-category">{card.category}</span>
               </a>
@@ -174,7 +161,7 @@ export default function Home() {
         }
 
         /* CARDS */
-        .cards {
+        .cards-section {
           padding: 80px 0;
           background: #121212;
         }
@@ -203,7 +190,7 @@ export default function Home() {
           box-shadow: 0 20px 40px rgba(0,0,0,0.4);
         }
 
-        .card-image {
+        .card-emoji {
           font-size: 48px;
           margin-bottom: 16px;
         }
