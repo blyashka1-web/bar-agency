@@ -24,7 +24,6 @@ export default function Header() {
         </div>
       </header>
 
-      {/* Модальное окно */}
       <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
 
       <style jsx>{`

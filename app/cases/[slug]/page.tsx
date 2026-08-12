@@ -678,4 +678,4 @@ export default function CasePage() {
       `}</style>
     </main>
   );
-}  
+}

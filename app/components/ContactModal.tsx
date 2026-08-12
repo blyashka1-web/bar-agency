@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 
 interface ContactModalProps {
   isOpen: boolean;
@@ -9,7 +9,6 @@ interface ContactModalProps {
 
 export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
   const modalRef = useRef<HTMLDivElement>(null);
-  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
@@ -50,108 +49,58 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
   const contacts = [
     {
       name: 'Telegram',
+      icon: '✈️',
       url: 'https://t.me/lawayasha',
       username: '@lawayasha',
       color: '#0088cc',
-      icon: (
-        <svg viewBox="0 0 24 24" fill="white" width="28" height="28">
-          <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
-        </svg>
-      ),
     },
     {
       name: 'Instagram',
-      url: 'https://www.instagram.com/agency_bar',
+      icon: '📸',
+      url: 'https://www.instagram.com/agency_bar?igsh=MTRlZDB6cmFqdXh1bw==',
       username: '@agency_bar',
       color: '#E4405F',
-      icon: (
-        <svg viewBox="0 0 24 24" fill="white" width="28" height="28">
-          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
-        </svg>
-      ),
     },
   ];
-
-  const handleSend = async () => {
-    setIsLoading(true);
-    // Имитация отправки
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    setIsLoading(false);
-    onClose();
-  };
 
   return (
     <div className="modal-overlay">
       <div className="modal" ref={modalRef}>
         <button className="close-btn" onClick={onClose}>✕</button>
-        {isLoading ? (
-          <div style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            padding: '40px 20px',
-            gap: '20px',
-            fontFamily: '-apple-system, BlinkMacSystemFont, SF Pro Display, sans-serif',
-          }}>
-            <div style={{
-              width: '44px',
-              height: '44px',
-              border: '3px solid #2a2a2a',
-              borderTop: '3px solid #c4b5a0',
-              borderRadius: '50%',
-              animation: 'spin 0.8s linear infinite',
-            }} />
-            <p style={{
-              color: '#b0b0b0',
-              fontSize: '15px',
-              fontWeight: 400,
-              margin: 0,
-            }}>
-              Отправка...
-            </p>
-            <style jsx>{`
-              @keyframes spin {
-                to { transform: rotate(360deg); }
-              }
-            `}</style>
+        <div className="modal-content">
+          <h2>Свяжитесь с нами</h2>
+          <p className="modal-subtitle">
+            Мы на связи — пишите в любой мессенджер
+          </p>
+
+          <div className="contacts-grid">
+            {contacts.map((contact, index) => (
+              <a
+                key={index}
+                href={contact.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="contact-card"
+                style={{ '--accent': contact.color } as React.CSSProperties}
+              >
+                <span className="contact-icon">{contact.icon}</span>
+                <div className="contact-info">
+                  <span className="contact-name">{contact.name}</span>
+                  <span className="contact-username">{contact.username}</span>
+                </div>
+                <span className="contact-arrow">→</span>
+              </a>
+            ))}
           </div>
-        ) : (
-          <div className="modal-content">
-            <h2>Свяжитесь с нами</h2>
-            <p className="modal-subtitle">
-              Мы на связи — пишите в любой мессенджер
-            </p>
 
-            <div className="contacts-grid">
-              {contacts.map((contact, index) => (
-                <a
-                  key={index}
-                  href={contact.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="contact-card"
-                  style={{ '--accent': contact.color } as React.CSSProperties}
-                >
-                  <span className="contact-icon">{contact.icon}</span>
-                  <div className="contact-info">
-                    <span className="contact-name">{contact.name}</span>
-                    <span className="contact-username">{contact.username}</span>
-                  </div>
-                  <span className="contact-arrow">→</span>
-                </a>
-              ))}
-            </div>
-
-            <div className="divider">
-              <span>или</span>
-            </div>
-
-            <button onClick={handleSend} className="email-link-big">
-              📧 blyashka1@gmail.com
-            </button>
+          <div className="divider">
+            <span>или</span>
           </div>
-        )}
+
+          <a href="mailto:blyashka1@gmail.com" className="email-link-big">
+            📧 blyashka1@gmail.com
+          </a>
+        </div>
       </div>
 
       <style jsx>{`
@@ -267,6 +216,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
         }
 
         .contact-icon {
+          font-size: 28px;
           width: 44px;
           height: 44px;
           display: flex;
@@ -275,12 +225,6 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
           background: rgba(255,255,255,0.04);
           border-radius: 12px;
           flex-shrink: 0;
-        }
-
-        .contact-icon svg {
-          width: 28px;
-          height: 28px;
-          fill: white;
         }
 
         .contact-info {
@@ -340,8 +284,6 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
           border: 1px solid #2a2a2a;
           border-radius: 40px;
           transition: all 0.3s ease;
-          background: transparent;
-          cursor: pointer;
           font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
         }
 
@@ -366,13 +308,9 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
           }
 
           .contact-icon {
+            font-size: 24px;
             width: 38px;
             height: 38px;
-          }
-
-          .contact-icon svg {
-            width: 24px;
-            height: 24px;
           }
 
           .contact-name {
