@@ -94,6 +94,7 @@ export default function CasePage() {
   const data = casesData[slug as keyof typeof casesData];
   const [isOpen, setIsOpen] = useState(false);
   const [selectedMedia, setSelectedMedia] = useState<{ type: string; url: string; poster?: string } | null>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
 
   if (!data) {
     return (
@@ -145,7 +146,18 @@ export default function CasePage() {
           {hasMedia && (
             <>
               <div className="carousel-wrapper">
-                <div className="horiz-scroll">
+                <div 
+                  className="horiz-scroll"
+                  onScroll={(e) => {
+                    const scrollLeft = e.currentTarget.scrollLeft;
+                    const itemWidth = e.currentTarget.querySelector('.scroll-item')?.clientWidth || 0;
+                    const gap = 16;
+                    const newIndex = Math.round(scrollLeft / (itemWidth + gap));
+                    if (newIndex !== activeIndex) {
+                      setActiveIndex(newIndex);
+                    }
+                  }}
+                >
                   {data.media.map((item, index) => (
                     <div 
                       key={index} 
@@ -167,6 +179,18 @@ export default function CasePage() {
                   ))}
                 </div>
               </div>
+
+              {/* Индикатор пролистывания */}
+              {data.media.length > 1 && (
+                <div className="scroll-indicator">
+                  {data.media.map((_, index) => (
+                    <span
+                      key={index}
+                      className={`dot ${index === activeIndex ? 'active' : ''}`}
+                    />
+                  ))}
+                </div>
+              )}
 
               {/* Подпись о репостах */}
               <div className="reposts-info">
@@ -346,6 +370,30 @@ export default function CasePage() {
           object-fit: cover;
           border-radius: 12px;
           pointer-events: none;
+        }
+
+        /* ИНДИКАТОР ПРОЛИСТЫВАНИЯ */
+        .scroll-indicator {
+          display: flex;
+          justify-content: center;
+          gap: 8px;
+          margin: 8px 0 24px 0;
+          padding: 0 16px;
+        }
+
+        .dot {
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          background: #2a2a2a;
+          transition: all 0.3s ease;
+          flex-shrink: 0;
+        }
+
+        .dot.active {
+          background: #c4b5a0;
+          width: 24px;
+          border-radius: 4px;
         }
 
         /* ПОДПИСЬ О РЕПОСТАХ */
@@ -599,6 +647,20 @@ export default function CasePage() {
           .reposts-text {
             font-size: 12px;
             opacity: 0.6;
+          }
+
+          .scroll-indicator {
+            gap: 6px;
+            margin: 4px 0 16px 0;
+          }
+
+          .dot {
+            width: 6px;
+            height: 6px;
+          }
+
+          .dot.active {
+            width: 18px;
           }
         }
 
