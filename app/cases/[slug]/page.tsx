@@ -9,7 +9,7 @@ const casesData = {
     title: 'Яндекс Еда',
     tag: 'Вирусный контент',
     description: 'Вирусный ролик с суммарным охватом 50+ млн',
-    full: 'Мы создали вирусный ролик для сервиса доставки Яндекс Еда. Задача — показать, как быстро и вкусно можно получить заказ, используя юмор и неожиданный поворот. Ролик завирусился в TikTok и Instagram, набрав суммарный охват более 50 миллионов просмотров.',
+    full: 'Мы создали вирусный ролик для сервиса доставки Яндекс Еда...',
     stats: ['50+ млн суммарный охват', '20+ репостов в крупных сообществах'],
     video: '/cases/yandex-food/video.mp4',
     images: [
@@ -281,8 +281,8 @@ export default function CasePage() {
               onClick={closeLightbox}
               style={{
                 position: 'absolute',
-                top: '8px',
-                right: '8px',
+                top: '12px',
+                right: '12px',
                 background: 'rgba(0,0,0,0.5)',
                 border: 'none',
                 color: '#fff',
@@ -331,27 +331,22 @@ export default function CasePage() {
                   onClick={(e) => { e.stopPropagation(); goToPrev(); }}
                   style={{
                     position: 'absolute',
-                    left: '8px',
+                    left: '-40px',
                     top: '50%',
                     transform: 'translateY(-50%)',
-                    background: 'rgba(255,255,255,0.08)',
-                    border: '1px solid rgba(255,255,255,0.05)',
+                    background: 'none',
+                    border: 'none',
                     color: '#fff',
-                    fontSize: '28px',
+                    fontSize: '48px',
                     cursor: 'pointer',
-                    padding: '12px 16px',
-                    borderRadius: '50%',
-                    backdropFilter: 'blur(4px)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    transition: 'background 0.2s',
-                    minWidth: '48px',
-                    minHeight: '48px',
+                    padding: '0',
+                    lineHeight: 1,
+                    opacity: 0.7,
+                    transition: 'opacity 0.2s',
                     touchAction: 'manipulation',
                   }}
-                  onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.15)'}
-                  onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.08)'}
+                  onMouseEnter={(e) => e.currentTarget.style.opacity = '1'}
+                  onMouseLeave={(e) => e.currentTarget.style.opacity = '0.7'}
                 >
                   ‹
                 </button>
@@ -359,27 +354,22 @@ export default function CasePage() {
                   onClick={(e) => { e.stopPropagation(); goToNext(); }}
                   style={{
                     position: 'absolute',
-                    right: '8px',
+                    right: '-40px',
                     top: '50%',
                     transform: 'translateY(-50%)',
-                    background: 'rgba(255,255,255,0.08)',
-                    border: '1px solid rgba(255,255,255,0.05)',
+                    background: 'none',
+                    border: 'none',
                     color: '#fff',
-                    fontSize: '28px',
+                    fontSize: '48px',
                     cursor: 'pointer',
-                    padding: '12px 16px',
-                    borderRadius: '50%',
-                    backdropFilter: 'blur(4px)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    transition: 'background 0.2s',
-                    minWidth: '48px',
-                    minHeight: '48px',
+                    padding: '0',
+                    lineHeight: 1,
+                    opacity: 0.7,
+                    transition: 'opacity 0.2s',
                     touchAction: 'manipulation',
                   }}
-                  onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.15)'}
-                  onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.08)'}
+                  onMouseEnter={(e) => e.currentTarget.style.opacity = '1'}
+                  onMouseLeave={(e) => e.currentTarget.style.opacity = '0.7'}
                 >
                   ›
                 </button>
