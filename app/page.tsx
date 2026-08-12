@@ -1,7 +1,5 @@
 'use client';
 
-import Link from 'next/link';
-
 export default function Home() {
   const clients = [
     { name: 'Beauty Story', emoji: '🧴' },
@@ -27,7 +25,7 @@ export default function Home() {
           </p>
 
           <div className="actions">
-            <Link href="/cases" className="btn-outline">Наши проекты</Link>
+            <a href="/cases" className="btn-outline">Наши проекты</a>
             <a href="#contact" className="btn-outline">Написать</a>
           </div>
         </div>
