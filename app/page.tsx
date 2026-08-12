@@ -27,8 +27,8 @@ export default function Home() {
           </p>
 
           <div className="actions">
-            <Link href="/cases" className="btn-primary">Наши проекты</Link>
-            <a href="#contact" className="btn-secondary">Написать</a>
+            <Link href="/cases" className="btn-outline">Наши проекты</Link>
+            <a href="#contact" className="btn-outline">Написать</a>
           </div>
         </div>
       </section>
@@ -122,29 +122,7 @@ export default function Home() {
           flex-wrap: wrap;
         }
 
-        .btn-primary {
-          display: inline-block;
-          background: #c4b5a0;
-          color: #121212;
-          padding: 16px 44px;
-          border-radius: 40px;
-          text-decoration: none;
-          font-weight: 600;
-          font-size: 17px;
-          transition: all 0.25s ease;
-          font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
-          border: none;
-          cursor: pointer;
-          box-shadow: 0 4px 20px rgba(196, 181, 160, 0.3);
-        }
-
-        .btn-primary:hover {
-          transform: scale(1.02);
-          background: #d4c5b0;
-          box-shadow: 0 6px 30px rgba(196, 181, 160, 0.4);
-        }
-
-        .btn-secondary {
+        .btn-outline {
           display: inline-block;
           background: transparent;
           color: #ffffff;
@@ -159,9 +137,10 @@ export default function Home() {
           cursor: pointer;
         }
 
-        .btn-secondary:hover {
+        .btn-outline:hover {
           border-color: #c4b5a0;
           background: rgba(196, 181, 160, 0.1);
+          color: #ffffff;
         }
 
         /* CLIENTS */
@@ -263,8 +242,7 @@ export default function Home() {
             align-items: center;
           }
 
-          .btn-primary,
-          .btn-secondary {
+          .btn-outline {
             width: 100%;
             max-width: 280px;
             text-align: center;
