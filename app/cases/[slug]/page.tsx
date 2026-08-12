@@ -8,17 +8,80 @@ const casesData = {
     title: 'Яндекс Еда',
     tag: 'Вирусный контент',
     description: 'Вирусный ролик с суммарным охватом 50+ млн',
-    full: 'Мы создали вирусный ролик для сервиса доставки Яндекс Еда...',
+    full: 'Мы создали вирусный ролик для сервиса доставки Яндекс Еда. Задача — показать, как быстро и вкусно можно получить заказ, используя юмор и неожиданный поворот. Ролик завирусился в TikTok и Instagram, набрав суммарный охват более 50 миллионов просмотров.',
     stats: ['50+ млн суммарный охват', '20+ репостов в крупных сообществах'],
-    media: [],
+    media: [
+      { type: 'image', url: '/cases/yandex-food/screenshot-1.jpg' },
+      { type: 'image', url: '/cases/yandex-food/screenshot-2.jpg' },
+      { type: 'image', url: '/cases/yandex-food/screenshot-3.jpg' },
+      { type: 'image', url: '/cases/yandex-food/screenshot-4.jpg' },
+      { type: 'image', url: '/cases/yandex-food/screenshot-5.jpg' },
+      { type: 'image', url: '/cases/yandex-food/screenshot-6.jpg' },
+    ],
     color: '#c4b5a0',
   },
   'deportivo': {
     title: 'Deportivo',
     tag: 'Спорт / Lifestyle',
     description: 'Вирусный контент с 10+ млн просмотров',
-    full: 'Мы создали вирусную кампанию для спортивного бренда Deportivo...',
+    full: 'Мы создали вирусную кампанию для спортивного бренда Deportivo. Задача — показать энергию и стиль бренда через динамичный контент. Ролики завирусились в TikTok и Instagram, набрав суммарный охват более 10 миллионов просмотров.',
     stats: ['10+ млн просмотров', '28% рост продаж', '5 дней до вирала'],
+    media: [
+      { type: 'image', url: '/cases/deportivo/screenshot-1.jpg' },
+    ],
+    color: '#d4af37',
+  },
+  'beauty-story': {
+    title: 'Beauty Story',
+    tag: 'Косметика',
+    description: '+280% продаж за 4 месяца',
+    full: 'Разработали SMM‑стратегию для бренда натуральной косметики...',
+    stats: ['280% рост продаж', '4 месяца', '1.2 млн охват'],
+    media: [],
+    color: '#c4b5a0',
+  },
+  'moscow-coffee': {
+    title: 'Moscow Coffee',
+    tag: 'F&B',
+    description: '12 млн просмотров за 7 дней',
+    full: 'Запустили вирусный челлендж для сети кофеен...',
+    stats: ['12 млн просмотров', '7 дней', '800+ новых клиентов'],
+    media: [],
+    color: '#7a2e2a',
+  },
+  'urban-sneakers': {
+    title: 'Urban Sneakers',
+    tag: 'Одежда',
+    description: '5000 заявок с нулевым бюджетом',
+    full: 'Создали бренд с нуля: стратегия, айдентика...',
+    stats: ['5000 заявок', '0 ₽ бюджет', '2 млн охват'],
+    media: [],
+    color: '#d4af37',
+  },
+  'luxe-jewelry': {
+    title: 'Luxe Jewelry',
+    tag: 'Ювелирка',
+    description: '+150% вовлечения, охват х3',
+    full: 'Контент‑стратегия с фокусом на эстетику...',
+    stats: ['+150% вовлечение', '3x охват', '+200% продаж'],
+    media: [],
+    color: '#c4b5a0',
+  },
+  'wine-people': {
+    title: 'Wine & People',
+    tag: 'Напитки',
+    description: '+200% продаж за 2 месяца',
+    full: 'Создали контент-стратегию с сомелье...',
+    stats: ['+200% продаж', '2 месяца', '2.5 млн охват'],
+    media: [],
+    color: '#7a2e2a',
+  },
+  'appvision': {
+    title: 'AppVision',
+    tag: 'IT',
+    description: '50 000 установок за месяц',
+    full: 'Интеграции с блогерами, обзоры в TikTok...',
+    stats: ['50 000 установок', '1 месяц', '150 тыс. ₽ бюджет'],
     media: [],
     color: '#d4af37',
   },
@@ -51,6 +114,32 @@ export default function CasePage() {
         <h1 style={{ fontSize: '48px', marginTop: '12px', marginBottom: '8px' }}>{data.title}</h1>
         <p style={{ fontSize: '20px', color: '#b0b0b0' }}>{data.description}</p>
       </div>
+
+      {/* МЕДИА — СКРИНЫ И ВИДЕО */}
+      {data.media && data.media.length > 0 && (
+        <div style={{ marginTop: '40px' }}>
+          <h2 style={{ fontSize: '24px', fontWeight: 600, marginBottom: '16px' }}>Репосты в крупных сообществах</h2>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px' }}>
+            {data.media.map((item, index) => (
+              <div key={index} style={{ flex: '1 1 200px', maxWidth: '300px', borderRadius: '16px', overflow: 'hidden', background: '#2a2a2a' }}>
+                {item.type === 'video' ? (
+                  <video 
+                    src={item.url} 
+                    controls 
+                    style={{ width: '100%', display: 'block', aspectRatio: '16/10', objectFit: 'cover' }}
+                  />
+                ) : (
+                  <img 
+                    src={item.url} 
+                    alt={`${data.title} - ${index + 1}`} 
+                    style={{ width: '100%', display: 'block', aspectRatio: '16/10', objectFit: 'cover' }}
+                  />
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
 
       <div style={{ marginTop: '40px' }}>
         <h2 style={{ fontSize: '24px', fontWeight: 600 }}>О проекте</h2>
