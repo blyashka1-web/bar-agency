@@ -7,38 +7,41 @@ import { useState } from 'react';
 export default function CasePage() {
   const params = useParams();
   const slug = params.slug;
-  const [isOpen, setIsOpen] = useState(false);
-  const [currentImage, setCurrentImage] = useState('');
 
-  const casesData = {
-    'yandex-food': {
-      title: 'Яндекс Еда',
-      tag: 'Вирусный контент',
-      description: 'Вирусный ролик с суммарным охватом 50+ млн',
-      video: '/cases/yandex-food/video.mp4',
-      images: [
-        '/cases/yandex-food/screenshot-1.jpg',
-        '/cases/yandex-food/screenshot-2.jpg',
-        '/cases/yandex-food/screenshot-3.jpg',
-        '/cases/yandex-food/screenshot-4.jpg',
-        '/cases/yandex-food/screenshot-5.jpg',
-        '/cases/yandex-food/screenshot-6.jpg',
-      ],
-      color: '#c4b5a0',
-      isYandex: true,
-    },
-    'deportivo': {
-      title: 'Deportivo',
-      tag: 'Спорт / Lifestyle',
-      description: 'Вирусный контент с 10+ млн просмотров',
-      articleUrl: 'https://www.ole.com.ar/informacion-general/anton-nefedechev-primer-gol-ruso-argentina-deportivo-moscu-liga-escobarense_0_APpXWb03bh.html',
-      image: '/cases/deportivo/screenshot-1.jpg',
-      color: '#d4af37',
-      isYandex: false,
-    },
+  // Данные для Яндекс Еды
+  const yandexData = {
+    title: 'Яндекс Еда',
+    tag: 'Вирусный контент',
+    description: 'Вирусный ролик с суммарным охватом 50+ млн',
+    video: '/cases/yandex-food/video.mp4',
+    images: [
+      '/cases/yandex-food/screenshot-1.jpg',
+      '/cases/yandex-food/screenshot-2.jpg',
+      '/cases/yandex-food/screenshot-3.jpg',
+      '/cases/yandex-food/screenshot-4.jpg',
+      '/cases/yandex-food/screenshot-5.jpg',
+      '/cases/yandex-food/screenshot-6.jpg',
+    ],
+    color: '#c4b5a0',
   };
 
-  const data = casesData[slug];
+  // Данные для Deportivo
+  const deportivoData = {
+    title: 'Deportivo',
+    tag: 'Спорт / Lifestyle',
+    description: 'Вирусный контент с 10+ млн просмотров',
+    articleUrl: 'https://www.ole.com.ar/informacion-general/anton-nefedechev-primer-gol-ruso-argentina-deportivo-moscu-liga-escobarense_0_APpXWb03bh.html',
+    image: '/cases/deportivo/screenshot-1.jpg',
+    color: '#d4af37',
+  };
+
+  // Выбираем данные по slug
+  const isYandex = slug === 'yandex-food';
+  const isDeportivo = slug === 'deportivo';
+  const data = isYandex ? yandexData : isDeportivo ? deportivoData : null;
+
+  const [isOpen, setIsOpen] = useState(false);
+  const [currentImage, setCurrentImage] = useState('');
 
   if (!data) {
     return (
@@ -72,14 +75,14 @@ export default function CasePage() {
         <p style={{ fontSize: '20px', color: '#b0b0b0' }}>{data.description}</p>
       </div>
 
-      {data.isYandex && data.video && (
+      {isYandex && data.video && (
         <div style={{ marginTop: '40px' }}>
           <h2>🎬 Вирусный видеоролик</h2>
           <video src={data.video} controls style={{ width: '100%', maxWidth: '800px', borderRadius: '12px' }} />
         </div>
       )}
 
-      {!data.isYandex && data.articleUrl && (
+      {isDeportivo && data.articleUrl && (
         <div style={{ marginTop: '40px' }}>
           <h2>📰 Статья</h2>
           <a
@@ -104,7 +107,7 @@ export default function CasePage() {
       <div style={{ marginTop: '40px' }}>
         <h2>📢 Репосты в крупных сообществах</h2>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px' }}>
-          {data.isYandex ? (
+          {isYandex ? (
             data.images.map((url, i) => (
               <img
                 key={i}
