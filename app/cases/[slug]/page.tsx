@@ -101,7 +101,7 @@ export default function CasePage() {
   const slug = params.slug as string;
   const data = casesData[slug as keyof typeof casesData];
   const [isOpen, setIsOpen] = useState(false);
-  const [currentImage, setCurrentImage] = useState<string | null>(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   if (!data) {
     return (
@@ -112,20 +112,43 @@ export default function CasePage() {
     );
   }
 
-  const openImage = (url: string) => {
-    setCurrentImage(url);
+  const hasVideo = data.video !== null && data.video !== '';
+  const hasImages = data.images && data.images.length > 0;
+
+  const openLightbox = (index: number) => {
+    setCurrentIndex(index);
     setIsOpen(true);
     document.body.style.overflow = 'hidden';
   };
 
-  const closeImage = () => {
+  const closeLightbox = () => {
     setIsOpen(false);
-    setCurrentImage(null);
     document.body.style.overflow = 'auto';
   };
 
-  const hasVideo = data.video !== null && data.video !== '';
-  const hasImages = data.images && data.images.length > 0;
+  const goToPrev = () => {
+    setCurrentIndex((prev) => (prev === 0 ? data.images.length - 1 : prev - 1));
+  };
+
+  const goToNext = () => {
+    setCurrentIndex((prev) => (prev === data.images.length - 1 ? 0 : prev + 1));
+  };
+
+  // Закрытие по Escape
+  const handleKeyDown = (e: KeyboardEvent) => {
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') goToPrev();
+    if (e.key === 'ArrowRight') goToNext();
+  };
+
+  // Добавляем/убираем обработчик клавиш
+  if (typeof window !== 'undefined') {
+    if (isOpen) {
+      window.addEventListener('keydown', handleKeyDown);
+    } else {
+      window.removeEventListener('keydown', handleKeyDown);
+    }
+  }
 
   return (
     <div style={{ padding: '40px 20px', background: '#121212', color: '#fff', minHeight: '100vh' }}>
@@ -141,7 +164,7 @@ export default function CasePage() {
         <p style={{ fontSize: '20px', color: '#b0b0b0' }}>{data.description}</p>
       </div>
 
-      {/* ВИДЕО (отдельный блок) */}
+      {/* ВИДЕО */}
       {hasVideo && (
         <div style={{ marginTop: '40px' }}>
           <h2 style={{ fontSize: '24px', fontWeight: 600, marginBottom: '8px' }}>🎬 Вирусный видеоролик</h2>
@@ -165,7 +188,7 @@ export default function CasePage() {
         </div>
       )}
 
-      {/* СКРИНЫ (отдельный блок) */}
+      {/* СКРИНЫ */}
       {hasImages && (
         <div style={{ marginTop: '40px' }}>
           <h2 style={{ fontSize: '24px', fontWeight: 600, marginBottom: '16px' }}>📢 Репосты в крупных сообществах</h2>
@@ -183,7 +206,7 @@ export default function CasePage() {
                   transition: 'transform 0.2s ease',
                   border: '1px solid #2a2a2a',
                 }}
-                onClick={() => openImage(url)}
+                onClick={() => openLightbox(index)}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = 'scale(1.02)';
                 }}
@@ -229,8 +252,8 @@ export default function CasePage() {
         </button>
       </div>
 
-      {/* ЛАЙТБОКС ДЛЯ СКРИНОВ */}
-      {isOpen && currentImage && (
+      {/* ЛАЙТБОКС С НАВИГАЦИЕЙ */}
+      {isOpen && hasImages && (
         <div 
           style={{
             position: 'fixed',
@@ -238,7 +261,7 @@ export default function CasePage() {
             left: 0,
             right: 0,
             bottom: 0,
-            background: 'rgba(0,0,0,0.9)',
+            background: 'rgba(0,0,0,0.92)',
             backdropFilter: 'blur(12px)',
             display: 'flex',
             alignItems: 'center',
@@ -246,7 +269,7 @@ export default function CasePage() {
             zIndex: 9999,
             padding: '24px',
           }}
-          onClick={closeImage}
+          onClick={closeLightbox}
         >
           <div 
             style={{
@@ -256,8 +279,9 @@ export default function CasePage() {
             }}
             onClick={(e) => e.stopPropagation()}
           >
+            {/* Кнопка закрытия */}
             <button
-              onClick={closeImage}
+              onClick={closeLightbox}
               style={{
                 position: 'absolute',
                 top: '-48px',
@@ -269,15 +293,31 @@ export default function CasePage() {
                 cursor: 'pointer',
                 padding: '8px',
                 lineHeight: 1,
+                zIndex: 10,
               }}
             >
               ✕
             </button>
+
+            {/* Счетчик */}
+            <div style={{
+              position: 'absolute',
+              bottom: '-48px',
+              left: '50%',
+              transform: 'translateX(-50%)',
+              color: '#888',
+              fontSize: '14px',
+              fontFamily: 'SF Pro Display, sans-serif',
+            }}>
+              {currentIndex + 1} / {data.images.length}
+            </div>
+
+            {/* Изображение */}
             <img 
-              src={currentImage} 
-              alt="Увеличенный скриншот" 
+              src={data.images[currentIndex]} 
+              alt={`Скриншот ${currentIndex + 1}`} 
               style={{
-                maxWidth: '100%',
+                maxWidth: '90vw',
                 maxHeight: '80vh',
                 borderRadius: '16px',
                 display: 'block',
@@ -285,6 +325,64 @@ export default function CasePage() {
                 boxShadow: '0 20px 60px rgba(0,0,0,0.5)',
               }}
             />
+
+            {/* Стрелка ВЛЕВО */}
+            {data.images.length > 1 && (
+              <button
+                onClick={(e) => { e.stopPropagation(); goToPrev(); }}
+                style={{
+                  position: 'absolute',
+                  left: '-60px',
+                  top: '50%',
+                  transform: 'translateY(-50%)',
+                  background: 'rgba(255,255,255,0.1)',
+                  border: 'none',
+                  color: '#fff',
+                  fontSize: '40px',
+                  cursor: 'pointer',
+                  padding: '16px 12px',
+                  borderRadius: '12px',
+                  transition: 'background 0.2s',
+                  backdropFilter: 'blur(4px)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.2)'}
+                onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.1)'}
+              >
+                ‹
+              </button>
+            )}
+
+            {/* Стрелка ВПРАВО */}
+            {data.images.length > 1 && (
+              <button
+                onClick={(e) => { e.stopPropagation(); goToNext(); }}
+                style={{
+                  position: 'absolute',
+                  right: '-60px',
+                  top: '50%',
+                  transform: 'translateY(-50%)',
+                  background: 'rgba(255,255,255,0.1)',
+                  border: 'none',
+                  color: '#fff',
+                  fontSize: '40px',
+                  cursor: 'pointer',
+                  padding: '16px 12px',
+                  borderRadius: '12px',
+                  transition: 'background 0.2s',
+                  backdropFilter: 'blur(4px)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.2)'}
+                onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.1)'}
+              >
+                ›
+              </button>
+            )}
           </div>
         </div>
       )}
