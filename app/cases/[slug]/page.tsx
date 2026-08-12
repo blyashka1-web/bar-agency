@@ -27,6 +27,7 @@ export default function CasePage() {
         '/cases/yandex-food/screenshot-6.jpg',
       ],
       color: '#c4b5a0',
+      isArticle: false, // для Яндекс Еды — лайтбокс
     },
     'deportivo': {
       title: 'Deportivo',
@@ -41,9 +42,11 @@ export default function CasePage() {
         { title: 'Deportivo: путь к миллионам', url: 'https://example.com/3' },
       ],
       images: [
-        '/cases/deportivo/screenshot-1.jpg',
+        { src: '/cases/deportivo/screenshot-1.jpg', url: 'https://example.com/1' },
+        { src: '/cases/deportivo/screenshot-2.jpg', url: 'https://example.com/2' },
       ],
       color: '#d4af37',
+      isArticle: true, // для Deportivo — ссылки на статьи
     },
   };
 
@@ -122,23 +125,57 @@ export default function CasePage() {
         <div style={{ marginTop: '40px' }}>
           <h2>📢 Репосты в крупных сообществах</h2>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px' }}>
-            {data.images.map((url, i) => (
-              <img
-                key={i}
-                src={url}
-                alt="скрин"
-                style={{ 
-                  width: '200px', 
-                  borderRadius: '12px', 
-                  border: '1px solid #2a2a2a',
-                  cursor: 'pointer',
-                  transition: 'transform 0.2s',
-                }}
-                onClick={() => openLightbox(i)}
-                onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
-                onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
-              />
-            ))}
+            {data.images.map((item, i) => {
+              const src = item.src || item;
+              const url = item.url || null;
+              const isArticle = data.isArticle && url;
+
+              return (
+                <div
+                  key={i}
+                  style={{
+                    width: '200px',
+                    borderRadius: '12px',
+                    border: '1px solid #2a2a2a',
+                    overflow: 'hidden',
+                    cursor: isArticle ? 'pointer' : 'default',
+                    transition: 'transform 0.2s',
+                  }}
+                  onClick={() => {
+                    if (isArticle) {
+                      window.open(url, '_blank');
+                    } else {
+                      openLightbox(i);
+                    }
+                  }}
+                  onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.02)'}
+                  onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
+                >
+                  <img
+                    src={src}
+                    alt="скрин"
+                    style={{
+                      width: '100%',
+                      display: 'block',
+                      aspectRatio: '16/10',
+                      objectFit: 'cover',
+                    }}
+                  />
+                  {isArticle && (
+                    <div style={{
+                      padding: '8px 12px',
+                      background: '#1a1a1a',
+                      fontSize: '12px',
+                      color: '#c4b5a0',
+                      textAlign: 'center',
+                      borderTop: '1px solid #2a2a2a',
+                    }}>
+                      🔗 Открыть статью
+                    </div>
+                  )}
+                </div>
+              );
+            })}
           </div>
         </div>
       )}
@@ -157,7 +194,7 @@ export default function CasePage() {
         ))}
       </div>
 
-      {isOpen && data.images.length > 0 && (
+      {isOpen && !data.isArticle && data.images.length > 0 && (
         <div
           style={{
             position: 'fixed',
@@ -219,7 +256,7 @@ export default function CasePage() {
             </div>
 
             <img
-              src={data.images[currentIndex]}
+              src={data.images[currentIndex].src || data.images[currentIndex]}
               alt="скриншот"
               style={{
                 maxWidth: '90vw',
