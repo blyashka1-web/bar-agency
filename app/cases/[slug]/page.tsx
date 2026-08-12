@@ -100,7 +100,6 @@ export default function CasePage() {
   const params = useParams();
   const slug = params.slug as string;
   const data = casesData[slug as keyof typeof casesData];
-  const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
   if (!data) {
     return (
@@ -138,7 +137,7 @@ export default function CasePage() {
             <p className="subtitle">{data.description}</p>
           </div>
 
-          {/* Компактная горизонтальная карусель */}
+          {/* Принудительно горизонтальная карусель */}
           {hasMedia && (
             <div className="carousel-wrapper">
               <Swiper
@@ -147,19 +146,21 @@ export default function CasePage() {
                 pagination={{ clickable: true }}
                 zoom={{ maxRatio: 2 }}
                 spaceBetween={12}
-                slidesPerView={1.5}
+                slidesPerView={1.8}
                 centeredSlides={false}
+                watchSlidesProgress={true}
+                resistanceRatio={0.5}
                 breakpoints={{
                   480: {
                     slidesPerView: 1.8,
                     spaceBetween: 12,
                   },
                   640: {
-                    slidesPerView: 2,
+                    slidesPerView: 2.2,
                     spaceBetween: 16,
                   },
                   768: {
-                    slidesPerView: 2.2,
+                    slidesPerView: 2.5,
                     spaceBetween: 20,
                   },
                   1024: {
@@ -294,7 +295,7 @@ export default function CasePage() {
           max-width: 600px;
         }
 
-        /* КОМПАКТНАЯ КАРУСЕЛЬ */
+        /* КОМПАКТНАЯ КАРУСЕЛЬ - ПРИНУДИТЕЛЬНО ГОРИЗОНТАЛЬНАЯ */
         .carousel-wrapper {
           margin: 24px 0 40px;
           border-radius: 20px;
@@ -302,12 +303,31 @@ export default function CasePage() {
           background: #1a1a1a;
           border: 1px solid #2a2a2a;
           padding: 16px 0 8px 0;
+          width: 100%;
+          overflow-x: hidden;
         }
 
         .case-swiper {
           width: 100%;
           height: 100%;
           padding: 0 0 40px 0;
+          overflow: hidden;
+        }
+
+        /* Принудительно горизонтальная ориентация */
+        .case-swiper :global(.swiper-wrapper) {
+          display: flex;
+          flex-direction: row !important;
+          transition-timing-function: ease-out;
+        }
+
+        .case-swiper :global(.swiper-slide) {
+          flex-shrink: 0;
+          width: auto;
+          height: auto;
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
 
         .swiper-zoom-container {
@@ -504,13 +524,11 @@ export default function CasePage() {
             aspect-ratio: 16 / 11;
           }
 
-          /* Скрываем стрелки на мобилках */
           .case-swiper :global(.swiper-button-next),
           .case-swiper :global(.swiper-button-prev) {
             display: none;
           }
 
-          /* Уменьшаем точки */
           .case-swiper :global(.swiper-pagination-bullet) {
             width: 6px;
             height: 6px;
