@@ -12,6 +12,7 @@ const casesData = {
     full: 'Мы создали вирусный ролик для сервиса доставки Яндекс Еда. Задача — показать, как быстро и вкусно можно получить заказ, используя юмор и неожиданный поворот. Ролик завирусился в TikTok и Instagram, набрав суммарный охват более 50 миллионов просмотров.',
     stats: ['50+ млн суммарный охват', '20+ репостов в крупных сообществах'],
     media: [
+      { type: 'video', url: '/cases/yandex-food/video.mp4' },
       { type: 'image', url: '/cases/yandex-food/screenshot-1.jpg' },
       { type: 'image', url: '/cases/yandex-food/screenshot-2.jpg' },
       { type: 'image', url: '/cases/yandex-food/screenshot-3.jpg' },
@@ -204,7 +205,6 @@ export default function CasePage() {
         </button>
       </div>
 
-      {/* КАСТОМНЫЙ ЛАЙТБОКС */}
       {isOpen && currentImage && (
         <div 
           style={{
