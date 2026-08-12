@@ -147,19 +147,23 @@ export default function CasePage() {
                 pagination={{ clickable: true }}
                 zoom={{ maxRatio: 2 }}
                 spaceBetween={12}
-                slidesPerView={1.2}
+                slidesPerView={1.5}
                 centeredSlides={false}
                 breakpoints={{
+                  480: {
+                    slidesPerView: 1.8,
+                    spaceBetween: 12,
+                  },
                   640: {
-                    slidesPerView: 1.5,
+                    slidesPerView: 2,
                     spaceBetween: 16,
                   },
                   768: {
-                    slidesPerView: 2,
+                    slidesPerView: 2.2,
                     spaceBetween: 20,
                   },
                   1024: {
-                    slidesPerView: 2.5,
+                    slidesPerView: 2.8,
                     spaceBetween: 24,
                   },
                 }}
@@ -500,9 +504,20 @@ export default function CasePage() {
             aspect-ratio: 16 / 11;
           }
 
+          /* Скрываем стрелки на мобилках */
           .case-swiper :global(.swiper-button-next),
           .case-swiper :global(.swiper-button-prev) {
             display: none;
+          }
+
+          /* Уменьшаем точки */
+          .case-swiper :global(.swiper-pagination-bullet) {
+            width: 6px;
+            height: 6px;
+          }
+
+          .case-swiper :global(.swiper-pagination-bullet-active) {
+            width: 16px;
           }
         }
 
