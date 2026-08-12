@@ -8,12 +8,12 @@ export default function Loading() {
       background: '#121212',
     }}>
       <div style={{
-        width: '32px',
-        height: '32px',
+        width: '24px',
+        height: '24px',
         border: '2px solid #2a2a2a',
         borderTop: '2px solid #c4b5a0',
         borderRadius: '50%',
-        animation: 'spin 0.6s linear infinite',
+        animation: 'spin 0.5s linear infinite',
       }} />
       <style jsx>{`
         @keyframes spin {
