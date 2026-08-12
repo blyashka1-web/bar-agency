@@ -7,6 +7,8 @@ import { useState } from 'react';
 export default function CasePage() {
   const params = useParams();
   const slug = params.slug;
+  const [isOpen, setIsOpen] = useState(false);
+  const [currentImage, setCurrentImage] = useState('');
 
   // Данные для Яндекс Еды
   const yandexData = {
@@ -35,13 +37,18 @@ export default function CasePage() {
     color: '#d4af37',
   };
 
-  // Выбираем данные по slug
-  const isYandex = slug === 'yandex-food';
-  const isDeportivo = slug === 'deportivo';
-  const data = isYandex ? yandexData : isDeportivo ? deportivoData : null;
+  // Выбираем данные
+  let data = null;
+  let isYandex = false;
+  let isDeportivo = false;
 
-  const [isOpen, setIsOpen] = useState(false);
-  const [currentImage, setCurrentImage] = useState('');
+  if (slug === 'yandex-food') {
+    data = yandexData;
+    isYandex = true;
+  } else if (slug === 'deportivo') {
+    data = deportivoData;
+    isDeportivo = true;
+  }
 
   if (!data) {
     return (
@@ -94,7 +101,7 @@ export default function CasePage() {
               padding: '16px 20px',
               background: '#2a2a2a',
               borderRadius: '12px',
-              border: `1px solid ${data.color}`,
+              border: '1px solid ' + data.color,
               color: '#fff',
               textDecoration: 'none',
             }}
@@ -108,23 +115,25 @@ export default function CasePage() {
         <h2>📢 Репосты в крупных сообществах</h2>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px' }}>
           {isYandex ? (
-            data.images.map((url, i) => (
-              <img
-                key={i}
-                src={url}
-                alt={`скрин ${i + 1}`}
-                style={{
-                  width: '200px',
-                  borderRadius: '12px',
-                  border: '1px solid #2a2a2a',
-                  cursor: 'pointer',
-                  transition: 'transform 0.2s',
-                }}
-                onClick={() => openLightbox(url)}
-                onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
-                onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
-              />
-            ))
+            data.images.map(function(url, i) {
+              return (
+                <img
+                  key={i}
+                  src={url}
+                  alt={'скрин ' + (i + 1)}
+                  style={{
+                    width: '200px',
+                    borderRadius: '12px',
+                    border: '1px solid #2a2a2a',
+                    cursor: 'pointer',
+                    transition: 'transform 0.2s',
+                  }}
+                  onClick={function() { openLightbox(url); }}
+                  onMouseEnter={function(e) { e.currentTarget.style.transform = 'scale(1.05)'; }}
+                  onMouseLeave={function(e) { e.currentTarget.style.transform = 'scale(1)'; }}
+                />
+              );
+            })
           ) : (
             <img
               src={data.image}
@@ -136,9 +145,9 @@ export default function CasePage() {
                 cursor: 'pointer',
                 transition: 'transform 0.2s',
               }}
-              onClick={() => window.open(data.articleUrl, '_blank')}
-              onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
-              onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
+              onClick={function() { window.open(data.articleUrl, '_blank'); }}
+              onMouseEnter={function(e) { e.currentTarget.style.transform = 'scale(1.05)'; }}
+              onMouseLeave={function(e) { e.currentTarget.style.transform = 'scale(1)'; }}
             />
           )}
         </div>
@@ -171,7 +180,7 @@ export default function CasePage() {
               alignItems: 'center',
               justifyContent: 'center',
             }}
-            onClick={(e) => e.stopPropagation()}
+            onClick={function(e) { e.stopPropagation(); }}
           >
             <button
               onClick={closeLightbox}
