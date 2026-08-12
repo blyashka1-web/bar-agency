@@ -2,7 +2,7 @@
 
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const casesData = {
   'yandex-food': {
@@ -26,7 +26,7 @@ const casesData = {
     title: 'Deportivo',
     tag: 'Спорт / Lifestyle',
     description: 'Вирусный контент с 10+ млн просмотров',
-    full: 'Мы создали вирусную кампанию для спортивного бренда Deportivo...',
+    full: 'Мы создали вирусную кампанию для спортивного бренда Deportivo. Задача — показать энергию и стиль бренда через динамичный контент. Ролики завирусились в TikTok и Instagram, набрав суммарный охват более 10 миллионов просмотров.',
     stats: ['10+ млн просмотров', '28% рост продаж', '5 дней до вирала'],
     video: null,
     images: [
@@ -103,17 +103,8 @@ export default function CasePage() {
   const [isOpen, setIsOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  if (!data) {
-    return (
-      <div style={{ padding: '40px 20px', background: '#121212', color: '#fff', minHeight: '100vh' }}>
-        <h1>Кейс не найден</h1>
-        <Link href="/cases" style={{ color: '#c4b5a0' }}>← Вернуться</Link>
-      </div>
-    );
-  }
-
-  const hasVideo = data.video !== null && data.video !== '';
-  const hasImages = data.images && data.images.length > 0;
+  const hasVideo = data?.video !== null && data?.video !== '';
+  const hasImages = data?.images && data.images.length > 0;
 
   const openLightbox = (index: number) => {
     setCurrentIndex(index);
@@ -134,20 +125,25 @@ export default function CasePage() {
     setCurrentIndex((prev) => (prev === data.images.length - 1 ? 0 : prev + 1));
   };
 
-  // Закрытие по Escape
-  const handleKeyDown = (e: KeyboardEvent) => {
-    if (e.key === 'Escape') closeLightbox();
-    if (e.key === 'ArrowLeft') goToPrev();
-    if (e.key === 'ArrowRight') goToNext();
-  };
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (!isOpen) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') goToPrev();
+      if (e.key === 'ArrowRight') goToNext();
+    };
 
-  // Добавляем/убираем обработчик клавиш
-  if (typeof window !== 'undefined') {
-    if (isOpen) {
-      window.addEventListener('keydown', handleKeyDown);
-    } else {
-      window.removeEventListener('keydown', handleKeyDown);
-    }
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen]);
+
+  if (!data) {
+    return (
+      <div style={{ padding: '40px 20px', background: '#121212', color: '#fff', minHeight: '100vh' }}>
+        <h1>Кейс не найден</h1>
+        <Link href="/cases" style={{ color: '#c4b5a0' }}>← Вернуться</Link>
+      </div>
+    );
   }
 
   return (
@@ -164,7 +160,6 @@ export default function CasePage() {
         <p style={{ fontSize: '20px', color: '#b0b0b0' }}>{data.description}</p>
       </div>
 
-      {/* ВИДЕО */}
       {hasVideo && (
         <div style={{ marginTop: '40px' }}>
           <h2 style={{ fontSize: '24px', fontWeight: 600, marginBottom: '8px' }}>🎬 Вирусный видеоролик</h2>
@@ -188,7 +183,6 @@ export default function CasePage() {
         </div>
       )}
 
-      {/* СКРИНЫ */}
       {hasImages && (
         <div style={{ marginTop: '40px' }}>
           <h2 style={{ fontSize: '24px', fontWeight: 600, marginBottom: '16px' }}>📢 Репосты в крупных сообществах</h2>
@@ -252,7 +246,6 @@ export default function CasePage() {
         </button>
       </div>
 
-      {/* ЛАЙТБОКС С НАВИГАЦИЕЙ */}
       {isOpen && hasImages && (
         <div 
           style={{
@@ -267,42 +260,47 @@ export default function CasePage() {
             alignItems: 'center',
             justifyContent: 'center',
             zIndex: 9999,
-            padding: '24px',
+            padding: '16px',
           }}
           onClick={closeLightbox}
         >
           <div 
             style={{
               position: 'relative',
-              maxWidth: '90vw',
-              maxHeight: '90vh',
+              maxWidth: '95vw',
+              maxHeight: '95vh',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              width: '100%',
+              height: '100%',
             }}
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Кнопка закрытия */}
             <button
               onClick={closeLightbox}
               style={{
                 position: 'absolute',
-                top: '-48px',
-                right: 0,
-                background: 'none',
+                top: '8px',
+                right: '8px',
+                background: 'rgba(0,0,0,0.5)',
                 border: 'none',
                 color: '#fff',
-                fontSize: '32px',
+                fontSize: '28px',
                 cursor: 'pointer',
-                padding: '8px',
+                padding: '8px 14px',
+                borderRadius: '50%',
                 lineHeight: 1,
                 zIndex: 10,
+                backdropFilter: 'blur(4px)',
               }}
             >
               ✕
             </button>
 
-            {/* Счетчик */}
             <div style={{
               position: 'absolute',
-              bottom: '-48px',
+              bottom: '-40px',
               left: '50%',
               transform: 'translateX(-50%)',
               color: '#888',
@@ -312,76 +310,74 @@ export default function CasePage() {
               {currentIndex + 1} / {data.images.length}
             </div>
 
-            {/* Изображение */}
             <img 
               src={data.images[currentIndex]} 
               alt={`Скриншот ${currentIndex + 1}`} 
               style={{
-                maxWidth: '90vw',
-                maxHeight: '80vh',
-                borderRadius: '16px',
+                maxWidth: '100%',
+                maxHeight: '85vh',
+                borderRadius: '12px',
                 display: 'block',
                 objectFit: 'contain',
                 boxShadow: '0 20px 60px rgba(0,0,0,0.5)',
+                userSelect: 'none',
+                pointerEvents: 'none',
               }}
             />
 
-            {/* Стрелка ВЛЕВО */}
             {data.images.length > 1 && (
-              <button
-                onClick={(e) => { e.stopPropagation(); goToPrev(); }}
-                style={{
-                  position: 'absolute',
-                  left: '-60px',
-                  top: '50%',
-                  transform: 'translateY(-50%)',
-                  background: 'rgba(255,255,255,0.1)',
-                  border: 'none',
-                  color: '#fff',
-                  fontSize: '40px',
-                  cursor: 'pointer',
-                  padding: '16px 12px',
-                  borderRadius: '12px',
-                  transition: 'background 0.2s',
-                  backdropFilter: 'blur(4px)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}
-                onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.2)'}
-                onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.1)'}
-              >
-                ‹
-              </button>
-            )}
-
-            {/* Стрелка ВПРАВО */}
-            {data.images.length > 1 && (
-              <button
-                onClick={(e) => { e.stopPropagation(); goToNext(); }}
-                style={{
-                  position: 'absolute',
-                  right: '-60px',
-                  top: '50%',
-                  transform: 'translateY(-50%)',
-                  background: 'rgba(255,255,255,0.1)',
-                  border: 'none',
-                  color: '#fff',
-                  fontSize: '40px',
-                  cursor: 'pointer',
-                  padding: '16px 12px',
-                  borderRadius: '12px',
-                  transition: 'background 0.2s',
-                  backdropFilter: 'blur(4px)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}
-                onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.2)'}
-                onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.1)'}
-              >
-                ›
-              </button>
+              <>
+                <button
+                  onClick={(e) => { e.stopPropagation(); goToPrev(); }}
+                  style={{
+                    position: 'absolute',
+                    left: '8px',
+                    top: '50%',
+                    transform: 'translateY(-50%)',
+                    background: 'rgba(255,255,255,0.1)',
+                    border: 'none',
+                    color: '#fff',
+                    fontSize: '28px',
+                    cursor: 'pointer',
+                    padding: '12px 16px',
+                    borderRadius: '50%',
+                    backdropFilter: 'blur(4px)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    transition: 'background 0.2s',
+                  }}
+                  onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.2)'}
+                  onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.1)'}
+                >
+                  ‹
+                </button>
+                <button
+                  onClick={(e) => { e.stopPropagation(); goToNext(); }}
+                  style={{
+                    position: 'absolute',
+                    right: '8px',
+                    top: '50%',
+                    transform: 'translateY(-50%)',
+                    background: 'rgba(255,255,255,0.1)',
+                    border: 'none',
+                    color: '#fff',
+                    fontSize: '28px',
+                    cursor: 'pointer',
+                    padding: '12px 16px',
+                    borderRadius: '50%',
+                    backdropFilter: 'blur(4px)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    transition: 'background 0.2s',
+                  }}
+                  onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.2)'}
+                  onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.1)'}
+                >
+                  ›
+                </button>
+              </>
             )}
           </div>
         </div>
