@@ -2,7 +2,7 @@
 
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 // Данные всех кейсов
 const casesData = {
@@ -92,55 +92,9 @@ export default function CasePage() {
   const params = useParams();
   const slug = params.slug as string;
   const data = casesData[slug as keyof typeof casesData];
-  const [isLoading, setIsLoading] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
   const [selectedMedia, setSelectedMedia] = useState<{ type: string; url: string; poster?: string } | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
-
-  useEffect(() => {
-    // Принудительная задержка 500 мс для показа лоадера
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 500);
-    return () => clearTimeout(timer);
-  }, []);
-
-  if (isLoading) {
-    return (
-      <div style={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        minHeight: '100vh',
-        background: '#121212',
-        gap: '20px',
-        fontFamily: '-apple-system, BlinkMacSystemFont, SF Pro Display, sans-serif',
-      }}>
-        <div style={{
-          width: '44px',
-          height: '44px',
-          border: '3px solid #2a2a2a',
-          borderTop: '3px solid #c4b5a0',
-          borderRadius: '50%',
-          animation: 'spin 0.8s linear infinite',
-        }} />
-        <p style={{
-          color: '#b0b0b0',
-          fontSize: '15px',
-          fontWeight: 400,
-          margin: 0,
-        }}>
-          Загрузка...
-        </p>
-        <style jsx>{`
-          @keyframes spin {
-            to { transform: rotate(360deg); }
-          }
-        `}</style>
-      </div>
-    );
-  }
 
   if (!data) {
     return (
@@ -724,4 +678,4 @@ export default function CasePage() {
       `}</style>
     </main>
   );
-}     
+}  
