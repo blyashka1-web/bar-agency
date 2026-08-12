@@ -15,7 +15,7 @@ export default function CasePage() {
       title: 'Яндекс Еда',
       tag: 'Вирусный контент',
       description: 'Вирусный ролик с суммарным охватом 50+ млн',
-      full: 'Мы создали вирусный ролик для сервиса доставки Яндекс Еда...',
+      full: 'Мы создали вирусный ролик для сервиса доставки Яндекс Еда. Задача — показать, как быстро и вкусно можно получить заказ, используя юмор и неожиданный поворот. Ролик завирусился в TikTok и Instagram, набрав суммарный охват более 50 миллионов просмотров.',
       stats: ['50+ млн суммарный охват', '20+ репостов в крупных сообществах'],
       video: '/cases/yandex-food/video.mp4',
       images: [
@@ -27,26 +27,28 @@ export default function CasePage() {
         '/cases/yandex-food/screenshot-6.jpg',
       ],
       color: '#c4b5a0',
-      isArticle: false, // для Яндекс Еды — лайтбокс
+      isArticle: false,
     },
     'deportivo': {
       title: 'Deportivo',
       tag: 'Спорт / Lifestyle',
       description: 'Вирусный контент с 10+ млн просмотров',
-      full: 'Мы создали вирусную кампанию для спортивного бренда Deportivo...',
+      full: 'Мы создали вирусную кампанию для спортивного бренда Deportivo. Задача — показать энергию и стиль бренда через динамичный контент. Ролики завирусились в TikTok и Instagram, набрав суммарный охват более 10 миллионов просмотров.',
       stats: ['10+ млн просмотров', '28% рост продаж', '5 дней до вирала'],
       video: null,
       articles: [
-        { title: 'Как Deportivo стал главным спортивным брендом', url: 'https://example.com/1' },
+        { title: 'Антон Нефедечев — первый русский гол в Аргентине', url: 'https://www.ole.com.ar/informacion-general/anton-nefedechev-primer-gol-ruso-argentina-deportivo-moscu-liga-escobarense_0_APpXWb03bh.html' },
         { title: 'Интервью с основателем Deportivo', url: 'https://example.com/2' },
         { title: 'Deportivo: путь к миллионам', url: 'https://example.com/3' },
       ],
       images: [
-        { src: '/cases/deportivo/screenshot-1.jpg', url: 'https://example.com/1' },
-        { src: '/cases/deportivo/screenshot-2.jpg', url: 'https://example.com/2' },
+        { 
+          src: '/cases/deportivo/screenshot-1.jpg', 
+          url: 'https://www.ole.com.ar/informacion-general/anton-nefedechev-primer-gol-ruso-argentina-deportivo-moscu-liga-escobarense_0_APpXWb03bh.html' 
+        },
       ],
       color: '#d4af37',
-      isArticle: true, // для Deportivo — ссылки на статьи
+      isArticle: true,
     },
   };
 
