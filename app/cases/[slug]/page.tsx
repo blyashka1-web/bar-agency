@@ -26,12 +26,10 @@ const casesData = {
     title: 'Deportivo',
     tag: 'Спорт / Lifestyle',
     description: 'Вирусный контент с 10+ млн просмотров',
-    full: 'Мы создали вирусную кампанию для спортивного бренда Deportivo. Задача — показать энергию и стиль бренда через динамичный контент. Ролики завирусились в TikTok и Instagram, набрав суммарный охват более 10 миллионов просмотров.',
+    full: 'Мы создали вирусную кампанию для спортивного бренда Deportivo...',
     stats: ['10+ млн просмотров', '28% рост продаж', '5 дней до вирала'],
     video: null,
-    images: [
-      '/cases/deportivo/screenshot-1.jpg',
-    ],
+    images: ['/cases/deportivo/screenshot-1.jpg'],
     color: '#d4af37',
   },
   'beauty-story': {
@@ -118,10 +116,12 @@ export default function CasePage() {
   };
 
   const goToPrev = () => {
+    if (!data || !data.images) return;
     setCurrentIndex((prev) => (prev === 0 ? data.images.length - 1 : prev - 1));
   };
 
   const goToNext = () => {
+    if (!data || !data.images) return;
     setCurrentIndex((prev) => (prev === data.images.length - 1 ? 0 : prev + 1));
   };
 
@@ -334,8 +334,8 @@ export default function CasePage() {
                     left: '8px',
                     top: '50%',
                     transform: 'translateY(-50%)',
-                    background: 'rgba(255,255,255,0.1)',
-                    border: 'none',
+                    background: 'rgba(255,255,255,0.08)',
+                    border: '1px solid rgba(255,255,255,0.05)',
                     color: '#fff',
                     fontSize: '28px',
                     cursor: 'pointer',
@@ -346,9 +346,12 @@ export default function CasePage() {
                     alignItems: 'center',
                     justifyContent: 'center',
                     transition: 'background 0.2s',
+                    minWidth: '48px',
+                    minHeight: '48px',
+                    touchAction: 'manipulation',
                   }}
-                  onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.2)'}
-                  onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.1)'}
+                  onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.15)'}
+                  onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.08)'}
                 >
                   ‹
                 </button>
@@ -359,8 +362,8 @@ export default function CasePage() {
                     right: '8px',
                     top: '50%',
                     transform: 'translateY(-50%)',
-                    background: 'rgba(255,255,255,0.1)',
-                    border: 'none',
+                    background: 'rgba(255,255,255,0.08)',
+                    border: '1px solid rgba(255,255,255,0.05)',
                     color: '#fff',
                     fontSize: '28px',
                     cursor: 'pointer',
@@ -371,9 +374,12 @@ export default function CasePage() {
                     alignItems: 'center',
                     justifyContent: 'center',
                     transition: 'background 0.2s',
+                    minWidth: '48px',
+                    minHeight: '48px',
+                    touchAction: 'manipulation',
                   }}
-                  onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.2)'}
-                  onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.1)'}
+                  onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.15)'}
+                  onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.08)'}
                 >
                   ›
                 </button>
