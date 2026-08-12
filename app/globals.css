@@ -29,4 +29,25 @@ a {
 .digital {
   font-family: 'SF Mono', 'SF Pro Display', monospace;
   letter-spacing: 0.02em;
+}/* Глобальный фон */
+html, body {
+  background: #121212;
+  margin: 0;
+  padding: 0;
+}
+
+/* Плавное появление контента */
+main {
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

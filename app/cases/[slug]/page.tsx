@@ -2,7 +2,7 @@
 
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 // Данные всех кейсов
 const casesData = {
@@ -91,57 +91,10 @@ const colorMap = {
 export default function CasePage() {
   const params = useParams();
   const slug = params.slug as string;
-  const [isLoading, setIsLoading] = useState(true);
-  const [data, setData] = useState<any>(null);
+  const data = casesData[slug as keyof typeof casesData];
   const [isOpen, setIsOpen] = useState(false);
   const [selectedMedia, setSelectedMedia] = useState<{ type: string; url: string; poster?: string } | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
-
-  useEffect(() => {
-    const loadData = () => {
-      const found = casesData[slug as keyof typeof casesData];
-      setData(found || null);
-      setIsLoading(false);
-    };
-    const timer = setTimeout(loadData, 100);
-    return () => clearTimeout(timer);
-  }, [slug]);
-
-  if (isLoading) {
-    return (
-      <div style={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        minHeight: '100vh',
-        background: '#121212',
-        gap: '20px',
-      }}>
-        <div style={{
-          width: '44px',
-          height: '44px',
-          border: '3px solid #2a2a2a',
-          borderTop: '3px solid #c4b5a0',
-          borderRadius: '50%',
-          animation: 'spin 0.8s linear infinite',
-        }} />
-        <p style={{
-          color: '#b0b0b0',
-          fontFamily: '-apple-system, BlinkMacSystemFont, SF Pro Display, sans-serif',
-          fontSize: '15px',
-          fontWeight: 400,
-        }}>
-          Загрузка...
-        </p>
-        <style jsx>{`
-          @keyframes spin {
-            to { transform: rotate(360deg); }
-          }
-        `}</style>
-      </div>
-    );
-  }
 
   if (!data) {
     return (
@@ -205,7 +158,7 @@ export default function CasePage() {
                     }
                   }}
                 >
-                  {data.media.map((item: any, index: number) => (
+                  {data.media.map((item, index) => (
                     <div 
                       key={index} 
                       className="scroll-item"
@@ -230,7 +183,7 @@ export default function CasePage() {
               {/* Индикатор пролистывания */}
               {data.media.length > 1 && (
                 <div className="scroll-indicator">
-                  {data.media.map((_: any, index: number) => (
+                  {data.media.map((_, index) => (
                     <span
                       key={index}
                       className={`dot ${index === activeIndex ? 'active' : ''}`}
@@ -256,7 +209,7 @@ export default function CasePage() {
             <div className="stats-block">
               <h2>Результаты</h2>
               <div className="stats-grid">
-                {data.stats.map((stat: string, index: number) => (
+                {data.stats.map((stat, index) => (
                   <div key={index} className="stat-item" style={{ borderColor: colors.accent }}>
                     <span className="stat-number">{stat}</span>
                   </div>
