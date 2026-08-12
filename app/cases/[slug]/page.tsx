@@ -2,6 +2,16 @@
 
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Zoom, Thumbs } from 'swiper/modules';
+import { useState } from 'react';
+
+// Стили Swiper
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/zoom';
+import 'swiper/css/thumbs';
 
 // Данные всех кейсов
 const casesData = {
@@ -12,11 +22,10 @@ const casesData = {
     description: 'Вирусный ролик с суммарным охватом 50+ млн',
     full: 'Мы создали вирусный ролик для сервиса доставки Яндекс Еда. Задача — показать, как быстро и вкусно можно получить заказ, используя юмор и неожиданный поворот. Ролик завирусился в TikTok и Instagram, набрав суммарный охват более 50 миллионов просмотров.',
     stats: ['50+ млн суммарный охват'],
-    video: '/cases/yandex-food/video.mp4',
-    poster: '/cases/yandex-food/screenshot-1.jpg',
-    screenshots: [
-      '/cases/yandex-food/screenshot-1.jpg',
-      '/cases/yandex-food/screenshot-2.jpg',
+    media: [
+      { type: 'video', url: '/cases/yandex-food/video.mp4', poster: '/cases/yandex-food/screenshot-1.jpg' },
+      { type: 'image', url: '/cases/yandex-food/screenshot-1.jpg' },
+      { type: 'image', url: '/cases/yandex-food/screenshot-2.jpg' },
     ],
     color: 'haki',
   },
@@ -27,9 +36,7 @@ const casesData = {
     description: '+280% продаж за 4 месяца',
     full: 'Разработали SMM‑стратегию для бренда натуральной косметики. Создали контент-план, запустили вирусные форматы, настроили таргетинг. Бренд вышел на новый уровень узнаваемости.',
     stats: ['280% рост продаж', '4 месяца', '1.2 млн охват'],
-    video: '',
-    poster: '',
-    screenshots: [],
+    media: [],
     color: 'haki',
   },
   'moscow-coffee': {
@@ -39,9 +46,7 @@ const casesData = {
     description: '12 млн просмотров за 7 дней',
     full: 'Запустили вирусный челлендж для сети кофеен. Привлекли блогеров, создали серию коротких видео. Результат — взрывной рост узнаваемости и потока клиентов.',
     stats: ['12 млн просмотров', '7 дней', '800+ новых клиентов'],
-    video: '',
-    poster: '',
-    screenshots: [],
+    media: [],
     color: 'burgundy',
   },
   'urban-sneakers': {
@@ -51,9 +56,7 @@ const casesData = {
     description: '5000 заявок с нулевым бюджетом',
     full: 'Создали бренд с нуля: разработали стратегию, айдентику, запустили в Instagram. Без рекламного бюджета получили 5000 заявок за первый месяц.',
     stats: ['5000 заявок', '0 ₽ бюджет', '2 млн охват'],
-    video: '',
-    poster: '',
-    screenshots: [],
+    media: [],
     color: 'gold',
   },
   'luxe-jewelry': {
@@ -63,9 +66,7 @@ const casesData = {
     description: '+150% вовлечения, охват х3',
     full: 'Контент‑стратегия с фокусом на эстетику, премиум‑видео и коллаборации с блогерами. Охват вырос в 3 раза, вовлечение увеличилось на 150%.',
     stats: ['+150% вовлечение', '3x охват', '+200% продаж'],
-    video: '',
-    poster: '',
-    screenshots: [],
+    media: [],
     color: 'haki',
   },
   'wine-people': {
@@ -75,9 +76,7 @@ const casesData = {
     description: '+200% продаж за 2 месяца',
     full: 'Создали контент-стратегию с сомелье, прямые эфиры с дегустациями. Продажи выросли на 200% за 2 месяца благодаря правильной коммуникации с аудиторией.',
     stats: ['+200% продаж', '2 месяца', '2.5 млн охват'],
-    video: '',
-    poster: '',
-    screenshots: [],
+    media: [],
     color: 'burgundy',
   },
   'appvision': {
@@ -87,9 +86,7 @@ const casesData = {
     description: '50 000 установок за месяц',
     full: 'Интеграции с блогерами, обзоры в TikTok и Instagram. Приложение собрало 50 000 установок за месяц с минимальным бюджетом.',
     stats: ['50 000 установок', '1 месяц', '150 тыс. ₽ бюджет'],
-    video: '',
-    poster: '',
-    screenshots: [],
+    media: [],
     color: 'gold',
   },
 };
@@ -125,6 +122,7 @@ export default function CasePage() {
   }
 
   const colors = colorMap[data.color as keyof typeof colorMap];
+  const hasMedia = data.media && data.media.length > 0;
 
   return (
     <main>
@@ -140,19 +138,40 @@ export default function CasePage() {
             <p className="subtitle">{data.description}</p>
           </div>
 
-          {/* Видео (если есть) */}
-          {data.video && (
-            <div className="video-block">
-              <video 
-                controls 
-                poster={data.poster}
-                className="case-video"
-                playsInline
-                preload="metadata"
+          {/* Карусель */}
+          {hasMedia && (
+            <div className="carousel-wrapper">
+              <Swiper
+                modules={[Navigation, Pagination, Zoom]}
+                navigation
+                pagination={{ clickable: true }}
+                zoom={{ maxRatio: 3 }}
+                spaceBetween={20}
+                slidesPerView={1}
+                className="case-swiper"
+                style={{ padding: '0 0 50px 0' }}
               >
-                <source src={data.video} type="video/mp4" />
-                Ваш браузер не поддерживает видео.
-              </video>
+                {data.media.map((item, index) => (
+                  <SwiperSlide key={index}>
+                    <div className="swiper-zoom-container">
+                      {item.type === 'video' ? (
+                        <video
+                          controls
+                          poster={item.poster}
+                          className="slide-video"
+                          playsInline
+                          preload="metadata"
+                        >
+                          <source src={item.url} type="video/mp4" />
+                          Ваш браузер не поддерживает видео.
+                        </video>
+                      ) : (
+                        <img src={item.url} alt={`${data.title} - ${index + 1}`} className="slide-image" />
+                      )}
+                    </div>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
             </div>
           )}
 
@@ -173,18 +192,6 @@ export default function CasePage() {
               </div>
             </div>
           </div>
-
-          {/* Скриншоты (если есть) */}
-          {data.screenshots.length > 0 && (
-            <div className="screenshots">
-              <h2>Репосты в крупных сообществах</h2>
-              <div className="screenshots-grid">
-                {data.screenshots.map((src, index) => (
-                  <img key={index} src={src} alt={`Скриншот ${index + 1}`} />
-                ))}
-              </div>
-            </div>
-          )}
 
           {/* CTA */}
           <div className="cta-block" style={{ borderColor: colors.accent }}>
@@ -268,7 +275,7 @@ export default function CasePage() {
           max-width: 600px;
         }
 
-        .video-block {
+        .carousel-wrapper {
           margin: 32px 0 48px;
           border-radius: 24px;
           overflow: hidden;
@@ -276,13 +283,37 @@ export default function CasePage() {
           border: 1px solid #2a2a2a;
         }
 
-        .case-video {
+        .case-swiper {
           width: 100%;
+          height: 100%;
+        }
+
+        .swiper-zoom-container {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: #0a0a0a;
+          min-height: 400px;
+        }
+
+        .slide-image {
+          width: 100%;
+          height: auto;
           display: block;
-          border-radius: 24px;
+          object-fit: contain;
+          max-height: 600px;
+        }
+
+        .slide-video {
+          width: 100%;
+          height: auto;
+          display: block;
           aspect-ratio: 16 / 9;
           object-fit: cover;
           background: #0a0a0a;
+          max-height: 600px;
         }
 
         .description-block {
@@ -329,32 +360,6 @@ export default function CasePage() {
           color: #ffffff;
           font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
           text-align: center;
-        }
-
-        .screenshots {
-          margin-bottom: 60px;
-        }
-
-        .screenshots h2 {
-          margin-bottom: 20px;
-        }
-
-        .screenshots-grid {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 24px;
-        }
-
-        .screenshots-grid img {
-          width: 100%;
-          border-radius: 20px;
-          border: 1px solid #2a2a2a;
-          transition: transform 0.3s ease;
-          background: #1a1a1a;
-        }
-
-        .screenshots-grid img:hover {
-          transform: scale(1.01);
         }
 
         .cta-block {
@@ -413,16 +418,24 @@ export default function CasePage() {
             gap: 32px;
           }
 
-          .screenshots-grid {
-            grid-template-columns: 1fr;
-          }
-
           .cta-block {
             padding: 32px 24px;
           }
 
           .container {
             padding: 0 16px;
+          }
+
+          .swiper-zoom-container {
+            min-height: 250px;
+          }
+
+          .slide-image {
+            max-height: 350px;
+          }
+
+          .slide-video {
+            max-height: 350px;
           }
         }
       `}</style>
