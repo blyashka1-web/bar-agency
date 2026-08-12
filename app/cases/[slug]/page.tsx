@@ -95,6 +95,7 @@ export default function CasePage() {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedMedia, setSelectedMedia] = useState<{ type: string; url: string; poster?: string } | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
 
   if (!data) {
     return (
@@ -128,6 +129,14 @@ export default function CasePage() {
     setIsOpen(false);
     setSelectedMedia(null);
     document.body.style.overflow = 'auto';
+  };
+
+  const handleTelegramClick = () => {
+    setIsLoading(true);
+    setTimeout(() => {
+      window.open('https://t.me/lawayasha', '_blank');
+      setIsLoading(false);
+    }, 500);
   };
 
   return (
@@ -223,10 +232,11 @@ export default function CasePage() {
             <p>Расскажите о своём проекте — сделаем вирусный контент.</p>
             <button 
               className="btn-primary"
-              onClick={() => window.open('https://t.me/lawayasha', '_blank')}
+              onClick={handleTelegramClick}
               style={{ background: colors.accent }}
+              disabled={isLoading}
             >
-              Написать в Telegram
+              {isLoading ? 'Загрузка...' : 'Написать в Telegram'}
             </button>
           </div>
         </div>
@@ -599,6 +609,11 @@ export default function CasePage() {
           opacity: 0.85;
         }
 
+        .btn-primary:disabled {
+          opacity: 0.5;
+          cursor: not-allowed;
+        }
+
         @media (max-width: 768px) {
           .case-detail {
             padding: 40px 0 60px;
@@ -678,4 +693,4 @@ export default function CasePage() {
       `}</style>
     </main>
   );
-}
+}        

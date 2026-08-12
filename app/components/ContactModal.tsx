@@ -1,6 +1,7 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import Loader from './Loader';
 
 interface ContactModalProps {
   isOpen: boolean;
@@ -9,6 +10,7 @@ interface ContactModalProps {
 
 export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
   const modalRef = useRef<HTMLDivElement>(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
@@ -71,48 +73,56 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
     },
   ];
 
+  const handleSend = async () => {
+    setIsLoading(true);
+    // Имитация отправки
+    await new Promise(resolve => setTimeout(resolve, 1500));
+    setIsLoading(false);
+    onClose();
+  };
+
   return (
     <div className="modal-overlay">
       <div className="modal" ref={modalRef}>
         <button className="close-btn" onClick={onClose}>✕</button>
-        <div className="modal-content">
-          <h2>Свяжитесь с нами</h2>
-          <p className="modal-subtitle">
-            Мы на связи — пишите в любой мессенджер
-          </p>
+        {isLoading ? (
+          <Loader size={40} text="Отправка..." />
+        ) : (
+          <div className="modal-content">
+            <h2>Свяжитесь с нами</h2>
+            <p className="modal-subtitle">
+              Мы на связи — пишите в любой мессенджер
+            </p>
 
-          <div className="contacts-grid">
-            {contacts.map((contact, index) => (
-              <a
-                key={index}
-                href={contact.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="contact-card"
-                style={{ '--accent': contact.color } as React.CSSProperties}
-              >
-                <span className="contact-icon">{contact.icon}</span>
-                <div className="contact-info">
-                  <span className="contact-name">{contact.name}</span>
-                  <span className="contact-username">{contact.username}</span>
-                </div>
-                <span className="contact-arrow">→</span>
-              </a>
-            ))}
+            <div className="contacts-grid">
+              {contacts.map((contact, index) => (
+                <a
+                  key={index}
+                  href={contact.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="contact-card"
+                  style={{ '--accent': contact.color } as React.CSSProperties}
+                >
+                  <span className="contact-icon">{contact.icon}</span>
+                  <div className="contact-info">
+                    <span className="contact-name">{contact.name}</span>
+                    <span className="contact-username">{contact.username}</span>
+                  </div>
+                  <span className="contact-arrow">→</span>
+                </a>
+              ))}
+            </div>
+
+            <div className="divider">
+              <span>или</span>
+            </div>
+
+            <button onClick={handleSend} className="email-link-big">
+              📧 blyashka1@gmail.com
+            </button>
           </div>
-
-          <div className="divider">
-            <span>или</span>
-          </div>
-
-          <a href="mailto:blyashka1@gmail.com" className="email-link-big">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="20" height="20" style={{ display: 'inline', marginRight: '8px', verticalAlign: 'middle' }}>
-              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-              <polyline points="22,6 12,13 2,6"/>
-            </svg>
-            blyashka1@gmail.com
-          </a>
-        </div>
+        )}
       </div>
 
       <style jsx>{`
@@ -133,12 +143,8 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
         }
 
         @keyframes fadeIn {
-          from {
-            opacity: 0;
-          }
-          to {
-            opacity: 1;
-          }
+          from { opacity: 0; }
+          to { opacity: 1; }
         }
 
         .modal {
@@ -296,9 +302,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
         }
 
         .email-link-big {
-          display: inline-flex;
-          align-items: center;
-          gap: 8px;
+          display: inline-block;
           color: #c4b5a0;
           font-size: 18px;
           font-weight: 500;
@@ -307,6 +311,8 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
           border: 1px solid #2a2a2a;
           border-radius: 40px;
           transition: all 0.3s ease;
+          background: transparent;
+          cursor: pointer;
           font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
         }
 
@@ -314,10 +320,6 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
           border-color: #c4b5a0;
           background: rgba(196, 181, 160, 0.06);
           transform: scale(1.02);
-        }
-
-        .email-link-big svg {
-          stroke: #c4b5a0;
         }
 
         @media (max-width: 768px) {
