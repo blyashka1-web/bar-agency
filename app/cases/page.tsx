@@ -11,6 +11,14 @@ export default function CasesPage() {
       color: 'haki',
     },
     {
+      slug: 'deportivo',
+      emoji: '⚽',
+      tag: 'Спорт / Lifestyle',
+      title: 'Deportivo',
+      desc: 'Вирусный контент с 10+ млн просмотров',
+      color: 'gold',
+    },
+    {
       slug: 'beauty-story',
       emoji: '🧴',
       tag: 'Косметика',
