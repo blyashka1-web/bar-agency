@@ -2,13 +2,13 @@
 
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function CasePage() {
   const params = useParams();
   const slug = params.slug;
   const [isOpen, setIsOpen] = useState(false);
-  const [currentImage, setCurrentImage] = useState('');
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   // Все скрины для Яндекс Еды
   const yandexImages = [
@@ -20,8 +20,8 @@ export default function CasePage() {
     '/cases/yandex-food/screenshot-6.jpg',
   ];
 
-  const openLightbox = (url) => {
-    setCurrentImage(url);
+  const openLightbox = (index) => {
+    setCurrentIndex(index);
     setIsOpen(true);
     document.body.style.overflow = 'hidden';
   };
@@ -30,6 +30,25 @@ export default function CasePage() {
     setIsOpen(false);
     document.body.style.overflow = 'auto';
   };
+
+  const goToPrev = () => {
+    setCurrentIndex((prev) => (prev === 0 ? yandexImages.length - 1 : prev - 1));
+  };
+
+  const goToNext = () => {
+    setCurrentIndex((prev) => (prev === yandexImages.length - 1 ? 0 : prev + 1));
+  };
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (!isOpen) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') goToPrev();
+      if (e.key === 'ArrowRight') goToNext();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen]);
 
   // Яндекс Еда
   if (slug === 'yandex-food') {
@@ -65,7 +84,7 @@ export default function CasePage() {
                   cursor: 'pointer',
                   transition: 'transform 0.2s',
                 }}
-                onClick={() => openLightbox(url)}
+                onClick={() => openLightbox(i)}
                 onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
                 onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
               />
@@ -120,8 +139,22 @@ export default function CasePage() {
               >
                 ✕
               </button>
+
+              <div
+                style={{
+                  position: 'absolute',
+                  bottom: '-40px',
+                  left: '50%',
+                  transform: 'translateX(-50%)',
+                  color: '#888',
+                  fontSize: '14px',
+                }}
+              >
+                {currentIndex + 1} / {yandexImages.length}
+              </div>
+
               <img
-                src={currentImage}
+                src={yandexImages[currentIndex]}
                 alt="скриншот"
                 style={{
                   maxWidth: '90vw',
@@ -131,6 +164,55 @@ export default function CasePage() {
                   boxShadow: '0 20px 60px rgba(0,0,0,0.5)',
                 }}
               />
+
+              {yandexImages.length > 1 && (
+                <>
+                  <button
+                    onClick={(e) => { e.stopPropagation(); goToPrev(); }}
+                    style={{
+                      position: 'absolute',
+                      left: '10px',
+                      top: '50%',
+                      transform: 'translateY(-50%)',
+                      background: 'rgba(0,0,0,0.4)',
+                      border: 'none',
+                      color: '#fff',
+                      fontSize: '40px',
+                      cursor: 'pointer',
+                      padding: '15px 20px',
+                      borderRadius: '50%',
+                      zIndex: 5,
+                      transition: 'background 0.2s',
+                    }}
+                    onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.1)'}
+                    onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(0,0,0,0.4)'}
+                  >
+                    ‹
+                  </button>
+                  <button
+                    onClick={(e) => { e.stopPropagation(); goToNext(); }}
+                    style={{
+                      position: 'absolute',
+                      right: '10px',
+                      top: '50%',
+                      transform: 'translateY(-50%)',
+                      background: 'rgba(0,0,0,0.4)',
+                      border: 'none',
+                      color: '#fff',
+                      fontSize: '40px',
+                      cursor: 'pointer',
+                      padding: '15px 20px',
+                      borderRadius: '50%',
+                      zIndex: 5,
+                      transition: 'background 0.2s',
+                    }}
+                    onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.1)'}
+                    onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(0,0,0,0.4)'}
+                  >
+                    ›
+                  </button>
+                </>
+              )}
             </div>
           </div>
         )}
