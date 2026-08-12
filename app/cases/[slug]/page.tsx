@@ -2,6 +2,9 @@
 
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
+import { useState } from 'react';
+import Lightbox from 'react-image-lightbox';
+import 'react-image-lightbox/style.css';
 
 const casesData = {
   'yandex-food': {
@@ -91,6 +94,8 @@ export default function CasePage() {
   const params = useParams();
   const slug = params.slug as string;
   const data = casesData[slug as keyof typeof casesData];
+  const [isOpen, setIsOpen] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   if (!data) {
     return (
@@ -100,6 +105,13 @@ export default function CasePage() {
       </div>
     );
   }
+
+  const mediaUrls = data.media.filter(item => item.type === 'image').map(item => item.url);
+
+  const openLightbox = (index: number) => {
+    setCurrentIndex(index);
+    setIsOpen(true);
+  };
 
   return (
     <div style={{ padding: '40px 20px', background: '#121212', color: '#fff', minHeight: '100vh' }}>
@@ -121,9 +133,38 @@ export default function CasePage() {
           <h2 style={{ fontSize: '24px', fontWeight: 600, marginBottom: '16px' }}>Репосты в крупных сообществах</h2>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px' }}>
             {data.media.map((item, index) => (
-              <div key={index} style={{ flex: '1 1 200px', maxWidth: '300px', borderRadius: '16px', overflow: 'hidden', background: '#2a2a2a' }}>
+              <div 
+                key={index} 
+                style={{ 
+                  flex: '1 1 200px', 
+                  maxWidth: '300px', 
+                  borderRadius: '16px', 
+                  overflow: 'hidden', 
+                  background: '#2a2a2a',
+                  cursor: 'pointer',
+                  transition: 'transform 0.2s ease',
+                }}
+                onClick={() => {
+                  if (item.type === 'video') {
+                    // Для видео просто воспроизводим
+                    const videoElement = document.getElementById(`video-${index}`) as HTMLVideoElement;
+                    if (videoElement) {
+                      videoElement.play();
+                    }
+                  } else {
+                    openLightbox(data.media.filter(m => m.type === 'image').indexOf(item));
+                  }
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'scale(1.02)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'scale(1)';
+                }}
+              >
                 {item.type === 'video' ? (
                   <video 
+                    id={`video-${index}`}
                     src={item.url} 
                     controls 
                     style={{ width: '100%', display: 'block', aspectRatio: '16/10', objectFit: 'cover' }}
@@ -167,6 +208,24 @@ export default function CasePage() {
           Написать в Telegram
         </button>
       </div>
+
+      {/* ЛАЙТБОКС ДЛЯ ИЗОБРАЖЕНИЙ */}
+      {isOpen && mediaUrls.length > 0 && (
+        <Lightbox
+          mainSrc={mediaUrls[currentIndex]}
+          nextSrc={mediaUrls[(currentIndex + 1) % mediaUrls.length]}
+          prevSrc={mediaUrls[(currentIndex + mediaUrls.length - 1) % mediaUrls.length]}
+          onCloseRequest={() => setIsOpen(false)}
+          onMovePrevRequest={() =>
+            setCurrentIndex((currentIndex + mediaUrls.length - 1) % mediaUrls.length)
+          }
+          onMoveNextRequest={() =>
+            setCurrentIndex((currentIndex + 1) % mediaUrls.length)
+          }
+          enableZoom={true}
+          imagePadding={40}
+        />
+      )}
     </div>
   );
 }
