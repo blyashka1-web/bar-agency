@@ -3,12 +3,6 @@
 import Link from 'next/link';
 
 export default function Home() {
-  const stats = [
-    { number: '128', label: 'Публикации' },
-    { number: '893K', label: 'Подписчики' },
-    { number: '12', label: 'Проекты' },
-  ];
-
   return (
     <main>
       <section className="hero">
@@ -16,15 +10,6 @@ export default function Home() {
           <span className="tagline">ВИРУСНЫЙ КОНТЕНТ • РЕАЛЬНЫЙ ОХВАТ</span>
           <h1>BAR AGENCY</h1>
           <p className="subtitle">Viral Content Company</p>
-
-          <div className="stats">
-            {stats.map((stat, index) => (
-              <div key={index} className="stat-item">
-                <span className="stat-number">{stat.number}</span>
-                <span className="stat-label">{stat.label}</span>
-              </div>
-            ))}
-          </div>
 
           <p className="description">
             Создаем контент, который взрывает соцсети.<br />
@@ -89,37 +74,6 @@ export default function Home() {
           font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
           margin-top: 8px;
           letter-spacing: 0.02em;
-        }
-
-        .stats {
-          display: flex;
-          justify-content: center;
-          gap: 60px;
-          margin: 48px 0 40px;
-        }
-
-        .stat-item {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-        }
-
-        .stat-number {
-          font-size: 44px;
-          font-weight: 700;
-          color: #c4b5a0;
-          font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
-          letter-spacing: -0.02em;
-          line-height: 1;
-        }
-
-        .stat-label {
-          font-size: 14px;
-          color: #6e6e6e;
-          font-weight: 400;
-          font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
-          margin-top: 4px;
-          letter-spacing: 0.04em;
         }
 
         .description {
@@ -188,15 +142,6 @@ export default function Home() {
 
           h1 {
             font-size: 56px;
-          }
-
-          .stats {
-            gap: 30px;
-            flex-wrap: wrap;
-          }
-
-          .stat-number {
-            font-size: 32px;
           }
 
           .subtitle {
