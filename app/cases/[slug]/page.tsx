@@ -11,14 +11,14 @@ const casesData = {
     description: 'Вирусный ролик с суммарным охватом 50+ млн',
     full: 'Мы создали вирусный ролик для сервиса доставки Яндекс Еда. Задача — показать, как быстро и вкусно можно получить заказ, используя юмор и неожиданный поворот. Ролик завирусился в TikTok и Instagram, набрав суммарный охват более 50 миллионов просмотров.',
     stats: ['50+ млн суммарный охват', '20+ репостов в крупных сообществах'],
-    media: [
-      { type: 'video', url: '/cases/yandex-food/video.mp4' },
-      { type: 'image', url: '/cases/yandex-food/screenshot-1.jpg' },
-      { type: 'image', url: '/cases/yandex-food/screenshot-2.jpg' },
-      { type: 'image', url: '/cases/yandex-food/screenshot-3.jpg' },
-      { type: 'image', url: '/cases/yandex-food/screenshot-4.jpg' },
-      { type: 'image', url: '/cases/yandex-food/screenshot-5.jpg' },
-      { type: 'image', url: '/cases/yandex-food/screenshot-6.jpg' },
+    video: '/cases/yandex-food/video.mp4',
+    images: [
+      '/cases/yandex-food/screenshot-1.jpg',
+      '/cases/yandex-food/screenshot-2.jpg',
+      '/cases/yandex-food/screenshot-3.jpg',
+      '/cases/yandex-food/screenshot-4.jpg',
+      '/cases/yandex-food/screenshot-5.jpg',
+      '/cases/yandex-food/screenshot-6.jpg',
     ],
     color: '#c4b5a0',
   },
@@ -26,10 +26,11 @@ const casesData = {
     title: 'Deportivo',
     tag: 'Спорт / Lifestyle',
     description: 'Вирусный контент с 10+ млн просмотров',
-    full: 'Мы создали вирусную кампанию для спортивного бренда Deportivo. Задача — показать энергию и стиль бренда через динамичный контент. Ролики завирусились в TikTok и Instagram, набрав суммарный охват более 10 миллионов просмотров.',
+    full: 'Мы создали вирусную кампанию для спортивного бренда Deportivo...',
     stats: ['10+ млн просмотров', '28% рост продаж', '5 дней до вирала'],
-    media: [
-      { type: 'image', url: '/cases/deportivo/screenshot-1.jpg' },
+    video: null,
+    images: [
+      '/cases/deportivo/screenshot-1.jpg',
     ],
     color: '#d4af37',
   },
@@ -39,7 +40,8 @@ const casesData = {
     description: '+280% продаж за 4 месяца',
     full: 'Разработали SMM‑стратегию для бренда натуральной косметики...',
     stats: ['280% рост продаж', '4 месяца', '1.2 млн охват'],
-    media: [],
+    video: null,
+    images: [],
     color: '#c4b5a0',
   },
   'moscow-coffee': {
@@ -48,7 +50,8 @@ const casesData = {
     description: '12 млн просмотров за 7 дней',
     full: 'Запустили вирусный челлендж для сети кофеен...',
     stats: ['12 млн просмотров', '7 дней', '800+ новых клиентов'],
-    media: [],
+    video: null,
+    images: [],
     color: '#7a2e2a',
   },
   'urban-sneakers': {
@@ -57,7 +60,8 @@ const casesData = {
     description: '5000 заявок с нулевым бюджетом',
     full: 'Создали бренд с нуля: стратегия, айдентика...',
     stats: ['5000 заявок', '0 ₽ бюджет', '2 млн охват'],
-    media: [],
+    video: null,
+    images: [],
     color: '#d4af37',
   },
   'luxe-jewelry': {
@@ -66,7 +70,8 @@ const casesData = {
     description: '+150% вовлечения, охват х3',
     full: 'Контент‑стратегия с фокусом на эстетику...',
     stats: ['+150% вовлечение', '3x охват', '+200% продаж'],
-    media: [],
+    video: null,
+    images: [],
     color: '#c4b5a0',
   },
   'wine-people': {
@@ -75,7 +80,8 @@ const casesData = {
     description: '+200% продаж за 2 месяца',
     full: 'Создали контент-стратегию с сомелье...',
     stats: ['+200% продаж', '2 месяца', '2.5 млн охват'],
-    media: [],
+    video: null,
+    images: [],
     color: '#7a2e2a',
   },
   'appvision': {
@@ -84,7 +90,8 @@ const casesData = {
     description: '50 000 установок за месяц',
     full: 'Интеграции с блогерами, обзоры в TikTok...',
     stats: ['50 000 установок', '1 месяц', '150 тыс. ₽ бюджет'],
-    media: [],
+    video: null,
+    images: [],
     color: '#d4af37',
   },
 };
@@ -117,6 +124,9 @@ export default function CasePage() {
     document.body.style.overflow = 'auto';
   };
 
+  const hasVideo = data.video !== null && data.video !== '';
+  const hasImages = data.images && data.images.length > 0;
+
   return (
     <div style={{ padding: '40px 20px', background: '#121212', color: '#fff', minHeight: '100vh' }}>
       <Link href="/cases" style={{ color: '#c4b5a0', textDecoration: 'none' }}>
@@ -131,11 +141,36 @@ export default function CasePage() {
         <p style={{ fontSize: '20px', color: '#b0b0b0' }}>{data.description}</p>
       </div>
 
-      {data.media && data.media.length > 0 && (
+      {/* ВИДЕО (отдельный блок) */}
+      {hasVideo && (
         <div style={{ marginTop: '40px' }}>
-          <h2 style={{ fontSize: '24px', fontWeight: 600, marginBottom: '16px' }}>Репосты в крупных сообществах</h2>
+          <h2 style={{ fontSize: '24px', fontWeight: 600, marginBottom: '8px' }}>🎬 Вирусный видеоролик</h2>
+          <p style={{ fontSize: '14px', color: '#888', marginBottom: '16px' }}>
+            Основной вирусный ролик, который набрал суммарный охват 50+ млн
+          </p>
+          <div style={{ 
+            borderRadius: '16px', 
+            overflow: 'hidden', 
+            background: '#0a0a0a',
+            maxWidth: '800px',
+            border: '1px solid #2a2a2a',
+          }}>
+            <video 
+              src={data.video} 
+              controls 
+              style={{ width: '100%', display: 'block', aspectRatio: '16/9', objectFit: 'cover' }}
+              autoPlay={false}
+            />
+          </div>
+        </div>
+      )}
+
+      {/* СКРИНЫ (отдельный блок) */}
+      {hasImages && (
+        <div style={{ marginTop: '40px' }}>
+          <h2 style={{ fontSize: '24px', fontWeight: 600, marginBottom: '16px' }}>📢 Репосты в крупных сообществах</h2>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px' }}>
-            {data.media.map((item, index) => (
+            {data.images.map((url, index) => (
               <div 
                 key={index} 
                 style={{ 
@@ -146,12 +181,9 @@ export default function CasePage() {
                   background: '#2a2a2a',
                   cursor: 'pointer',
                   transition: 'transform 0.2s ease',
+                  border: '1px solid #2a2a2a',
                 }}
-                onClick={() => {
-                  if (item.type === 'image') {
-                    openImage(item.url);
-                  }
-                }}
+                onClick={() => openImage(url)}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = 'scale(1.02)';
                 }}
@@ -159,19 +191,11 @@ export default function CasePage() {
                   e.currentTarget.style.transform = 'scale(1)';
                 }}
               >
-                {item.type === 'video' ? (
-                  <video 
-                    src={item.url} 
-                    controls 
-                    style={{ width: '100%', display: 'block', aspectRatio: '16/10', objectFit: 'cover' }}
-                  />
-                ) : (
-                  <img 
-                    src={item.url} 
-                    alt={`${data.title} - ${index + 1}`} 
-                    style={{ width: '100%', display: 'block', aspectRatio: '16/10', objectFit: 'cover' }}
-                  />
-                )}
+                <img 
+                  src={url} 
+                  alt={`Скриншот ${index + 1}`} 
+                  style={{ width: '100%', display: 'block', aspectRatio: '16/10', objectFit: 'cover' }}
+                />
               </div>
             ))}
           </div>
@@ -205,6 +229,7 @@ export default function CasePage() {
         </button>
       </div>
 
+      {/* ЛАЙТБОКС ДЛЯ СКРИНОВ */}
       {isOpen && currentImage && (
         <div 
           style={{
