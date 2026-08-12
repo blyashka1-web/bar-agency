@@ -132,7 +132,6 @@ export default function CasePage() {
       if (e.key === 'ArrowLeft') goToPrev();
       if (e.key === 'ArrowRight') goToNext();
     };
-
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isOpen]);
@@ -281,18 +280,17 @@ export default function CasePage() {
               onClick={closeLightbox}
               style={{
                 position: 'absolute',
-                top: '12px',
-                right: '12px',
+                top: '8px',
+                right: '8px',
                 background: 'rgba(0,0,0,0.5)',
                 border: 'none',
                 color: '#fff',
-                fontSize: '28px',
+                fontSize: '24px',
                 cursor: 'pointer',
                 padding: '8px 14px',
-                borderRadius: '50%',
+                borderRadius: '8px',
                 lineHeight: 1,
                 zIndex: 10,
-                backdropFilter: 'blur(4px)',
               }}
             >
               ✕
@@ -300,12 +298,15 @@ export default function CasePage() {
 
             <div style={{
               position: 'absolute',
-              bottom: '-40px',
+              bottom: '-36px',
               left: '50%',
               transform: 'translateX(-50%)',
               color: '#888',
               fontSize: '14px',
               fontFamily: 'SF Pro Display, sans-serif',
+              background: 'rgba(0,0,0,0.5)',
+              padding: '4px 16px',
+              borderRadius: '20px',
             }}>
               {currentIndex + 1} / {data.images.length}
             </div>
@@ -331,22 +332,29 @@ export default function CasePage() {
                   onClick={(e) => { e.stopPropagation(); goToPrev(); }}
                   style={{
                     position: 'absolute',
-                    left: '-40px',
+                    left: '4px',
                     top: '50%',
                     transform: 'translateY(-50%)',
-                    background: 'none',
+                    background: 'rgba(0,0,0,0.4)',
                     border: 'none',
                     color: '#fff',
-                    fontSize: '48px',
+                    fontSize: '32px',
                     cursor: 'pointer',
-                    padding: '0',
+                    padding: '12px 8px',
+                    borderRadius: '8px',
                     lineHeight: 1,
-                    opacity: 0.7,
+                    opacity: 0.9,
                     transition: 'opacity 0.2s',
                     touchAction: 'manipulation',
+                    zIndex: 5,
+                    minWidth: '40px',
+                    minHeight: '40px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
                   }}
                   onMouseEnter={(e) => e.currentTarget.style.opacity = '1'}
-                  onMouseLeave={(e) => e.currentTarget.style.opacity = '0.7'}
+                  onMouseLeave={(e) => e.currentTarget.style.opacity = '0.9'}
                 >
                   ‹
                 </button>
@@ -354,22 +362,29 @@ export default function CasePage() {
                   onClick={(e) => { e.stopPropagation(); goToNext(); }}
                   style={{
                     position: 'absolute',
-                    right: '-40px',
+                    right: '4px',
                     top: '50%',
                     transform: 'translateY(-50%)',
-                    background: 'none',
+                    background: 'rgba(0,0,0,0.4)',
                     border: 'none',
                     color: '#fff',
-                    fontSize: '48px',
+                    fontSize: '32px',
                     cursor: 'pointer',
-                    padding: '0',
+                    padding: '12px 8px',
+                    borderRadius: '8px',
                     lineHeight: 1,
-                    opacity: 0.7,
+                    opacity: 0.9,
                     transition: 'opacity 0.2s',
                     touchAction: 'manipulation',
+                    zIndex: 5,
+                    minWidth: '40px',
+                    minHeight: '40px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
                   }}
                   onMouseEnter={(e) => e.currentTarget.style.opacity = '1'}
-                  onMouseLeave={(e) => e.currentTarget.style.opacity = '0.7'}
+                  onMouseLeave={(e) => e.currentTarget.style.opacity = '0.9'}
                 >
                   ›
                 </button>
