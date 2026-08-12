@@ -2,14 +2,15 @@
 
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
+import { useState } from 'react';
 
-// Данные всех кейсов
+// Данные всех кейсов (оставляем как было)
 const casesData = {
   'yandex-food': {
     title: 'Яндекс Еда',
     tag: 'Вирусный контент',
     description: 'Вирусный ролик с суммарным охватом 50+ млн',
-    full: 'Мы создали вирусный ролик для сервиса доставки Яндекс Еда. Задача — показать, как быстро и вкусно можно получить заказ, используя юмор и неожиданный поворот. Ролик завирусился в TikTok и Instagram, набрав суммарный охват более 50 миллионов просмотров.',
+    full: 'Мы создали вирусный ролик для сервиса доставки Яндекс Еда...',
     stats: ['50+ млн суммарный охват'],
     media: [
       { type: 'video', url: '/cases/yandex-food/video.mp4', poster: '/cases/yandex-food/screenshot-1.jpg' },
@@ -84,6 +85,8 @@ export default function CasePage() {
   const params = useParams();
   const slug = params.slug as string;
   const data = casesData[slug as keyof typeof casesData];
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedMedia, setSelectedMedia] = useState<{ type: string; url: string; poster?: string } | null>(null);
 
   if (!data) {
     return (
@@ -107,6 +110,18 @@ export default function CasePage() {
   const colors = colorMap[data.color as keyof typeof colorMap];
   const hasMedia = data.media && data.media.length > 0;
 
+  const openLightbox = (item: typeof data.media[0]) => {
+    setSelectedMedia(item);
+    setIsOpen(true);
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeLightbox = () => {
+    setIsOpen(false);
+    setSelectedMedia(null);
+    document.body.style.overflow = 'auto';
+  };
+
   return (
     <main>
       <section className="case-detail" style={{ background: colors.bg }}>
@@ -124,17 +139,19 @@ export default function CasePage() {
             <div className="carousel-wrapper">
               <div className="horiz-scroll">
                 {data.media.map((item, index) => (
-                  <div key={index} className="scroll-item">
+                  <div 
+                    key={index} 
+                    className="scroll-item"
+                    onClick={() => openLightbox(item)}
+                  >
                     {item.type === 'video' ? (
                       <video
-                        controls
+                        src={item.url}
                         poster={item.poster}
                         className="scroll-video"
                         playsInline
                         preload="metadata"
-                      >
-                        <source src={item.url} type="video/mp4" />
-                      </video>
+                      />
                     ) : (
                       <img src={item.url} alt={`${data.title} - ${index + 1}`} className="scroll-image" />
                     )}
@@ -174,6 +191,26 @@ export default function CasePage() {
           </div>
         </div>
       </section>
+
+      {/* ЛАЙТБОКС */}
+      {isOpen && selectedMedia && (
+        <div className="lightbox-overlay" onClick={closeLightbox}>
+          <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
+            <button className="lightbox-close" onClick={closeLightbox}>✕</button>
+            {selectedMedia.type === 'video' ? (
+              <video
+                controls
+                autoPlay
+                src={selectedMedia.url}
+                poster={selectedMedia.poster}
+                className="lightbox-video"
+              />
+            ) : (
+              <img src={selectedMedia.url} alt="Увеличенный скриншот" className="lightbox-image" />
+            )}
+          </div>
+        </div>
+      )}
 
       <style jsx>{`
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -272,6 +309,12 @@ export default function CasePage() {
           border-radius: 16px;
           overflow: hidden;
           background: #0a0a0a;
+          cursor: pointer;
+          transition: transform 0.2s ease;
+        }
+
+        .scroll-item:hover {
+          transform: scale(1.02);
         }
 
         .scroll-image,
@@ -282,6 +325,81 @@ export default function CasePage() {
           aspect-ratio: 16 / 10;
           object-fit: cover;
           border-radius: 12px;
+          pointer-events: none;
+        }
+
+        /* ЛАЙТБОКС */
+        .lightbox-overlay {
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: rgba(0, 0, 0, 0.9);
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          z-index: 1000;
+          animation: fadeIn 0.25s ease;
+          padding: 24px;
+        }
+
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+
+        .lightbox-content {
+          max-width: 90vw;
+          max-height: 90vh;
+          position: relative;
+          animation: zoomIn 0.3s ease;
+        }
+
+        @keyframes zoomIn {
+          from { transform: scale(0.9); opacity: 0; }
+          to { transform: scale(1); opacity: 1; }
+        }
+
+        .lightbox-close {
+          position: absolute;
+          top: -48px;
+          right: 0;
+          background: none;
+          border: none;
+          color: #fff;
+          font-size: 32px;
+          cursor: pointer;
+          padding: 8px;
+          transition: color 0.2s;
+          font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+          line-height: 1;
+        }
+
+        .lightbox-close:hover {
+          color: #c4b5a0;
+        }
+
+        .lightbox-image {
+          max-width: 100%;
+          max-height: 80vh;
+          border-radius: 16px;
+          display: block;
+          object-fit: contain;
+          background: #0a0a0a;
+          box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+
+        .lightbox-video {
+          max-width: 100%;
+          max-height: 80vh;
+          border-radius: 16px;
+          display: block;
+          aspect-ratio: 16 / 9;
+          background: #0a0a0a;
+          box-shadow: 0 20px 60px rgba(0,0,0,0.5);
         }
 
         .description-block {
@@ -402,6 +520,15 @@ export default function CasePage() {
           .scroll-item {
             width: 80%;
             max-width: 280px;
+          }
+
+          .lightbox-content {
+            max-width: 95vw;
+          }
+
+          .lightbox-close {
+            top: -40px;
+            font-size: 28px;
           }
         }
 
