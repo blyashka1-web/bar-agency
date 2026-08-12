@@ -3,8 +3,6 @@
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import { useState } from 'react';
-import Lightbox from 'react-image-lightbox';
-import 'react-image-lightbox/style.css';
 
 const casesData = {
   'yandex-food': {
@@ -95,7 +93,7 @@ export default function CasePage() {
   const slug = params.slug as string;
   const data = casesData[slug as keyof typeof casesData];
   const [isOpen, setIsOpen] = useState(false);
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentImage, setCurrentImage] = useState<string | null>(null);
 
   if (!data) {
     return (
@@ -106,11 +104,16 @@ export default function CasePage() {
     );
   }
 
-  const mediaUrls = data.media.filter(item => item.type === 'image').map(item => item.url);
-
-  const openLightbox = (index: number) => {
-    setCurrentIndex(index);
+  const openImage = (url: string) => {
+    setCurrentImage(url);
     setIsOpen(true);
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeImage = () => {
+    setIsOpen(false);
+    setCurrentImage(null);
+    document.body.style.overflow = 'auto';
   };
 
   return (
@@ -127,7 +130,6 @@ export default function CasePage() {
         <p style={{ fontSize: '20px', color: '#b0b0b0' }}>{data.description}</p>
       </div>
 
-      {/* МЕДИА — СКРИНЫ И ВИДЕО */}
       {data.media && data.media.length > 0 && (
         <div style={{ marginTop: '40px' }}>
           <h2 style={{ fontSize: '24px', fontWeight: 600, marginBottom: '16px' }}>Репосты в крупных сообществах</h2>
@@ -145,14 +147,8 @@ export default function CasePage() {
                   transition: 'transform 0.2s ease',
                 }}
                 onClick={() => {
-                  if (item.type === 'video') {
-                    // Для видео просто воспроизводим
-                    const videoElement = document.getElementById(`video-${index}`) as HTMLVideoElement;
-                    if (videoElement) {
-                      videoElement.play();
-                    }
-                  } else {
-                    openLightbox(data.media.filter(m => m.type === 'image').indexOf(item));
+                  if (item.type === 'image') {
+                    openImage(item.url);
                   }
                 }}
                 onMouseEnter={(e) => {
@@ -164,7 +160,6 @@ export default function CasePage() {
               >
                 {item.type === 'video' ? (
                   <video 
-                    id={`video-${index}`}
                     src={item.url} 
                     controls 
                     style={{ width: '100%', display: 'block', aspectRatio: '16/10', objectFit: 'cover' }}
@@ -209,22 +204,64 @@ export default function CasePage() {
         </button>
       </div>
 
-      {/* ЛАЙТБОКС ДЛЯ ИЗОБРАЖЕНИЙ */}
-      {isOpen && mediaUrls.length > 0 && (
-        <Lightbox
-          mainSrc={mediaUrls[currentIndex]}
-          nextSrc={mediaUrls[(currentIndex + 1) % mediaUrls.length]}
-          prevSrc={mediaUrls[(currentIndex + mediaUrls.length - 1) % mediaUrls.length]}
-          onCloseRequest={() => setIsOpen(false)}
-          onMovePrevRequest={() =>
-            setCurrentIndex((currentIndex + mediaUrls.length - 1) % mediaUrls.length)
-          }
-          onMoveNextRequest={() =>
-            setCurrentIndex((currentIndex + 1) % mediaUrls.length)
-          }
-          enableZoom={true}
-          imagePadding={40}
-        />
+      {/* КАСТОМНЫЙ ЛАЙТБОКС */}
+      {isOpen && currentImage && (
+        <div 
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: 'rgba(0,0,0,0.9)',
+            backdropFilter: 'blur(12px)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            zIndex: 9999,
+            padding: '24px',
+          }}
+          onClick={closeImage}
+        >
+          <div 
+            style={{
+              position: 'relative',
+              maxWidth: '90vw',
+              maxHeight: '90vh',
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={closeImage}
+              style={{
+                position: 'absolute',
+                top: '-48px',
+                right: 0,
+                background: 'none',
+                border: 'none',
+                color: '#fff',
+                fontSize: '32px',
+                cursor: 'pointer',
+                padding: '8px',
+                lineHeight: 1,
+              }}
+            >
+              ✕
+            </button>
+            <img 
+              src={currentImage} 
+              alt="Увеличенный скриншот" 
+              style={{
+                maxWidth: '100%',
+                maxHeight: '80vh',
+                borderRadius: '16px',
+                display: 'block',
+                objectFit: 'contain',
+                boxShadow: '0 20px 60px rgba(0,0,0,0.5)',
+              }}
+            />
+          </div>
+        </div>
       )}
     </div>
   );
