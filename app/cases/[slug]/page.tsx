@@ -138,19 +138,33 @@ export default function CasePage() {
             <p className="subtitle">{data.description}</p>
           </div>
 
-          {/* Горизонтальная карусель */}
+          {/* Компактная горизонтальная карусель */}
           {hasMedia && (
             <div className="carousel-wrapper">
               <Swiper
                 modules={[Navigation, Pagination, Zoom]}
                 navigation
                 pagination={{ clickable: true }}
-                zoom={{ maxRatio: 3 }}
-                spaceBetween={20}
-                slidesPerView={1}
-                centeredSlides={true}
+                zoom={{ maxRatio: 2 }}
+                spaceBetween={12}
+                slidesPerView={1.2}
+                centeredSlides={false}
+                breakpoints={{
+                  640: {
+                    slidesPerView: 1.5,
+                    spaceBetween: 16,
+                  },
+                  768: {
+                    slidesPerView: 2,
+                    spaceBetween: 20,
+                  },
+                  1024: {
+                    slidesPerView: 2.5,
+                    spaceBetween: 24,
+                  },
+                }}
                 className="case-swiper"
-                style={{ padding: '0 0 50px 0' }}
+                style={{ padding: '0 0 40px 0' }}
               >
                 {data.media.map((item, index) => (
                   <SwiperSlide key={index}>
@@ -276,14 +290,14 @@ export default function CasePage() {
           max-width: 600px;
         }
 
-        /* Карусель */
+        /* КОМПАКТНАЯ КАРУСЕЛЬ */
         .carousel-wrapper {
-          margin: 32px 0 48px;
-          border-radius: 24px;
+          margin: 24px 0 40px;
+          border-radius: 20px;
           overflow: hidden;
           background: #1a1a1a;
           border: 1px solid #2a2a2a;
-          padding: 20px 0;
+          padding: 16px 0 8px 0;
         }
 
         .case-swiper {
@@ -299,40 +313,45 @@ export default function CasePage() {
           align-items: center;
           justify-content: center;
           background: #0a0a0a;
-          min-height: 400px;
-          border-radius: 16px;
+          border-radius: 12px;
           overflow: hidden;
+          min-height: 180px;
+          aspect-ratio: 16 / 10;
+          cursor: pointer;
         }
 
         .slide-image {
           width: 100%;
-          height: auto;
+          height: 100%;
           display: block;
-          object-fit: contain;
-          max-height: 500px;
+          object-fit: cover;
           border-radius: 12px;
+          transition: transform 0.3s ease;
+        }
+
+        .slide-image:hover {
+          transform: scale(1.02);
         }
 
         .slide-video {
           width: 100%;
-          height: auto;
+          height: 100%;
           display: block;
-          aspect-ratio: 16 / 9;
           object-fit: cover;
-          background: #0a0a0a;
-          max-height: 500px;
           border-radius: 12px;
+          background: #0a0a0a;
         }
 
         /* Стрелки навигации */
         .case-swiper :global(.swiper-button-next),
         .case-swiper :global(.swiper-button-prev) {
           color: #c4b5a0;
-          background: rgba(0,0,0,0.5);
-          width: 44px;
-          height: 44px;
+          background: rgba(0,0,0,0.6);
+          width: 36px;
+          height: 36px;
           border-radius: 50%;
           transition: all 0.3s ease;
+          backdrop-filter: blur(4px);
         }
 
         .case-swiper :global(.swiper-button-next:hover),
@@ -342,7 +361,7 @@ export default function CasePage() {
 
         .case-swiper :global(.swiper-button-next::after),
         .case-swiper :global(.swiper-button-prev::after) {
-          font-size: 18px;
+          font-size: 14px;
           font-weight: bold;
         }
 
@@ -350,11 +369,15 @@ export default function CasePage() {
         .case-swiper :global(.swiper-pagination-bullet) {
           background: #b0b0b0;
           opacity: 0.4;
+          width: 8px;
+          height: 8px;
         }
 
         .case-swiper :global(.swiper-pagination-bullet-active) {
           background: #c4b5a0;
           opacity: 1;
+          width: 20px;
+          border-radius: 4px;
         }
 
         .description-block {
@@ -467,20 +490,30 @@ export default function CasePage() {
             padding: 0 16px;
           }
 
-          .swiper-zoom-container {
-            min-height: 250px;
-          }
-
-          .slide-image {
-            max-height: 350px;
-          }
-
-          .slide-video {
-            max-height: 350px;
-          }
-
           .carousel-wrapper {
-            padding: 10px 0;
+            padding: 12px 0 4px 0;
+            margin: 16px 0 32px;
+          }
+
+          .swiper-zoom-container {
+            min-height: 140px;
+            aspect-ratio: 16 / 11;
+          }
+
+          .case-swiper :global(.swiper-button-next),
+          .case-swiper :global(.swiper-button-prev) {
+            display: none;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .swiper-zoom-container {
+            min-height: 120px;
+            aspect-ratio: 16 / 12;
+          }
+
+          .case-swiper {
+            padding: 0 0 30px 0;
           }
         }
       `}</style>
