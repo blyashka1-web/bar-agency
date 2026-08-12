@@ -2,22 +2,12 @@
 
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Zoom } from 'swiper/modules';
-import { useState } from 'react';
-
-// Стили Swiper
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import 'swiper/css/zoom';
 
 // Данные всех кейсов
 const casesData = {
   'yandex-food': {
     title: 'Яндекс Еда',
     tag: 'Вирусный контент',
-    emoji: '🍔',
     description: 'Вирусный ролик с суммарным охватом 50+ млн',
     full: 'Мы создали вирусный ролик для сервиса доставки Яндекс Еда. Задача — показать, как быстро и вкусно можно получить заказ, используя юмор и неожиданный поворот. Ролик завирусился в TikTok и Instagram, набрав суммарный охват более 50 миллионов просмотров.',
     stats: ['50+ млн суммарный охват'],
@@ -31,9 +21,8 @@ const casesData = {
   'beauty-story': {
     title: 'Beauty Story',
     tag: 'Косметика',
-    emoji: '🧴',
     description: '+280% продаж за 4 месяца',
-    full: 'Разработали SMM‑стратегию для бренда натуральной косметики. Создали контент-план, запустили вирусные форматы, настроили таргетинг. Бренд вышел на новый уровень узнаваемости.',
+    full: 'Разработали SMM‑стратегию для бренда натуральной косметики.',
     stats: ['280% рост продаж', '4 месяца', '1.2 млн охват'],
     media: [],
     color: 'haki',
@@ -41,9 +30,8 @@ const casesData = {
   'moscow-coffee': {
     title: 'Moscow Coffee',
     tag: 'F&B',
-    emoji: '☕',
     description: '12 млн просмотров за 7 дней',
-    full: 'Запустили вирусный челлендж для сети кофеен. Привлекли блогеров, создали серию коротких видео. Результат — взрывной рост узнаваемости и потока клиентов.',
+    full: 'Запустили вирусный челлендж для сети кофеен.',
     stats: ['12 млн просмотров', '7 дней', '800+ новых клиентов'],
     media: [],
     color: 'burgundy',
@@ -51,9 +39,8 @@ const casesData = {
   'urban-sneakers': {
     title: 'Urban Sneakers',
     tag: 'Одежда',
-    emoji: '👟',
     description: '5000 заявок с нулевым бюджетом',
-    full: 'Создали бренд с нуля: разработали стратегию, айдентику, запустили в Instagram. Без рекламного бюджета получили 5000 заявок за первый месяц.',
+    full: 'Создали бренд с нуля: стратегия, айдентика, запуск в Instagram.',
     stats: ['5000 заявок', '0 ₽ бюджет', '2 млн охват'],
     media: [],
     color: 'gold',
@@ -61,9 +48,8 @@ const casesData = {
   'luxe-jewelry': {
     title: 'Luxe Jewelry',
     tag: 'Ювелирка',
-    emoji: '💎',
     description: '+150% вовлечения, охват х3',
-    full: 'Контент‑стратегия с фокусом на эстетику, премиум‑видео и коллаборации с блогерами. Охват вырос в 3 раза, вовлечение увеличилось на 150%.',
+    full: 'Контент‑стратегия с фокусом на эстетику и коллаборации.',
     stats: ['+150% вовлечение', '3x охват', '+200% продаж'],
     media: [],
     color: 'haki',
@@ -71,9 +57,8 @@ const casesData = {
   'wine-people': {
     title: 'Wine & People',
     tag: 'Напитки',
-    emoji: '🍷',
     description: '+200% продаж за 2 месяца',
-    full: 'Создали контент-стратегию с сомелье, прямые эфиры с дегустациями. Продажи выросли на 200% за 2 месяца благодаря правильной коммуникации с аудиторией.',
+    full: 'Контент с сомелье, прямые эфиры, дегустации.',
     stats: ['+200% продаж', '2 месяца', '2.5 млн охват'],
     media: [],
     color: 'burgundy',
@@ -81,9 +66,8 @@ const casesData = {
   'appvision': {
     title: 'AppVision',
     tag: 'IT',
-    emoji: '📱',
     description: '50 000 установок за месяц',
-    full: 'Интеграции с блогерами, обзоры в TikTok и Instagram. Приложение собрало 50 000 установок за месяц с минимальным бюджетом.',
+    full: 'Интеграции с блогерами, обзоры в TikTok и Instagram.',
     stats: ['50 000 установок', '1 месяц', '150 тыс. ₽ бюджет'],
     media: [],
     color: 'gold',
@@ -127,75 +111,39 @@ export default function CasePage() {
     <main>
       <section className="case-detail" style={{ background: colors.bg }}>
         <div className="container">
-          {/* Назад */}
           <Link href="/cases" className="back-link">← Все кейсы</Link>
 
-          {/* Заголовок */}
           <div className="case-header">
             <span className="badge" style={{ background: colors.accent }}>{data.tag}</span>
             <h1>{data.title}</h1>
             <p className="subtitle">{data.description}</p>
           </div>
 
-          {/* Принудительно горизонтальная карусель */}
+          {/* Горизонтальная лента */}
           {hasMedia && (
             <div className="carousel-wrapper">
-              <Swiper
-                modules={[Navigation, Pagination, Zoom]}
-                navigation
-                pagination={{ clickable: true }}
-                zoom={{ maxRatio: 2 }}
-                spaceBetween={12}
-                slidesPerView={1.8}
-                centeredSlides={false}
-                watchSlidesProgress={true}
-                resistanceRatio={0.5}
-                breakpoints={{
-                  480: {
-                    slidesPerView: 1.8,
-                    spaceBetween: 12,
-                  },
-                  640: {
-                    slidesPerView: 2.2,
-                    spaceBetween: 16,
-                  },
-                  768: {
-                    slidesPerView: 2.5,
-                    spaceBetween: 20,
-                  },
-                  1024: {
-                    slidesPerView: 2.8,
-                    spaceBetween: 24,
-                  },
-                }}
-                className="case-swiper"
-                style={{ padding: '0 0 40px 0' }}
-              >
+              <div className="horiz-scroll">
                 {data.media.map((item, index) => (
-                  <SwiperSlide key={index}>
-                    <div className="swiper-zoom-container">
-                      {item.type === 'video' ? (
-                        <video
-                          controls
-                          poster={item.poster}
-                          className="slide-video"
-                          playsInline
-                          preload="metadata"
-                        >
-                          <source src={item.url} type="video/mp4" />
-                          Ваш браузер не поддерживает видео.
-                        </video>
-                      ) : (
-                        <img src={item.url} alt={`${data.title} - ${index + 1}`} className="slide-image" />
-                      )}
-                    </div>
-                  </SwiperSlide>
+                  <div key={index} className="scroll-item">
+                    {item.type === 'video' ? (
+                      <video
+                        controls
+                        poster={item.poster}
+                        className="scroll-video"
+                        playsInline
+                        preload="metadata"
+                      >
+                        <source src={item.url} type="video/mp4" />
+                      </video>
+                    ) : (
+                      <img src={item.url} alt={`${data.title} - ${index + 1}`} className="scroll-image" />
+                    )}
+                  </div>
                 ))}
-              </Swiper>
+              </div>
             </div>
           )}
 
-          {/* Описание + Статистика */}
           <div className="description-block">
             <div className="description-text">
               <h2>О проекте</h2>
@@ -213,7 +161,6 @@ export default function CasePage() {
             </div>
           </div>
 
-          {/* CTA */}
           <div className="cta-block" style={{ borderColor: colors.accent }}>
             <h3>Хотите так же?</h3>
             <p>Расскажите о своём проекте — сделаем вирусный контент.</p>
@@ -229,11 +176,7 @@ export default function CasePage() {
       </section>
 
       <style jsx>{`
-        * {
-          margin: 0;
-          padding: 0;
-          box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         .container {
           max-width: 1100px;
@@ -295,113 +238,50 @@ export default function CasePage() {
           max-width: 600px;
         }
 
-        /* КОМПАКТНАЯ КАРУСЕЛЬ - ПРИНУДИТЕЛЬНО ГОРИЗОНТАЛЬНАЯ */
+        /* ГОРИЗОНТАЛЬНАЯ ЛЕНТА */
         .carousel-wrapper {
           margin: 24px 0 40px;
           border-radius: 20px;
-          overflow: hidden;
           background: #1a1a1a;
           border: 1px solid #2a2a2a;
-          padding: 16px 0 8px 0;
-          width: 100%;
-          overflow-x: hidden;
-        }
-
-        .case-swiper {
-          width: 100%;
-          height: 100%;
-          padding: 0 0 40px 0;
+          padding: 16px 0;
           overflow: hidden;
         }
 
-        /* Принудительно горизонтальная ориентация */
-        .case-swiper :global(.swiper-wrapper) {
+        .horiz-scroll {
           display: flex;
-          flex-direction: row !important;
-          transition-timing-function: ease-out;
+          flex-direction: row;
+          gap: 16px;
+          overflow-x: auto;
+          overflow-y: hidden;
+          padding: 0 20px 12px 20px;
+          scroll-snap-type: x mandatory;
+          -webkit-overflow-scrolling: touch;
+          scrollbar-width: none;
         }
 
-        .case-swiper :global(.swiper-slide) {
-          flex-shrink: 0;
-          width: auto;
+        .horiz-scroll::-webkit-scrollbar {
+          display: none;
+        }
+
+        .scroll-item {
+          flex: 0 0 auto;
+          width: 75%;
+          max-width: 320px;
+          scroll-snap-align: start;
+          border-radius: 16px;
+          overflow: hidden;
+          background: #0a0a0a;
+        }
+
+        .scroll-image,
+        .scroll-video {
+          width: 100%;
           height: auto;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-
-        .swiper-zoom-container {
-          width: 100%;
-          height: 100%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          background: #0a0a0a;
-          border-radius: 12px;
-          overflow: hidden;
-          min-height: 180px;
+          display: block;
           aspect-ratio: 16 / 10;
-          cursor: pointer;
-        }
-
-        .slide-image {
-          width: 100%;
-          height: 100%;
-          display: block;
           object-fit: cover;
           border-radius: 12px;
-          transition: transform 0.3s ease;
-        }
-
-        .slide-image:hover {
-          transform: scale(1.02);
-        }
-
-        .slide-video {
-          width: 100%;
-          height: 100%;
-          display: block;
-          object-fit: cover;
-          border-radius: 12px;
-          background: #0a0a0a;
-        }
-
-        /* Стрелки навигации */
-        .case-swiper :global(.swiper-button-next),
-        .case-swiper :global(.swiper-button-prev) {
-          color: #c4b5a0;
-          background: rgba(0,0,0,0.6);
-          width: 36px;
-          height: 36px;
-          border-radius: 50%;
-          transition: all 0.3s ease;
-          backdrop-filter: blur(4px);
-        }
-
-        .case-swiper :global(.swiper-button-next:hover),
-        .case-swiper :global(.swiper-button-prev:hover) {
-          background: rgba(196, 181, 160, 0.3);
-        }
-
-        .case-swiper :global(.swiper-button-next::after),
-        .case-swiper :global(.swiper-button-prev::after) {
-          font-size: 14px;
-          font-weight: bold;
-        }
-
-        /* Точки пагинации */
-        .case-swiper :global(.swiper-pagination-bullet) {
-          background: #b0b0b0;
-          opacity: 0.4;
-          width: 8px;
-          height: 8px;
-        }
-
-        .case-swiper :global(.swiper-pagination-bullet-active) {
-          background: #c4b5a0;
-          opacity: 1;
-          width: 20px;
-          border-radius: 4px;
         }
 
         .description-block {
@@ -515,38 +395,25 @@ export default function CasePage() {
           }
 
           .carousel-wrapper {
-            padding: 12px 0 4px 0;
+            padding: 12px 0;
             margin: 16px 0 32px;
           }
 
-          .swiper-zoom-container {
-            min-height: 140px;
-            aspect-ratio: 16 / 11;
-          }
-
-          .case-swiper :global(.swiper-button-next),
-          .case-swiper :global(.swiper-button-prev) {
-            display: none;
-          }
-
-          .case-swiper :global(.swiper-pagination-bullet) {
-            width: 6px;
-            height: 6px;
-          }
-
-          .case-swiper :global(.swiper-pagination-bullet-active) {
-            width: 16px;
+          .scroll-item {
+            width: 80%;
+            max-width: 280px;
           }
         }
 
         @media (max-width: 480px) {
-          .swiper-zoom-container {
-            min-height: 120px;
-            aspect-ratio: 16 / 12;
+          .scroll-item {
+            width: 85%;
+            max-width: 240px;
           }
 
-          .case-swiper {
-            padding: 0 0 30px 0;
+          .scroll-image,
+          .scroll-video {
+            aspect-ratio: 16 / 12;
           }
         }
       `}</style>
