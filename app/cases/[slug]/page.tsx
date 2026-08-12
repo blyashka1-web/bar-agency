@@ -4,13 +4,13 @@ import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import { useState } from 'react';
 
-// Данные всех кейсов (оставляем как было)
+// Данные всех кейсов
 const casesData = {
   'yandex-food': {
     title: 'Яндекс Еда',
     tag: 'Вирусный контент',
     description: 'Вирусный ролик с суммарным охватом 50+ млн',
-    full: 'Мы создали вирусный ролик для сервиса доставки Яндекс Еда...',
+    full: 'Мы создали вирусный ролик для сервиса доставки Яндекс Еда. Задача — показать, как быстро и вкусно можно получить заказ, используя юмор и неожиданный поворот. Ролик завирусился в TikTok и Instagram, набрав суммарный охват более 50 миллионов просмотров.',
     stats: ['50+ млн суммарный охват'],
     media: [
       { type: 'video', url: '/cases/yandex-food/video.mp4', poster: '/cases/yandex-food/screenshot-1.jpg' },
@@ -23,7 +23,7 @@ const casesData = {
     title: 'Beauty Story',
     tag: 'Косметика',
     description: '+280% продаж за 4 месяца',
-    full: 'Разработали SMM‑стратегию для бренда натуральной косметики.',
+    full: 'Разработали SMM‑стратегию для бренда натуральной косметики. Создали контент-план, запустили вирусные форматы, настроили таргетинг. Бренд вышел на новый уровень узнаваемости.',
     stats: ['280% рост продаж', '4 месяца', '1.2 млн охват'],
     media: [],
     color: 'haki',
@@ -32,7 +32,7 @@ const casesData = {
     title: 'Moscow Coffee',
     tag: 'F&B',
     description: '12 млн просмотров за 7 дней',
-    full: 'Запустили вирусный челлендж для сети кофеен.',
+    full: 'Запустили вирусный челлендж для сети кофеен. Привлекли блогеров, создали серию коротких видео. Результат — взрывной рост узнаваемости и потока клиентов.',
     stats: ['12 млн просмотров', '7 дней', '800+ новых клиентов'],
     media: [],
     color: 'burgundy',
@@ -41,7 +41,7 @@ const casesData = {
     title: 'Urban Sneakers',
     tag: 'Одежда',
     description: '5000 заявок с нулевым бюджетом',
-    full: 'Создали бренд с нуля: стратегия, айдентика, запуск в Instagram.',
+    full: 'Создали бренд с нуля: разработали стратегию, айдентику, запустили в Instagram. Без рекламного бюджета получили 5000 заявок за первый месяц.',
     stats: ['5000 заявок', '0 ₽ бюджет', '2 млн охват'],
     media: [],
     color: 'gold',
@@ -50,7 +50,7 @@ const casesData = {
     title: 'Luxe Jewelry',
     tag: 'Ювелирка',
     description: '+150% вовлечения, охват х3',
-    full: 'Контент‑стратегия с фокусом на эстетику и коллаборации.',
+    full: 'Контент‑стратегия с фокусом на эстетику, премиум‑видео и коллаборации с блогерами. Охват вырос в 3 раза, вовлечение увеличилось на 150%.',
     stats: ['+150% вовлечение', '3x охват', '+200% продаж'],
     media: [],
     color: 'haki',
@@ -59,7 +59,7 @@ const casesData = {
     title: 'Wine & People',
     tag: 'Напитки',
     description: '+200% продаж за 2 месяца',
-    full: 'Контент с сомелье, прямые эфиры, дегустации.',
+    full: 'Создали контент-стратегию с сомелье, прямые эфиры с дегустациями. Продажи выросли на 200% за 2 месяца благодаря правильной коммуникации с аудиторией.',
     stats: ['+200% продаж', '2 месяца', '2.5 млн охват'],
     media: [],
     color: 'burgundy',
@@ -68,7 +68,7 @@ const casesData = {
     title: 'AppVision',
     tag: 'IT',
     description: '50 000 установок за месяц',
-    full: 'Интеграции с блогерами, обзоры в TikTok и Instagram.',
+    full: 'Интеграции с блогерами, обзоры в TikTok и Instagram. Приложение собрало 50 000 установок за месяц с минимальным бюджетом.',
     stats: ['50 000 установок', '1 месяц', '150 тыс. ₽ бюджет'],
     media: [],
     color: 'gold',
@@ -136,29 +136,38 @@ export default function CasePage() {
 
           {/* Горизонтальная лента */}
           {hasMedia && (
-            <div className="carousel-wrapper">
-              <div className="horiz-scroll">
-                {data.media.map((item, index) => (
-                  <div 
-                    key={index} 
-                    className="scroll-item"
-                    onClick={() => openLightbox(item)}
-                  >
-                    {item.type === 'video' ? (
-                      <video
-                        src={item.url}
-                        poster={item.poster}
-                        className="scroll-video"
-                        playsInline
-                        preload="metadata"
-                      />
-                    ) : (
-                      <img src={item.url} alt={`${data.title} - ${index + 1}`} className="scroll-image" />
-                    )}
-                  </div>
-                ))}
+            <>
+              <div className="carousel-wrapper">
+                <div className="horiz-scroll">
+                  {data.media.map((item, index) => (
+                    <div 
+                      key={index} 
+                      className="scroll-item"
+                      onClick={() => openLightbox(item)}
+                    >
+                      {item.type === 'video' ? (
+                        <video
+                          src={item.url}
+                          poster={item.poster}
+                          className="scroll-video"
+                          playsInline
+                          preload="metadata"
+                        />
+                      ) : (
+                        <img src={item.url} alt={`${data.title} - ${index + 1}`} className="scroll-image" />
+                      )}
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
+
+              {/* Подпись о репостах */}
+              <div className="reposts-info">
+                <p className="reposts-text">
+                  📢 Репосты в крупных сообществах
+                </p>
+              </div>
+            </>
           )}
 
           <div className="description-block">
@@ -213,7 +222,11 @@ export default function CasePage() {
       )}
 
       <style jsx>{`
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
 
         .container {
           max-width: 1100px;
@@ -277,7 +290,7 @@ export default function CasePage() {
 
         /* ГОРИЗОНТАЛЬНАЯ ЛЕНТА */
         .carousel-wrapper {
-          margin: 24px 0 40px;
+          margin: 24px 0 8px 0;
           border-radius: 20px;
           background: #1a1a1a;
           border: 1px solid #2a2a2a;
@@ -328,6 +341,37 @@ export default function CasePage() {
           pointer-events: none;
         }
 
+        /* ПОДПИСЬ О РЕПОСТАХ */
+        .reposts-info {
+          margin: -4px 0 40px 0;
+          padding: 0 4px;
+        }
+
+        .reposts-text {
+          font-size: 14px;
+          color: #b0b0b0;
+          font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
+          letter-spacing: 0.02em;
+          opacity: 0.7;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+        }
+
+        .reposts-text::before {
+          content: '';
+          flex: 1;
+          height: 1px;
+          background: linear-gradient(to right, transparent, #2a2a2a);
+        }
+
+        .reposts-text::after {
+          content: '';
+          flex: 1;
+          height: 1px;
+          background: linear-gradient(to left, transparent, #2a2a2a);
+        }
+
         /* ЛАЙТБОКС */
         .lightbox-overlay {
           position: fixed;
@@ -347,8 +391,12 @@ export default function CasePage() {
         }
 
         @keyframes fadeIn {
-          from { opacity: 0; }
-          to { opacity: 1; }
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
         }
 
         .lightbox-content {
@@ -359,8 +407,14 @@ export default function CasePage() {
         }
 
         @keyframes zoomIn {
-          from { transform: scale(0.9); opacity: 0; }
-          to { transform: scale(1); opacity: 1; }
+          from {
+            transform: scale(0.9);
+            opacity: 0;
+          }
+          to {
+            transform: scale(1);
+            opacity: 1;
+          }
         }
 
         .lightbox-close {
@@ -514,7 +568,7 @@ export default function CasePage() {
 
           .carousel-wrapper {
             padding: 12px 0;
-            margin: 16px 0 32px;
+            margin: 16px 0 4px 0;
           }
 
           .scroll-item {
@@ -529,6 +583,15 @@ export default function CasePage() {
           .lightbox-close {
             top: -40px;
             font-size: 28px;
+          }
+
+          .reposts-info {
+            margin: 0px 0 28px 0;
+          }
+
+          .reposts-text {
+            font-size: 12px;
+            opacity: 0.6;
           }
         }
 
