@@ -1,234 +1,175 @@
 'use client';
 
-export default function CasesPage() {
-  const cases = [
-    {
-      slug: 'yandex-food',
-      logo: '/cases/yandex-food/logo.png',
-      tag: 'Вирусный контент',
-      title: 'Яндекс Еда',
-      desc: 'Вирусный ролик с суммарным охватом 50+ млн',
-      color: 'haki',
-    },
-    {
-      slug: 'deportivo',
-      emoji: '⚽',
-      tag: 'Спорт / Lifestyle',
-      title: 'Deportivo',
-      desc: 'Вирусный контент с 10+ млн просмотров',
-      color: 'gold',
-    },
-    {
-      slug: 'beauty-story',
-      emoji: '🧴',
-      tag: 'Косметика',
-      title: 'Beauty Story',
-      desc: '+280% продаж за 4 месяца',
-      color: 'haki',
-    },
-    {
-      slug: 'moscow-coffee',
-      emoji: '☕',
-      tag: 'F&B',
-      title: 'Moscow Coffee',
-      desc: '12 млн просмотров за 7 дней',
-      color: 'burgundy',
-    },
-    {
-      slug: 'urban-sneakers',
-      emoji: '👟',
-      tag: 'Одежда',
-      title: 'Urban Sneakers',
-      desc: '5000 заявок с нулевым бюджетом',
-      color: 'gold',
-    },
-    {
-      slug: 'luxe-jewelry',
-      emoji: '💎',
-      tag: 'Ювелирка',
-      title: 'Luxe Jewelry',
-      desc: '+150% вовлечения, охват х3',
-      color: 'haki',
-    },
-    {
-      slug: 'wine-people',
-      emoji: '🍷',
-      tag: 'Напитки',
-      title: 'Wine & People',
-      desc: '+200% продаж за 2 месяца',
-      color: 'burgundy',
-    },
-    {
-      slug: 'appvision',
-      emoji: '📱',
-      tag: 'IT',
-      title: 'AppVision',
-      desc: '50 000 установок за месяц',
-      color: 'gold',
-    },
-  ];
+import { useParams } from 'next/navigation';
+import Link from 'next/link';
 
-  const colorMap = {
-    haki: 'linear-gradient(145deg, #2a2a2a, #1a1a1a)',
-    burgundy: 'linear-gradient(145deg, #2a1a1a, #1a0a0a)',
-    gold: 'linear-gradient(145deg, #2a2a1a, #1a1a0a)',
-  };
+const casesData = {
+  'yandex-food': {
+    title: 'Яндекс Еда',
+    tag: 'Вирусный контент',
+    description: 'Вирусный ролик с суммарным охватом 50+ млн',
+    full: 'Мы создали вирусный ролик для сервиса доставки Яндекс Еда. Задача — показать, как быстро и вкусно можно получить заказ, используя юмор и неожиданный поворот. Ролик завирусился в TikTok и Instagram, набрав суммарный охват более 50 миллионов просмотров.',
+    stats: [
+      '50+ млн суммарный охват',
+      '20+ репостов в крупных сообществах'
+    ],
+    media: [
+      { type: 'image', url: '/cases/yandex-food/screenshot-1.jpg' },
+      { type: 'image', url: '/cases/yandex-food/screenshot-2.jpg' },
+      { type: 'image', url: '/cases/yandex-food/screenshot-3.jpg' },
+      { type: 'image', url: '/cases/yandex-food/screenshot-4.jpg' },
+      { type: 'image', url: '/cases/yandex-food/screenshot-5.jpg' },
+      { type: 'image', url: '/cases/yandex-food/screenshot-6.jpg' },
+    ],
+    color: '#c4b5a0',
+  },
+  'deportivo': {
+    title: 'Deportivo',
+    tag: 'Спорт / Lifestyle',
+    description: 'Вирусный контент с 10+ млн просмотров',
+    full: 'Мы создали вирусную кампанию для спортивного бренда Deportivo. Задача — показать энергию и стиль бренда через динамичный контент. Ролики завирусились в TikTok и Instagram, набрав суммарный охват более 10 миллионов просмотров.',
+    stats: ['10+ млн просмотров', '28% рост продаж', '5 дней до вирала'],
+    media: [
+      { type: 'image', url: '/cases/deportivo/screenshot-1.jpg' },
+    ],
+    color: '#d4af37',
+  },
+  'beauty-story': {
+    title: 'Beauty Story',
+    tag: 'Косметика',
+    description: '+280% продаж за 4 месяца',
+    full: 'Разработали SMM‑стратегию для бренда натуральной косметики. Создали контент-план, запустили вирусные форматы, настроили таргетинг. Бренд вышел на новый уровень узнаваемости.',
+    stats: ['280% рост продаж', '4 месяца', '1.2 млн охват'],
+    media: [],
+    color: '#c4b5a0',
+  },
+  'moscow-coffee': {
+    title: 'Moscow Coffee',
+    tag: 'F&B',
+    description: '12 млн просмотров за 7 дней',
+    full: 'Запустили вирусный челлендж для сети кофеен. Привлекли блогеров, создали серию коротких видео. Результат — взрывной рост узнаваемости и потока клиентов.',
+    stats: ['12 млн просмотров', '7 дней', '800+ новых клиентов'],
+    media: [],
+    color: '#7a2e2a',
+  },
+  'urban-sneakers': {
+    title: 'Urban Sneakers',
+    tag: 'Одежда',
+    description: '5000 заявок с нулевым бюджетом',
+    full: 'Создали бренд с нуля: разработали стратегию, айдентику, запустили в Instagram. Без рекламного бюджета получили 5000 заявок за первый месяц.',
+    stats: ['5000 заявок', '0 ₽ бюджет', '2 млн охват'],
+    media: [],
+    color: '#d4af37',
+  },
+  'luxe-jewelry': {
+    title: 'Luxe Jewelry',
+    tag: 'Ювелирка',
+    description: '+150% вовлечения, охват х3',
+    full: 'Контент‑стратегия с фокусом на эстетику, премиум‑видео и коллаборации с блогерами. Охват вырос в 3 раза, вовлечение увеличилось на 150%.',
+    stats: ['+150% вовлечение', '3x охват', '+200% продаж'],
+    media: [],
+    color: '#c4b5a0',
+  },
+  'wine-people': {
+    title: 'Wine & People',
+    tag: 'Напитки',
+    description: '+200% продаж за 2 месяца',
+    full: 'Создали контент-стратегию с сомелье, прямые эфиры с дегустациями. Продажи выросли на 200% за 2 месяца благодаря правильной коммуникации с аудиторией.',
+    stats: ['+200% продаж', '2 месяца', '2.5 млн охват'],
+    media: [],
+    color: '#7a2e2a',
+  },
+  'appvision': {
+    title: 'AppVision',
+    tag: 'IT',
+    description: '50 000 установок за месяц',
+    full: 'Интеграции с блогерами, обзоры в TikTok и Instagram. Приложение собрало 50 000 установок за месяц с минимальным бюджетом.',
+    stats: ['50 000 установок', '1 месяц', '150 тыс. ₽ бюджет'],
+    media: [],
+    color: '#d4af37',
+  },
+};
+
+export default function CasePage() {
+  const params = useParams();
+  const slug = params.slug as string;
+  const data = casesData[slug as keyof typeof casesData];
+
+  if (!data) {
+    return (
+      <div style={{ padding: '40px 20px', background: '#121212', color: '#fff', minHeight: '100vh' }}>
+        <h1>Кейс не найден</h1>
+        <Link href="/cases" style={{ color: '#c4b5a0' }}>← Вернуться</Link>
+      </div>
+    );
+  }
 
   return (
-    <main>
-      <section className="cases-page">
-        <div className="container">
-          <h1>Кейсы</h1>
-          <p className="subtitle">Все проекты, которыми мы гордимся</p>
-          <div className="cases-grid">
-            {cases.map((c) => (
-              <a href={`/cases/${c.slug}`} key={c.slug} className="case-card" style={{ background: colorMap[c.color as keyof typeof colorMap] }}>
-                {c.logo ? (
-                  <img src={c.logo} alt={c.title} className="case-logo-thumb" />
+    <div style={{ padding: '40px 20px', background: '#121212', color: '#fff', minHeight: '100vh' }}>
+      <Link href="/cases" style={{ color: '#c4b5a0', textDecoration: 'none' }}>
+        ← Все кейсы
+      </Link>
+      
+      <div style={{ marginTop: '40px' }}>
+        <span style={{ display: 'inline-block', background: data.color, color: '#fff', padding: '4px 16px', borderRadius: '40px', fontSize: '13px', fontWeight: 600 }}>
+          {data.tag}
+        </span>
+        <h1 style={{ fontSize: '48px', marginTop: '12px', marginBottom: '8px' }}>{data.title}</h1>
+        <p style={{ fontSize: '20px', color: '#b0b0b0' }}>{data.description}</p>
+      </div>
+
+      {/* МЕДИА (СКРИНЫ И ВИДЕО) */}
+      {data.media && data.media.length > 0 && (
+        <div style={{ marginTop: '40px' }}>
+          <h2 style={{ fontSize: '24px', fontWeight: 600, marginBottom: '16px' }}>Репосты в крупных сообществах</h2>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px' }}>
+            {data.media.map((item, index) => (
+              <div key={index} style={{ flex: '1 1 200px', maxWidth: '300px', borderRadius: '16px', overflow: 'hidden', background: '#2a2a2a' }}>
+                {item.type === 'video' ? (
+                  <video 
+                    src={item.url} 
+                    controls 
+                    style={{ width: '100%', display: 'block', aspectRatio: '16/10', objectFit: 'cover' }}
+                  />
                 ) : (
-                  <span className="case-emoji">{c.emoji}</span>
+                  <img 
+                    src={item.url} 
+                    alt={`${data.title} - ${index + 1}`} 
+                    style={{ width: '100%', display: 'block', aspectRatio: '16/10', objectFit: 'cover' }}
+                  />
                 )}
-                <span className="case-tag">{c.tag}</span>
-                <h3>{c.title}</h3>
-                <p>{c.desc}</p>
-                <span className="case-link">Подробнее →</span>
-              </a>
+              </div>
             ))}
           </div>
         </div>
-      </section>
+      )}
 
-      <style jsx>{`
-        * {
-          margin: 0;
-          padding: 0;
-          box-sizing: border-box;
-        }
+      <div style={{ marginTop: '40px' }}>
+        <h2 style={{ fontSize: '24px', fontWeight: 600 }}>О проекте</h2>
+        <p style={{ fontSize: '18px', color: '#b0b0b0', lineHeight: 1.7 }}>{data.full}</p>
+      </div>
 
-        .container {
-          max-width: 1100px;
-          margin: 0 auto;
-          padding: 0 30px;
-        }
+      <div style={{ marginTop: '40px' }}>
+        <h2 style={{ fontSize: '24px', fontWeight: 600 }}>Результаты</h2>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginTop: '12px' }}>
+          {data.stats.map((stat, i) => (
+            <div key={i} style={{ background: '#2a2a2a', padding: '16px 20px', borderRadius: '12px', border: `1px solid ${data.color}` }}>
+              <span style={{ fontSize: '18px', fontWeight: 600 }}>{stat}</span>
+            </div>
+          ))}
+        </div>
+      </div>
 
-        .cases-page {
-          padding: 120px 0 100px;
-          background: #121212;
-          min-height: 100vh;
-        }
-
-        h1 {
-          font-size: 64px;
-          font-weight: 700;
-          letter-spacing: -0.03em;
-          color: #ffffff;
-          font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
-        }
-
-        .subtitle {
-          font-size: 20px;
-          color: #b0b0b0;
-          margin-bottom: 48px;
-          font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
-        }
-
-        .cases-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-          gap: 32px;
-        }
-
-        .case-card {
-          padding: 32px 24px;
-          border-radius: 28px;
-          border: 1px solid #2a2a2a;
-          text-decoration: none;
-          color: inherit;
-          transition: all 0.3s ease;
-          display: block;
-        }
-
-        .case-card:hover {
-          transform: translateY(-6px);
-          box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-          border-color: #c4b5a0;
-        }
-
-        .case-emoji {
-          font-size: 44px;
-          display: block;
-          margin-bottom: 12px;
-        }
-
-        .case-logo-thumb {
-          max-width: 80px;
-          height: auto;
-          margin-bottom: 12px;
-          display: block;
-        }
-
-        .case-tag {
-          display: inline-block;
-          background: rgba(255, 255, 255, 0.06);
-          padding: 4px 14px;
-          border-radius: 40px;
-          font-size: 12px;
-          font-weight: 500;
-          color: #b0b0b0;
-          letter-spacing: 0.04em;
-          text-transform: uppercase;
-          margin-bottom: 8px;
-          font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
-        }
-
-        .case-card h3 {
-          font-size: 22px;
-          font-weight: 600;
-          color: #ffffff;
-          margin-bottom: 4px;
-          font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
-        }
-
-        .case-card p {
-          font-size: 16px;
-          color: #b0b0b0;
-          margin-bottom: 16px;
-          font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
-        }
-
-        .case-link {
-          font-weight: 500;
-          color: #c4b5a0;
-          border-bottom: 2px solid #2a2a2a;
-          padding-bottom: 2px;
-          transition: 0.2s;
-          font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
-          font-size: 14px;
-          letter-spacing: 0.02em;
-        }
-
-        .case-link:hover {
-          border-bottom-color: #c4b5a0;
-        }
-
-        @media (max-width: 768px) {
-          .cases-page {
-            padding: 80px 0 60px;
-          }
-          h1 {
-            font-size: 40px;
-          }
-          .cases-grid {
-            grid-template-columns: 1fr;
-          }
-          .subtitle {
-            font-size: 17px;
-          }
-          .case-logo-thumb {
-            max-width: 60px;
-          }
-        }
-      `}</style>
-    </main>
+      <div style={{ marginTop: '60px', padding: '40px 20px', background: '#2a2a2a', borderRadius: '24px', textAlign: 'center' }}>
+        <h3 style={{ fontSize: '28px', fontWeight: 600 }}>Хотите так же?</h3>
+        <p style={{ fontSize: '18px', color: '#b0b0b0', marginBottom: '16px' }}>Расскажите о своём проекте</p>
+        <button 
+          style={{ background: data.color, color: '#fff', padding: '14px 40px', border: 'none', borderRadius: '40px', fontSize: '17px', fontWeight: 600, cursor: 'pointer' }}
+          onClick={() => window.open('https://t.me/lawayasha', '_blank')}
+        >
+          Написать в Telegram
+        </button>
+      </div>
+    </div>
   );
 }
