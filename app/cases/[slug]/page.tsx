@@ -26,6 +26,18 @@ const casesData = {
     ],
     color: 'haki',
   },
+  'deportivo': {
+    title: 'Deportivo',
+    tag: 'Спорт / Lifestyle',
+    description: 'Вирусный контент с 10+ млн просмотров',
+    full: 'Мы создали вирусную кампанию для спортивного бренда Deportivo. Задача — показать энергию и стиль бренда через динамичный контент. Ролики завирусились в TikTok и Instagram, набрав суммарный охват более 10 миллионов просмотров.',
+    stats: ['10+ млн просмотров', '28% рост продаж', '5 дней до вирала'],
+    media: [
+      { type: 'image', url: '/cases/deportivo/screenshot-1.jpg' },
+      { type: 'image', url: '/cases/deportivo/screenshot-2.jpg' },
+    ],
+    color: 'gold',
+  },
   'beauty-story': {
     title: 'Beauty Story',
     tag: 'Косметика',
