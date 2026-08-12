@@ -3,7 +3,7 @@
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Zoom, Thumbs } from 'swiper/modules';
+import { Navigation, Pagination, Zoom } from 'swiper/modules';
 import { useState } from 'react';
 
 // Стили Swiper
@@ -11,7 +11,6 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/zoom';
-import 'swiper/css/thumbs';
 
 // Данные всех кейсов
 const casesData = {
@@ -101,6 +100,7 @@ export default function CasePage() {
   const params = useParams();
   const slug = params.slug as string;
   const data = casesData[slug as keyof typeof casesData];
+  const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
   if (!data) {
     return (
@@ -138,7 +138,7 @@ export default function CasePage() {
             <p className="subtitle">{data.description}</p>
           </div>
 
-          {/* Карусель */}
+          {/* Горизонтальная карусель */}
           {hasMedia && (
             <div className="carousel-wrapper">
               <Swiper
@@ -148,6 +148,7 @@ export default function CasePage() {
                 zoom={{ maxRatio: 3 }}
                 spaceBetween={20}
                 slidesPerView={1}
+                centeredSlides={true}
                 className="case-swiper"
                 style={{ padding: '0 0 50px 0' }}
               >
@@ -275,17 +276,20 @@ export default function CasePage() {
           max-width: 600px;
         }
 
+        /* Карусель */
         .carousel-wrapper {
           margin: 32px 0 48px;
           border-radius: 24px;
           overflow: hidden;
           background: #1a1a1a;
           border: 1px solid #2a2a2a;
+          padding: 20px 0;
         }
 
         .case-swiper {
           width: 100%;
           height: 100%;
+          padding: 0 0 40px 0;
         }
 
         .swiper-zoom-container {
@@ -296,6 +300,8 @@ export default function CasePage() {
           justify-content: center;
           background: #0a0a0a;
           min-height: 400px;
+          border-radius: 16px;
+          overflow: hidden;
         }
 
         .slide-image {
@@ -303,7 +309,8 @@ export default function CasePage() {
           height: auto;
           display: block;
           object-fit: contain;
-          max-height: 600px;
+          max-height: 500px;
+          border-radius: 12px;
         }
 
         .slide-video {
@@ -313,7 +320,41 @@ export default function CasePage() {
           aspect-ratio: 16 / 9;
           object-fit: cover;
           background: #0a0a0a;
-          max-height: 600px;
+          max-height: 500px;
+          border-radius: 12px;
+        }
+
+        /* Стрелки навигации */
+        .case-swiper :global(.swiper-button-next),
+        .case-swiper :global(.swiper-button-prev) {
+          color: #c4b5a0;
+          background: rgba(0,0,0,0.5);
+          width: 44px;
+          height: 44px;
+          border-radius: 50%;
+          transition: all 0.3s ease;
+        }
+
+        .case-swiper :global(.swiper-button-next:hover),
+        .case-swiper :global(.swiper-button-prev:hover) {
+          background: rgba(196, 181, 160, 0.3);
+        }
+
+        .case-swiper :global(.swiper-button-next::after),
+        .case-swiper :global(.swiper-button-prev::after) {
+          font-size: 18px;
+          font-weight: bold;
+        }
+
+        /* Точки пагинации */
+        .case-swiper :global(.swiper-pagination-bullet) {
+          background: #b0b0b0;
+          opacity: 0.4;
+        }
+
+        .case-swiper :global(.swiper-pagination-bullet-active) {
+          background: #c4b5a0;
+          opacity: 1;
         }
 
         .description-block {
@@ -436,6 +477,10 @@ export default function CasePage() {
 
           .slide-video {
             max-height: 350px;
+          }
+
+          .carousel-wrapper {
+            padding: 10px 0;
           }
         }
       `}</style>
