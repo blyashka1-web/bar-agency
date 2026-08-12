@@ -1,21 +1,26 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #121212;
+  --foreground: #ffffff;
+  --accent-haki: #c4b5a0;
+  --accent-burgundy: #7a2e2a;
+  --accent-gold: #d4af37;
+  --text-secondary: #b0b0b0;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  color: var(--foreground);
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', sans-serif;
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--foreground);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 html, body {
@@ -38,3 +43,11 @@ main {
     transform: translateY(0);
   }
 }
+
+/* ГЛОБАЛЬНЫЕ КЛАССЫ ДЛЯ ЦВЕТОВ */
+.text-haki { color: #c4b5a0; }
+.text-burgundy { color: #7a2e2a; }
+.text-gold { color: #d4af37; }
+.bg-haki { background: #c4b5a0; }
+.bg-burgundy { background: #7a2e2a; }
+.bg-gold { background: #d4af37; }
