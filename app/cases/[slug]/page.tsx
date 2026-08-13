@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 export default function CasePage() {
   const params = useParams();
@@ -32,13 +32,11 @@ export default function CasePage() {
     document.body.style.overflow = 'auto';
   };
 
-  // --- СТРАНИЦА YANDEX-FOOD ---
+  // --- YANDEX-FOOD ---
   if (slug === 'yandex-food') {
     return (
       <div style={{ padding: '40px 20px', background: '#121212', color: '#fff', minHeight: '100vh' }}>
-        <Link href="/cases" style={{ color: '#c4b5a0', textDecoration: 'none' }}>
-          ← Все кейсы
-        </Link>
+        <Link href="/cases" style={{ color: '#c4b5a0', textDecoration: 'none' }}>← Все кейсы</Link>
 
         <div style={{ marginTop: '40px' }}>
           <span style={{ display: 'inline-block', background: '#c4b5a0', color: '#fff', padding: '4px 16px', borderRadius: '40px', fontSize: '13px', fontWeight: 600 }}>
@@ -114,7 +112,7 @@ export default function CasePage() {
     );
   }
 
-  // --- DEPORTIVO (С ДВУМЯ СТАТЬЯМИ) ---
+  // --- DEPORTIVO ---
   if (slug === 'deportivo') {
     const articles = [
       {
@@ -129,9 +127,7 @@ export default function CasePage() {
 
     return (
       <div style={{ padding: '40px 20px', background: '#121212', color: '#fff', minHeight: '100vh' }}>
-        <Link href="/cases" style={{ color: '#c4b5a0', textDecoration: 'none' }}>
-          ← Все кейсы
-        </Link>
+        <Link href="/cases" style={{ color: '#c4b5a0', textDecoration: 'none' }}>← Все кейсы</Link>
 
         <div style={{ marginTop: '40px' }}>
           <span style={{ display: 'inline-block', background: '#d4af37', color: '#fff', padding: '4px 16px', borderRadius: '40px', fontSize: '13px', fontWeight: 600 }}>
@@ -171,21 +167,16 @@ export default function CasePage() {
         <div style={{ marginTop: '48px' }}>
           <h2 style={{ fontSize: '24px', fontWeight: 600, marginBottom: '16px' }}>📰 Репортажи о клубе</h2>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px' }}>
-            <img
-              src="/cases/deportivo/screenshot-1.jpg"
-              alt="скрин"
+            <video
+              src="/cases/deportivo/video.mp4"
+              controls
               style={{
                 width: '200px',
                 height: '125px',
                 borderRadius: '12px',
                 border: '1px solid #2a2a2a',
-                cursor: 'pointer',
                 objectFit: 'cover',
-                transition: 'transform 0.2s',
               }}
-              onClick={() => window.open(articles[0].url, '_blank')}
-              onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.05)')}
-              onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
             />
           </div>
         </div>
