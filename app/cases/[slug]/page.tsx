@@ -112,7 +112,7 @@ export default function CasePage() {
     );
   }
 
-  // --- DEPORTIVO (С ТРЕМЯ ВИДЕО) ---
+  // --- DEPORTIVO (С ТРЕМЯ СТАТЬЯМИ И ТРЕМЯ ВИДЕО) ---
   if (slug === 'deportivo') {
     const articles = [
       {
@@ -122,6 +122,10 @@ export default function CasePage() {
       {
         title: 'Deportivo Moscú — история клуба на CNN',
         url: 'https://cnnespanol.cnn.com/2025/08/07/argentina/video/club-rusos-argentina-moscu-cafe-tv',
+      },
+      {
+        title: 'Под своим флагом. Как российский футбол покоряет Аргентину',
+        url: 'https://tass.ru/sport/25485173',
       },
     ];
 
