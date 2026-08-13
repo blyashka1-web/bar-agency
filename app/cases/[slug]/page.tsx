@@ -64,13 +64,31 @@ export default function CasePage() {
           <p style={{ fontSize: '20px', color: '#b0b0b0' }}>Вирусный ролик с суммарным охватом 50+ млн</p>
         </div>
 
+        {/* ВИДЕО — отдельно, но не на весь экран */}
         <div style={{ marginTop: '40px' }}>
           <h2 style={{ fontSize: '24px', fontWeight: 600 }}>🎬 Вирусный видеоролик</h2>
-          <div style={{ borderRadius: '16px', overflow: 'hidden', background: '#0a0a0a', maxWidth: '600px', border: '1px solid #2a2a2a' }}>
-            <video src="/cases/yandex-food/video.mp4" controls style={{ width: '100%', display: 'block' }} autoPlay={false} />
+          <div style={{
+            borderRadius: '16px',
+            overflow: 'hidden',
+            background: '#0a0a0a',
+            maxWidth: '400px',
+            border: '1px solid #2a2a2a',
+          }}>
+            <video
+              src="/cases/yandex-food/video.mp4"
+              controls
+              style={{
+                width: '100%',
+                display: 'block',
+                aspectRatio: '16/9',
+                objectFit: 'cover',
+              }}
+              autoPlay={false}
+            />
           </div>
         </div>
 
+        {/* СКРИНЫ — горизонтально */}
         <div style={{ marginTop: '48px' }}>
           <h2 style={{ fontSize: '24px', fontWeight: 600 }}>📢 Репосты в крупных сообществах</h2>
           <div style={{
@@ -87,8 +105,8 @@ export default function CasePage() {
                   src={url}
                   alt={'скрин ' + (i + 1)}
                   style={{
-                    width: '160px',
-                    height: '100px',
+                    width: '200px',
+                    height: '125px',
                     borderRadius: '12px',
                     border: '1px solid #2a2a2a',
                     cursor: 'pointer',
