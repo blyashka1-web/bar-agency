@@ -94,6 +94,7 @@ export default function CasePage() {
                 background: '#0a0a0a',
                 aspectRatio: '16/10',
                 cursor: 'pointer',
+                flexShrink: 0,
               }}
               onClick={() => {
                 const video = document.getElementById('yandex-video') as HTMLVideoElement | null;
@@ -162,6 +163,7 @@ export default function CasePage() {
                   cursor: 'pointer',
                   transition: 'transform 0.2s',
                   objectFit: 'cover',
+                  flexShrink: 0,
                 }}
                 onClick={() => openLightbox(i)}
                 onMouseEnter={(e) =>
@@ -173,6 +175,9 @@ export default function CasePage() {
               />
             ))}
           </div>
+          <p style={{ fontSize: '14px', color: '#888', marginTop: '12px' }}>
+            📢 Репосты в крупных сообществах
+          </p>
         </div>
 
         {isOpen && (
@@ -382,26 +387,32 @@ export default function CasePage() {
           <h2 style={{ fontSize: '24px', fontWeight: 600, marginBottom: '16px' }}>
             📢 Репосты в крупных сообществах
           </h2>
-          <img
-            src="/cases/deportivo/screenshot-1.jpg"
-            alt="скрин"
-            style={{
-              width: '200px',
-              height: '125px',
-              borderRadius: '12px',
-              border: '1px solid #2a2a2a',
-              cursor: 'pointer',
-              transition: 'transform 0.2s',
-              objectFit: 'cover',
-            }}
-            onClick={() => window.open(articleUrl, '_blank')}
-            onMouseEnter={(e) =>
-              (e.currentTarget.style.transform = 'scale(1.05)')
-            }
-            onMouseLeave={(e) =>
-              (e.currentTarget.style.transform = 'scale(1)')
-            }
-          />
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px' }}>
+            <img
+              src="/cases/deportivo/screenshot-1.jpg"
+              alt="скрин"
+              style={{
+                width: '200px',
+                height: '125px',
+                borderRadius: '12px',
+                border: '1px solid #2a2a2a',
+                cursor: 'pointer',
+                transition: 'transform 0.2s',
+                objectFit: 'cover',
+                flexShrink: 0,
+              }}
+              onClick={() => window.open(articleUrl, '_blank')}
+              onMouseEnter={(e) =>
+                (e.currentTarget.style.transform = 'scale(1.05)')
+              }
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.transform = 'scale(1)')
+              }
+            />
+          </div>
+          <p style={{ fontSize: '14px', color: '#888', marginTop: '12px' }}>
+            📢 Репосты в крупных сообществах
+          </p>
         </div>
       </div>
     );
