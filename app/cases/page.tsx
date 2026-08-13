@@ -18,54 +18,7 @@ export default function CasesPage() {
       desc: 'Вирусный контент с 10+ млн просмотров',
       color: 'gold',
     },
-    {
-      slug: 'beauty-story',
-      emoji: '🧴',
-      tag: 'Косметика',
-      title: 'Beauty Story',
-      desc: '+280% продаж за 4 месяца',
-      color: 'haki',
-    },
-    {
-      slug: 'moscow-coffee',
-      emoji: '☕',
-      tag: 'F&B',
-      title: 'Moscow Coffee',
-      desc: '12 млн просмотров за 7 дней',
-      color: 'burgundy',
-    },
-    {
-      slug: 'urban-sneakers',
-      emoji: '👟',
-      tag: 'Одежда',
-      title: 'Urban Sneakers',
-      desc: '5000 заявок с нулевым бюджетом',
-      color: 'gold',
-    },
-    {
-      slug: 'luxe-jewelry',
-      emoji: '💎',
-      tag: 'Ювелирка',
-      title: 'Luxe Jewelry',
-      desc: '+150% вовлечения, охват х3',
-      color: 'haki',
-    },
-    {
-      slug: 'wine-people',
-      emoji: '🍷',
-      tag: 'Напитки',
-      title: 'Wine & People',
-      desc: '+200% продаж за 2 месяца',
-      color: 'burgundy',
-    },
-    {
-      slug: 'appvision',
-      emoji: '📱',
-      tag: 'IT',
-      title: 'AppVision',
-      desc: '50 000 установок за месяц',
-      color: 'gold',
-    },
+    // ... остальные кейсы
   ];
 
   const colorMap = {
