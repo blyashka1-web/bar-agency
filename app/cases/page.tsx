@@ -179,7 +179,7 @@ export default function CasePage() {
               }}
             />
             <video
-              src="/cases/deportivo/video-2.mp4"
+              src="/cases/deportivo/video-2-compressed.mp4"
               controls
               style={{
                 width: '200px',

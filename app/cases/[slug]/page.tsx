@@ -168,7 +168,18 @@ export default function CasePage() {
           <h2 style={{ fontSize: '24px', fontWeight: 600, marginBottom: '16px' }}>📰 Репортажи о клубе</h2>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px' }}>
             <video
-              src="/cases/deportivo/video.mp4"
+              src="/cases/deportivo/video-1.mp4"
+              controls
+              style={{
+                width: '200px',
+                height: '125px',
+                borderRadius: '12px',
+                border: '1px solid #2a2a2a',
+                objectFit: 'cover',
+              }}
+            />
+            <video
+              src="/cases/deportivo/video-2-compressed.mp4"
               controls
               style={{
                 width: '200px',
