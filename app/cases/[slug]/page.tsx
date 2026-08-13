@@ -122,8 +122,8 @@ export default function CasePage() {
         url: 'https://www.ole.com.ar/informacion-general/anton-nefedechev-primer-gol-ruso-argentina-deportivo-moscu-liga-escobarense_0_APpXWb03bh.html',
       },
       {
-        title: 'Deportivo в СМИ — публикация на CNN',
-        url: 'https://example.com/ваша-ссылка-cnn',
+        title: 'Deportivo Moscú — история клуба на CNN',
+        url: 'https://cnnespanol.cnn.com/2025/08/07/argentina/video/club-rusos-argentina-moscu-cafe-tv',
       },
     ];
 
