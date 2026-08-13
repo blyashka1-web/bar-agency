@@ -169,7 +169,7 @@ export default function CasePage() {
         </div>
 
         <div style={{ marginTop: '48px' }}>
-          <h2 style={{ fontSize: '24px', fontWeight: 600, marginBottom: '16px' }}>📢 Репосты в крупных сообществах</h2>
+          <h2 style={{ fontSize: '24px', fontWeight: 600, marginBottom: '16px' }}>📰 Репортажи о клубе</h2>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px' }}>
             <img
               src="/cases/deportivo/screenshot-1.jpg"
