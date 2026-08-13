@@ -64,7 +64,6 @@ export default function CasePage() {
           <p style={{ fontSize: '20px', color: '#b0b0b0' }}>Вирусный ролик с суммарным охватом 50+ млн</p>
         </div>
 
-        {/* ВИДЕО — отдельно, но не на весь экран */}
         <div style={{ marginTop: '40px' }}>
           <h2 style={{ fontSize: '24px', fontWeight: 600 }}>🎬 Вирусный видеоролик</h2>
           <div style={{
@@ -88,7 +87,6 @@ export default function CasePage() {
           </div>
         </div>
 
-        {/* СКРИНЫ — горизонтально */}
         <div style={{ marginTop: '48px' }}>
           <h2 style={{ fontSize: '24px', fontWeight: 600 }}>📢 Репосты в крупных сообществах</h2>
           <div style={{
@@ -320,43 +318,59 @@ export default function CasePage() {
 
         <div style={{ marginTop: '48px' }}>
           <h2 style={{ fontSize: '24px', fontWeight: 600, marginBottom: '16px' }}>📰 Репортажи о клубе</h2>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px' }}>
-            <video
-              src="/cases/deportivo/video-1.mp4"
-              controls
-              style={{
-                width: '200px',
-                height: '125px',
-                borderRadius: '12px',
-                border: '1px solid #2a2a2a',
-                objectFit: 'cover',
-                background: '#0a0a0a',
-              }}
-            />
-            <video
-              src="/cases/deportivo/video-2-compressed.mp4"
-              controls
-              style={{
-                width: '200px',
-                height: '125px',
-                borderRadius: '12px',
-                border: '1px solid #2a2a2a',
-                objectFit: 'cover',
-                background: '#0a0a0a',
-              }}
-            />
-            <video
-              src="/cases/deportivo/video-3.mp4"
-              controls
-              style={{
-                width: '200px',
-                height: '125px',
-                borderRadius: '12px',
-                border: '1px solid #2a2a2a',
-                objectFit: 'cover',
-                background: '#0a0a0a',
-              }}
-            />
+          <div style={{
+            display: 'flex',
+            flexWrap: 'nowrap',
+            gap: '12px',
+            overflowX: 'auto',
+            paddingBottom: '8px',
+            WebkitOverflowScrolling: 'touch',
+          }}>
+            <div style={{ flex: '0 0 auto' }}>
+              <video
+                src="/cases/deportivo/video-1.mp4"
+                controls
+                style={{
+                  width: '200px',
+                  height: '125px',
+                  borderRadius: '12px',
+                  border: '1px solid #2a2a2a',
+                  objectFit: 'cover',
+                  background: '#0a0a0a',
+                  display: 'block',
+                }}
+              />
+            </div>
+            <div style={{ flex: '0 0 auto' }}>
+              <video
+                src="/cases/deportivo/video-2-compressed.mp4"
+                controls
+                style={{
+                  width: '200px',
+                  height: '125px',
+                  borderRadius: '12px',
+                  border: '1px solid #2a2a2a',
+                  objectFit: 'cover',
+                  background: '#0a0a0a',
+                  display: 'block',
+                }}
+              />
+            </div>
+            <div style={{ flex: '0 0 auto' }}>
+              <video
+                src="/cases/deportivo/video-3.mp4"
+                controls
+                style={{
+                  width: '200px',
+                  height: '125px',
+                  borderRadius: '12px',
+                  border: '1px solid #2a2a2a',
+                  objectFit: 'cover',
+                  background: '#0a0a0a',
+                  display: 'block',
+                }}
+              />
+            </div>
           </div>
         </div>
       </div>
