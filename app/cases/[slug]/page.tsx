@@ -176,6 +176,7 @@ export default function CasePage() {
                 borderRadius: '12px',
                 border: '1px solid #2a2a2a',
                 objectFit: 'cover',
+                background: '#0a0a0a',
               }}
             />
             <video
@@ -187,6 +188,7 @@ export default function CasePage() {
                 borderRadius: '12px',
                 border: '1px solid #2a2a2a',
                 objectFit: 'cover',
+                background: '#0a0a0a',
               }}
             />
           </div>
