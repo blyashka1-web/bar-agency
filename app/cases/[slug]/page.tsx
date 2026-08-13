@@ -138,7 +138,7 @@ export default function CasePage() {
             Спорт / Lifestyle
           </span>
           <h1 style={{ fontSize: '48px', marginTop: '12px', marginBottom: '8px' }}>DEPORTIVO MOSCÚ</h1>
-          <p style={{ fontSize: '20px', color: '#b0b0b0' }}>Вирусный контент с 10+ млн просмотров</p>
+          <p style={{ fontSize: '20px', color: '#b0b0b0' }}>Российский футбольный клуб в Аргентине</p>
         </div>
 
         <div style={{ marginTop: '40px' }}>
