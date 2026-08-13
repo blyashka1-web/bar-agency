@@ -73,23 +73,31 @@ export default function CasePage() {
 
         <div style={{ marginTop: '48px' }}>
           <h2 style={{ fontSize: '24px', fontWeight: 600 }}>📢 Репосты в крупных сообществах</h2>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px' }}>
+          <div style={{
+            display: 'flex',
+            flexWrap: 'nowrap',
+            gap: '12px',
+            overflowX: 'auto',
+            paddingBottom: '8px',
+            WebkitOverflowScrolling: 'touch',
+          }}>
             {yandexImages.map((url, i) => (
-              <img
-                key={i}
-                src={url}
-                alt={'скрин ' + (i + 1)}
-                style={{
-                  width: '200px',
-                  height: '125px',
-                  borderRadius: '12px',
-                  border: '1px solid #2a2a2a',
-                  cursor: 'pointer',
-                  objectFit: 'cover',
-                  flexShrink: 0,
-                }}
-                onClick={() => openLightbox(i)}
-              />
+              <div key={i} style={{ flex: '0 0 auto' }}>
+                <img
+                  src={url}
+                  alt={'скрин ' + (i + 1)}
+                  style={{
+                    width: '160px',
+                    height: '100px',
+                    borderRadius: '12px',
+                    border: '1px solid #2a2a2a',
+                    cursor: 'pointer',
+                    objectFit: 'cover',
+                    display: 'block',
+                  }}
+                  onClick={() => openLightbox(i)}
+                />
+              </div>
             ))}
           </div>
         </div>
