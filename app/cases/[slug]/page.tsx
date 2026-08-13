@@ -1,224 +1,242 @@
 'use client';
 
-import Link from 'next/link';
-import { useParams } from 'next/navigation';
-import { useState, useEffect } from 'react';
-
-export default function CasePage() {
-  const params = useParams();
-  const slug = params.slug;
-
-  const [isOpen, setIsOpen] = useState(false);
-  const [currentImage, setCurrentImage] = useState('');
-
-  const yandexImages = [
-    '/cases/yandex-food/screenshot-1.jpg',
-    '/cases/yandex-food/screenshot-2.jpg',
-    '/cases/yandex-food/screenshot-3.jpg',
-    '/cases/yandex-food/screenshot-4.jpg',
-    '/cases/yandex-food/screenshot-5.jpg',
-    '/cases/yandex-food/screenshot-6.jpg',
+export default function CasesPage() {
+  const cases = [
+    {
+      slug: 'yandex-food',
+      logo: '/cases/yandex-food/logo.png',
+      tag: 'Вирусный контент',
+      title: 'Яндекс Еда',
+      desc: 'Вирусный ролик с суммарным охватом 50+ млн',
+      color: 'haki',
+    },
+    {
+      slug: 'deportivo',
+      emoji: '⚽',
+      tag: 'Спорт / Lifestyle',
+      title: 'Deportivo',
+      desc: 'Вирусный контент с 10+ млн просмотров',
+      color: 'gold',
+    },
+    {
+      slug: 'deportivo-cnn',
+      emoji: '📰',
+      tag: 'Спорт / СМИ',
+      title: 'Deportivo в СМИ',
+      desc: 'Публикации в крупных мировых СМИ',
+      color: 'gold',
+    },
+    {
+      slug: 'beauty-story',
+      emoji: '🧴',
+      tag: 'Косметика',
+      title: 'Beauty Story',
+      desc: '+280% продаж за 4 месяца',
+      color: 'haki',
+    },
+    {
+      slug: 'moscow-coffee',
+      emoji: '☕',
+      tag: 'F&B',
+      title: 'Moscow Coffee',
+      desc: '12 млн просмотров за 7 дней',
+      color: 'burgundy',
+    },
+    {
+      slug: 'urban-sneakers',
+      emoji: '👟',
+      tag: 'Одежда',
+      title: 'Urban Sneakers',
+      desc: '5000 заявок с нулевым бюджетом',
+      color: 'gold',
+    },
+    {
+      slug: 'luxe-jewelry',
+      emoji: '💎',
+      tag: 'Ювелирка',
+      title: 'Luxe Jewelry',
+      desc: '+150% вовлечения, охват х3',
+      color: 'haki',
+    },
+    {
+      slug: 'wine-people',
+      emoji: '🍷',
+      tag: 'Напитки',
+      title: 'Wine & People',
+      desc: '+200% продаж за 2 месяца',
+      color: 'burgundy',
+    },
+    {
+      slug: 'appvision',
+      emoji: '📱',
+      tag: 'IT',
+      title: 'AppVision',
+      desc: '50 000 установок за месяц',
+      color: 'gold',
+    },
   ];
 
-  const openLightbox = (url) => {
-    setCurrentImage(url);
-    setIsOpen(true);
-    document.body.style.overflow = 'hidden';
+  const colorMap = {
+    haki: 'linear-gradient(145deg, #2a2a2a, #1a1a1a)',
+    burgundy: 'linear-gradient(145deg, #2a1a1a, #1a0a0a)',
+    gold: 'linear-gradient(145deg, #2a2a1a, #1a1a0a)',
   };
 
-  const closeLightbox = () => {
-    setIsOpen(false);
-    setCurrentImage('');
-    document.body.style.overflow = 'auto';
-  };
-
-  // --- СТРАНИЦА YANDEX-FOOD ---
-  if (slug === 'yandex-food') {
-    return (
-      <div style={{ padding: '40px 20px', background: '#121212', color: '#fff', minHeight: '100vh' }}>
-        <Link href="/cases" style={{ color: '#c4b5a0', textDecoration: 'none' }}>
-          ← Все кейсы
-        </Link>
-
-        <div style={{ marginTop: '40px' }}>
-          <span style={{ display: 'inline-block', background: '#c4b5a0', color: '#fff', padding: '4px 16px', borderRadius: '40px', fontSize: '13px', fontWeight: 600 }}>
-            Вирусный контент
-          </span>
-          <h1 style={{ fontSize: '48px', marginTop: '12px', marginBottom: '8px' }}>Яндекс Еда</h1>
-          <p style={{ fontSize: '20px', color: '#b0b0b0' }}>Вирусный ролик с суммарным охватом 50+ млн</p>
-        </div>
-
-        <div style={{ marginTop: '40px' }}>
-          <h2 style={{ fontSize: '24px', fontWeight: 600 }}>🎬 Вирусный видеоролик</h2>
-          <div style={{ borderRadius: '16px', overflow: 'hidden', background: '#0a0a0a', maxWidth: '600px', border: '1px solid #2a2a2a' }}>
-            <video src="/cases/yandex-food/video.mp4" controls style={{ width: '100%', display: 'block' }} autoPlay={false} />
-          </div>
-        </div>
-
-        <div style={{ marginTop: '48px' }}>
-          <h2 style={{ fontSize: '24px', fontWeight: 600 }}>📢 Репосты в крупных сообществах</h2>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px' }}>
-            {yandexImages.map((url, i) => (
-              <img
-                key={i}
-                src={url}
-                alt={'скрин ' + (i + 1)}
-                style={{ width: '200px', height: '125px', borderRadius: '12px', border: '1px solid #2a2a2a', cursor: 'pointer', objectFit: 'cover' }}
-                onClick={() => openLightbox(url)}
-              />
+  return (
+    <main>
+      <section className="cases-page">
+        <div className="container">
+          <h1>Кейсы</h1>
+          <p className="subtitle">Все проекты, которыми мы гордимся</p>
+          <div className="cases-grid">
+            {cases.map((c) => (
+              <a href={`/cases/${c.slug}`} key={c.slug} className="case-card" style={{ background: colorMap[c.color as keyof typeof colorMap] }}>
+                {c.logo ? (
+                  <img src={c.logo} alt={c.title} className="case-logo-thumb" />
+                ) : (
+                  <span className="case-emoji">{c.emoji}</span>
+                )}
+                <span className="case-tag">{c.tag}</span>
+                <h3>{c.title}</h3>
+                <p>{c.desc}</p>
+                <span className="case-link">Подробнее →</span>
+              </a>
             ))}
           </div>
         </div>
+      </section>
 
-        {isOpen && (
-          <div
-            style={{
-              position: 'fixed',
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
-              background: 'rgba(0,0,0,0.92)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              zIndex: 9999,
-              padding: '20px',
-            }}
-            onClick={closeLightbox}
-          >
-            <div style={{ position: 'relative', maxWidth: '95vw', maxHeight: '95vh' }} onClick={(e) => e.stopPropagation()}>
-              <button
-                onClick={closeLightbox}
-                style={{
-                  position: 'absolute',
-                  top: '10px',
-                  right: '10px',
-                  background: 'rgba(0,0,0,0.5)',
-                  border: 'none',
-                  color: '#fff',
-                  fontSize: '30px',
-                  cursor: 'pointer',
-                  padding: '10px 16px',
-                  borderRadius: '50%',
-                  zIndex: 10,
-                }}
-              >
-                ✕
-              </button>
-              <img src={currentImage} alt="скриншот" style={{ maxWidth: '90vw', maxHeight: '85vh', borderRadius: '12px', objectFit: 'contain' }} />
-            </div>
-          </div>
-        )}
-      </div>
-    );
-  }
+      <style jsx>{`
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
 
-  // --- DEPORTIVO (ПЕРВЫЙ КЕЙС) ---
-  if (slug === 'deportivo') {
-    const articleUrl = 'https://www.ole.com.ar/informacion-general/anton-nefedechev-primer-gol-ruso-argentina-deportivo-moscu-liga-escobarense_0_APpXWb03bh.html';
-    return (
-      <div style={{ padding: '40px 20px', background: '#121212', color: '#fff', minHeight: '100vh' }}>
-        <Link href="/cases" style={{ color: '#c4b5a0', textDecoration: 'none' }}>
-          ← Все кейсы
-        </Link>
+        .container {
+          max-width: 1100px;
+          margin: 0 auto;
+          padding: 0 30px;
+        }
 
-        <div style={{ marginTop: '40px' }}>
-          <span style={{ display: 'inline-block', background: '#d4af37', color: '#fff', padding: '4px 16px', borderRadius: '40px', fontSize: '13px', fontWeight: 600 }}>
-            Спорт / Lifestyle
-          </span>
-          <h1 style={{ fontSize: '48px', marginTop: '12px', marginBottom: '8px' }}>Deportivo</h1>
-          <p style={{ fontSize: '20px', color: '#b0b0b0' }}>Вирусный контент с 10+ млн просмотров</p>
-        </div>
+        .cases-page {
+          padding: 120px 0 100px;
+          background: #121212;
+          min-height: 100vh;
+        }
 
-        <div style={{ marginTop: '40px' }}>
-          <h2 style={{ fontSize: '24px', fontWeight: 600 }}>📰 Статья</h2>
-          <a
-            href={articleUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              display: 'block',
-              padding: '16px 20px',
-              background: '#2a2a2a',
-              borderRadius: '12px',
-              border: '1px solid #d4af37',
-              color: '#fff',
-              textDecoration: 'none',
-            }}
-          >
-            Антон Нефедечев — первый русский гол в Аргентине
-          </a>
-        </div>
+        h1 {
+          font-size: 64px;
+          font-weight: 700;
+          letter-spacing: -0.03em;
+          color: #ffffff;
+          font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
+        }
 
-        <div style={{ marginTop: '48px' }}>
-          <h2 style={{ fontSize: '24px', fontWeight: 600 }}>📢 Репосты в крупных сообществах</h2>
-          <img
-            src="/cases/deportivo/screenshot-1.jpg"
-            alt="скрин"
-            style={{ width: '200px', height: '125px', borderRadius: '12px', border: '1px solid #2a2a2a', cursor: 'pointer', objectFit: 'cover' }}
-            onClick={() => window.open(articleUrl, '_blank')}
-          />
-        </div>
-      </div>
-    );
-  }
+        .subtitle {
+          font-size: 20px;
+          color: #b0b0b0;
+          margin-bottom: 48px;
+          font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
+        }
 
-  // --- DEPORTIVO-CNN ---
-  if (slug === 'deportivo-cnn') {
-    const articleUrl = 'https://example.com/ваша-ссылка';
-    return (
-      <div style={{ padding: '40px 20px', background: '#121212', color: '#fff', minHeight: '100vh' }}>
-        <Link href="/cases" style={{ color: '#c4b5a0', textDecoration: 'none' }}>
-          ← Все кейсы
-        </Link>
+        .cases-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+          gap: 32px;
+        }
 
-        <div style={{ marginTop: '40px' }}>
-          <span style={{ display: 'inline-block', background: '#d4af37', color: '#fff', padding: '4px 16px', borderRadius: '40px', fontSize: '13px', fontWeight: 600 }}>
-            Спорт / СМИ
-          </span>
-          <h1 style={{ fontSize: '48px', marginTop: '12px', marginBottom: '8px' }}>Deportivo в СМИ</h1>
-          <p style={{ fontSize: '20px', color: '#b0b0b0' }}>Публикации о Deportivo в крупных мировых СМИ</p>
-        </div>
+        .case-card {
+          padding: 32px 24px;
+          border-radius: 28px;
+          border: 1px solid #2a2a2a;
+          text-decoration: none;
+          color: inherit;
+          transition: all 0.3s ease;
+          display: block;
+        }
 
-        <div style={{ marginTop: '40px' }}>
-          <h2 style={{ fontSize: '24px', fontWeight: 600 }}>📰 Статья</h2>
-          <a
-            href={articleUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              display: 'block',
-              padding: '16px 20px',
-              background: '#2a2a2a',
-              borderRadius: '12px',
-              border: '1px solid #d4af37',
-              color: '#fff',
-              textDecoration: 'none',
-            }}
-          >
-            Публикация на CNN
-          </a>
-        </div>
+        .case-card:hover {
+          transform: translateY(-6px);
+          box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+          border-color: #c4b5a0;
+        }
 
-        <div style={{ marginTop: '48px' }}>
-          <h2 style={{ fontSize: '24px', fontWeight: 600 }}>📢 Репосты в крупных сообществах</h2>
-          <img
-            src="/cases/deportivo-cnn/screenshot-1.jpg"
-            alt="скрин"
-            style={{ width: '200px', height: '125px', borderRadius: '12px', border: '1px solid #2a2a2a', cursor: 'pointer', objectFit: 'cover' }}
-            onClick={() => window.open(articleUrl, '_blank')}
-          />
-        </div>
-      </div>
-    );
-  }
+        .case-emoji {
+          font-size: 44px;
+          display: block;
+          margin-bottom: 12px;
+        }
 
-  // --- КЕЙС НЕ НАЙДЕН ---
-  return (
-    <div style={{ padding: '40px', background: '#121212', color: '#fff' }}>
-      <h1>Кейс не найден</h1>
-      <Link href="/cases" style={{ color: '#c4b5a0' }}>← Вернуться</Link>
-    </div>
+        .case-logo-thumb {
+          max-width: 80px;
+          height: auto;
+          margin-bottom: 12px;
+          display: block;
+        }
+
+        .case-tag {
+          display: inline-block;
+          background: rgba(255, 255, 255, 0.06);
+          padding: 4px 14px;
+          border-radius: 40px;
+          font-size: 12px;
+          font-weight: 500;
+          color: #b0b0b0;
+          letter-spacing: 0.04em;
+          text-transform: uppercase;
+          margin-bottom: 8px;
+          font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
+        }
+
+        .case-card h3 {
+          font-size: 22px;
+          font-weight: 600;
+          color: #ffffff;
+          margin-bottom: 4px;
+          font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
+        }
+
+        .case-card p {
+          font-size: 16px;
+          color: #b0b0b0;
+          margin-bottom: 16px;
+          font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
+        }
+
+        .case-link {
+          font-weight: 500;
+          color: #c4b5a0;
+          border-bottom: 2px solid #2a2a2a;
+          padding-bottom: 2px;
+          transition: 0.2s;
+          font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          letter-spacing: 0.02em;
+        }
+
+        .case-link:hover {
+          border-bottom-color: #c4b5a0;
+        }
+
+        @media (max-width: 768px) {
+          .cases-page {
+            padding: 80px 0 60px;
+          }
+          h1 {
+            font-size: 40px;
+          }
+          .cases-grid {
+            grid-template-columns: 1fr;
+          }
+          .subtitle {
+            font-size: 17px;
+          }
+          .case-logo-thumb {
+            max-width: 60px;
+          }
+        }
+      `}</style>
+    </main>
   );
 }
