@@ -2,14 +2,14 @@
 
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function CasePage() {
   const params = useParams();
   const slug = params.slug;
 
   const [isOpen, setIsOpen] = useState(false);
-  const [currentImage, setCurrentImage] = useState('');
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   const yandexImages = [
     '/cases/yandex-food/screenshot-1.jpg',
@@ -20,17 +20,35 @@ export default function CasePage() {
     '/cases/yandex-food/screenshot-6.jpg',
   ];
 
-  const openLightbox = (url) => {
-    setCurrentImage(url);
+  const openLightbox = (index) => {
+    setCurrentIndex(index);
     setIsOpen(true);
     document.body.style.overflow = 'hidden';
   };
 
   const closeLightbox = () => {
     setIsOpen(false);
-    setCurrentImage('');
     document.body.style.overflow = 'auto';
   };
+
+  const goToPrev = () => {
+    setCurrentIndex((prev) => (prev === 0 ? yandexImages.length - 1 : prev - 1));
+  };
+
+  const goToNext = () => {
+    setCurrentIndex((prev) => (prev === yandexImages.length - 1 ? 0 : prev + 1));
+  };
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (!isOpen) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') goToPrev();
+      if (e.key === 'ArrowRight') goToNext();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen]);
 
   // --- YANDEX-FOOD ---
   if (slug === 'yandex-food') {
@@ -61,8 +79,16 @@ export default function CasePage() {
                 key={i}
                 src={url}
                 alt={'скрин ' + (i + 1)}
-                style={{ width: '200px', height: '125px', borderRadius: '12px', border: '1px solid #2a2a2a', cursor: 'pointer', objectFit: 'cover' }}
-                onClick={() => openLightbox(url)}
+                style={{
+                  width: '200px',
+                  height: '125px',
+                  borderRadius: '12px',
+                  border: '1px solid #2a2a2a',
+                  cursor: 'pointer',
+                  objectFit: 'cover',
+                  flexShrink: 0,
+                }}
+                onClick={() => openLightbox(i)}
               />
             ))}
           </div>
@@ -77,6 +103,7 @@ export default function CasePage() {
               right: 0,
               bottom: 0,
               background: 'rgba(0,0,0,0.92)',
+              backdropFilter: 'blur(12px)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -85,7 +112,17 @@ export default function CasePage() {
             }}
             onClick={closeLightbox}
           >
-            <div style={{ position: 'relative', maxWidth: '95vw', maxHeight: '95vh' }} onClick={(e) => e.stopPropagation()}>
+            <div
+              style={{
+                position: 'relative',
+                maxWidth: '95vw',
+                maxHeight: '95vh',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+              onClick={(e) => e.stopPropagation()}
+            >
               <button
                 onClick={closeLightbox}
                 style={{
@@ -104,7 +141,94 @@ export default function CasePage() {
               >
                 ✕
               </button>
-              <img src={currentImage} alt="скриншот" style={{ maxWidth: '90vw', maxHeight: '85vh', borderRadius: '12px', objectFit: 'contain' }} />
+
+              <div
+                style={{
+                  position: 'absolute',
+                  bottom: '-40px',
+                  left: '50%',
+                  transform: 'translateX(-50%)',
+                  color: '#888',
+                  fontSize: '14px',
+                }}
+              >
+                {currentIndex + 1} / {yandexImages.length}
+              </div>
+
+              <img
+                src={yandexImages[currentIndex]}
+                alt="скриншот"
+                style={{
+                  maxWidth: '90vw',
+                  maxHeight: '85vh',
+                  borderRadius: '12px',
+                  objectFit: 'contain',
+                  boxShadow: '0 20px 60px rgba(0,0,0,0.5)',
+                }}
+              />
+
+              {yandexImages.length > 1 && (
+                <>
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      goToPrev();
+                    }}
+                    style={{
+                      position: 'absolute',
+                      left: '10px',
+                      top: '50%',
+                      transform: 'translateY(-50%)',
+                      background: 'rgba(0,0,0,0.4)',
+                      border: 'none',
+                      color: '#fff',
+                      fontSize: '40px',
+                      cursor: 'pointer',
+                      padding: '15px 20px',
+                      borderRadius: '50%',
+                      zIndex: 5,
+                      transition: 'background 0.2s',
+                    }}
+                    onMouseEnter={(e) =>
+                      (e.currentTarget.style.background = 'rgba(255,255,255,0.1)')
+                    }
+                    onMouseLeave={(e) =>
+                      (e.currentTarget.style.background = 'rgba(0,0,0,0.4)')
+                    }
+                  >
+                    ‹
+                  </button>
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      goToNext();
+                    }}
+                    style={{
+                      position: 'absolute',
+                      right: '10px',
+                      top: '50%',
+                      transform: 'translateY(-50%)',
+                      background: 'rgba(0,0,0,0.4)',
+                      border: 'none',
+                      color: '#fff',
+                      fontSize: '40px',
+                      cursor: 'pointer',
+                      padding: '15px 20px',
+                      borderRadius: '50%',
+                      zIndex: 5,
+                      transition: 'background 0.2s',
+                    }}
+                    onMouseEnter={(e) =>
+                      (e.currentTarget.style.background = 'rgba(255,255,255,0.1)')
+                    }
+                    onMouseLeave={(e) =>
+                      (e.currentTarget.style.background = 'rgba(0,0,0,0.4)')
+                    }
+                  >
+                    ›
+                  </button>
+                </>
+              )}
             </div>
           </div>
         )}
