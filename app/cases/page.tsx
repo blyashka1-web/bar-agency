@@ -14,7 +14,7 @@ export default function CasesPage() {
       slug: 'deportivo',
       emoji: '⚽',
       tag: 'Спорт / Lifestyle',
-      title: 'Deportivo',
+      title: 'DEPORTIVO MOSCÚ',
       desc: 'Вирусный контент с 10+ млн просмотров',
       color: 'gold',
     },

@@ -112,7 +112,7 @@ export default function CasePage() {
     );
   }
 
-  // --- DEPORTIVO (С ТРЕМЯ СТАТЬЯМИ И ТРЕМЯ ВИДЕО) ---
+  // --- DEPORTIVO MOSCÚ ---
   if (slug === 'deportivo') {
     const articles = [
       {
@@ -137,7 +137,7 @@ export default function CasePage() {
           <span style={{ display: 'inline-block', background: '#d4af37', color: '#fff', padding: '4px 16px', borderRadius: '40px', fontSize: '13px', fontWeight: 600 }}>
             Спорт / Lifestyle
           </span>
-          <h1 style={{ fontSize: '48px', marginTop: '12px', marginBottom: '8px' }}>Deportivo</h1>
+          <h1 style={{ fontSize: '48px', marginTop: '12px', marginBottom: '8px' }}>DEPORTIVO MOSCÚ</h1>
           <p style={{ fontSize: '20px', color: '#b0b0b0' }}>Вирусный контент с 10+ млн просмотров</p>
         </div>
 
