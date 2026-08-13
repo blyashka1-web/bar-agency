@@ -112,7 +112,7 @@ export default function CasePage() {
     );
   }
 
-  // --- DEPORTIVO ---
+  // --- DEPORTIVO (С ТРЕМЯ ВИДЕО) ---
   if (slug === 'deportivo') {
     const articles = [
       {
@@ -181,6 +181,18 @@ export default function CasePage() {
             />
             <video
               src="/cases/deportivo/video-2-compressed.mp4"
+              controls
+              style={{
+                width: '200px',
+                height: '125px',
+                borderRadius: '12px',
+                border: '1px solid #2a2a2a',
+                objectFit: 'cover',
+                background: '#0a0a0a',
+              }}
+            />
+            <video
+              src="/cases/deportivo/video-3.mp4"
               controls
               style={{
                 width: '200px',
