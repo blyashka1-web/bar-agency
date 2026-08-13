@@ -96,7 +96,7 @@ export default function CasePage() {
                 cursor: 'pointer',
               }}
               onClick={() => {
-                const video = document.getElementById('yandex-video');
+                const video = document.getElementById('yandex-video') as HTMLVideoElement | null;
                 if (video) {
                   if (video.paused) {
                     video.play();
