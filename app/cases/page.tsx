@@ -15,7 +15,7 @@ export default function CasesPage() {
       logo: '/cases/deportivo/logo.png',
       tag: 'Спорт / Lifestyle',
       title: 'DEPORTIVO MOSCÚ',
-      desc: 'Вирусный контент с 10+ млн просмотров',
+      desc: 'Публикации в мировых СМИ и репортажи',
       color: 'gold',
     },
     {
