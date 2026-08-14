@@ -18,6 +18,14 @@ export default function CasesPage() {
       desc: 'Публикации в мировых СМИ и репортажи',
       bg: '#2a2a1a',
     },
+    {
+      slug: 'promminer',
+      logo: null,
+      tag: 'IT / Разработка',
+      title: 'Promminer',
+      desc: 'IT-компания для бизнеса',
+      bg: '#2a2a2a',
+    },
   ];
 
   return (
