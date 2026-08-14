@@ -561,7 +561,7 @@ export default function CasePage() {
     );
   }
 
-  // --- NDA HR TEAM (ОБНОВЛЕННЫЙ: ссылка на канал над контактами) ---
+  // --- NDA HR TEAM (ИТОГОВЫЙ: галерея → ссылка на канал → "Хотите так же?") ---
   if (slug === 'nda-hr-team') {
     const creatives = [
       '/cases/nda-hr-team/creative-1.jpg',
@@ -599,7 +599,7 @@ export default function CasePage() {
           </p>
         </div>
 
-        {/* ГОРИЗОНТАЛЬНЫЙ СКРОЛЛ С МИНИАТЮРАМИ */}
+        {/* ГАЛЕРЕЯ С ГОРИЗОНТАЛЬНЫМ СКРОЛЛОМ */}
         <div style={{ marginTop: '40px' }}>
           <h2 style={{ fontSize: '24px', fontWeight: 600, marginBottom: '16px' }}>
             🎨 Примеры креативов
@@ -635,8 +635,31 @@ export default function CasePage() {
           </div>
         </div>
 
-        {/* БЛОК "Хотите так же?" — КАК В PROMINNER */}
-        <div style={{ marginTop: '60px', padding: '40px 20px', background: '#2a2a2a', borderRadius: '24px', textAlign: 'center' }}>
+        {/* ССЫЛКА НА КАНАЛ NDA HR TEAM (ПЕРВАЯ) */}
+        <div style={{ marginTop: '50px', textAlign: 'center' }}>
+          <a
+            href="https://t.me/ndahrteam"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              color: '#c4b5a0',
+              fontSize: '18px',
+              textDecoration: 'none',
+              borderBottom: '2px solid rgba(196, 181, 160, 0.3)',
+              paddingBottom: '6px',
+              transition: 'border-color 0.2s',
+              fontFamily: 'sans-serif',
+              fontWeight: 500,
+            }}
+            onMouseEnter={(e) => (e.currentTarget.style.borderColor = '#c4b5a0')}
+            onMouseLeave={(e) => (e.currentTarget.style.borderColor = 'rgba(196, 181, 160, 0.3)')}
+          >
+            📲 Телеграм канал NDA HR TEAM
+          </a>
+        </div>
+
+        {/* БЛОК "Хотите так же?" — КАК В PROMINNER (ВТОРОЙ) */}
+        <div style={{ marginTop: '40px', padding: '40px 20px', background: '#2a2a2a', borderRadius: '24px', textAlign: 'center' }}>
           <h3 style={{ fontSize: '28px', fontWeight: 600, color: '#fff' }}>Хотите так же?</h3>
           <p style={{ fontSize: '18px', color: '#b0b0b0', marginBottom: '16px' }}>
             Расскажите о своём проекте — разработаем стратегию!
@@ -647,42 +670,6 @@ export default function CasePage() {
           >
             Написать в Telegram
           </button>
-        </div>
-
-        {/* ССЫЛКА НА КАНАЛ NDA HR TEAM (НАД КОНТАКТАМИ) */}
-        <div style={{ marginTop: '40px', textAlign: 'center' }}>
-          <a
-            href="https://t.me/ndahrteam"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              color: '#c4b5a0',
-              fontSize: '16px',
-              textDecoration: 'none',
-              borderBottom: '1px solid rgba(196, 181, 160, 0.3)',
-              paddingBottom: '4px',
-              transition: 'border-color 0.2s',
-              fontFamily: 'sans-serif',
-            }}
-            onMouseEnter={(e) => (e.currentTarget.style.borderColor = '#c4b5a0')}
-            onMouseLeave={(e) => (e.currentTarget.style.borderColor = 'rgba(196, 181, 160, 0.3)')}
-          >
-            📲 Телеграм канал NDA HR TEAM
-          </a>
-        </div>
-
-        {/* КОНТАКТЫ BAR AGENCY */}
-        <div style={{ marginTop: '16px', padding: '40px 30px', background: '#1a1a1a', borderRadius: '24px', textAlign: 'center', border: '1px solid #2a2a2a' }}>
-          <h3 style={{ fontSize: '24px', fontWeight: 600, color: '#fff', marginBottom: '12px' }}>
-            Связаться с нами
-          </h3>
-          <p style={{ fontSize: '16px', color: '#b0b0b0', marginBottom: '4px' }}>
-            BAR AGENCY — создаем вирусный контент для вашего бизнеса
-          </p>
-          <p style={{ fontSize: '15px', color: '#888', marginTop: '12px' }}>
-            📧 bar.agency@example.com<br />
-            📞 +7 (999) 123-45-67
-          </p>
         </div>
 
         {/* ЛАЙТБОКС */}
