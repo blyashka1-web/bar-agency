@@ -561,7 +561,7 @@ export default function CasePage() {
     );
   }
 
-  // --- NDA HR TEAM (ОБНОВЛЕННЫЙ БЛОК С КОНТАКТАМИ) ---
+  // --- NDA HR TEAM (ОБНОВЛЕННЫЙ: "Хотите так же?" + отдельная ссылка на канал) ---
   if (slug === 'nda-hr-team') {
     const creatives = [
       '/cases/nda-hr-team/creative-1.jpg',
@@ -635,39 +635,40 @@ export default function CasePage() {
           </div>
         </div>
 
-        {/* КОНТАКТНЫЙ БЛОК (О НАС) */}
-        <div style={{ marginTop: '60px', padding: '40px 30px', background: '#2a2a2a', borderRadius: '24px', textAlign: 'center' }}>
-          <h3 style={{ fontSize: '28px', fontWeight: 600, color: '#fff', marginBottom: '12px' }}>
-            Связаться с нами
-          </h3>
-          <p style={{ fontSize: '18px', color: '#b0b0b0', marginBottom: '8px' }}>
-            BAR AGENCY — создаем вирусный контент для вашего бизнеса
+        {/* БЛОК "Хотите так же?" — КАК В PROMINNER */}
+        <div style={{ marginTop: '60px', padding: '40px 20px', background: '#2a2a2a', borderRadius: '24px', textAlign: 'center' }}>
+          <h3 style={{ fontSize: '28px', fontWeight: 600, color: '#fff' }}>Хотите так же?</h3>
+          <p style={{ fontSize: '18px', color: '#b0b0b0', marginBottom: '16px' }}>
+            Расскажите о своём проекте — разработаем стратегию!
           </p>
-          <p style={{ fontSize: '16px', color: '#888', marginBottom: '24px' }}>
-            📧 bar.agency@example.com<br />
-            📞 +7 (999) 123-45-67
-          </p>
+          <button
+            style={{ background: '#7a2e2a', color: '#fff', padding: '14px 40px', border: 'none', borderRadius: '40px', fontSize: '17px', fontWeight: 600, cursor: 'pointer' }}
+            onClick={() => window.open('https://t.me/lawayasha', '_blank')}
+          >
+            Написать в Telegram
+          </button>
+        </div>
 
-          {/* ССЫЛКА НА TELEGRAM */}
+        {/* ОТДЕЛЬНАЯ ССЫЛКА НА КАНАЛ NDA HR TEAM */}
+        <div style={{ marginTop: '24px', textAlign: 'center' }}>
           <a
             href="https://t.me/ndahrteam"
             target="_blank"
             rel="noopener noreferrer"
             style={{
               display: 'inline-block',
-              background: '#7a2e2a',
-              color: '#fff',
-              padding: '14px 44px',
-              borderRadius: '40px',
-              fontSize: '17px',
-              fontWeight: 600,
+              color: '#c4b5a0',
+              fontSize: '16px',
               textDecoration: 'none',
-              transition: 'background 0.2s',
+              borderBottom: '1px solid rgba(196, 181, 160, 0.3)',
+              paddingBottom: '4px',
+              transition: 'border-color 0.2s',
+              fontFamily: 'sans-serif',
             }}
-            onMouseEnter={(e) => (e.currentTarget.style.background = '#8a3e3a')}
-            onMouseLeave={(e) => (e.currentTarget.style.background = '#7a2e2a')}
+            onMouseEnter={(e) => (e.currentTarget.style.borderColor = '#c4b5a0')}
+            onMouseLeave={(e) => (e.currentTarget.style.borderColor = 'rgba(196, 181, 160, 0.3)')}
           >
-            📲 Написать в Telegram
+            📲 Подписаться на Telegram-канал NDA HR TEAM
           </a>
         </div>
 
