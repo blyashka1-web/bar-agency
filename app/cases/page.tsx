@@ -115,9 +115,9 @@ export default function CasesPage() {
         }
 
         .case-logo-thumb {
-          max-width: 120px;
+          max-width: 80px;
           height: auto;
-          margin: 0 auto 12px auto;
+          margin-bottom: 12px;
           display: block;
         }
 
@@ -179,7 +179,7 @@ export default function CasesPage() {
             font-size: 17px;
           }
           .case-logo-thumb {
-            max-width: 80px;
+            max-width: 60px;
           }
         }
       `}</style>
