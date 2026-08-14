@@ -11,15 +11,6 @@ export default function CasePage() {
   const [isOpen, setIsOpen] = useState(false);
   const [currentImage, setCurrentImage] = useState('');
 
-  const yandexImages = [
-    '/cases/yandex-food/screenshot-1.jpg',
-    '/cases/yandex-food/screenshot-2.jpg',
-    '/cases/yandex-food/screenshot-3.jpg',
-    '/cases/yandex-food/screenshot-4.jpg',
-    '/cases/yandex-food/screenshot-5.jpg',
-    '/cases/yandex-food/screenshot-6.jpg',
-  ];
-
   const openLightbox = (url) => {
     setCurrentImage(url);
     setIsOpen(true);
@@ -34,6 +25,15 @@ export default function CasePage() {
 
   // --- YANDEX-FOOD ---
   if (slug === 'yandex-food') {
+    const yandexImages = [
+      '/cases/yandex-food/screenshot-1.jpg',
+      '/cases/yandex-food/screenshot-2.jpg',
+      '/cases/yandex-food/screenshot-3.jpg',
+      '/cases/yandex-food/screenshot-4.jpg',
+      '/cases/yandex-food/screenshot-5.jpg',
+      '/cases/yandex-food/screenshot-6.jpg',
+    ];
+
     return (
       <div style={{ padding: '40px 20px', background: '#121212', color: '#fff', minHeight: '100vh' }}>
         <Link href="/cases" style={{ color: '#c4b5a0', textDecoration: 'none' }}>
@@ -320,7 +320,7 @@ export default function CasePage() {
     );
   }
 
-  // --- PROMINNER (С ВИДЕО РБК) ---
+  // --- PROMINNER ---
   if (slug === 'promminer') {
     const articles = [
       {
@@ -470,6 +470,232 @@ export default function CasePage() {
             Написать в Telegram
           </button>
         </div>
+      </div>
+    );
+  }
+
+  // --- NDA HR TEAM ---
+  if (slug === 'nda-hr-team') {
+    const screenshots = [
+      '/cases/nda-hr-team/screenshot-1.jpg',
+      '/cases/nda-hr-team/screenshot-2.jpg',
+      '/cases/nda-hr-team/screenshot-3.jpg',
+      '/cases/nda-hr-team/screenshot-4.jpg',
+      '/cases/nda-hr-team/screenshot-5.jpg',
+    ];
+
+    const articles = [
+      {
+        title: 'Как мы запустили HR-бренд с нуля: кейс NDA',
+        url: 'https://example.com/article-1',
+      },
+      {
+        title: 'NDA HR TEAM — новый подход к подбору персонала',
+        url: 'https://example.com/article-2',
+      },
+    ];
+
+    return (
+      <div style={{ padding: '40px 20px', background: '#121212', color: '#fff', minHeight: '100vh' }}>
+        <Link href="/cases" style={{ color: '#c4b5a0', textDecoration: 'none' }}>
+          ← Все кейсы
+        </Link>
+
+        <div style={{ marginTop: '40px' }}>
+          <span
+            style={{
+              display: 'inline-block',
+              background: '#7a2e2a',
+              color: '#fff',
+              padding: '4px 16px',
+              borderRadius: '40px',
+              fontSize: '13px',
+              fontWeight: 600,
+            }}
+          >
+            HR / Брендинг
+          </span>
+          <h1 style={{ fontSize: '48px', marginTop: '12px', marginBottom: '8px' }}>
+            NDA HR TEAM
+          </h1>
+          <p style={{ fontSize: '20px', color: '#b0b0b0' }}>
+            Построение HR-бренда с нуля: стратегия, контент, коммуникация
+          </p>
+        </div>
+
+        <div style={{ marginTop: '40px' }}>
+          <h2 style={{ fontSize: '24px', fontWeight: 600 }}>🎬 Презентационный ролик</h2>
+          <div
+            style={{
+              borderRadius: '16px',
+              overflow: 'hidden',
+              background: '#0a0a0a',
+              maxWidth: '600px',
+              border: '1px solid #2a2a2a',
+            }}
+          >
+            <video
+              src="/cases/nda-hr-team/video.mp4"
+              controls
+              style={{
+                width: '100%',
+                display: 'block',
+                aspectRatio: '16/9',
+                objectFit: 'cover',
+              }}
+              autoPlay={false}
+            />
+          </div>
+        </div>
+
+        <div style={{ marginTop: '40px' }}>
+          <h2 style={{ fontSize: '24px', fontWeight: 600, marginBottom: '16px' }}>
+            📰 Публикации
+          </h2>
+          {articles.map((article, index) => (
+            <a
+              key={index}
+              href={article.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: 'block',
+                padding: '16px 20px',
+                background: '#2a2a2a',
+                borderRadius: '12px',
+                border: '1px solid #7a2e2a',
+                color: '#fff',
+                textDecoration: 'none',
+                marginBottom: '12px',
+                transition: 'background 0.2s',
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.background = '#3a3a3a')}
+              onMouseLeave={(e) => (e.currentTarget.style.background = '#2a2a2a')}
+            >
+              {article.title}
+            </a>
+          ))}
+        </div>
+
+        <div style={{ marginTop: '48px' }}>
+          <h2 style={{ fontSize: '24px', fontWeight: 600 }}>📸 Визуалы кампании</h2>
+          <div
+            style={{
+              display: 'flex',
+              flexWrap: 'nowrap',
+              gap: '12px',
+              overflowX: 'auto',
+              paddingBottom: '8px',
+              WebkitOverflowScrolling: 'touch',
+            }}
+          >
+            {screenshots.map((url, i) => (
+              <div key={i} style={{ flex: '0 0 auto' }}>
+                <img
+                  src={url}
+                  alt={'скрин ' + (i + 1)}
+                  style={{
+                    width: '200px',
+                    height: '125px',
+                    borderRadius: '12px',
+                    border: '1px solid #2a2a2a',
+                    cursor: 'pointer',
+                    objectFit: 'cover',
+                    display: 'block',
+                  }}
+                  onClick={() => openLightbox(url)}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div style={{ marginTop: '40px' }}>
+          <h2 style={{ fontSize: '24px', fontWeight: 600, marginBottom: '16px' }}>
+            🚀 Результаты
+          </h2>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+            <div style={{ background: '#2a2a2a', padding: '16px 20px', borderRadius: '12px', border: '1px solid #7a2e2a' }}>
+              <span style={{ fontSize: '18px', fontWeight: 600, color: '#fff' }}>📈 Рост узнаваемости</span>
+              <p style={{ color: '#b0b0b0', margin: '4px 0 0 0' }}>Увеличение упоминаний бренда на 200% за 6 месяцев</p>
+            </div>
+            <div style={{ background: '#2a2a2a', padding: '16px 20px', borderRadius: '12px', border: '1px solid #7a2e2a' }}>
+              <span style={{ fontSize: '18px', fontWeight: 600, color: '#fff' }}>👥 Количество заявок</span>
+              <p style={{ color: '#b0b0b0', margin: '4px 0 0 0' }}>Более 500 откликов на вакансии за месяц</p>
+            </div>
+            <div style={{ background: '#2a2a2a', padding: '16px 20px', borderRadius: '12px', border: '1px solid #7a2e2a' }}>
+              <span style={{ fontSize: '18px', fontWeight: 600, color: '#fff' }}>💼 Коммерческие предложения</span>
+              <p style={{ color: '#b0b0b0', margin: '4px 0 0 0' }}>Заключены контракты с 3 крупными компаниями</p>
+            </div>
+          </div>
+        </div>
+
+        <div style={{ marginTop: '60px', padding: '40px 20px', background: '#2a2a2a', borderRadius: '24px', textAlign: 'center' }}>
+          <h3 style={{ fontSize: '28px', fontWeight: 600, color: '#fff' }}>Хотите построить сильный HR-бренд?</h3>
+          <p style={{ fontSize: '18px', color: '#b0b0b0', marginBottom: '16px' }}>
+            Поможем привлекать лучших кандидатов
+          </p>
+          <button
+            style={{ background: '#7a2e2a', color: '#fff', padding: '14px 40px', border: 'none', borderRadius: '40px', fontSize: '17px', fontWeight: 600, cursor: 'pointer' }}
+            onClick={() => window.open('https://t.me/lawayasha', '_blank')}
+          >
+            Написать в Telegram
+          </button>
+        </div>
+
+        {isOpen && (
+          <div
+            style={{
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              background: 'rgba(0,0,0,0.92)',
+              backdropFilter: 'blur(12px)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              zIndex: 9999,
+              padding: '20px',
+            }}
+            onClick={closeLightbox}
+          >
+            <div
+              style={{ position: 'relative', maxWidth: '95vw', maxHeight: '95vh' }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                onClick={closeLightbox}
+                style={{
+                  position: 'absolute',
+                  top: '10px',
+                  right: '10px',
+                  background: 'rgba(0,0,0,0.5)',
+                  border: 'none',
+                  color: '#fff',
+                  fontSize: '30px',
+                  cursor: 'pointer',
+                  padding: '10px 16px',
+                  borderRadius: '50%',
+                  zIndex: 10,
+                }}
+              >
+                ✕
+              </button>
+              <img
+                src={currentImage}
+                alt="скриншот"
+                style={{
+                  maxWidth: '90vw',
+                  maxHeight: '85vh',
+                  borderRadius: '12px',
+                  objectFit: 'contain',
+                }}
+              />
+            </div>
+          </div>
+        )}
       </div>
     );
   }

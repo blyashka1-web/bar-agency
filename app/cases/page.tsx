@@ -26,6 +26,14 @@ export default function CasesPage() {
       desc: 'Разработка и реализация стратегии для соцсетей',
       bg: '#2a2a2a',
     },
+    {
+      slug: 'nda-hr-team',
+      logo: '/cases/nda-hr-team/logo.png',
+      tag: 'HR / Брендинг',
+      title: 'NDA HR TEAM',
+      desc: 'Построение HR-бренда с нуля: стратегия, контент, коммуникация',
+      bg: '#2a1a1a',
+    },
   ];
 
   return (
