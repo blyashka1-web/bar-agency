@@ -260,7 +260,7 @@ export default function CasePage() {
     );
   }
 
-  // --- DEPORTIVO MOSCÚ ---
+  // --- DEPORTIVO MOSCÚ (БЕЗ ВИДЕО) ---
   if (slug === 'deportivo') {
     const articles = [
       {
@@ -322,60 +322,9 @@ export default function CasePage() {
 
         <div style={{ marginTop: '48px' }}>
           <h2 style={{ fontSize: '24px', fontWeight: 600, marginBottom: '16px' }}>📰 Репортажи о клубе</h2>
-          <div style={{
-            display: 'flex',
-            flexWrap: 'nowrap',
-            gap: '12px',
-            overflowX: 'auto',
-            paddingBottom: '8px',
-            WebkitOverflowScrolling: 'touch',
-          }}>
-            <div style={{ flex: '0 0 auto' }}>
-              <video
-                src="/cases/deportivo/video-1.mp4"
-                controls
-                style={{
-                  width: '200px',
-                  height: '125px',
-                  borderRadius: '12px',
-                  border: '1px solid #2a2a2a',
-                  objectFit: 'cover',
-                  background: '#0a0a0a',
-                  display: 'block',
-                }}
-              />
-            </div>
-            <div style={{ flex: '0 0 auto' }}>
-              <video
-                src="/cases/deportivo/video-2-compressed.mp4"
-                controls
-                style={{
-                  width: '200px',
-                  height: '125px',
-                  borderRadius: '12px',
-                  border: '1px solid #2a2a2a',
-                  objectFit: 'cover',
-                  background: '#0a0a0a',
-                  display: 'block',
-                }}
-              />
-            </div>
-            <div style={{ flex: '0 0 auto' }}>
-              <video
-                src="/cases/deportivo/video-3.mp4"
-                controls
-                style={{
-                  width: '200px',
-                  height: '125px',
-                  borderRadius: '12px',
-                  border: '1px solid #2a2a2a',
-                  objectFit: 'cover',
-                  background: '#0a0a0a',
-                  display: 'block',
-                }}
-              />
-            </div>
-          </div>
+          <p style={{ color: '#888', fontSize: '16px' }}>
+            Видео-репортажи временно недоступны. Скоро добавим!
+          </p>
         </div>
       </div>
     );
