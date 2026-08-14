@@ -135,7 +135,7 @@ export default function CasePage() {
           </div>
         </div>
 
-        {/* БЛОК "Хотите так же?" — ДЛЯ ВСЕХ КЕЙСОВ */}
+        {/* БЛОК "Хотите так же?" */}
         <div style={{ marginTop: '60px', padding: '40px 20px', background: '#2a2a2a', borderRadius: '24px', textAlign: 'center' }}>
           <h3 style={{ fontSize: '28px', fontWeight: 600, color: '#fff' }}>Хотите так же?</h3>
           <p style={{ fontSize: '18px', color: '#b0b0b0', marginBottom: '16px' }}>
@@ -418,7 +418,7 @@ export default function CasePage() {
           </div>
         </div>
 
-        {/* БЛОК "Хотите так же?" — ДЛЯ ВСЕХ КЕЙСОВ */}
+        {/* БЛОК "Хотите так же?" */}
         <div style={{ marginTop: '60px', padding: '40px 20px', background: '#2a2a2a', borderRadius: '24px', textAlign: 'center' }}>
           <h3 style={{ fontSize: '28px', fontWeight: 600, color: '#fff' }}>Хотите так же?</h3>
           <p style={{ fontSize: '18px', color: '#b0b0b0', marginBottom: '16px' }}>
@@ -435,7 +435,7 @@ export default function CasePage() {
     );
   }
 
-  // --- PROMINNER ---
+  // --- PROMINNER (ОБНОВЛЕННЫЙ: "Стратегия развития бренда") ---
   if (slug === 'promminer') {
     const articles = [
       {
@@ -528,9 +528,10 @@ export default function CasePage() {
           </div>
         </div>
 
+        {/* СТРАТЕГИЯ РАЗВИТИЯ БРЕНДА (вместо "Презентация") */}
         <div style={{ marginTop: '40px' }}>
           <h2 style={{ fontSize: '24px', fontWeight: 600, marginBottom: '16px' }}>
-            📄 Презентация
+            📄 Стратегия развития бренда
           </h2>
           <a
             href="/cases/promminer/presentation.pdf"
@@ -549,7 +550,7 @@ export default function CasePage() {
             onMouseEnter={(e) => (e.currentTarget.style.background = '#3a3a3a')}
             onMouseLeave={(e) => (e.currentTarget.style.background = '#2a2a2a')}
           >
-            📄 Открыть презентацию (PDF)
+            📄 Открыть стратегию (PDF)
           </a>
         </div>
 
@@ -573,7 +574,7 @@ export default function CasePage() {
           </div>
         </div>
 
-        {/* БЛОК "Хотите так же?" — ДЛЯ ВСЕХ КЕЙСОВ */}
+        {/* БЛОК "Хотите так же?" */}
         <div style={{ marginTop: '60px', padding: '40px 20px', background: '#2a2a2a', borderRadius: '24px', textAlign: 'center' }}>
           <h3 style={{ fontSize: '28px', fontWeight: 600, color: '#fff' }}>Хотите так же?</h3>
           <p style={{ fontSize: '18px', color: '#b0b0b0', marginBottom: '16px' }}>
@@ -590,7 +591,7 @@ export default function CasePage() {
     );
   }
 
-  // --- NDA HR TEAM (ИТОГОВЫЙ: галерея → ссылка на канал → "Хотите так же?") ---
+  // --- NDA HR TEAM ---
   if (slug === 'nda-hr-team') {
     const creatives = [
       '/cases/nda-hr-team/creative-1.jpg',
@@ -687,7 +688,7 @@ export default function CasePage() {
           </a>
         </div>
 
-        {/* БЛОК "Хотите так же?" — ДЛЯ ВСЕХ КЕЙСОВ */}
+        {/* БЛОК "Хотите так же?" */}
         <div style={{ marginTop: '40px', padding: '40px 20px', background: '#2a2a2a', borderRadius: '24px', textAlign: 'center' }}>
           <h3 style={{ fontSize: '28px', fontWeight: 600, color: '#fff' }}>Хотите так же?</h3>
           <p style={{ fontSize: '18px', color: '#b0b0b0', marginBottom: '16px' }}>
