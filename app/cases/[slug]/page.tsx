@@ -183,7 +183,6 @@ export default function CasePage() {
                 ✕
               </button>
 
-              {/* СТРЕЛКА НАЗАД */}
               <button
                 onClick={(e) => { e.stopPropagation(); goToPrev(); }}
                 style={{
@@ -207,7 +206,6 @@ export default function CasePage() {
                 ‹
               </button>
 
-              {/* СТРЕЛКА ВПЕРЕД */}
               <button
                 onClick={(e) => { e.stopPropagation(); goToNext(); }}
                 style={{
@@ -242,7 +240,6 @@ export default function CasePage() {
                 }}
               />
 
-              {/* СЧЕТЧИК */}
               <div
                 style={{
                   position: 'absolute',
@@ -564,7 +561,7 @@ export default function CasePage() {
     );
   }
 
-  // --- NDA HR TEAM (ОБНОВЛЕННЫЙ С ГОРИЗОНТАЛЬНЫМ СКРОЛЛОМ И СТРЕЛКАМИ) ---
+  // --- NDA HR TEAM (ОБНОВЛЕННЫЙ БЛОК С КОНТАКТАМИ) ---
   if (slug === 'nda-hr-team') {
     const creatives = [
       '/cases/nda-hr-team/creative-1.jpg',
@@ -638,14 +635,22 @@ export default function CasePage() {
           </div>
         </div>
 
-        {/* ССЫЛКА НА TELEGRAM */}
-        <div style={{ marginTop: '60px', padding: '40px 20px', background: '#2a2a2a', borderRadius: '24px', textAlign: 'center' }}>
-          <h3 style={{ fontSize: '28px', fontWeight: 600, color: '#fff' }}>Хотите посмотреть все креативы?</h3>
-          <p style={{ fontSize: '18px', color: '#b0b0b0', marginBottom: '16px' }}>
-            Подписывайтесь на наш Telegram-канал
+        {/* КОНТАКТНЫЙ БЛОК (О НАС) */}
+        <div style={{ marginTop: '60px', padding: '40px 30px', background: '#2a2a2a', borderRadius: '24px', textAlign: 'center' }}>
+          <h3 style={{ fontSize: '28px', fontWeight: 600, color: '#fff', marginBottom: '12px' }}>
+            Связаться с нами
+          </h3>
+          <p style={{ fontSize: '18px', color: '#b0b0b0', marginBottom: '8px' }}>
+            BAR AGENCY — создаем вирусный контент для вашего бизнеса
           </p>
+          <p style={{ fontSize: '16px', color: '#888', marginBottom: '24px' }}>
+            📧 bar.agency@example.com<br />
+            📞 +7 (999) 123-45-67
+          </p>
+
+          {/* ССЫЛКА НА TELEGRAM */}
           <a
-            href="https://t.me/nda_hr_team"
+            href="https://t.me/ndahrteam"
             target="_blank"
             rel="noopener noreferrer"
             style={{
@@ -662,11 +667,11 @@ export default function CasePage() {
             onMouseEnter={(e) => (e.currentTarget.style.background = '#8a3e3a')}
             onMouseLeave={(e) => (e.currentTarget.style.background = '#7a2e2a')}
           >
-            📲 Перейти в Telegram
+            📲 Написать в Telegram
           </a>
         </div>
 
-        {/* ЛАЙТБОКС СО СТРЕЛКАМИ (АДАПТИВНЫЙ) */}
+        {/* ЛАЙТБОКС */}
         {isOpen && (
           <div
             style={{
@@ -715,7 +720,6 @@ export default function CasePage() {
                 ✕
               </button>
 
-              {/* СТРЕЛКА НАЗАД */}
               <button
                 onClick={(e) => { e.stopPropagation(); goToPrev(); }}
                 style={{
@@ -739,7 +743,6 @@ export default function CasePage() {
                 ‹
               </button>
 
-              {/* СТРЕЛКА ВПЕРЕД */}
               <button
                 onClick={(e) => { e.stopPropagation(); goToNext(); }}
                 style={{
@@ -774,7 +777,6 @@ export default function CasePage() {
                 }}
               />
 
-              {/* СЧЕТЧИК */}
               <div
                 style={{
                   position: 'absolute',
