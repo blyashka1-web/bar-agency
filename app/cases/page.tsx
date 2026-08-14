@@ -32,7 +32,7 @@ export default function CasesPage() {
                 {c.logo ? (
                   <img src={c.logo} alt={c.title} className="case-logo-thumb" />
                 ) : (
-                  <span className="case-emoji">{c.emoji}</span>
+                  <span className="case-emoji">📁</span>
                 )}
                 <span className="case-tag">{c.tag}</span>
                 <h3>{c.title}</h3>
