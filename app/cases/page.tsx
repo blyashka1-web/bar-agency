@@ -20,10 +20,10 @@ export default function CasesPage() {
     },
     {
       slug: 'promminer',
-      logo: null,
+      logo: '/cases/promminer/logo.png',
       tag: 'IT / Разработка',
       title: 'Promminer',
-      desc: 'IT-компания для бизнеса',
+      desc: 'Разработка и реализация стратегии для соцсетей',
       bg: '#2a2a2a',
     },
   ];
