@@ -34,7 +34,7 @@ export default function CasesPage() {
           <p className="subtitle">Все проекты, которыми мы гордимся</p>
           <div className="cases-grid">
             {cases.map((c) => (
-              <a href={`/cases/${c.slug}`} key={c.slug} className="case-card" style={{ background: colorMap[c.color as keyof typeof colorMap] }}>
+              <a href={`/cases/${c.slug}`} key={c.slug} className="case-card" style={{ background: colorMap[c.color] }}>
                 {c.logo ? (
                   <img src={c.logo} alt={c.title} className="case-logo-thumb" />
                 ) : (
