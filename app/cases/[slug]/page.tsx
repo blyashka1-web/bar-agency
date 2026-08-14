@@ -474,7 +474,7 @@ export default function CasePage() {
     );
   }
 
-  // --- NDA HR TEAM (ОБНОВЛЕННЫЙ) ---
+  // --- NDA HR TEAM (ОБНОВЛЕННЫЙ С ГОРИЗОНТАЛЬНЫМ СКРОЛЛОМ) ---
   if (slug === 'nda-hr-team') {
     const creatives = [
       '/cases/nda-hr-team/creative-1.jpg',
@@ -512,41 +512,36 @@ export default function CasePage() {
           </p>
         </div>
 
-        {/* ГАЛЕРЕЯ КРЕАТИВОВ */}
+        {/* ГОРИЗОНТАЛЬНЫЙ СКРОЛЛ С МИНИАТЮРАМИ */}
         <div style={{ marginTop: '40px' }}>
           <h2 style={{ fontSize: '24px', fontWeight: 600, marginBottom: '16px' }}>
             🎨 Примеры креативов
           </h2>
           <div
             style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-              gap: '16px',
+              display: 'flex',
+              flexWrap: 'nowrap',
+              gap: '12px',
+              overflowX: 'auto',
+              paddingBottom: '8px',
+              WebkitOverflowScrolling: 'touch',
             }}
           >
             {creatives.map((url, i) => (
-              <div
-                key={i}
-                style={{
-                  borderRadius: '16px',
-                  overflow: 'hidden',
-                  border: '1px solid #2a2a2a',
-                  cursor: 'pointer',
-                  transition: 'transform 0.2s',
-                }}
-                onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.02)')}
-                onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
-                onClick={() => openLightbox(url)}
-              >
+              <div key={i} style={{ flex: '0 0 auto' }}>
                 <img
                   src={url}
                   alt={`Креатив ${i + 1}`}
                   style={{
-                    width: '100%',
-                    display: 'block',
-                    aspectRatio: '1/1',
+                    width: '200px',
+                    height: '125px',
+                    borderRadius: '12px',
+                    border: '1px solid #2a2a2a',
+                    cursor: 'pointer',
                     objectFit: 'cover',
+                    display: 'block',
                   }}
+                  onClick={() => openLightbox(url)}
                 />
               </div>
             ))}
