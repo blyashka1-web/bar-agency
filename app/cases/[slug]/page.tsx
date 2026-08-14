@@ -320,23 +320,8 @@ export default function CasePage() {
     );
   }
 
-  // --- PROMINNER ---
+  // --- PROMINNER (БЕЗ СТАТЕЙ) ---
   if (slug === 'promminer') {
-    const articles = [
-      {
-        title: 'Как мы разработали стратегию для Promminer',
-        url: 'https://example.com/article1',
-      },
-      {
-        title: 'Результаты работы с Promminer',
-        url: 'https://example.com/article2',
-      },
-      {
-        title: 'Проминнер: путь к успеху в соцсетях',
-        url: 'https://example.com/article3',
-      },
-    ];
-
     return (
       <div style={{ padding: '40px 20px', background: '#121212', color: '#fff', minHeight: '100vh' }}>
         <Link href="/cases" style={{ color: '#c4b5a0', textDecoration: 'none' }}>
@@ -363,35 +348,6 @@ export default function CasePage() {
           <p style={{ fontSize: '20px', color: '#b0b0b0' }}>
             Разработка и реализация стратегии для соцсетей
           </p>
-        </div>
-
-        <div style={{ marginTop: '40px' }}>
-          <h2 style={{ fontSize: '24px', fontWeight: 600, marginBottom: '16px' }}>
-            📰 Статьи
-          </h2>
-          {articles.map((article, index) => (
-            <a
-              key={index}
-              href={article.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                display: 'block',
-                padding: '16px 20px',
-                background: '#2a2a2a',
-                borderRadius: '12px',
-                border: '1px solid #6c5b7b',
-                color: '#fff',
-                textDecoration: 'none',
-                marginBottom: '12px',
-                transition: 'background 0.2s',
-              }}
-              onMouseEnter={(e) => (e.currentTarget.style.background = '#3a3a3a')}
-              onMouseLeave={(e) => (e.currentTarget.style.background = '#2a2a2a')}
-            >
-              {article.title}
-            </a>
-          ))}
         </div>
 
         <div style={{ marginTop: '40px' }}>
