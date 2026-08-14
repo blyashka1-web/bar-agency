@@ -320,11 +320,11 @@ export default function CasePage() {
     );
   }
 
-  // --- PROMINNER (СО СТАТЬЁЙ РБК) ---
+  // --- PROMINNER (С ВИДЕО РБК) ---
   if (slug === 'promminer') {
     const articles = [
       {
-        title: 'Публикация на РБК Крипто',
+        title: 'РБК о запуске майнинг-пула с автоматической отчетностью для ФНС',
         url: 'https://www.rbc.ru/crypto/news/69d7ab019a79478e24c7a27b',
       },
     ];
@@ -384,6 +384,33 @@ export default function CasePage() {
               {article.title}
             </a>
           ))}
+        </div>
+
+        <div style={{ marginTop: '40px' }}>
+          <h2 style={{ fontSize: '24px', fontWeight: 600, marginBottom: '16px' }}>
+            🎬 Сюжет РБК
+          </h2>
+          <div
+            style={{
+              borderRadius: '16px',
+              overflow: 'hidden',
+              background: '#0a0a0a',
+              maxWidth: '600px',
+              border: '1px solid #2a2a2a',
+            }}
+          >
+            <video
+              src="/cases/promminer/video-rbk.mp4"
+              controls
+              style={{
+                width: '100%',
+                display: 'block',
+                aspectRatio: '16/9',
+                objectFit: 'cover',
+              }}
+              autoPlay={false}
+            />
+          </div>
         </div>
 
         <div style={{ marginTop: '40px' }}>
