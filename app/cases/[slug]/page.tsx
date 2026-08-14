@@ -8,7 +8,7 @@ export default function CasesPage() {
       tag: 'Вирусный контент',
       title: 'Яндекс Еда',
       desc: 'Вирусный ролик с суммарным охватом 50+ млн',
-      color: 'haki',
+      bg: '#2a2a2a',
     },
     {
       slug: 'deportivo',
@@ -16,15 +16,9 @@ export default function CasesPage() {
       tag: 'Спорт / Lifestyle',
       title: 'DEPORTIVO MOSCÚ',
       desc: 'Публикации в мировых СМИ и репортажи',
-      color: 'gold',
+      bg: '#2a2a1a',
     },
   ];
-
-  const colorMap = {
-    haki: 'linear-gradient(145deg, #2a2a2a, #1a1a1a)',
-    burgundy: 'linear-gradient(145deg, #2a1a1a, #1a0a0a)',
-    gold: 'linear-gradient(145deg, #2a2a1a, #1a1a0a)',
-  };
 
   return (
     <main>
@@ -34,7 +28,7 @@ export default function CasesPage() {
           <p className="subtitle">Все проекты, которыми мы гордимся</p>
           <div className="cases-grid">
             {cases.map((c) => (
-              <a href={`/cases/${c.slug}`} key={c.slug} className="case-card" style={{ background: colorMap[c.color] }}>
+              <a href={`/cases/${c.slug}`} key={c.slug} className="case-card" style={{ background: c.bg }}>
                 {c.logo ? (
                   <img src={c.logo} alt={c.title} className="case-logo-thumb" />
                 ) : (

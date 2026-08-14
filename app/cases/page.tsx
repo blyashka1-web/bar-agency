@@ -8,7 +8,7 @@ export default function CasesPage() {
       tag: 'Вирусный контент',
       title: 'Яндекс Еда',
       desc: 'Вирусный ролик с суммарным охватом 50+ млн',
-      color: 'haki',
+      bg: '#2a2a2a',
     },
     {
       slug: 'deportivo',
@@ -16,63 +16,9 @@ export default function CasesPage() {
       tag: 'Спорт / Lifestyle',
       title: 'DEPORTIVO MOSCÚ',
       desc: 'Публикации в мировых СМИ и репортажи',
-      color: 'gold',
-    },
-    {
-      slug: 'beauty-story',
-      emoji: '🧴',
-      tag: 'Косметика',
-      title: 'Beauty Story',
-      desc: '+280% продаж за 4 месяца',
-      color: 'haki',
-    },
-    {
-      slug: 'moscow-coffee',
-      emoji: '☕',
-      tag: 'F&B',
-      title: 'Moscow Coffee',
-      desc: '12 млн просмотров за 7 дней',
-      color: 'burgundy',
-    },
-    {
-      slug: 'urban-sneakers',
-      emoji: '👟',
-      tag: 'Одежда',
-      title: 'Urban Sneakers',
-      desc: '5000 заявок с нулевым бюджетом',
-      color: 'gold',
-    },
-    {
-      slug: 'luxe-jewelry',
-      emoji: '💎',
-      tag: 'Ювелирка',
-      title: 'Luxe Jewelry',
-      desc: '+150% вовлечения, охват х3',
-      color: 'haki',
-    },
-    {
-      slug: 'wine-people',
-      emoji: '🍷',
-      tag: 'Напитки',
-      title: 'Wine & People',
-      desc: '+200% продаж за 2 месяца',
-      color: 'burgundy',
-    },
-    {
-      slug: 'appvision',
-      emoji: '📱',
-      tag: 'IT',
-      title: 'AppVision',
-      desc: '50 000 установок за месяц',
-      color: 'gold',
+      bg: '#2a2a1a',
     },
   ];
-
-  const colorMap = {
-    haki: 'linear-gradient(145deg, #2a2a2a, #1a1a1a)',
-    burgundy: 'linear-gradient(145deg, #2a1a1a, #1a0a0a)',
-    gold: 'linear-gradient(145deg, #2a2a1a, #1a1a0a)',
-  };
 
   return (
     <main>
@@ -82,7 +28,7 @@ export default function CasesPage() {
           <p className="subtitle">Все проекты, которыми мы гордимся</p>
           <div className="cases-grid">
             {cases.map((c) => (
-              <a href={`/cases/${c.slug}`} key={c.slug} className="case-card" style={{ background: colorMap[c.color as keyof typeof colorMap] }}>
+              <a href={`/cases/${c.slug}`} key={c.slug} className="case-card" style={{ background: c.bg }}>
                 {c.logo ? (
                   <img src={c.logo} alt={c.title} className="case-logo-thumb" />
                 ) : (
