@@ -36,10 +36,22 @@ export default function CasePage() {
   if (slug === 'yandex-food') {
     return (
       <div style={{ padding: '40px 20px', background: '#121212', color: '#fff', minHeight: '100vh' }}>
-        <Link href="/cases" style={{ color: '#c4b5a0', textDecoration: 'none' }}>← Все кейсы</Link>
+        <Link href="/cases" style={{ color: '#c4b5a0', textDecoration: 'none' }}>
+          ← Все кейсы
+        </Link>
 
         <div style={{ marginTop: '40px' }}>
-          <span style={{ display: 'inline-block', background: '#c4b5a0', color: '#fff', padding: '4px 16px', borderRadius: '40px', fontSize: '13px', fontWeight: 600 }}>
+          <span
+            style={{
+              display: 'inline-block',
+              background: '#c4b5a0',
+              color: '#fff',
+              padding: '4px 16px',
+              borderRadius: '40px',
+              fontSize: '13px',
+              fontWeight: 600,
+            }}
+          >
             Вирусный контент
           </span>
           <h1 style={{ fontSize: '48px', marginTop: '12px', marginBottom: '8px' }}>Яндекс Еда</h1>
@@ -48,13 +60,15 @@ export default function CasePage() {
 
         <div style={{ marginTop: '40px' }}>
           <h2 style={{ fontSize: '24px', fontWeight: 600 }}>🎬 Вирусный видеоролик</h2>
-          <div style={{
-            borderRadius: '16px',
-            overflow: 'hidden',
-            background: '#0a0a0a',
-            maxWidth: '400px',
-            border: '1px solid #2a2a2a',
-          }}>
+          <div
+            style={{
+              borderRadius: '16px',
+              overflow: 'hidden',
+              background: '#0a0a0a',
+              maxWidth: '400px',
+              border: '1px solid #2a2a2a',
+            }}
+          >
             <video
               src="/cases/yandex-food/video.mp4"
               controls
@@ -71,14 +85,16 @@ export default function CasePage() {
 
         <div style={{ marginTop: '48px' }}>
           <h2 style={{ fontSize: '24px', fontWeight: 600 }}>📢 Репосты в крупных сообществах</h2>
-          <div style={{
-            display: 'flex',
-            flexWrap: 'nowrap',
-            gap: '12px',
-            overflowX: 'auto',
-            paddingBottom: '8px',
-            WebkitOverflowScrolling: 'touch',
-          }}>
+          <div
+            style={{
+              display: 'flex',
+              flexWrap: 'nowrap',
+              gap: '12px',
+              overflowX: 'auto',
+              paddingBottom: '8px',
+              WebkitOverflowScrolling: 'touch',
+            }}
+          >
             {yandexImages.map((url, i) => (
               <div key={i} style={{ flex: '0 0 auto' }}>
                 <img
@@ -118,7 +134,10 @@ export default function CasePage() {
             }}
             onClick={closeLightbox}
           >
-            <div style={{ position: 'relative', maxWidth: '95vw', maxHeight: '95vh' }} onClick={(e) => e.stopPropagation()}>
+            <div
+              style={{ position: 'relative', maxWidth: '95vw', maxHeight: '95vh' }}
+              onClick={(e) => e.stopPropagation()}
+            >
               <button
                 onClick={closeLightbox}
                 style={{
@@ -137,7 +156,16 @@ export default function CasePage() {
               >
                 ✕
               </button>
-              <img src={currentImage} alt="скриншот" style={{ maxWidth: '90vw', maxHeight: '85vh', borderRadius: '12px', objectFit: 'contain' }} />
+              <img
+                src={currentImage}
+                alt="скриншот"
+                style={{
+                  maxWidth: '90vw',
+                  maxHeight: '85vh',
+                  borderRadius: '12px',
+                  objectFit: 'contain',
+                }}
+              />
             </div>
           </div>
         )}
@@ -145,7 +173,7 @@ export default function CasePage() {
     );
   }
 
-  // --- DEPORTIVO (С ВИДЕО) ---
+  // --- DEPORTIVO ---
   if (slug === 'deportivo') {
     const articles = [
       {
@@ -168,18 +196,36 @@ export default function CasePage() {
 
     return (
       <div style={{ padding: '40px 20px', background: '#121212', color: '#fff', minHeight: '100vh' }}>
-        <Link href="/cases" style={{ color: '#c4b5a0', textDecoration: 'none' }}>← Все кейсы</Link>
+        <Link href="/cases" style={{ color: '#c4b5a0', textDecoration: 'none' }}>
+          ← Все кейсы
+        </Link>
 
         <div style={{ marginTop: '40px' }}>
-          <span style={{ display: 'inline-block', background: '#d4af37', color: '#fff', padding: '4px 16px', borderRadius: '40px', fontSize: '13px', fontWeight: 600 }}>
+          <span
+            style={{
+              display: 'inline-block',
+              background: '#d4af37',
+              color: '#fff',
+              padding: '4px 16px',
+              borderRadius: '40px',
+              fontSize: '13px',
+              fontWeight: 600,
+            }}
+          >
             Спорт / Lifestyle
           </span>
-          <h1 style={{ fontSize: '48px', marginTop: '12px', marginBottom: '8px' }}>DEPORTIVO MOSCÚ</h1>
-          <p style={{ fontSize: '20px', color: '#b0b0b0' }}>Российский футбольный клуб в Аргентине</p>
+          <h1 style={{ fontSize: '48px', marginTop: '12px', marginBottom: '8px' }}>
+            DEPORTIVO MOSCÚ
+          </h1>
+          <p style={{ fontSize: '20px', color: '#b0b0b0' }}>
+            Российский футбольный клуб в Аргентине
+          </p>
         </div>
 
         <div style={{ marginTop: '40px' }}>
-          <h2 style={{ fontSize: '24px', fontWeight: 600, marginBottom: '16px' }}>📰 Статьи</h2>
+          <h2 style={{ fontSize: '24px', fontWeight: 600, marginBottom: '16px' }}>
+            📰 Статьи
+          </h2>
           {articles.map((article, index) => (
             <a
               key={index}
@@ -197,8 +243,12 @@ export default function CasePage() {
                 marginBottom: '12px',
                 transition: 'background 0.2s',
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.background = '#3a3a3a')}
-              onMouseLeave={(e) => (e.currentTarget.style.background = '#2a2a2a')}
+              onMouseEnter={(e) =>
+                (e.currentTarget.style.background = '#3a3a3a')
+              }
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.background = '#2a2a2a')
+              }
             >
               {article.title}
             </a>
@@ -206,15 +256,19 @@ export default function CasePage() {
         </div>
 
         <div style={{ marginTop: '48px' }}>
-          <h2 style={{ fontSize: '24px', fontWeight: 600, marginBottom: '16px' }}>📰 Репортажи о клубе</h2>
-          <div style={{
-            display: 'flex',
-            flexWrap: 'nowrap',
-            gap: '12px',
-            overflowX: 'auto',
-            paddingBottom: '8px',
-            WebkitOverflowScrolling: 'touch',
-          }}>
+          <h2 style={{ fontSize: '24px', fontWeight: 600, marginBottom: '16px' }}>
+            📰 Репортажи о клубе
+          </h2>
+          <div
+            style={{
+              display: 'flex',
+              flexWrap: 'nowrap',
+              gap: '12px',
+              overflowX: 'auto',
+              paddingBottom: '8px',
+              WebkitOverflowScrolling: 'touch',
+            }}
+          >
             <div style={{ flex: '0 0 auto' }}>
               <video
                 src="/cases/deportivo/video-1.mp4"
