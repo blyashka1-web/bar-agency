@@ -149,12 +149,19 @@ export default function CasePage() {
               alignItems: 'center',
               justifyContent: 'center',
               zIndex: 9999,
-              padding: '20px',
+              padding: '10px',
             }}
             onClick={closeLightbox}
           >
             <div
-              style={{ position: 'relative', maxWidth: '95vw', maxHeight: '95vh' }}
+              style={{
+                position: 'relative',
+                maxWidth: '95vw',
+                maxHeight: '95vh',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
               onClick={(e) => e.stopPropagation()}
             >
               <button
@@ -166,9 +173,9 @@ export default function CasePage() {
                   background: 'rgba(0,0,0,0.5)',
                   border: 'none',
                   color: '#fff',
-                  fontSize: '30px',
+                  fontSize: '24px',
                   cursor: 'pointer',
-                  padding: '10px 16px',
+                  padding: '8px 14px',
                   borderRadius: '50%',
                   zIndex: 10,
                 }}
@@ -181,15 +188,15 @@ export default function CasePage() {
                 onClick={(e) => { e.stopPropagation(); goToPrev(); }}
                 style={{
                   position: 'absolute',
-                  left: '-60px',
+                  left: '10px',
                   top: '50%',
                   transform: 'translateY(-50%)',
                   background: 'rgba(0,0,0,0.5)',
                   border: '1px solid rgba(255,255,255,0.2)',
                   color: '#fff',
-                  fontSize: '36px',
+                  fontSize: '28px',
                   cursor: 'pointer',
-                  padding: '12px 16px',
+                  padding: '8px 14px',
                   borderRadius: '50%',
                   zIndex: 10,
                   transition: 'background 0.2s',
@@ -205,15 +212,15 @@ export default function CasePage() {
                 onClick={(e) => { e.stopPropagation(); goToNext(); }}
                 style={{
                   position: 'absolute',
-                  right: '-60px',
+                  right: '10px',
                   top: '50%',
                   transform: 'translateY(-50%)',
                   background: 'rgba(0,0,0,0.5)',
                   border: '1px solid rgba(255,255,255,0.2)',
                   color: '#fff',
-                  fontSize: '36px',
+                  fontSize: '28px',
                   cursor: 'pointer',
-                  padding: '12px 16px',
+                  padding: '8px 14px',
                   borderRadius: '50%',
                   zIndex: 10,
                   transition: 'background 0.2s',
@@ -239,7 +246,7 @@ export default function CasePage() {
               <div
                 style={{
                   position: 'absolute',
-                  bottom: '-50px',
+                  bottom: '-40px',
                   left: '50%',
                   transform: 'translateX(-50%)',
                   color: 'rgba(255,255,255,0.6)',
@@ -659,7 +666,7 @@ export default function CasePage() {
           </a>
         </div>
 
-        {/* ЛАЙТБОКС СО СТРЕЛКАМИ */}
+        {/* ЛАЙТБОКС СО СТРЕЛКАМИ (АДАПТИВНЫЙ) */}
         {isOpen && (
           <div
             style={{
@@ -674,12 +681,19 @@ export default function CasePage() {
               alignItems: 'center',
               justifyContent: 'center',
               zIndex: 9999,
-              padding: '20px',
+              padding: '10px',
             }}
             onClick={closeLightbox}
           >
             <div
-              style={{ position: 'relative', maxWidth: '95vw', maxHeight: '95vh' }}
+              style={{
+                position: 'relative',
+                maxWidth: '95vw',
+                maxHeight: '95vh',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
               onClick={(e) => e.stopPropagation()}
             >
               <button
@@ -691,9 +705,9 @@ export default function CasePage() {
                   background: 'rgba(0,0,0,0.5)',
                   border: 'none',
                   color: '#fff',
-                  fontSize: '30px',
+                  fontSize: '24px',
                   cursor: 'pointer',
-                  padding: '10px 16px',
+                  padding: '8px 14px',
                   borderRadius: '50%',
                   zIndex: 10,
                 }}
@@ -706,15 +720,15 @@ export default function CasePage() {
                 onClick={(e) => { e.stopPropagation(); goToPrev(); }}
                 style={{
                   position: 'absolute',
-                  left: '-60px',
+                  left: '10px',
                   top: '50%',
                   transform: 'translateY(-50%)',
                   background: 'rgba(0,0,0,0.5)',
                   border: '1px solid rgba(255,255,255,0.2)',
                   color: '#fff',
-                  fontSize: '36px',
+                  fontSize: '28px',
                   cursor: 'pointer',
-                  padding: '12px 16px',
+                  padding: '8px 14px',
                   borderRadius: '50%',
                   zIndex: 10,
                   transition: 'background 0.2s',
@@ -730,15 +744,15 @@ export default function CasePage() {
                 onClick={(e) => { e.stopPropagation(); goToNext(); }}
                 style={{
                   position: 'absolute',
-                  right: '-60px',
+                  right: '10px',
                   top: '50%',
                   transform: 'translateY(-50%)',
                   background: 'rgba(0,0,0,0.5)',
                   border: '1px solid rgba(255,255,255,0.2)',
                   color: '#fff',
-                  fontSize: '36px',
+                  fontSize: '28px',
                   cursor: 'pointer',
-                  padding: '12px 16px',
+                  padding: '8px 14px',
                   borderRadius: '50%',
                   zIndex: 10,
                   transition: 'background 0.2s',
@@ -764,7 +778,7 @@ export default function CasePage() {
               <div
                 style={{
                   position: 'absolute',
-                  bottom: '-50px',
+                  bottom: '-40px',
                   left: '50%',
                   transform: 'translateX(-50%)',
                   color: 'rgba(255,255,255,0.6)',
