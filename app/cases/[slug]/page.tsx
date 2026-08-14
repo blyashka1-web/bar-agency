@@ -324,12 +324,16 @@ export default function CasePage() {
   if (slug === 'promminer') {
     const articles = [
       {
-        title: 'Публикация о Promminer',
+        title: 'Как мы разработали стратегию для Promminer',
         url: 'https://example.com/article1',
       },
       {
-        title: 'Ещё одна статья',
+        title: 'Результаты работы с Promminer',
         url: 'https://example.com/article2',
+      },
+      {
+        title: 'Проминнер: путь к успеху в соцсетях',
+        url: 'https://example.com/article3',
       },
     ];
 
@@ -357,7 +361,7 @@ export default function CasePage() {
             Promminer
           </h1>
           <p style={{ fontSize: '20px', color: '#b0b0b0' }}>
-            IT-компания для бизнеса
+            Разработка и реализация стратегии для соцсетей
           </p>
         </div>
 
@@ -388,6 +392,64 @@ export default function CasePage() {
               {article.title}
             </a>
           ))}
+        </div>
+
+        <div style={{ marginTop: '40px' }}>
+          <h2 style={{ fontSize: '24px', fontWeight: 600, marginBottom: '16px' }}>
+            📄 Презентация
+          </h2>
+          <a
+            href="/cases/promminer/presentation.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              display: 'block',
+              padding: '16px 20px',
+              background: '#2a2a2a',
+              borderRadius: '12px',
+              border: '1px solid #6c5b7b',
+              color: '#fff',
+              textDecoration: 'none',
+              transition: 'background 0.2s',
+            }}
+            onMouseEnter={(e) => (e.currentTarget.style.background = '#3a3a3a')}
+            onMouseLeave={(e) => (e.currentTarget.style.background = '#2a2a2a')}
+          >
+            📄 Открыть презентацию (PDF)
+          </a>
+        </div>
+
+        <div style={{ marginTop: '40px' }}>
+          <h2 style={{ fontSize: '24px', fontWeight: 600, marginBottom: '16px' }}>
+            🚀 Результаты
+          </h2>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+            <div style={{ background: '#2a2a2a', padding: '16px 20px', borderRadius: '12px', border: '1px solid #6c5b7b' }}>
+              <span style={{ fontSize: '18px', fontWeight: 600, color: '#fff' }}>📈 Рост вовлечения</span>
+              <p style={{ color: '#b0b0b0', margin: '4px 0 0 0' }}>Увеличение активности на 150% за 3 месяца</p>
+            </div>
+            <div style={{ background: '#2a2a2a', padding: '16px 20px', borderRadius: '12px', border: '1px solid #6c5b7b' }}>
+              <span style={{ fontSize: '18px', fontWeight: 600, color: '#fff' }}>👥 Охват аудитории</span>
+              <p style={{ color: '#b0b0b0', margin: '4px 0 0 0' }}>Рост подписчиков с 2K до 12K</p>
+            </div>
+            <div style={{ background: '#2a2a2a', padding: '16px 20px', borderRadius: '12px', border: '1px solid #6c5b7b' }}>
+              <span style={{ fontSize: '18px', fontWeight: 600, color: '#fff' }}>💼 Заявки</span>
+              <p style={{ color: '#b0b0b0', margin: '4px 0 0 0' }}>Более 150 коммерческих запросов за месяц</p>
+            </div>
+          </div>
+        </div>
+
+        <div style={{ marginTop: '60px', padding: '40px 20px', background: '#2a2a2a', borderRadius: '24px', textAlign: 'center' }}>
+          <h3 style={{ fontSize: '28px', fontWeight: 600, color: '#fff' }}>Хотите так же?</h3>
+          <p style={{ fontSize: '18px', color: '#b0b0b0', marginBottom: '16px' }}>
+            Расскажите о своём проекте — разработаем стратегию!
+          </p>
+          <button
+            style={{ background: '#6c5b7b', color: '#fff', padding: '14px 40px', border: 'none', borderRadius: '40px', fontSize: '17px', fontWeight: 600, cursor: 'pointer' }}
+            onClick={() => window.open('https://t.me/lawayasha', '_blank')}
+          >
+            Написать в Telegram
+          </button>
         </div>
       </div>
     );
