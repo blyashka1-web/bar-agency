@@ -2,50 +2,221 @@
 
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
+import { useState } from 'react';
 
 export default function CasePage() {
   const params = useParams();
   const slug = params.slug;
 
-  // Данные для Яндекс Еды
+  const [isOpen, setIsOpen] = useState(false);
+  const [currentImage, setCurrentImage] = useState('');
+
+  // ВСЕ 6 СКРИНОВ ДЛЯ ЯНДЕКС ЕДЫ
+  const yandexImages = [
+    '/cases/yandex-food/screenshot-1.jpg',
+    '/cases/yandex-food/screenshot-2.jpg',
+    '/cases/yandex-food/screenshot-3.jpg',
+    '/cases/yandex-food/screenshot-4.jpg',
+    '/cases/yandex-food/screenshot-5.jpg',
+    '/cases/yandex-food/screenshot-6.jpg',
+  ];
+
+  const openLightbox = (url) => {
+    setCurrentImage(url);
+    setIsOpen(true);
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeLightbox = () => {
+    setIsOpen(false);
+    setCurrentImage('');
+    document.body.style.overflow = 'auto';
+  };
+
+  // --- YANDEX-FOOD (ВСЕ 6 СКРИНОВ) ---
   if (slug === 'yandex-food') {
     return (
       <div style={{ padding: '40px 20px', background: '#121212', color: '#fff', minHeight: '100vh' }}>
         <Link href="/cases" style={{ color: '#c4b5a0', textDecoration: 'none' }}>← Все кейсы</Link>
-        <h1 style={{ fontSize: '48px', marginTop: '40px' }}>Яндекс Еда</h1>
-        <p>Вирусный ролик с суммарным охватом 50+ млн</p>
-        <div style={{ marginTop: '20px', display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
-          <img src="/cases/yandex-food/screenshot-1.jpg" alt="скрин" style={{ width: '200px', borderRadius: '8px' }} />
-          <img src="/cases/yandex-food/screenshot-2.jpg" alt="скрин" style={{ width: '200px', borderRadius: '8px' }} />
-          <img src="/cases/yandex-food/screenshot-3.jpg" alt="скрин" style={{ width: '200px', borderRadius: '8px' }} />
+
+        <div style={{ marginTop: '40px' }}>
+          <span style={{ display: 'inline-block', background: '#c4b5a0', color: '#fff', padding: '4px 16px', borderRadius: '40px', fontSize: '13px', fontWeight: 600 }}>
+            Вирусный контент
+          </span>
+          <h1 style={{ fontSize: '48px', marginTop: '12px', marginBottom: '8px' }}>Яндекс Еда</h1>
+          <p style={{ fontSize: '20px', color: '#b0b0b0' }}>Вирусный ролик с суммарным охватом 50+ млн</p>
         </div>
+
+        <div style={{ marginTop: '40px' }}>
+          <h2 style={{ fontSize: '24px', fontWeight: 600 }}>🎬 Вирусный видеоролик</h2>
+          <div style={{
+            borderRadius: '16px',
+            overflow: 'hidden',
+            background: '#0a0a0a',
+            maxWidth: '400px',
+            border: '1px solid #2a2a2a',
+          }}>
+            <video
+              src="/cases/yandex-food/video.mp4"
+              controls
+              style={{
+                width: '100%',
+                display: 'block',
+                aspectRatio: '16/9',
+                objectFit: 'cover',
+              }}
+              autoPlay={false}
+            />
+          </div>
+        </div>
+
+        <div style={{ marginTop: '48px' }}>
+          <h2 style={{ fontSize: '24px', fontWeight: 600 }}>📢 Репосты в крупных сообществах</h2>
+          <div style={{
+            display: 'flex',
+            flexWrap: 'nowrap',
+            gap: '12px',
+            overflowX: 'auto',
+            paddingBottom: '8px',
+            WebkitOverflowScrolling: 'touch',
+          }}>
+            {yandexImages.map((url, i) => (
+              <div key={i} style={{ flex: '0 0 auto' }}>
+                <img
+                  src={url}
+                  alt={'скрин ' + (i + 1)}
+                  style={{
+                    width: '200px',
+                    height: '125px',
+                    borderRadius: '12px',
+                    border: '1px solid #2a2a2a',
+                    cursor: 'pointer',
+                    objectFit: 'cover',
+                    display: 'block',
+                  }}
+                  onClick={() => openLightbox(url)}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {isOpen && (
+          <div
+            style={{
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              background: 'rgba(0,0,0,0.92)',
+              backdropFilter: 'blur(12px)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              zIndex: 9999,
+              padding: '20px',
+            }}
+            onClick={closeLightbox}
+          >
+            <div style={{ position: 'relative', maxWidth: '95vw', maxHeight: '95vh' }} onClick={(e) => e.stopPropagation()}>
+              <button
+                onClick={closeLightbox}
+                style={{
+                  position: 'absolute',
+                  top: '10px',
+                  right: '10px',
+                  background: 'rgba(0,0,0,0.5)',
+                  border: 'none',
+                  color: '#fff',
+                  fontSize: '30px',
+                  cursor: 'pointer',
+                  padding: '10px 16px',
+                  borderRadius: '50%',
+                  zIndex: 10,
+                }}
+              >
+                ✕
+              </button>
+              <img src={currentImage} alt="скриншот" style={{ maxWidth: '90vw', maxHeight: '85vh', borderRadius: '12px', objectFit: 'contain' }} />
+            </div>
+          </div>
+        )}
       </div>
     );
   }
 
-  // Данные для Deportivo
+  // --- DEPORTIVO (СТАТЬИ, ВИДЕО ПОТОМ) ---
   if (slug === 'deportivo') {
+    const articles = [
+      {
+        title: 'Антон Нефедечев — первый русский гол в Аргентине',
+        url: 'https://www.ole.com.ar/informacion-general/anton-nefedechev-primer-gol-ruso-argentina-deportivo-moscu-liga-escobarense_0_APpXWb03bh.html',
+      },
+      {
+        title: 'Deportivo Moscú — история клуба на CNN',
+        url: 'https://cnnespanol.cnn.com/2025/08/07/argentina/video/club-rusos-argentina-moscu-cafe-tv',
+      },
+      {
+        title: 'Под своим флагом. Как российский футбол покоряет Аргентину',
+        url: 'https://tass.ru/sport/25485173',
+      },
+      {
+        title: 'Deportivo Moscú: клуб русских, играющий в Аргентине',
+        url: 'https://www.ole.com.ar/informacion-general/deportivo-moscu-equipo-rusos-juega-argentina-quiere-jugador-torneos-afa-vodka_0_Mz7khgWkyc.html',
+      },
+    ];
+
     return (
       <div style={{ padding: '40px 20px', background: '#121212', color: '#fff', minHeight: '100vh' }}>
         <Link href="/cases" style={{ color: '#c4b5a0', textDecoration: 'none' }}>← Все кейсы</Link>
-        <h1 style={{ fontSize: '48px', marginTop: '40px' }}>DEPORTIVO MOSCÚ</h1>
-        <p>Российский футбольный клуб в Аргентине</p>
-        <div style={{ marginTop: '20px' }}>
-          <a href="https://www.ole.com.ar/informacion-general/anton-nefedechev-primer-gol-ruso-argentina-deportivo-moscu-liga-escobarense_0_APpXWb03bh.html" target="_blank" style={{ display: 'block', padding: '12px', background: '#2a2a2a', borderRadius: '8px', color: '#fff', textDecoration: 'none', marginBottom: '8px' }}>
-            Антон Нефедечев — первый русский гол в Аргентине
-          </a>
-          <a href="https://cnnespanol.cnn.com/2025/08/07/argentina/video/club-rusos-argentina-moscu-cafe-tv" target="_blank" style={{ display: 'block', padding: '12px', background: '#2a2a2a', borderRadius: '8px', color: '#fff', textDecoration: 'none', marginBottom: '8px' }}>
-            Deportivo Moscú — история клуба на CNN
-          </a>
-          <a href="https://tass.ru/sport/25485173" target="_blank" style={{ display: 'block', padding: '12px', background: '#2a2a2a', borderRadius: '8px', color: '#fff', textDecoration: 'none', marginBottom: '8px' }}>
-            Под своим флагом. Как российский футбол покоряет Аргентину
-          </a>
+
+        <div style={{ marginTop: '40px' }}>
+          <span style={{ display: 'inline-block', background: '#d4af37', color: '#fff', padding: '4px 16px', borderRadius: '40px', fontSize: '13px', fontWeight: 600 }}>
+            Спорт / Lifestyle
+          </span>
+          <h1 style={{ fontSize: '48px', marginTop: '12px', marginBottom: '8px' }}>DEPORTIVO MOSCÚ</h1>
+          <p style={{ fontSize: '20px', color: '#b0b0b0' }}>Российский футбольный клуб в Аргентине</p>
+        </div>
+
+        <div style={{ marginTop: '40px' }}>
+          <h2 style={{ fontSize: '24px', fontWeight: 600, marginBottom: '16px' }}>📰 Статьи</h2>
+          {articles.map((article, index) => (
+            <a
+              key={index}
+              href={article.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: 'block',
+                padding: '16px 20px',
+                background: '#2a2a2a',
+                borderRadius: '12px',
+                border: '1px solid #d4af37',
+                color: '#fff',
+                textDecoration: 'none',
+                marginBottom: '12px',
+                transition: 'background 0.2s',
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.background = '#3a3a3a')}
+              onMouseLeave={(e) => (e.currentTarget.style.background = '#2a2a2a')}
+            >
+              {article.title}
+            </a>
+          ))}
+        </div>
+
+        <div style={{ marginTop: '48px' }}>
+          <h2 style={{ fontSize: '24px', fontWeight: 600, marginBottom: '16px' }}>📰 Репортажи о клубе</h2>
+          <p style={{ color: '#888', fontSize: '16px' }}>
+            Видео-репортажи временно недоступны. Скоро добавим!
+          </p>
         </div>
       </div>
     );
   }
 
-  // Кейс не найден
+  // --- КЕЙС НЕ НАЙДЕН ---
   return (
     <div style={{ padding: '40px', background: '#121212', color: '#fff' }}>
       <h1>Кейс не найден</h1>
