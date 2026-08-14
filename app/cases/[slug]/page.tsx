@@ -561,7 +561,7 @@ export default function CasePage() {
     );
   }
 
-  // --- NDA HR TEAM (ОБНОВЛЕННЫЙ: "Хотите так же?" + отдельная ссылка на канал) ---
+  // --- NDA HR TEAM (ОБНОВЛЕННЫЙ: ссылка на канал над контактами) ---
   if (slug === 'nda-hr-team') {
     const creatives = [
       '/cases/nda-hr-team/creative-1.jpg',
@@ -649,14 +649,13 @@ export default function CasePage() {
           </button>
         </div>
 
-        {/* ОТДЕЛЬНАЯ ССЫЛКА НА КАНАЛ NDA HR TEAM */}
-        <div style={{ marginTop: '24px', textAlign: 'center' }}>
+        {/* ССЫЛКА НА КАНАЛ NDA HR TEAM (НАД КОНТАКТАМИ) */}
+        <div style={{ marginTop: '40px', textAlign: 'center' }}>
           <a
             href="https://t.me/ndahrteam"
             target="_blank"
             rel="noopener noreferrer"
             style={{
-              display: 'inline-block',
               color: '#c4b5a0',
               fontSize: '16px',
               textDecoration: 'none',
@@ -668,8 +667,22 @@ export default function CasePage() {
             onMouseEnter={(e) => (e.currentTarget.style.borderColor = '#c4b5a0')}
             onMouseLeave={(e) => (e.currentTarget.style.borderColor = 'rgba(196, 181, 160, 0.3)')}
           >
-            📲 Подписаться на Telegram-канал NDA HR TEAM
+            📲 Телеграм канал NDA HR TEAM
           </a>
+        </div>
+
+        {/* КОНТАКТЫ BAR AGENCY */}
+        <div style={{ marginTop: '16px', padding: '40px 30px', background: '#1a1a1a', borderRadius: '24px', textAlign: 'center', border: '1px solid #2a2a2a' }}>
+          <h3 style={{ fontSize: '24px', fontWeight: 600, color: '#fff', marginBottom: '12px' }}>
+            Связаться с нами
+          </h3>
+          <p style={{ fontSize: '16px', color: '#b0b0b0', marginBottom: '4px' }}>
+            BAR AGENCY — создаем вирусный контент для вашего бизнеса
+          </p>
+          <p style={{ fontSize: '15px', color: '#888', marginTop: '12px' }}>
+            📧 bar.agency@example.com<br />
+            📞 +7 (999) 123-45-67
+          </p>
         </div>
 
         {/* ЛАЙТБОКС */}
