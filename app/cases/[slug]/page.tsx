@@ -135,6 +135,20 @@ export default function CasePage() {
           </div>
         </div>
 
+        {/* БЛОК "Хотите так же?" — ДЛЯ ВСЕХ КЕЙСОВ */}
+        <div style={{ marginTop: '60px', padding: '40px 20px', background: '#2a2a2a', borderRadius: '24px', textAlign: 'center' }}>
+          <h3 style={{ fontSize: '28px', fontWeight: 600, color: '#fff' }}>Хотите так же?</h3>
+          <p style={{ fontSize: '18px', color: '#b0b0b0', marginBottom: '16px' }}>
+            Расскажите о своём проекте — разработаем стратегию!
+          </p>
+          <button
+            style={{ background: '#c4b5a0', color: '#fff', padding: '14px 40px', border: 'none', borderRadius: '40px', fontSize: '17px', fontWeight: 600, cursor: 'pointer' }}
+            onClick={() => window.open('https://t.me/lawayasha', '_blank')}
+          >
+            Написать в Telegram
+          </button>
+        </div>
+
         {isOpen && (
           <div
             style={{
@@ -403,6 +417,20 @@ export default function CasePage() {
             </div>
           </div>
         </div>
+
+        {/* БЛОК "Хотите так же?" — ДЛЯ ВСЕХ КЕЙСОВ */}
+        <div style={{ marginTop: '60px', padding: '40px 20px', background: '#2a2a2a', borderRadius: '24px', textAlign: 'center' }}>
+          <h3 style={{ fontSize: '28px', fontWeight: 600, color: '#fff' }}>Хотите так же?</h3>
+          <p style={{ fontSize: '18px', color: '#b0b0b0', marginBottom: '16px' }}>
+            Расскажите о своём проекте — разработаем стратегию!
+          </p>
+          <button
+            style={{ background: '#d4af37', color: '#fff', padding: '14px 40px', border: 'none', borderRadius: '40px', fontSize: '17px', fontWeight: 600, cursor: 'pointer' }}
+            onClick={() => window.open('https://t.me/lawayasha', '_blank')}
+          >
+            Написать в Telegram
+          </button>
+        </div>
       </div>
     );
   }
@@ -545,6 +573,7 @@ export default function CasePage() {
           </div>
         </div>
 
+        {/* БЛОК "Хотите так же?" — ДЛЯ ВСЕХ КЕЙСОВ */}
         <div style={{ marginTop: '60px', padding: '40px 20px', background: '#2a2a2a', borderRadius: '24px', textAlign: 'center' }}>
           <h3 style={{ fontSize: '28px', fontWeight: 600, color: '#fff' }}>Хотите так же?</h3>
           <p style={{ fontSize: '18px', color: '#b0b0b0', marginBottom: '16px' }}>
@@ -635,7 +664,7 @@ export default function CasePage() {
           </div>
         </div>
 
-        {/* ССЫЛКА НА КАНАЛ NDA HR TEAM (ПЕРВАЯ) */}
+        {/* ССЫЛКА НА КАНАЛ NDA HR TEAM */}
         <div style={{ marginTop: '50px', textAlign: 'center' }}>
           <a
             href="https://t.me/ndahrteam"
@@ -658,7 +687,7 @@ export default function CasePage() {
           </a>
         </div>
 
-        {/* БЛОК "Хотите так же?" — КАК В PROMINNER (ВТОРОЙ) */}
+        {/* БЛОК "Хотите так же?" — ДЛЯ ВСЕХ КЕЙСОВ */}
         <div style={{ marginTop: '40px', padding: '40px 20px', background: '#2a2a2a', borderRadius: '24px', textAlign: 'center' }}>
           <h3 style={{ fontSize: '28px', fontWeight: 600, color: '#fff' }}>Хотите так же?</h3>
           <p style={{ fontSize: '18px', color: '#b0b0b0', marginBottom: '16px' }}>
