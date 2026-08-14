@@ -10,8 +10,12 @@ export default function CasePage() {
 
   const [isOpen, setIsOpen] = useState(false);
   const [currentImage, setCurrentImage] = useState('');
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [imagesList, setImagesList] = useState([]);
 
-  const openLightbox = (url) => {
+  const openLightbox = (url, list, index) => {
+    setImagesList(list);
+    setCurrentIndex(index);
     setCurrentImage(url);
     setIsOpen(true);
     document.body.style.overflow = 'hidden';
@@ -20,7 +24,22 @@ export default function CasePage() {
   const closeLightbox = () => {
     setIsOpen(false);
     setCurrentImage('');
+    setImagesList([]);
     document.body.style.overflow = 'auto';
+  };
+
+  const goToPrev = () => {
+    if (imagesList.length === 0) return;
+    const newIndex = (currentIndex - 1 + imagesList.length) % imagesList.length;
+    setCurrentIndex(newIndex);
+    setCurrentImage(imagesList[newIndex]);
+  };
+
+  const goToNext = () => {
+    if (imagesList.length === 0) return;
+    const newIndex = (currentIndex + 1) % imagesList.length;
+    setCurrentIndex(newIndex);
+    setCurrentImage(imagesList[newIndex]);
   };
 
   // --- YANDEX-FOOD ---
@@ -109,7 +128,7 @@ export default function CasePage() {
                     objectFit: 'cover',
                     display: 'block',
                   }}
-                  onClick={() => openLightbox(url)}
+                  onClick={() => openLightbox(url, yandexImages, i)}
                 />
               </div>
             ))}
@@ -156,6 +175,55 @@ export default function CasePage() {
               >
                 ✕
               </button>
+
+              {/* СТРЕЛКА НАЗАД */}
+              <button
+                onClick={(e) => { e.stopPropagation(); goToPrev(); }}
+                style={{
+                  position: 'absolute',
+                  left: '-60px',
+                  top: '50%',
+                  transform: 'translateY(-50%)',
+                  background: 'rgba(0,0,0,0.5)',
+                  border: '1px solid rgba(255,255,255,0.2)',
+                  color: '#fff',
+                  fontSize: '36px',
+                  cursor: 'pointer',
+                  padding: '12px 16px',
+                  borderRadius: '50%',
+                  zIndex: 10,
+                  transition: 'background 0.2s',
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(255,255,255,0.2)')}
+                onMouseLeave={(e) => (e.currentTarget.style.background = 'rgba(0,0,0,0.5)')}
+              >
+                ‹
+              </button>
+
+              {/* СТРЕЛКА ВПЕРЕД */}
+              <button
+                onClick={(e) => { e.stopPropagation(); goToNext(); }}
+                style={{
+                  position: 'absolute',
+                  right: '-60px',
+                  top: '50%',
+                  transform: 'translateY(-50%)',
+                  background: 'rgba(0,0,0,0.5)',
+                  border: '1px solid rgba(255,255,255,0.2)',
+                  color: '#fff',
+                  fontSize: '36px',
+                  cursor: 'pointer',
+                  padding: '12px 16px',
+                  borderRadius: '50%',
+                  zIndex: 10,
+                  transition: 'background 0.2s',
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(255,255,255,0.2)')}
+                onMouseLeave={(e) => (e.currentTarget.style.background = 'rgba(0,0,0,0.5)')}
+              >
+                ›
+              </button>
+
               <img
                 src={currentImage}
                 alt="скриншот"
@@ -166,6 +234,21 @@ export default function CasePage() {
                   objectFit: 'contain',
                 }}
               />
+
+              {/* СЧЕТЧИК */}
+              <div
+                style={{
+                  position: 'absolute',
+                  bottom: '-50px',
+                  left: '50%',
+                  transform: 'translateX(-50%)',
+                  color: 'rgba(255,255,255,0.6)',
+                  fontSize: '14px',
+                  fontFamily: 'sans-serif',
+                }}
+              >
+                {currentIndex + 1} / {imagesList.length}
+              </div>
             </div>
           </div>
         )}
@@ -474,7 +557,7 @@ export default function CasePage() {
     );
   }
 
-  // --- NDA HR TEAM (ОБНОВЛЕННЫЙ С ГОРИЗОНТАЛЬНЫМ СКРОЛЛОМ) ---
+  // --- NDA HR TEAM (ОБНОВЛЕННЫЙ С ГОРИЗОНТАЛЬНЫМ СКРОЛЛОМ И СТРЕЛКАМИ) ---
   if (slug === 'nda-hr-team') {
     const creatives = [
       '/cases/nda-hr-team/creative-1.jpg',
@@ -541,7 +624,7 @@ export default function CasePage() {
                     objectFit: 'cover',
                     display: 'block',
                   }}
-                  onClick={() => openLightbox(url)}
+                  onClick={() => openLightbox(url, creatives, i)}
                 />
               </div>
             ))}
@@ -576,7 +659,7 @@ export default function CasePage() {
           </a>
         </div>
 
-        {/* ЛАЙТБОКС */}
+        {/* ЛАЙТБОКС СО СТРЕЛКАМИ */}
         {isOpen && (
           <div
             style={{
@@ -617,6 +700,55 @@ export default function CasePage() {
               >
                 ✕
               </button>
+
+              {/* СТРЕЛКА НАЗАД */}
+              <button
+                onClick={(e) => { e.stopPropagation(); goToPrev(); }}
+                style={{
+                  position: 'absolute',
+                  left: '-60px',
+                  top: '50%',
+                  transform: 'translateY(-50%)',
+                  background: 'rgba(0,0,0,0.5)',
+                  border: '1px solid rgba(255,255,255,0.2)',
+                  color: '#fff',
+                  fontSize: '36px',
+                  cursor: 'pointer',
+                  padding: '12px 16px',
+                  borderRadius: '50%',
+                  zIndex: 10,
+                  transition: 'background 0.2s',
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(255,255,255,0.2)')}
+                onMouseLeave={(e) => (e.currentTarget.style.background = 'rgba(0,0,0,0.5)')}
+              >
+                ‹
+              </button>
+
+              {/* СТРЕЛКА ВПЕРЕД */}
+              <button
+                onClick={(e) => { e.stopPropagation(); goToNext(); }}
+                style={{
+                  position: 'absolute',
+                  right: '-60px',
+                  top: '50%',
+                  transform: 'translateY(-50%)',
+                  background: 'rgba(0,0,0,0.5)',
+                  border: '1px solid rgba(255,255,255,0.2)',
+                  color: '#fff',
+                  fontSize: '36px',
+                  cursor: 'pointer',
+                  padding: '12px 16px',
+                  borderRadius: '50%',
+                  zIndex: 10,
+                  transition: 'background 0.2s',
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(255,255,255,0.2)')}
+                onMouseLeave={(e) => (e.currentTarget.style.background = 'rgba(0,0,0,0.5)')}
+              >
+                ›
+              </button>
+
               <img
                 src={currentImage}
                 alt="креатив"
@@ -627,6 +759,21 @@ export default function CasePage() {
                   objectFit: 'contain',
                 }}
               />
+
+              {/* СЧЕТЧИК */}
+              <div
+                style={{
+                  position: 'absolute',
+                  bottom: '-50px',
+                  left: '50%',
+                  transform: 'translateX(-50%)',
+                  color: 'rgba(255,255,255,0.6)',
+                  fontSize: '14px',
+                  fontFamily: 'sans-serif',
+                }}
+              >
+                {currentIndex + 1} / {imagesList.length}
+              </div>
             </div>
           </div>
         )}
