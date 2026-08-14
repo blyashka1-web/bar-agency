@@ -474,25 +474,14 @@ export default function CasePage() {
     );
   }
 
-  // --- NDA HR TEAM ---
+  // --- NDA HR TEAM (ОБНОВЛЕННЫЙ) ---
   if (slug === 'nda-hr-team') {
-    const screenshots = [
-      '/cases/nda-hr-team/screenshot-1.jpg',
-      '/cases/nda-hr-team/screenshot-2.jpg',
-      '/cases/nda-hr-team/screenshot-3.jpg',
-      '/cases/nda-hr-team/screenshot-4.jpg',
-      '/cases/nda-hr-team/screenshot-5.jpg',
-    ];
-
-    const articles = [
-      {
-        title: 'Как мы запустили HR-бренд с нуля: кейс NDA',
-        url: 'https://example.com/article-1',
-      },
-      {
-        title: 'NDA HR TEAM — новый подход к подбору персонала',
-        url: 'https://example.com/article-2',
-      },
+    const creatives = [
+      '/cases/nda-hr-team/creative-1.jpg',
+      '/cases/nda-hr-team/creative-2.jpg',
+      '/cases/nda-hr-team/creative-3.jpg',
+      '/cases/nda-hr-team/creative-4.jpg',
+      '/cases/nda-hr-team/creative-5.jpg',
     ];
 
     return (
@@ -519,130 +508,80 @@ export default function CasePage() {
             NDA HR TEAM
           </h1>
           <p style={{ fontSize: '20px', color: '#b0b0b0' }}>
-            Построение HR-бренда с нуля: стратегия, контент, коммуникация
+            Креативы для HR-бренда
           </p>
         </div>
 
-        <div style={{ marginTop: '40px' }}>
-          <h2 style={{ fontSize: '24px', fontWeight: 600 }}>🎬 Презентационный ролик</h2>
-          <div
-            style={{
-              borderRadius: '16px',
-              overflow: 'hidden',
-              background: '#0a0a0a',
-              maxWidth: '600px',
-              border: '1px solid #2a2a2a',
-            }}
-          >
-            <video
-              src="/cases/nda-hr-team/video.mp4"
-              controls
-              style={{
-                width: '100%',
-                display: 'block',
-                aspectRatio: '16/9',
-                objectFit: 'cover',
-              }}
-              autoPlay={false}
-            />
-          </div>
-        </div>
-
+        {/* ГАЛЕРЕЯ КРЕАТИВОВ */}
         <div style={{ marginTop: '40px' }}>
           <h2 style={{ fontSize: '24px', fontWeight: 600, marginBottom: '16px' }}>
-            📰 Публикации
+            🎨 Примеры креативов
           </h2>
-          {articles.map((article, index) => (
-            <a
-              key={index}
-              href={article.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                display: 'block',
-                padding: '16px 20px',
-                background: '#2a2a2a',
-                borderRadius: '12px',
-                border: '1px solid #7a2e2a',
-                color: '#fff',
-                textDecoration: 'none',
-                marginBottom: '12px',
-                transition: 'background 0.2s',
-              }}
-              onMouseEnter={(e) => (e.currentTarget.style.background = '#3a3a3a')}
-              onMouseLeave={(e) => (e.currentTarget.style.background = '#2a2a2a')}
-            >
-              {article.title}
-            </a>
-          ))}
-        </div>
-
-        <div style={{ marginTop: '48px' }}>
-          <h2 style={{ fontSize: '24px', fontWeight: 600 }}>📸 Визуалы кампании</h2>
           <div
             style={{
-              display: 'flex',
-              flexWrap: 'nowrap',
-              gap: '12px',
-              overflowX: 'auto',
-              paddingBottom: '8px',
-              WebkitOverflowScrolling: 'touch',
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+              gap: '16px',
             }}
           >
-            {screenshots.map((url, i) => (
-              <div key={i} style={{ flex: '0 0 auto' }}>
+            {creatives.map((url, i) => (
+              <div
+                key={i}
+                style={{
+                  borderRadius: '16px',
+                  overflow: 'hidden',
+                  border: '1px solid #2a2a2a',
+                  cursor: 'pointer',
+                  transition: 'transform 0.2s',
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.02)')}
+                onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
+                onClick={() => openLightbox(url)}
+              >
                 <img
                   src={url}
-                  alt={'скрин ' + (i + 1)}
+                  alt={`Креатив ${i + 1}`}
                   style={{
-                    width: '200px',
-                    height: '125px',
-                    borderRadius: '12px',
-                    border: '1px solid #2a2a2a',
-                    cursor: 'pointer',
-                    objectFit: 'cover',
+                    width: '100%',
                     display: 'block',
+                    aspectRatio: '1/1',
+                    objectFit: 'cover',
                   }}
-                  onClick={() => openLightbox(url)}
                 />
               </div>
             ))}
           </div>
         </div>
 
-        <div style={{ marginTop: '40px' }}>
-          <h2 style={{ fontSize: '24px', fontWeight: 600, marginBottom: '16px' }}>
-            🚀 Результаты
-          </h2>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-            <div style={{ background: '#2a2a2a', padding: '16px 20px', borderRadius: '12px', border: '1px solid #7a2e2a' }}>
-              <span style={{ fontSize: '18px', fontWeight: 600, color: '#fff' }}>📈 Рост узнаваемости</span>
-              <p style={{ color: '#b0b0b0', margin: '4px 0 0 0' }}>Увеличение упоминаний бренда на 200% за 6 месяцев</p>
-            </div>
-            <div style={{ background: '#2a2a2a', padding: '16px 20px', borderRadius: '12px', border: '1px solid #7a2e2a' }}>
-              <span style={{ fontSize: '18px', fontWeight: 600, color: '#fff' }}>👥 Количество заявок</span>
-              <p style={{ color: '#b0b0b0', margin: '4px 0 0 0' }}>Более 500 откликов на вакансии за месяц</p>
-            </div>
-            <div style={{ background: '#2a2a2a', padding: '16px 20px', borderRadius: '12px', border: '1px solid #7a2e2a' }}>
-              <span style={{ fontSize: '18px', fontWeight: 600, color: '#fff' }}>💼 Коммерческие предложения</span>
-              <p style={{ color: '#b0b0b0', margin: '4px 0 0 0' }}>Заключены контракты с 3 крупными компаниями</p>
-            </div>
-          </div>
-        </div>
-
+        {/* ССЫЛКА НА TELEGRAM */}
         <div style={{ marginTop: '60px', padding: '40px 20px', background: '#2a2a2a', borderRadius: '24px', textAlign: 'center' }}>
-          <h3 style={{ fontSize: '28px', fontWeight: 600, color: '#fff' }}>Хотите построить сильный HR-бренд?</h3>
+          <h3 style={{ fontSize: '28px', fontWeight: 600, color: '#fff' }}>Хотите посмотреть все креативы?</h3>
           <p style={{ fontSize: '18px', color: '#b0b0b0', marginBottom: '16px' }}>
-            Поможем привлекать лучших кандидатов
+            Подписывайтесь на наш Telegram-канал
           </p>
-          <button
-            style={{ background: '#7a2e2a', color: '#fff', padding: '14px 40px', border: 'none', borderRadius: '40px', fontSize: '17px', fontWeight: 600, cursor: 'pointer' }}
-            onClick={() => window.open('https://t.me/lawayasha', '_blank')}
+          <a
+            href="https://t.me/nda_hr_team"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              display: 'inline-block',
+              background: '#7a2e2a',
+              color: '#fff',
+              padding: '14px 44px',
+              borderRadius: '40px',
+              fontSize: '17px',
+              fontWeight: 600,
+              textDecoration: 'none',
+              transition: 'background 0.2s',
+            }}
+            onMouseEnter={(e) => (e.currentTarget.style.background = '#8a3e3a')}
+            onMouseLeave={(e) => (e.currentTarget.style.background = '#7a2e2a')}
           >
-            Написать в Telegram
-          </button>
+            📲 Перейти в Telegram
+          </a>
         </div>
 
+        {/* ЛАЙТБОКС */}
         {isOpen && (
           <div
             style={{
@@ -685,7 +624,7 @@ export default function CasePage() {
               </button>
               <img
                 src={currentImage}
-                alt="скриншот"
+                alt="креатив"
                 style={{
                   maxWidth: '90vw',
                   maxHeight: '85vh',
