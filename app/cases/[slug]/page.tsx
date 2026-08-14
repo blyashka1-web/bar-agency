@@ -11,7 +11,6 @@ export default function CasePage() {
   const [isOpen, setIsOpen] = useState(false);
   const [currentImage, setCurrentImage] = useState('');
 
-  // ВСЕ 6 СКРИНОВ ДЛЯ ЯНДЕКС ЕДЫ
   const yandexImages = [
     '/cases/yandex-food/screenshot-1.jpg',
     '/cases/yandex-food/screenshot-2.jpg',
@@ -33,7 +32,7 @@ export default function CasePage() {
     document.body.style.overflow = 'auto';
   };
 
-  // --- YANDEX-FOOD (ВСЕ 6 СКРИНОВ) ---
+  // --- YANDEX-FOOD ---
   if (slug === 'yandex-food') {
     return (
       <div style={{ padding: '40px 20px', background: '#121212', color: '#fff', minHeight: '100vh' }}>
@@ -146,7 +145,7 @@ export default function CasePage() {
     );
   }
 
-  // --- DEPORTIVO (СТАТЬИ, ВИДЕО ПОТОМ) ---
+  // --- DEPORTIVO (БЕЗ ВИДЕО) ---
   if (slug === 'deportivo') {
     const articles = [
       {
@@ -209,7 +208,7 @@ export default function CasePage() {
         <div style={{ marginTop: '48px' }}>
           <h2 style={{ fontSize: '24px', fontWeight: 600, marginBottom: '16px' }}>📰 Репортажи о клубе</h2>
           <p style={{ color: '#888', fontSize: '16px' }}>
-            Видео-репортажи временно недоступны. Скоро добавим!
+            Видео-репортажи скоро появятся!
           </p>
         </div>
       </div>
