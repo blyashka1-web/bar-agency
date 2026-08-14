@@ -260,7 +260,7 @@ export default function CasePage() {
     );
   }
 
-  // --- DEPORTIVO MOSCÚ ---
+  // --- DEPORTIVO MOSCÚ (С 4 СТАТЬЯМИ) ---
   if (slug === 'deportivo') {
     const articles = [
       {
@@ -274,6 +274,10 @@ export default function CasePage() {
       {
         title: 'Под своим флагом. Как российский футбол покоряет Аргентину',
         url: 'https://tass.ru/sport/25485173',
+      },
+      {
+        title: 'Deportivo Moscú: клуб русских, играющий в Аргентине',
+        url: 'https://www.ole.com.ar/informacion-general/deportivo-moscu-equipo-rusos-juega-argentina-quiere-jugador-torneos-afa-vodka_0_Mz7khgWkyc.html',
       },
     ];
 
