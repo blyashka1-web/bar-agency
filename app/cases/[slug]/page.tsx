@@ -286,7 +286,7 @@ export default function CasePage() {
             </div>
             <div style={{ flex: '0 0 auto' }}>
               <video
-                src="/cases/deportivo/video-2.mp4"
+                src="/cases/deportivo/video-2-compressed.mp4"
                 controls
                 style={{
                   width: '200px',
