@@ -37,7 +37,7 @@ export default function CasesPage() {
     {
       slug: 'spinbetter',
       logo: '/cases/spinbetter/logo.png',
-      tag: 'Гемблинг / Маркетинг',
+      tag: 'Беттинг / Маркетинг',
       title: 'SpinBetter',
       desc: 'Букмекерская компания: стратегия развития бренда в соцсетях',
       bg: '#1a2a2a',
