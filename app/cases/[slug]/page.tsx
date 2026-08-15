@@ -435,7 +435,7 @@ export default function CasePage() {
     );
   }
 
-  // --- PROMINNER (ОБНОВЛЕННЫЙ: "Стратегия развития бренда") ---
+  // --- PROMINNER ---
   if (slug === 'promminer') {
     const articles = [
       {
@@ -528,7 +528,7 @@ export default function CasePage() {
           </div>
         </div>
 
-        {/* СТРАТЕГИЯ РАЗВИТИЯ БРЕНДА (вместо "Презентация") */}
+        {/* СТРАТЕГИЯ РАЗВИТИЯ БРЕНДА */}
         <div style={{ marginTop: '40px' }}>
           <h2 style={{ fontSize: '24px', fontWeight: 600, marginBottom: '16px' }}>
             📄 Стратегия развития бренда
@@ -800,6 +800,293 @@ export default function CasePage() {
               <img
                 src={currentImage}
                 alt="креатив"
+                style={{
+                  maxWidth: '90vw',
+                  maxHeight: '85vh',
+                  borderRadius: '12px',
+                  objectFit: 'contain',
+                }}
+              />
+
+              <div
+                style={{
+                  position: 'absolute',
+                  bottom: '-40px',
+                  left: '50%',
+                  transform: 'translateX(-50%)',
+                  color: 'rgba(255,255,255,0.6)',
+                  fontSize: '14px',
+                  fontFamily: 'sans-serif',
+                }}
+              >
+                {currentIndex + 1} / {imagesList.length}
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+    );
+  }
+
+  // --- SPINBETTER ---
+  if (slug === 'spinbetter') {
+    const spinImages = [
+      '/cases/spinbetter/screenshot-1.jpg',
+      '/cases/spinbetter/screenshot-2.jpg',
+      '/cases/spinbetter/screenshot-3.jpg',
+    ];
+
+    return (
+      <div style={{ padding: '40px 20px', background: '#121212', color: '#fff', minHeight: '100vh' }}>
+        <Link href="/cases" style={{ color: '#c4b5a0', textDecoration: 'none' }}>
+          ← Все кейсы
+        </Link>
+
+        <div style={{ marginTop: '40px' }}>
+          <span
+            style={{
+              display: 'inline-block',
+              background: '#2a7a7a',
+              color: '#fff',
+              padding: '4px 16px',
+              borderRadius: '40px',
+              fontSize: '13px',
+              fontWeight: 600,
+            }}
+          >
+            Гемблинг / Маркетинг
+          </span>
+          <h1 style={{ fontSize: '48px', marginTop: '12px', marginBottom: '8px' }}>
+            SpinBetter
+          </h1>
+          <p style={{ fontSize: '20px', color: '#b0b0b0' }}>
+            Букмекерская компания: стратегия развития бренда в соцсетях
+          </p>
+        </div>
+
+        {/* СТРАТЕГИЯ РАЗВИТИЯ БРЕНДА */}
+        <div style={{ marginTop: '40px' }}>
+          <h2 style={{ fontSize: '24px', fontWeight: 600, marginBottom: '16px' }}>
+            📄 Стратегия развития бренда в социальных сетях
+          </h2>
+          <div
+            style={{
+              padding: '20px',
+              background: '#2a2a2a',
+              borderRadius: '12px',
+              border: '1px solid #2a7a7a',
+            }}
+          >
+            <p style={{ color: '#b0b0b0', fontSize: '16px', marginBottom: '12px' }}>
+              Разработана комплексная стратегия присутствия бренда в социальных сетях:
+            </p>
+            <ul style={{ color: '#b0b0b0', fontSize: '15px', paddingLeft: '20px' }}>
+              <li style={{ marginBottom: '6px' }}>🔹 Анализ целевой аудитории и конкурентов</li>
+              <li style={{ marginBottom: '6px' }}>🔹 Контент-план и визуальная стратегия</li>
+              <li style={{ marginBottom: '6px' }}>🔹 Система вовлечения и удержания подписчиков</li>
+            </ul>
+          </div>
+        </div>
+
+        {/* ВОРОНКА ДЛЯ ДЕПОЗИТОВ */}
+        <div style={{ marginTop: '40px' }}>
+          <h2 style={{ fontSize: '24px', fontWeight: 600, marginBottom: '16px' }}>
+            📊 Воронка для депозитов
+          </h2>
+          <div
+            style={{
+              padding: '20px',
+              background: '#2a2a2a',
+              borderRadius: '12px',
+              border: '1px solid #2a7a7a',
+            }}
+          >
+            <p style={{ color: '#b0b0b0', fontSize: '16px', marginBottom: '12px' }}>
+              Разработана эффективная воронка для привлечения и удержания депозитов:
+            </p>
+            <ul style={{ color: '#b0b0b0', fontSize: '15px', paddingLeft: '20px' }}>
+              <li style={{ marginBottom: '6px' }}>🔹 Привлечение трафика через соцсети</li>
+              <li style={{ marginBottom: '6px' }}>🔹 Лендинги и регистрация</li>
+              <li style={{ marginBottom: '6px' }}>🔹 Система бонусов и удержания</li>
+            </ul>
+          </div>
+        </div>
+
+        {/* БРЕНДБУК */}
+        <div style={{ marginTop: '40px' }}>
+          <h2 style={{ fontSize: '24px', fontWeight: 600, marginBottom: '16px' }}>
+            📘 Брендбук
+          </h2>
+          <a
+            href="/cases/spinbetter/brandbook.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              display: 'block',
+              padding: '16px 20px',
+              background: '#2a2a2a',
+              borderRadius: '12px',
+              border: '1px solid #2a7a7a',
+              color: '#fff',
+              textDecoration: 'none',
+              transition: 'background 0.2s',
+            }}
+            onMouseEnter={(e) => (e.currentTarget.style.background = '#3a3a3a')}
+            onMouseLeave={(e) => (e.currentTarget.style.background = '#2a2a2a')}
+          >
+            📘 Открыть брендбук (PDF)
+          </a>
+          <p style={{ color: '#888', fontSize: '14px', marginTop: '8px' }}>
+            Брендбук разработан в соответствии с дизайн-системой компании
+          </p>
+        </div>
+
+        {/* ГАЛЕРЕЯ СКРИНШОТОВ */}
+        <div style={{ marginTop: '48px' }}>
+          <h2 style={{ fontSize: '24px', fontWeight: 600 }}>📸 Примеры креативов</h2>
+          <div
+            style={{
+              display: 'flex',
+              flexWrap: 'nowrap',
+              gap: '12px',
+              overflowX: 'auto',
+              paddingBottom: '8px',
+              WebkitOverflowScrolling: 'touch',
+            }}
+          >
+            {spinImages.map((url, i) => (
+              <div key={i} style={{ flex: '0 0 auto' }}>
+                <img
+                  src={url}
+                  alt={'скрин ' + (i + 1)}
+                  style={{
+                    width: '200px',
+                    height: '125px',
+                    borderRadius: '12px',
+                    border: '1px solid #2a2a2a',
+                    cursor: 'pointer',
+                    objectFit: 'cover',
+                    display: 'block',
+                  }}
+                  onClick={() => openLightbox(url, spinImages, i)}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* БЛОК "Хотите так же?" */}
+        <div style={{ marginTop: '60px', padding: '40px 20px', background: '#2a2a2a', borderRadius: '24px', textAlign: 'center' }}>
+          <h3 style={{ fontSize: '28px', fontWeight: 600, color: '#fff' }}>Хотите так же?</h3>
+          <p style={{ fontSize: '18px', color: '#b0b0b0', marginBottom: '16px' }}>
+            Расскажите о своём проекте — разработаем стратегию!
+          </p>
+          <button
+            style={{ background: '#2a7a7a', color: '#fff', padding: '14px 40px', border: 'none', borderRadius: '40px', fontSize: '17px', fontWeight: 600, cursor: 'pointer' }}
+            onClick={() => window.open('https://t.me/lawayasha', '_blank')}
+          >
+            Написать в Telegram
+          </button>
+        </div>
+
+        {/* ЛАЙТБОКС */}
+        {isOpen && (
+          <div
+            style={{
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              background: 'rgba(0,0,0,0.92)',
+              backdropFilter: 'blur(12px)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              zIndex: 9999,
+              padding: '10px',
+            }}
+            onClick={closeLightbox}
+          >
+            <div
+              style={{
+                position: 'relative',
+                maxWidth: '95vw',
+                maxHeight: '95vh',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                onClick={closeLightbox}
+                style={{
+                  position: 'absolute',
+                  top: '10px',
+                  right: '10px',
+                  background: 'rgba(0,0,0,0.5)',
+                  border: 'none',
+                  color: '#fff',
+                  fontSize: '24px',
+                  cursor: 'pointer',
+                  padding: '8px 14px',
+                  borderRadius: '50%',
+                  zIndex: 10,
+                }}
+              >
+                ✕
+              </button>
+
+              <button
+                onClick={(e) => { e.stopPropagation(); goToPrev(); }}
+                style={{
+                  position: 'absolute',
+                  left: '10px',
+                  top: '50%',
+                  transform: 'translateY(-50%)',
+                  background: 'rgba(0,0,0,0.5)',
+                  border: '1px solid rgba(255,255,255,0.2)',
+                  color: '#fff',
+                  fontSize: '28px',
+                  cursor: 'pointer',
+                  padding: '8px 14px',
+                  borderRadius: '50%',
+                  zIndex: 10,
+                  transition: 'background 0.2s',
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(255,255,255,0.2)')}
+                onMouseLeave={(e) => (e.currentTarget.style.background = 'rgba(0,0,0,0.5)')}
+              >
+                ‹
+              </button>
+
+              <button
+                onClick={(e) => { e.stopPropagation(); goToNext(); }}
+                style={{
+                  position: 'absolute',
+                  right: '10px',
+                  top: '50%',
+                  transform: 'translateY(-50%)',
+                  background: 'rgba(0,0,0,0.5)',
+                  border: '1px solid rgba(255,255,255,0.2)',
+                  color: '#fff',
+                  fontSize: '28px',
+                  cursor: 'pointer',
+                  padding: '8px 14px',
+                  borderRadius: '50%',
+                  zIndex: 10,
+                  transition: 'background 0.2s',
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(255,255,255,0.2)')}
+                onMouseLeave={(e) => (e.currentTarget.style.background = 'rgba(0,0,0,0.5)')}
+              >
+                ›
+              </button>
+
+              <img
+                src={currentImage}
+                alt="скриншот"
                 style={{
                   maxWidth: '90vw',
                   maxHeight: '85vh',
