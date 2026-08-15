@@ -828,7 +828,7 @@ export default function CasePage() {
     );
   }
 
-  // --- SPINBETTER ---
+  // --- SPINBETTER (СО СТРАТЕГИЕЙ) ---
   if (slug === 'spinbetter') {
     const spinImages = [
       '/cases/spinbetter/screenshot-1.jpg',
@@ -885,6 +885,30 @@ export default function CasePage() {
               <li style={{ marginBottom: '6px' }}>🔹 Контент-план и визуальная стратегия</li>
               <li style={{ marginBottom: '6px' }}>🔹 Система вовлечения и удержания подписчиков</li>
             </ul>
+
+            {/* ССЫЛКА НА PDF СО СТРАТЕГИЕЙ */}
+            <div style={{ marginTop: '16px' }}>
+              <a
+                href="/cases/spinbetter/strategy.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: 'inline-block',
+                  padding: '12px 28px',
+                  background: '#2a7a7a',
+                  color: '#fff',
+                  borderRadius: '40px',
+                  textDecoration: 'none',
+                  fontSize: '15px',
+                  fontWeight: 500,
+                  transition: 'background 0.2s',
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.background = '#3a8a8a')}
+                onMouseLeave={(e) => (e.currentTarget.style.background = '#2a7a7a')}
+              >
+                📄 Скачать стратегию (PDF)
+              </a>
+            </div>
           </div>
         </div>
 
