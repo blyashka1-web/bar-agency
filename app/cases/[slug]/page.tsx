@@ -828,12 +828,15 @@ export default function CasePage() {
     );
   }
 
-  // --- SPINBETTER (СО СТРАТЕГИЕЙ) ---
+  // --- SPINBETTER (6 КРЕАТИВОВ + СТРАТЕГИЯ) ---
   if (slug === 'spinbetter') {
     const spinImages = [
-      '/cases/spinbetter/screenshot-1.jpg',
-      '/cases/spinbetter/screenshot-2.jpg',
-      '/cases/spinbetter/screenshot-3.jpg',
+      '/cases/spinbetter/creative-1.jpg',
+      '/cases/spinbetter/creative-2.jpg',
+      '/cases/spinbetter/creative-3.jpg',
+      '/cases/spinbetter/creative-4.jpg',
+      '/cases/spinbetter/creative-5.jpg',
+      '/cases/spinbetter/creative-6.jpg',
     ];
 
     return (
@@ -965,9 +968,9 @@ export default function CasePage() {
           </p>
         </div>
 
-        {/* ГАЛЕРЕЯ СКРИНШОТОВ */}
+        {/* ГАЛЕРЕЯ КРЕАТИВОВ (6 ШТУК) */}
         <div style={{ marginTop: '48px' }}>
-          <h2 style={{ fontSize: '24px', fontWeight: 600 }}>📸 Примеры креативов</h2>
+          <h2 style={{ fontSize: '24px', fontWeight: 600 }}>🎨 Креативы для соцсетей</h2>
           <div
             style={{
               display: 'flex',
@@ -982,7 +985,7 @@ export default function CasePage() {
               <div key={i} style={{ flex: '0 0 auto' }}>
                 <img
                   src={url}
-                  alt={'скрин ' + (i + 1)}
+                  alt={`Креатив ${i + 1}`}
                   style={{
                     width: '200px',
                     height: '125px',
@@ -1110,7 +1113,7 @@ export default function CasePage() {
 
               <img
                 src={currentImage}
-                alt="скриншот"
+                alt="креатив"
                 style={{
                   maxWidth: '90vw',
                   maxHeight: '85vh',
