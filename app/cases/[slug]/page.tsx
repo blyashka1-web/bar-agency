@@ -828,7 +828,7 @@ export default function CasePage() {
     );
   }
 
-  // --- SPINBETTER (6 КРЕАТИВОВ + СТРАТЕГИЯ) ---
+  // --- SPINBETTER (6 КРЕАТИВОВ + СТРАТЕГИЯ, БЕЗ БРЕНДБУКА) ---
   if (slug === 'spinbetter') {
     const spinImages = [
       '/cases/spinbetter/creative-1.jpg',
@@ -857,13 +857,13 @@ export default function CasePage() {
               fontWeight: 600,
             }}
           >
-            Гемблинг / Маркетинг
+            Беттинг / Маркетинг
           </span>
           <h1 style={{ fontSize: '48px', marginTop: '12px', marginBottom: '8px' }}>
             SpinBetter
           </h1>
           <p style={{ fontSize: '20px', color: '#b0b0b0' }}>
-            Букмекерская компания: стратегия развития бренда в соцсетях
+            Букмекерская компания
           </p>
         </div>
 
@@ -909,7 +909,7 @@ export default function CasePage() {
                 onMouseEnter={(e) => (e.currentTarget.style.background = '#3a8a8a')}
                 onMouseLeave={(e) => (e.currentTarget.style.background = '#2a7a7a')}
               >
-                📄 Скачать стратегию (PDF)
+                📄 Открыть стратегию (PDF)
               </a>
             </div>
           </div>
@@ -937,35 +937,6 @@ export default function CasePage() {
               <li style={{ marginBottom: '6px' }}>🔹 Система бонусов и удержания</li>
             </ul>
           </div>
-        </div>
-
-        {/* БРЕНДБУК */}
-        <div style={{ marginTop: '40px' }}>
-          <h2 style={{ fontSize: '24px', fontWeight: 600, marginBottom: '16px' }}>
-            📘 Брендбук
-          </h2>
-          <a
-            href="/cases/spinbetter/brandbook.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              display: 'block',
-              padding: '16px 20px',
-              background: '#2a2a2a',
-              borderRadius: '12px',
-              border: '1px solid #2a7a7a',
-              color: '#fff',
-              textDecoration: 'none',
-              transition: 'background 0.2s',
-            }}
-            onMouseEnter={(e) => (e.currentTarget.style.background = '#3a3a3a')}
-            onMouseLeave={(e) => (e.currentTarget.style.background = '#2a2a2a')}
-          >
-            📘 Открыть брендбук (PDF)
-          </a>
-          <p style={{ color: '#888', fontSize: '14px', marginTop: '8px' }}>
-            Брендбук разработан в соответствии с дизайн-системой компании
-          </p>
         </div>
 
         {/* ГАЛЕРЕЯ КРЕАТИВОВ (6 ШТУК) */}
