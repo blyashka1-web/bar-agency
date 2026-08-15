@@ -34,6 +34,14 @@ export default function CasesPage() {
       desc: 'Построение HR-бренда с нуля: стратегия, контент, коммуникация',
       bg: '#2a1a1a',
     },
+    {
+      slug: 'spinbetter',
+      logo: '/cases/spinbetter/logo.png',
+      tag: 'Гемблинг / Маркетинг',
+      title: 'SpinBetter',
+      desc: 'Букмекерская компания: стратегия развития бренда в соцсетях',
+      bg: '#1a2a2a',
+    },
   ];
 
   return (
