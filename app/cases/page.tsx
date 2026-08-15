@@ -5,7 +5,7 @@ export default function CasesPage() {
     {
       slug: 'yandex-food',
       logo: '/cases/yandex-food/logo.png',
-      tag: 'IT / Платформа',
+      tag: 'IT / Вирусный контент',
       title: 'Яндекс Еда',
       desc: 'Вирусный ролик с суммарным охватом 50+ млн',
       bg: '#2a2a2a',
