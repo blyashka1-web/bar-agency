@@ -5,7 +5,7 @@ export default function CasesPage() {
     {
       slug: 'yandex-food',
       logo: '/cases/yandex-food/logo.png',
-      tag: 'IT / Вирусный контент',
+      tag: 'IT / Платформа',
       title: 'Яндекс Еда',
       desc: 'Вирусный ролик с суммарным охватом 50+ млн',
       bg: '#2a2a2a',
@@ -21,7 +21,7 @@ export default function CasesPage() {
     {
       slug: 'promminer',
       logo: '/cases/promminer/logo.png',
-      tag: 'IT / Разработка',
+      tag: 'IT / Майнинг',
       title: 'Promminer',
       desc: 'Разработка и реализация стратегии для соцсетей',
       bg: '#2a2a2a',
@@ -29,7 +29,7 @@ export default function CasesPage() {
     {
       slug: 'nda-hr-team',
       logo: '/cases/nda-hr-team/logo.png',
-      tag: 'HR / Брендинг',
+      tag: 'HR / IGaming',
       title: 'NDA HR TEAM',
       desc: 'Построение HR-бренда с нуля: стратегия, контент, коммуникация',
       bg: '#2a1a1a',
