@@ -1,5 +1,7 @@
 'use client';
 
+import { useEffect, useState } from 'react';
+import { usePathname } from 'next/navigation';
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "./components/Header";
@@ -19,6 +21,58 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const pathname = usePathname();
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    setIsLoading(true);
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 300);
+    return () => clearTimeout(timer);
+  }, [pathname]);
+
+  if (isLoading) {
+    return (
+      <html lang="ru">
+        <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+          <div style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            minHeight: '100vh',
+            background: '#121212',
+            gap: '20px',
+            fontFamily: '-apple-system, BlinkMacSystemFont, SF Pro Display, sans-serif',
+          }}>
+            <div style={{
+              width: '44px',
+              height: '44px',
+              border: '3px solid #2a2a2a',
+              borderTop: '3px solid #c4b5a0',
+              borderRadius: '50%',
+              animation: 'spin 0.8s linear infinite',
+            }} />
+            <p style={{
+              color: '#b0b0b0',
+              fontSize: '15px',
+              fontWeight: 400,
+              margin: 0,
+            }}>
+              Загрузка...
+            </p>
+            <style jsx>{`
+              @keyframes spin {
+                to { transform: rotate(360deg); }
+              }
+            `}</style>
+          </div>
+        </body>
+      </html>
+    );
+  }
+
   return (
     <html lang="ru">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
