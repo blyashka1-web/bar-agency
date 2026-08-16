@@ -21,8 +21,8 @@ export default function Home() {
             <p className="subtitle">Креативное SMM-агентство</p>
 
             <p className="description">
-              Анализируем бренд, создаём стратегию<br />
-              и достигаем результатов
+              Анализируем бренд и создаём стратегию<br />
+              для достижения результатов
               <br />
               <span className="social-links">REELS | TikTok | YOUTUBE | SHORTS</span>
             </p>
@@ -328,10 +328,10 @@ export default function Home() {
             }
 
             .description {
-              font-size: 16px;
+              font-size: 15px;
               max-width: 100%;
               padding: 0 10px;
-              line-height: 1.6;
+              line-height: 1.5;
             }
 
             .actions {
