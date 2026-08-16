@@ -76,6 +76,7 @@ export default function Home() {
               <div className="footer-links">
                 <a href="/privacy" className="footer-link">Политика конфиденциальности</a>
                 <a href="/offer" className="footer-link">Публичная оферта</a>
+                <a href="/faq" className="footer-link">Часто задаваемые вопросы</a>
               </div>
               <p className="footer-copy">© 2026 BAR AGENCY. Все права защищены.</p>
             </div>
