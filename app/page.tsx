@@ -16,9 +16,6 @@ export default function Home() {
       <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
 
       <main>
-        {/* АНИМИРОВАННЫЙ ФОН */}
-        <div className="animated-bg" />
-
         {/* HERO */}
         <section className="hero">
           <div className="container">
@@ -60,70 +57,10 @@ export default function Home() {
         </section>
 
         <style jsx>{`
-          /* === АНИМИРОВАННЫЙ ФОН === */
-          .animated-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            z-index: 0;
-            pointer-events: none;
-            background: 
-              radial-gradient(ellipse at 20% 50%, rgba(196, 181, 160, 0.06) 0%, transparent 60%),
-              radial-gradient(ellipse at 80% 20%, rgba(196, 181, 160, 0.04) 0%, transparent 50%),
-              radial-gradient(ellipse at 50% 80%, rgba(122, 46, 42, 0.05) 0%, transparent 50%),
-              radial-gradient(ellipse at 10% 80%, rgba(212, 175, 55, 0.03) 0%, transparent 40%),
-              radial-gradient(ellipse at 90% 70%, rgba(196, 181, 160, 0.04) 0%, transparent 40%);
-            background-blend-mode: overlay;
-            animation: backgroundMove 20s ease-in-out infinite alternate;
-          }
-
-          @keyframes backgroundMove {
-            0% {
-              transform: scale(1) rotate(0deg);
-            }
-            25% {
-              transform: scale(1.02) rotate(0.5deg);
-            }
-            50% {
-              transform: scale(1.04) rotate(-0.5deg);
-            }
-            75% {
-              transform: scale(1.02) rotate(0.3deg);
-            }
-            100% {
-              transform: scale(1) rotate(0deg);
-            }
-          }
-
-          /* === ТОЧКИ === */
-          .animated-bg::after {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            pointer-events: none;
-            background-image: 
-              radial-gradient(circle at 10% 20%, rgba(196, 181, 160, 0.08) 1px, transparent 1px),
-              radial-gradient(circle at 30% 70%, rgba(196, 181, 160, 0.05) 1px, transparent 1px),
-              radial-gradient(circle at 50% 30%, rgba(212, 175, 55, 0.04) 1px, transparent 1px),
-              radial-gradient(circle at 70% 80%, rgba(196, 181, 160, 0.06) 1px, transparent 1px),
-              radial-gradient(circle at 90% 40%, rgba(122, 46, 42, 0.05) 1px, transparent 1px);
-            background-size: 200px 200px;
-            animation: dotsMove 30s linear infinite;
-            opacity: 0.5;
-          }
-
-          @keyframes dotsMove {
-            0% {
-              transform: translate(0, 0);
-            }
-            100% {
-              transform: translate(30px, 30px);
-            }
+          * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
           }
 
           .container {
@@ -134,11 +71,9 @@ export default function Home() {
 
           /* HERO */
           .hero {
-            position: relative;
-            z-index: 1;
             padding: 120px 0 80px;
             text-align: center;
-            background: transparent;
+            background: #121212;
             border-bottom: 1px solid #2a2a2a;
           }
 
@@ -215,10 +150,8 @@ export default function Home() {
 
           /* CLIENTS */
           .clients {
-            position: relative;
-            z-index: 1;
             padding: 80px 0;
-            background: transparent;
+            background: #121212;
             border-bottom: 1px solid #2a2a2a;
           }
 
