@@ -36,13 +36,14 @@ export default function ContactModal({ isOpen, onClose }) {
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.85);
             backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             display: flex;
             align-items: center;
             justify-content: center;
             z-index: 9999;
-            padding: 20px;
+            padding: 30px;
           }
 
           .modal {
@@ -53,9 +54,11 @@ export default function ContactModal({ isOpen, onClose }) {
             max-width: 480px;
             width: 100%;
             position: relative;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.8);
             max-height: 90vh;
             overflow-y: auto;
+            margin: 0 auto;
+            transform: translateY(0);
           }
 
           .close-btn {
@@ -65,9 +68,10 @@ export default function ContactModal({ isOpen, onClose }) {
             background: none;
             border: none;
             color: #888;
-            font-size: 24px;
+            font-size: 28px;
             cursor: pointer;
             transition: color 0.2s;
+            line-height: 1;
           }
 
           .close-btn:hover {
@@ -117,6 +121,8 @@ export default function ContactModal({ isOpen, onClose }) {
           .contact-icon {
             font-size: 28px;
             flex-shrink: 0;
+            width: 40px;
+            text-align: center;
           }
 
           .contact-label {
@@ -133,15 +139,27 @@ export default function ContactModal({ isOpen, onClose }) {
             font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
           }
 
+          /* ДЛЯ ТЕЛЕФОНОВ */
           @media (max-width: 480px) {
+            .modal-overlay {
+              padding: 16px;
+              align-items: center;
+            }
+
             .modal {
               padding: 32px 20px 28px;
-              max-width: 95%;
               border-radius: 20px;
+              max-width: 100%;
+              margin: 0 8px;
             }
 
             h2 {
               font-size: 24px;
+            }
+
+            .subtitle {
+              font-size: 15px;
+              margin-bottom: 24px;
             }
 
             .contact-item {
@@ -150,10 +168,24 @@ export default function ContactModal({ isOpen, onClose }) {
 
             .contact-icon {
               font-size: 24px;
+              width: 36px;
             }
 
             .contact-value {
               font-size: 14px;
+            }
+
+            .close-btn {
+              font-size: 24px;
+              top: 12px;
+              right: 16px;
+            }
+          }
+
+          /* ДЛЯ БОЛЬШИХ ЭКРАНОВ */
+          @media (min-width: 768px) {
+            .modal {
+              padding: 56px 48px 48px;
             }
           }
         `}</style>
