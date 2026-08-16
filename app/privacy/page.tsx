@@ -65,7 +65,6 @@ export default function PrivacyPage() {
             <p>По всем вопросам, связанным с Политикой конфиденциальности, вы можете обратиться к нам:</p>
             <ul>
               <li>Telegram: <a href="https://t.me/lawayasha" target="_blank" rel="noopener noreferrer">@lawayasha</a></li>
-              <li>Instagram: <a href="https://instagram.com/agency_bar" target="_blank" rel="noopener noreferrer">@agency_bar</a></li>
             </ul>
           </section>
         </div>
