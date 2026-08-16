@@ -6,11 +6,6 @@ import ContactModal from './components/ContactModal';
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const clients = [
-    { name: 'Благотворительный фонд Родина', logo: '/rodina-logo.png' },
-    { name: 'NDA HR TEAM', logo: '/nda-hr-team-logo.png' },
-  ];
-
   return (
     <>
       <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
@@ -47,14 +42,29 @@ export default function Home() {
             <h2>Наши текущие партнеры</h2>
             <p className="clients-subtitle">Компании, с которыми мы работаем на данный момент</p>
             <div className="clients-grid">
-              {clients.map((client, index) => (
-                <div key={index} className="client-card">
-                  <div className="client-logo">
-                    <img src={client.logo} alt={client.name} className="client-image" />
-                  </div>
-                  <span className="client-name">{client.name}</span>
+              <a 
+                href="https://rodina-fond.ru/?ysclid=ms3impij0356225184" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="client-card"
+              >
+                <div className="client-logo">
+                  <img src="/rodina-logo.png" alt="Благотворительный фонд Родина" className="client-image" />
                 </div>
-              ))}
+                <span className="client-name">Благотворительный фонд Родина</span>
+              </a>
+
+              <a 
+                href="https://t.me/ndahrteam" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="client-card"
+              >
+                <div className="client-logo">
+                  <img src="/nda-hr-team-logo.png" alt="NDA HR TEAM" className="client-image" />
+                </div>
+                <span className="client-name">NDA HR TEAM</span>
+              </a>
             </div>
           </div>
         </section>
@@ -203,6 +213,8 @@ export default function Home() {
             transition: all 0.3s ease;
             max-width: 320px;
             width: 100%;
+            text-decoration: none;
+            cursor: pointer;
           }
 
           .client-card:hover {
