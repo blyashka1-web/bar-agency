@@ -8,6 +8,7 @@ export default function Home() {
 
   const clients = [
     { name: 'Благотворительный фонд Родина', logo: '/rodina-logo.png' },
+    { name: 'NDA HR TEAM', logo: '/nda-hr-team-logo.png' },
   ];
 
   return (
@@ -15,15 +16,18 @@ export default function Home() {
       <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
 
       <main>
+        {/* HERO */}
         <section className="hero">
           <div className="container">
             <span className="tagline">ВИРУСНЫЙ КОНТЕНТ • РЕАЛЬНЫЙ ОХВАТ</span>
             <h1>BAR AGENCY</h1>
             <p className="subtitle">Viral Content Company</p>
+
             <p className="description">
               Создаем контент, который взрывает соцсети.<br />
               REELS | TikTok | YOUTUBE | SHORTS
             </p>
+
             <div className="actions">
               <a href="/cases" className="btn-outline">Наши проекты</a>
               <button onClick={() => setIsModalOpen(true)} className="btn-outline">
@@ -33,6 +37,7 @@ export default function Home() {
           </div>
         </section>
 
+        {/* КЛИЕНТЫ */}
         <section className="clients">
           <div className="container">
             <h2>С кем мы сотрудничаем сейчас</h2>
@@ -63,6 +68,7 @@ export default function Home() {
             padding: 0 30px;
           }
 
+          /* HERO */
           .hero {
             padding: 120px 0 80px;
             text-align: center;
@@ -141,6 +147,7 @@ export default function Home() {
             color: #ffffff;
           }
 
+          /* CLIENTS */
           .clients {
             padding: 80px 0;
             background: #121212;
@@ -168,6 +175,8 @@ export default function Home() {
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 32px;
           }
 
           .client-card {
@@ -256,6 +265,11 @@ export default function Home() {
 
             .clients {
               padding: 60px 0;
+            }
+
+            .clients-grid {
+              flex-direction: column;
+              gap: 20px;
             }
 
             .client-card {
