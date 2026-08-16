@@ -1,6 +1,5 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "./components/Header";
@@ -20,89 +19,39 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    // Загрузка только при первом открытии сайта
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 1000); // 1 секунда — достаточно, чтобы показать красивую загрузку
-    return () => clearTimeout(timer);
-  }, []);
-
   return (
     <html lang="ru">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        {/* Загрузчик — только при первом открытии */}
-        {isLoading ? (
-          <div className="loader-fullscreen">
-            <div className="loader-ring" />
-            <p className="loader-text">BAR AGENCY</p>
-          </div>
-        ) : (
-          <>
-            <Header />
-            {children}
-          </>
-        )}
+        {/* Содержимое появится только после загрузки страницы */}
+        <div className="page-content">
+          <Header />
+          {children}
+        </div>
 
         <style jsx global>{`
-          .loader-fullscreen {
-            position: fixed;
-            inset: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background: #121212;
-            z-index: 99999;
-            animation: fadeIn 0.3s ease;
-          }
-
-          .loader-ring {
-            width: 56px;
-            height: 56px;
-            border: 3px solid #2a2a2a;
-            border-top: 3px solid #c4b5a0;
-            border-radius: 50%;
-            animation: spin 0.9s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-          }
-
-          .loader-text {
-            margin-top: 20px;
-            color: #c4b5a0;
-            font-size: 18px;
-            font-weight: 600;
-            letter-spacing: 0.15em;
-            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+          /* Скрываем контент до полной загрузки */
+          .page-content {
             opacity: 0;
-            animation: textFade 0.5s ease 0.2s forwards;
+            animation: pageFadeIn 0.6s ease 0.3s forwards;
           }
 
-          @keyframes spin {
-            to {
-              transform: rotate(360deg);
-            }
-          }
-
-          @keyframes fadeIn {
+          @keyframes pageFadeIn {
             from {
               opacity: 0;
-            }
-            to {
-              opacity: 1;
-            }
-          }
-
-          @keyframes textFade {
-            from {
-              opacity: 0;
-              transform: translateY(6px);
+              transform: translateY(12px);
             }
             to {
               opacity: 1;
               transform: translateY(0);
             }
+          }
+
+          /* Стили для фона */
+          body {
+            background: #121212;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
           }
         `}</style>
       </body>
