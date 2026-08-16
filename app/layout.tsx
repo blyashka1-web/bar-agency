@@ -77,7 +77,7 @@ export default function RootLayout({
   return (
     <html lang="ru">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        {/* АНИМИРОВАННЫЙ ФОН */}
+        {/* АНИМИРОВАННЫЙ ФОН ДЛЯ ВСЕХ СТРАНИЦ */}
         <div className="animated-bg" />
         
         <Header />

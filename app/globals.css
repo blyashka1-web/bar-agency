@@ -51,13 +51,13 @@ html, body {
     transform: scale(1) rotate(0deg);
   }
   25% {
-    transform: scale(1.02) rotate(1deg);
+    transform: scale(1.02) rotate(0.5deg);
   }
   50% {
-    transform: scale(1.05) rotate(-1deg);
+    transform: scale(1.04) rotate(-0.5deg);
   }
   75% {
-    transform: scale(1.02) rotate(0.5deg);
+    transform: scale(1.02) rotate(0.3deg);
   }
   100% {
     transform: scale(1) rotate(0deg);
@@ -79,7 +79,7 @@ html, body {
     radial-gradient(circle at 50% 30%, rgba(212, 175, 55, 0.03) 1px, transparent 1px),
     radial-gradient(circle at 70% 80%, rgba(196, 181, 160, 0.05) 1px, transparent 1px),
     radial-gradient(circle at 90% 40%, rgba(122, 46, 42, 0.04) 1px, transparent 1px);
-  background-size: 300px 300px;
+  background-size: 250px 250px;
   animation: dotsMove 30s linear infinite;
   opacity: 0.6;
 }
