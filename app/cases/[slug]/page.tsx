@@ -55,99 +55,109 @@ export default function CasePage() {
 
     return (
       <div style={{ padding: '40px 20px', background: '#121212', color: '#fff', minHeight: '100vh' }}>
-        <Link href="/cases" style={{ color: '#c4b5a0', textDecoration: 'none' }}>
-          ← Все кейсы
-        </Link>
+        <div className="case-content">
+          <Link href="/cases" style={{ color: '#c4b5a0', textDecoration: 'none' }}>
+            ← Все кейсы
+          </Link>
 
-        <div style={{ marginTop: '40px' }}>
-          <span
-            style={{
-              display: 'inline-block',
-              background: '#c4b5a0',
-              color: '#fff',
-              padding: '4px 16px',
-              borderRadius: '40px',
-              fontSize: '13px',
-              fontWeight: 600,
-            }}
-          >
-            IT / Платформа
-          </span>
-          <h1 style={{ fontSize: '48px', marginTop: '12px', marginBottom: '8px' }}>Яндекс Еда</h1>
-          <p style={{ fontSize: '20px', color: '#b0b0b0' }}>Вирусный ролик с суммарным охватом 50+ млн</p>
-        </div>
-
-        <div style={{ marginTop: '40px' }}>
-          <h2 style={{ fontSize: '24px', fontWeight: 600 }}>🎬 Вирусный видеоролик</h2>
-          <div
-            style={{
-              borderRadius: '16px',
-              overflow: 'hidden',
-              background: '#0a0a0a',
-              maxWidth: '400px',
-              border: '1px solid #2a2a2a',
-            }}
-          >
-            <video
-              src="/cases/yandex-food/video.mp4"
-              controls
+          <div style={{ marginTop: '40px' }}>
+            <span
               style={{
-                width: '100%',
-                display: 'block',
-                aspectRatio: '16/9',
-                objectFit: 'cover',
+                display: 'inline-block',
+                background: '#c4b5a0',
+                color: '#fff',
+                padding: '4px 16px',
+                borderRadius: '40px',
+                fontSize: '13px',
+                fontWeight: 600,
               }}
-              autoPlay={false}
-            />
+            >
+              IT / Платформа
+            </span>
+            <h1 style={{ fontSize: '48px', marginTop: '12px', marginBottom: '8px' }}>Яндекс Еда</h1>
+            <p style={{ fontSize: '20px', color: '#b0b0b0' }}>Вирусный ролик с суммарным охватом 50+ млн</p>
+          </div>
+
+          <div style={{ marginTop: '40px' }}>
+            <h2 style={{ fontSize: '24px', fontWeight: 600 }}>🎬 Вирусный видеоролик</h2>
+            <div
+              style={{
+                borderRadius: '16px',
+                overflow: 'hidden',
+                background: '#0a0a0a',
+                maxWidth: '400px',
+                border: '1px solid #2a2a2a',
+              }}
+            >
+              <video
+                src="/cases/yandex-food/video.mp4"
+                controls
+                style={{
+                  width: '100%',
+                  display: 'block',
+                  aspectRatio: '16/9',
+                  objectFit: 'cover',
+                }}
+                autoPlay={false}
+              />
+            </div>
+          </div>
+
+          <div style={{ marginTop: '48px' }}>
+            <h2 style={{ fontSize: '24px', fontWeight: 600 }}>📢 Репосты в крупных сообществах</h2>
+            <div
+              style={{
+                display: 'flex',
+                flexWrap: 'nowrap',
+                gap: '12px',
+                overflowX: 'auto',
+                paddingBottom: '8px',
+                WebkitOverflowScrolling: 'touch',
+              }}
+            >
+              {yandexImages.map((url, i) => (
+                <div key={i} style={{ flex: '0 0 auto' }}>
+                  <img
+                    src={url}
+                    alt={'скрин ' + (i + 1)}
+                    style={{
+                      width: '200px',
+                      height: '125px',
+                      borderRadius: '12px',
+                      border: '1px solid #2a2a2a',
+                      cursor: 'pointer',
+                      objectFit: 'cover',
+                      display: 'block',
+                    }}
+                    onClick={() => openLightbox(url, yandexImages, i)}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* БЛОК "Хотите так же?" */}
+          <div style={{ marginTop: '60px', padding: '40px 20px', background: '#2a2a2a', borderRadius: '24px', textAlign: 'center' }}>
+            <h3 style={{ fontSize: '28px', fontWeight: 600, color: '#fff' }}>Хотите так же?</h3>
+            <p style={{ fontSize: '18px', color: '#b0b0b0', marginBottom: '16px' }}>
+              Расскажите о своём проекте — разработаем стратегию!
+            </p>
+            <button
+              style={{ background: '#c4b5a0', color: '#fff', padding: '14px 40px', border: 'none', borderRadius: '40px', fontSize: '17px', fontWeight: 600, cursor: 'pointer' }}
+              onClick={() => window.open('https://t.me/lawayasha', '_blank')}
+            >
+              Написать в Telegram
+            </button>
           </div>
         </div>
 
-        <div style={{ marginTop: '48px' }}>
-          <h2 style={{ fontSize: '24px', fontWeight: 600 }}>📢 Репосты в крупных сообществах</h2>
-          <div
-            style={{
-              display: 'flex',
-              flexWrap: 'nowrap',
-              gap: '12px',
-              overflowX: 'auto',
-              paddingBottom: '8px',
-              WebkitOverflowScrolling: 'touch',
-            }}
-          >
-            {yandexImages.map((url, i) => (
-              <div key={i} style={{ flex: '0 0 auto' }}>
-                <img
-                  src={url}
-                  alt={'скрин ' + (i + 1)}
-                  style={{
-                    width: '200px',
-                    height: '125px',
-                    borderRadius: '12px',
-                    border: '1px solid #2a2a2a',
-                    cursor: 'pointer',
-                    objectFit: 'cover',
-                    display: 'block',
-                  }}
-                  onClick={() => openLightbox(url, yandexImages, i)}
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* БЛОК "Хотите так же?" */}
-        <div style={{ marginTop: '60px', padding: '40px 20px', background: '#2a2a2a', borderRadius: '24px', textAlign: 'center' }}>
-          <h3 style={{ fontSize: '28px', fontWeight: 600, color: '#fff' }}>Хотите так же?</h3>
-          <p style={{ fontSize: '18px', color: '#b0b0b0', marginBottom: '16px' }}>
-            Расскажите о своём проекте — разработаем стратегию!
-          </p>
-          <button
-            style={{ background: '#c4b5a0', color: '#fff', padding: '14px 40px', border: 'none', borderRadius: '40px', fontSize: '17px', fontWeight: 600, cursor: 'pointer' }}
-            onClick={() => window.open('https://t.me/lawayasha', '_blank')}
-          >
-            Написать в Telegram
-          </button>
-        </div>
+        <style jsx>{`
+          .case-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+          }
+        `}</style>
 
         {isOpen && (
           <div
@@ -168,14 +178,7 @@ export default function CasePage() {
             onClick={closeLightbox}
           >
             <div
-              style={{
-                position: 'relative',
-                maxWidth: '95vw',
-                maxHeight: '95vh',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}
+              style={{ position: 'relative', maxWidth: '95vw', maxHeight: '95vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
               onClick={(e) => e.stopPropagation()}
             >
               <button
@@ -274,7 +277,7 @@ export default function CasePage() {
     );
   }
 
-  // --- URENT (1 СКРИН + 2 ВИДЕО) ---
+  // --- URENT ---
   if (slug === 'urent') {
     const urentImages = [
       '/cases/urent/screenshot-1.jpg',
@@ -287,140 +290,149 @@ export default function CasePage() {
 
     return (
       <div style={{ padding: '40px 20px', background: '#121212', color: '#fff', minHeight: '100vh' }}>
-        <Link href="/cases" style={{ color: '#c4b5a0', textDecoration: 'none' }}>
-          ← Все кейсы
-        </Link>
+        <div className="case-content">
+          <Link href="/cases" style={{ color: '#c4b5a0', textDecoration: 'none' }}>
+            ← Все кейсы
+          </Link>
 
-        <div style={{ marginTop: '40px' }}>
-          <span
-            style={{
-              display: 'inline-block',
-              background: '#2a8a7a',
-              color: '#fff',
-              padding: '4px 16px',
-              borderRadius: '40px',
-              fontSize: '13px',
-              fontWeight: 600,
-            }}
-          >
-            Шеринг / Технологии
-          </span>
-          <h1 style={{ fontSize: '48px', marginTop: '12px', marginBottom: '8px' }}>
-            Urent
-          </h1>
-          <p style={{ fontSize: '20px', color: '#b0b0b0' }}>
-            Создание и продвижение маскота Юрентик
-          </p>
-        </div>
-
-        {/* ОПИСАНИЕ ПРОЕКТА */}
-        <div style={{ marginTop: '40px' }}>
-          <h2 style={{ fontSize: '24px', fontWeight: 600, marginBottom: '16px' }}>
-            📱 О проекте
-          </h2>
-          <div
-            style={{
-              padding: '20px',
-              background: '#2a2a2a',
-              borderRadius: '12px',
-              border: '1px solid #2a8a7a',
-            }}
-          >
-            <p style={{ color: '#b0b0b0', fontSize: '16px', marginBottom: '12px' }}>
-              Мы создали маскота <strong>Юрентика</strong> для компании и сняли вирусные видео:
+          <div style={{ marginTop: '40px' }}>
+            <span
+              style={{
+                display: 'inline-block',
+                background: '#2a8a7a',
+                color: '#fff',
+                padding: '4px 16px',
+                borderRadius: '40px',
+                fontSize: '13px',
+                fontWeight: 600,
+              }}
+            >
+              Шеринг / Технологии
+            </span>
+            <h1 style={{ fontSize: '48px', marginTop: '12px', marginBottom: '8px' }}>
+              Urent
+            </h1>
+            <p style={{ fontSize: '20px', color: '#b0b0b0' }}>
+              Создание и продвижение маскота Юрентик
             </p>
-            <ul style={{ color: '#b0b0b0', fontSize: '15px', paddingLeft: '20px' }}>
-              <li style={{ marginBottom: '6px' }}>🔹 Разработка персонажа и его характера</li>
-              <li style={{ marginBottom: '6px' }}>🔹 Создание вирусных видеороликов</li>
-              <li style={{ marginBottom: '6px' }}>🔹 Интеграция в соцсети и рекламные кампании</li>
-            </ul>
+          </div>
+
+          {/* ОПИСАНИЕ ПРОЕКТА */}
+          <div style={{ marginTop: '40px' }}>
+            <h2 style={{ fontSize: '24px', fontWeight: 600, marginBottom: '16px' }}>
+              📱 О проекте
+            </h2>
+            <div
+              style={{
+                padding: '20px',
+                background: '#2a2a2a',
+                borderRadius: '12px',
+                border: '1px solid #2a8a7a',
+              }}
+            >
+              <p style={{ color: '#b0b0b0', fontSize: '16px', marginBottom: '12px' }}>
+                Мы создали маскота <strong>Юрентика</strong> для компании и сняли вирусные видео:
+              </p>
+              <ul style={{ color: '#b0b0b0', fontSize: '15px', paddingLeft: '20px' }}>
+                <li style={{ marginBottom: '6px' }}>🔹 Разработка персонажа и его характера</li>
+                <li style={{ marginBottom: '6px' }}>🔹 Создание вирусных видеороликов</li>
+                <li style={{ marginBottom: '6px' }}>🔹 Интеграция в соцсети и рекламные кампании</li>
+              </ul>
+            </div>
+          </div>
+
+          {/* ВИДЕО */}
+          <div style={{ marginTop: '40px' }}>
+            <h2 style={{ fontSize: '24px', fontWeight: 600, marginBottom: '16px' }}>
+              🎬 Видеокреативы
+            </h2>
+            <div
+              style={{
+                display: 'flex',
+                flexWrap: 'nowrap',
+                gap: '12px',
+                overflowX: 'auto',
+                paddingBottom: '8px',
+                WebkitOverflowScrolling: 'touch',
+              }}
+            >
+              {urentVideos.map((url, i) => (
+                <div key={i} style={{ flex: '0 0 auto' }}>
+                  <video
+                    src={url}
+                    controls
+                    style={{
+                      width: '200px',
+                      height: '125px',
+                      borderRadius: '12px',
+                      border: '1px solid #2a2a2a',
+                      objectFit: 'cover',
+                      background: '#0a0a0a',
+                      display: 'block',
+                    }}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* РЕПОСТЫ В КРУПНЫХ СООБЩЕСТВАХ */}
+          <div style={{ marginTop: '48px' }}>
+            <h2 style={{ fontSize: '24px', fontWeight: 600 }}>📢 Репосты в крупных сообществах</h2>
+            <div
+              style={{
+                display: 'flex',
+                flexWrap: 'nowrap',
+                gap: '12px',
+                overflowX: 'auto',
+                paddingBottom: '8px',
+                WebkitOverflowScrolling: 'touch',
+              }}
+            >
+              {urentImages.map((url, i) => (
+                <div key={i} style={{ flex: '0 0 auto' }}>
+                  <img
+                    src={url}
+                    alt={'скрин ' + (i + 1)}
+                    style={{
+                      width: '200px',
+                      height: '125px',
+                      borderRadius: '12px',
+                      border: '1px solid #2a2a2a',
+                      cursor: 'pointer',
+                      objectFit: 'cover',
+                      display: 'block',
+                    }}
+                    onClick={() => openLightbox(url, urentImages, i)}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* БЛОК "Хотите так же?" */}
+          <div style={{ marginTop: '60px', padding: '40px 20px', background: '#2a2a2a', borderRadius: '24px', textAlign: 'center' }}>
+            <h3 style={{ fontSize: '28px', fontWeight: 600, color: '#fff' }}>Хотите так же?</h3>
+            <p style={{ fontSize: '18px', color: '#b0b0b0', marginBottom: '16px' }}>
+              Расскажите о своём проекте — разработаем стратегию!
+            </p>
+            <button
+              style={{ background: '#2a8a7a', color: '#fff', padding: '14px 40px', border: 'none', borderRadius: '40px', fontSize: '17px', fontWeight: 600, cursor: 'pointer' }}
+              onClick={() => window.open('https://t.me/lawayasha', '_blank')}
+            >
+              Написать в Telegram
+            </button>
           </div>
         </div>
 
-        {/* ВИДЕО */}
-        <div style={{ marginTop: '40px' }}>
-          <h2 style={{ fontSize: '24px', fontWeight: 600, marginBottom: '16px' }}>
-            🎬 Видеокреативы
-          </h2>
-          <div
-            style={{
-              display: 'flex',
-              flexWrap: 'nowrap',
-              gap: '12px',
-              overflowX: 'auto',
-              paddingBottom: '8px',
-              WebkitOverflowScrolling: 'touch',
-            }}
-          >
-            {urentVideos.map((url, i) => (
-              <div key={i} style={{ flex: '0 0 auto' }}>
-                <video
-                  src={url}
-                  controls
-                  style={{
-                    width: '200px',
-                    height: '125px',
-                    borderRadius: '12px',
-                    border: '1px solid #2a2a2a',
-                    objectFit: 'cover',
-                    background: '#0a0a0a',
-                    display: 'block',
-                  }}
-                />
-              </div>
-            ))}
-          </div>
-        </div>
+        <style jsx>{`
+          .case-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+          }
+        `}</style>
 
-        {/* РЕПОСТЫ В КРУПНЫХ СООБЩЕСТВАХ */}
-        <div style={{ marginTop: '48px' }}>
-          <h2 style={{ fontSize: '24px', fontWeight: 600 }}>📢 Репосты в крупных сообществах</h2>
-          <div
-            style={{
-              display: 'flex',
-              flexWrap: 'nowrap',
-              gap: '12px',
-              overflowX: 'auto',
-              paddingBottom: '8px',
-              WebkitOverflowScrolling: 'touch',
-            }}
-          >
-            {urentImages.map((url, i) => (
-              <div key={i} style={{ flex: '0 0 auto' }}>
-                <img
-                  src={url}
-                  alt={'скрин ' + (i + 1)}
-                  style={{
-                    width: '200px',
-                    height: '125px',
-                    borderRadius: '12px',
-                    border: '1px solid #2a2a2a',
-                    cursor: 'pointer',
-                    objectFit: 'cover',
-                    display: 'block',
-                  }}
-                  onClick={() => openLightbox(url, urentImages, i)}
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* БЛОК "Хотите так же?" */}
-        <div style={{ marginTop: '60px', padding: '40px 20px', background: '#2a2a2a', borderRadius: '24px', textAlign: 'center' }}>
-          <h3 style={{ fontSize: '28px', fontWeight: 600, color: '#fff' }}>Хотите так же?</h3>
-          <p style={{ fontSize: '18px', color: '#b0b0b0', marginBottom: '16px' }}>
-            Расскажите о своём проекте — разработаем стратегию!
-          </p>
-          <button
-            style={{ background: '#2a8a7a', color: '#fff', padding: '14px 40px', border: 'none', borderRadius: '40px', fontSize: '17px', fontWeight: 600, cursor: 'pointer' }}
-            onClick={() => window.open('https://t.me/lawayasha', '_blank')}
-          >
-            Написать в Telegram
-          </button>
-        </div>
-
-        {/* ЛАЙТБОКС */}
         {isOpen && (
           <div
             style={{
@@ -440,14 +452,7 @@ export default function CasePage() {
             onClick={closeLightbox}
           >
             <div
-              style={{
-                position: 'relative',
-                maxWidth: '95vw',
-                maxHeight: '95vh',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}
+              style={{ position: 'relative', maxWidth: '95vw', maxHeight: '95vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
               onClick={(e) => e.stopPropagation()}
             >
               <button
@@ -569,140 +574,150 @@ export default function CasePage() {
 
     return (
       <div style={{ padding: '40px 20px', background: '#121212', color: '#fff', minHeight: '100vh' }}>
-        <Link href="/cases" style={{ color: '#c4b5a0', textDecoration: 'none' }}>
-          ← Все кейсы
-        </Link>
+        <div className="case-content">
+          <Link href="/cases" style={{ color: '#c4b5a0', textDecoration: 'none' }}>
+            ← Все кейсы
+          </Link>
 
-        <div style={{ marginTop: '40px' }}>
-          <span
-            style={{
-              display: 'inline-block',
-              background: '#d4af37',
-              color: '#fff',
-              padding: '4px 16px',
-              borderRadius: '40px',
-              fontSize: '13px',
-              fontWeight: 600,
-            }}
-          >
-            Спорт / Lifestyle
-          </span>
-          <h1 style={{ fontSize: '48px', marginTop: '12px', marginBottom: '8px' }}>
-            DEPORTIVO MOSCÚ
-          </h1>
-          <p style={{ fontSize: '20px', color: '#b0b0b0' }}>
-            Российский футбольный клуб в Аргентине
-          </p>
-        </div>
-
-        <div style={{ marginTop: '40px' }}>
-          <h2 style={{ fontSize: '24px', fontWeight: 600, marginBottom: '16px' }}>
-            📰 Статьи
-          </h2>
-          {articles.map((article, index) => (
-            <a
-              key={index}
-              href={article.url}
-              target="_blank"
-              rel="noopener noreferrer"
+          <div style={{ marginTop: '40px' }}>
+            <span
               style={{
-                display: 'block',
-                padding: '16px 20px',
-                background: '#2a2a2a',
-                borderRadius: '12px',
-                border: '1px solid #d4af37',
+                display: 'inline-block',
+                background: '#d4af37',
                 color: '#fff',
-                textDecoration: 'none',
-                marginBottom: '12px',
-                transition: 'background 0.2s',
+                padding: '4px 16px',
+                borderRadius: '40px',
+                fontSize: '13px',
+                fontWeight: 600,
               }}
-              onMouseEnter={(e) =>
-                (e.currentTarget.style.background = '#3a3a3a')
-              }
-              onMouseLeave={(e) =>
-                (e.currentTarget.style.background = '#2a2a2a')
-              }
             >
-              {article.title}
-            </a>
-          ))}
-        </div>
+              Спорт / Lifestyle
+            </span>
+            <h1 style={{ fontSize: '48px', marginTop: '12px', marginBottom: '8px' }}>
+              DEPORTIVO MOSCÚ
+            </h1>
+            <p style={{ fontSize: '20px', color: '#b0b0b0' }}>
+              Российский футбольный клуб в Аргентине
+            </p>
+          </div>
 
-        <div style={{ marginTop: '48px' }}>
-          <h2 style={{ fontSize: '24px', fontWeight: 600, marginBottom: '16px' }}>
-            📰 Репортажи о клубе
-          </h2>
-          <div
-            style={{
-              display: 'flex',
-              flexWrap: 'nowrap',
-              gap: '12px',
-              overflowX: 'auto',
-              paddingBottom: '8px',
-              WebkitOverflowScrolling: 'touch',
-            }}
-          >
-            <div style={{ flex: '0 0 auto' }}>
-              <video
-                src="/cases/deportivo/video-1.mp4"
-                controls
+          <div style={{ marginTop: '40px' }}>
+            <h2 style={{ fontSize: '24px', fontWeight: 600, marginBottom: '16px' }}>
+              📰 Статьи
+            </h2>
+            {articles.map((article, index) => (
+              <a
+                key={index}
+                href={article.url}
+                target="_blank"
+                rel="noopener noreferrer"
                 style={{
-                  width: '200px',
-                  height: '125px',
-                  borderRadius: '12px',
-                  border: '1px solid #2a2a2a',
-                  objectFit: 'cover',
-                  background: '#0a0a0a',
                   display: 'block',
-                }}
-              />
-            </div>
-            <div style={{ flex: '0 0 auto' }}>
-              <video
-                src="/cases/deportivo/video-2-compressed.mp4"
-                controls
-                style={{
-                  width: '200px',
-                  height: '125px',
+                  padding: '16px 20px',
+                  background: '#2a2a2a',
                   borderRadius: '12px',
-                  border: '1px solid #2a2a2a',
-                  objectFit: 'cover',
-                  background: '#0a0a0a',
-                  display: 'block',
+                  border: '1px solid #d4af37',
+                  color: '#fff',
+                  textDecoration: 'none',
+                  marginBottom: '12px',
+                  transition: 'background 0.2s',
                 }}
-              />
+                onMouseEnter={(e) =>
+                  (e.currentTarget.style.background = '#3a3a3a')
+                }
+                onMouseLeave={(e) =>
+                  (e.currentTarget.style.background = '#2a2a2a')
+                }
+              >
+                {article.title}
+              </a>
+            ))}
+          </div>
+
+          <div style={{ marginTop: '48px' }}>
+            <h2 style={{ fontSize: '24px', fontWeight: 600, marginBottom: '16px' }}>
+              📰 Репортажи о клубе
+            </h2>
+            <div
+              style={{
+                display: 'flex',
+                flexWrap: 'nowrap',
+                gap: '12px',
+                overflowX: 'auto',
+                paddingBottom: '8px',
+                WebkitOverflowScrolling: 'touch',
+              }}
+            >
+              <div style={{ flex: '0 0 auto' }}>
+                <video
+                  src="/cases/deportivo/video-1.mp4"
+                  controls
+                  style={{
+                    width: '200px',
+                    height: '125px',
+                    borderRadius: '12px',
+                    border: '1px solid #2a2a2a',
+                    objectFit: 'cover',
+                    background: '#0a0a0a',
+                    display: 'block',
+                  }}
+                />
+              </div>
+              <div style={{ flex: '0 0 auto' }}>
+                <video
+                  src="/cases/deportivo/video-2-compressed.mp4"
+                  controls
+                  style={{
+                    width: '200px',
+                    height: '125px',
+                    borderRadius: '12px',
+                    border: '1px solid #2a2a2a',
+                    objectFit: 'cover',
+                    background: '#0a0a0a',
+                    display: 'block',
+                  }}
+                />
+              </div>
+              <div style={{ flex: '0 0 auto' }}>
+                <video
+                  src="/cases/deportivo/video-3.mp4"
+                  controls
+                  style={{
+                    width: '200px',
+                    height: '125px',
+                    borderRadius: '12px',
+                    border: '1px solid #2a2a2a',
+                    objectFit: 'cover',
+                    background: '#0a0a0a',
+                    display: 'block',
+                  }}
+                />
+              </div>
             </div>
-            <div style={{ flex: '0 0 auto' }}>
-              <video
-                src="/cases/deportivo/video-3.mp4"
-                controls
-                style={{
-                  width: '200px',
-                  height: '125px',
-                  borderRadius: '12px',
-                  border: '1px solid #2a2a2a',
-                  objectFit: 'cover',
-                  background: '#0a0a0a',
-                  display: 'block',
-                }}
-              />
-            </div>
+          </div>
+
+          {/* БЛОК "Хотите так же?" */}
+          <div style={{ marginTop: '60px', padding: '40px 20px', background: '#2a2a2a', borderRadius: '24px', textAlign: 'center' }}>
+            <h3 style={{ fontSize: '28px', fontWeight: 600, color: '#fff' }}>Хотите так же?</h3>
+            <p style={{ fontSize: '18px', color: '#b0b0b0', marginBottom: '16px' }}>
+              Расскажите о своём проекте — разработаем стратегию!
+            </p>
+            <button
+              style={{ background: '#d4af37', color: '#fff', padding: '14px 40px', border: 'none', borderRadius: '40px', fontSize: '17px', fontWeight: 600, cursor: 'pointer' }}
+              onClick={() => window.open('https://t.me/lawayasha', '_blank')}
+            >
+              Написать в Telegram
+            </button>
           </div>
         </div>
 
-        {/* БЛОК "Хотите так же?" */}
-        <div style={{ marginTop: '60px', padding: '40px 20px', background: '#2a2a2a', borderRadius: '24px', textAlign: 'center' }}>
-          <h3 style={{ fontSize: '28px', fontWeight: 600, color: '#fff' }}>Хотите так же?</h3>
-          <p style={{ fontSize: '18px', color: '#b0b0b0', marginBottom: '16px' }}>
-            Расскажите о своём проекте — разработаем стратегию!
-          </p>
-          <button
-            style={{ background: '#d4af37', color: '#fff', padding: '14px 40px', border: 'none', borderRadius: '40px', fontSize: '17px', fontWeight: 600, cursor: 'pointer' }}
-            onClick={() => window.open('https://t.me/lawayasha', '_blank')}
-          >
-            Написать в Telegram
-          </button>
-        </div>
+        <style jsx>{`
+          .case-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+          }
+        `}</style>
       </div>
     );
   }
@@ -718,40 +733,96 @@ export default function CasePage() {
 
     return (
       <div style={{ padding: '40px 20px', background: '#121212', color: '#fff', minHeight: '100vh' }}>
-        <Link href="/cases" style={{ color: '#c4b5a0', textDecoration: 'none' }}>
-          ← Все кейсы
-        </Link>
+        <div className="case-content">
+          <Link href="/cases" style={{ color: '#c4b5a0', textDecoration: 'none' }}>
+            ← Все кейсы
+          </Link>
 
-        <div style={{ marginTop: '40px' }}>
-          <span
-            style={{
-              display: 'inline-block',
-              background: '#6c5b7b',
-              color: '#fff',
-              padding: '4px 16px',
-              borderRadius: '40px',
-              fontSize: '13px',
-              fontWeight: 600,
-            }}
-          >
-            IT / Майнинг
-          </span>
-          <h1 style={{ fontSize: '48px', marginTop: '12px', marginBottom: '8px' }}>
-            Promminer
-          </h1>
-          <p style={{ fontSize: '20px', color: '#b0b0b0' }}>
-            Разработка и реализация стратегии для соцсетей
-          </p>
-        </div>
+          <div style={{ marginTop: '40px' }}>
+            <span
+              style={{
+                display: 'inline-block',
+                background: '#6c5b7b',
+                color: '#fff',
+                padding: '4px 16px',
+                borderRadius: '40px',
+                fontSize: '13px',
+                fontWeight: 600,
+              }}
+            >
+              IT / Майнинг
+            </span>
+            <h1 style={{ fontSize: '48px', marginTop: '12px', marginBottom: '8px' }}>
+              Promminer
+            </h1>
+            <p style={{ fontSize: '20px', color: '#b0b0b0' }}>
+              Разработка и реализация стратегии для соцсетей
+            </p>
+          </div>
 
-        <div style={{ marginTop: '40px' }}>
-          <h2 style={{ fontSize: '24px', fontWeight: 600, marginBottom: '16px' }}>
-            📰 Статьи
-          </h2>
-          {articles.map((article, index) => (
+          <div style={{ marginTop: '40px' }}>
+            <h2 style={{ fontSize: '24px', fontWeight: 600, marginBottom: '16px' }}>
+              📰 Статьи
+            </h2>
+            {articles.map((article, index) => (
+              <a
+                key={index}
+                href={article.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: 'block',
+                  padding: '16px 20px',
+                  background: '#2a2a2a',
+                  borderRadius: '12px',
+                  border: '1px solid #6c5b7b',
+                  color: '#fff',
+                  textDecoration: 'none',
+                  marginBottom: '12px',
+                  transition: 'background 0.2s',
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.background = '#3a3a3a')}
+                onMouseLeave={(e) => (e.currentTarget.style.background = '#2a2a2a')}
+              >
+                {article.title}
+              </a>
+            ))}
+          </div>
+
+          <div style={{ marginTop: '40px' }}>
+            <h2 style={{ fontSize: '24px', fontWeight: 600, marginBottom: '16px' }}>
+              🎬 Сюжет РБК
+            </h2>
+            <div
+              style={{
+                borderRadius: '16px',
+                overflow: 'hidden',
+                background: '#0a0a0a',
+                maxWidth: '600px',
+                border: '1px solid #2a2a2a',
+              }}
+            >
+              <video
+                src="/cases/promminer/video-rbk.mp4"
+                controls
+                style={{
+                  width: '100%',
+                  display: 'block',
+                  aspectRatio: '16/9',
+                  objectFit: 'cover',
+                }}
+                autoPlay={false}
+              />
+            </div>
+          </div>
+
+          {/* СТРАТЕГИЯ РАЗВИТИЯ БРЕНДА */}
+          <div style={{ marginTop: '40px' }}>
+            <h2 style={{ fontSize: '24px', fontWeight: 600, marginBottom: '16px' }}>
+              📄 Стратегия развития бренда
+            </h2>
             <a
-              key={index}
-              href={article.url}
+              href="/cases/promminer/presentation.pdf"
               target="_blank"
               rel="noopener noreferrer"
               style={{
@@ -762,103 +833,57 @@ export default function CasePage() {
                 border: '1px solid #6c5b7b',
                 color: '#fff',
                 textDecoration: 'none',
-                marginBottom: '12px',
                 transition: 'background 0.2s',
               }}
               onMouseEnter={(e) => (e.currentTarget.style.background = '#3a3a3a')}
               onMouseLeave={(e) => (e.currentTarget.style.background = '#2a2a2a')}
             >
-              {article.title}
+              📄 Открыть стратегию (PDF)
             </a>
-          ))}
-        </div>
+          </div>
 
-        <div style={{ marginTop: '40px' }}>
-          <h2 style={{ fontSize: '24px', fontWeight: 600, marginBottom: '16px' }}>
-            🎬 Сюжет РБК
-          </h2>
-          <div
-            style={{
-              borderRadius: '16px',
-              overflow: 'hidden',
-              background: '#0a0a0a',
-              maxWidth: '600px',
-              border: '1px solid #2a2a2a',
-            }}
-          >
-            <video
-              src="/cases/promminer/video-rbk.mp4"
-              controls
-              style={{
-                width: '100%',
-                display: 'block',
-                aspectRatio: '16/9',
-                objectFit: 'cover',
-              }}
-              autoPlay={false}
-            />
+          <div style={{ marginTop: '40px' }}>
+            <h2 style={{ fontSize: '24px', fontWeight: 600, marginBottom: '16px' }}>
+              🚀 Результаты
+            </h2>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+              <div style={{ background: '#2a2a2a', padding: '16px 20px', borderRadius: '12px', border: '1px solid #6c5b7b' }}>
+                <span style={{ fontSize: '18px', fontWeight: 600, color: '#fff' }}>📈 Рост вовлечения</span>
+                <p style={{ color: '#b0b0b0', margin: '4px 0 0 0' }}>Увеличение активности на 150% за 3 месяца</p>
+              </div>
+              <div style={{ background: '#2a2a2a', padding: '16px 20px', borderRadius: '12px', border: '1px solid #6c5b7b' }}>
+                <span style={{ fontSize: '18px', fontWeight: 600, color: '#fff' }}>👥 Охват аудитории</span>
+                <p style={{ color: '#b0b0b0', margin: '4px 0 0 0' }}>Рост подписчиков с 2K до 12K</p>
+              </div>
+              <div style={{ background: '#2a2a2a', padding: '16px 20px', borderRadius: '12px', border: '1px solid #6c5b7b' }}>
+                <span style={{ fontSize: '18px', fontWeight: 600, color: '#fff' }}>💼 Заявки</span>
+                <p style={{ color: '#b0b0b0', margin: '4px 0 0 0' }}>Более 150 коммерческих запросов за месяц</p>
+              </div>
+            </div>
+          </div>
+
+          {/* БЛОК "Хотите так же?" */}
+          <div style={{ marginTop: '60px', padding: '40px 20px', background: '#2a2a2a', borderRadius: '24px', textAlign: 'center' }}>
+            <h3 style={{ fontSize: '28px', fontWeight: 600, color: '#fff' }}>Хотите так же?</h3>
+            <p style={{ fontSize: '18px', color: '#b0b0b0', marginBottom: '16px' }}>
+              Расскажите о своём проекте — разработаем стратегию!
+            </p>
+            <button
+              style={{ background: '#6c5b7b', color: '#fff', padding: '14px 40px', border: 'none', borderRadius: '40px', fontSize: '17px', fontWeight: 600, cursor: 'pointer' }}
+              onClick={() => window.open('https://t.me/lawayasha', '_blank')}
+            >
+              Написать в Telegram
+            </button>
           </div>
         </div>
 
-        {/* СТРАТЕГИЯ РАЗВИТИЯ БРЕНДА */}
-        <div style={{ marginTop: '40px' }}>
-          <h2 style={{ fontSize: '24px', fontWeight: 600, marginBottom: '16px' }}>
-            📄 Стратегия развития бренда
-          </h2>
-          <a
-            href="/cases/promminer/presentation.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              display: 'block',
-              padding: '16px 20px',
-              background: '#2a2a2a',
-              borderRadius: '12px',
-              border: '1px solid #6c5b7b',
-              color: '#fff',
-              textDecoration: 'none',
-              transition: 'background 0.2s',
-            }}
-            onMouseEnter={(e) => (e.currentTarget.style.background = '#3a3a3a')}
-            onMouseLeave={(e) => (e.currentTarget.style.background = '#2a2a2a')}
-          >
-            📄 Открыть стратегию (PDF)
-          </a>
-        </div>
-
-        <div style={{ marginTop: '40px' }}>
-          <h2 style={{ fontSize: '24px', fontWeight: 600, marginBottom: '16px' }}>
-            🚀 Результаты
-          </h2>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-            <div style={{ background: '#2a2a2a', padding: '16px 20px', borderRadius: '12px', border: '1px solid #6c5b7b' }}>
-              <span style={{ fontSize: '18px', fontWeight: 600, color: '#fff' }}>📈 Рост вовлечения</span>
-              <p style={{ color: '#b0b0b0', margin: '4px 0 0 0' }}>Увеличение активности на 150% за 3 месяца</p>
-            </div>
-            <div style={{ background: '#2a2a2a', padding: '16px 20px', borderRadius: '12px', border: '1px solid #6c5b7b' }}>
-              <span style={{ fontSize: '18px', fontWeight: 600, color: '#fff' }}>👥 Охват аудитории</span>
-              <p style={{ color: '#b0b0b0', margin: '4px 0 0 0' }}>Рост подписчиков с 2K до 12K</p>
-            </div>
-            <div style={{ background: '#2a2a2a', padding: '16px 20px', borderRadius: '12px', border: '1px solid #6c5b7b' }}>
-              <span style={{ fontSize: '18px', fontWeight: 600, color: '#fff' }}>💼 Заявки</span>
-              <p style={{ color: '#b0b0b0', margin: '4px 0 0 0' }}>Более 150 коммерческих запросов за месяц</p>
-            </div>
-          </div>
-        </div>
-
-        {/* БЛОК "Хотите так же?" */}
-        <div style={{ marginTop: '60px', padding: '40px 20px', background: '#2a2a2a', borderRadius: '24px', textAlign: 'center' }}>
-          <h3 style={{ fontSize: '28px', fontWeight: 600, color: '#fff' }}>Хотите так же?</h3>
-          <p style={{ fontSize: '18px', color: '#b0b0b0', marginBottom: '16px' }}>
-            Расскажите о своём проекте — разработаем стратегию!
-          </p>
-          <button
-            style={{ background: '#6c5b7b', color: '#fff', padding: '14px 40px', border: 'none', borderRadius: '40px', fontSize: '17px', fontWeight: 600, cursor: 'pointer' }}
-            onClick={() => window.open('https://t.me/lawayasha', '_blank')}
-          >
-            Написать в Telegram
-          </button>
-        </div>
+        <style jsx>{`
+          .case-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+          }
+        `}</style>
       </div>
     );
   }
@@ -875,106 +900,115 @@ export default function CasePage() {
 
     return (
       <div style={{ padding: '40px 20px', background: '#121212', color: '#fff', minHeight: '100vh' }}>
-        <Link href="/cases" style={{ color: '#c4b5a0', textDecoration: 'none' }}>
-          ← Все кейсы
-        </Link>
+        <div className="case-content">
+          <Link href="/cases" style={{ color: '#c4b5a0', textDecoration: 'none' }}>
+            ← Все кейсы
+          </Link>
 
-        <div style={{ marginTop: '40px' }}>
-          <span
-            style={{
-              display: 'inline-block',
-              background: '#7a2e2a',
-              color: '#fff',
-              padding: '4px 16px',
-              borderRadius: '40px',
-              fontSize: '13px',
-              fontWeight: 600,
-            }}
-          >
-            HR / IGaming
-          </span>
-          <h1 style={{ fontSize: '48px', marginTop: '12px', marginBottom: '8px' }}>
-            NDA HR TEAM
-          </h1>
-          <p style={{ fontSize: '20px', color: '#b0b0b0' }}>
-            Креативы для HR-бренда
-          </p>
-        </div>
+          <div style={{ marginTop: '40px' }}>
+            <span
+              style={{
+                display: 'inline-block',
+                background: '#7a2e2a',
+                color: '#fff',
+                padding: '4px 16px',
+                borderRadius: '40px',
+                fontSize: '13px',
+                fontWeight: 600,
+              }}
+            >
+              HR / IGaming
+            </span>
+            <h1 style={{ fontSize: '48px', marginTop: '12px', marginBottom: '8px' }}>
+              NDA HR TEAM
+            </h1>
+            <p style={{ fontSize: '20px', color: '#b0b0b0' }}>
+              Креативы для HR-бренда
+            </p>
+          </div>
 
-        {/* ГАЛЕРЕЯ С ГОРИЗОНТАЛЬНЫМ СКРОЛЛОМ */}
-        <div style={{ marginTop: '40px' }}>
-          <h2 style={{ fontSize: '24px', fontWeight: 600, marginBottom: '16px' }}>
-            🎨 Примеры креативов
-          </h2>
-          <div
-            style={{
-              display: 'flex',
-              flexWrap: 'nowrap',
-              gap: '12px',
-              overflowX: 'auto',
-              paddingBottom: '8px',
-              WebkitOverflowScrolling: 'touch',
-            }}
-          >
-            {creatives.map((url, i) => (
-              <div key={i} style={{ flex: '0 0 auto' }}>
-                <img
-                  src={url}
-                  alt={`Креатив ${i + 1}`}
-                  style={{
-                    width: '200px',
-                    height: '125px',
-                    borderRadius: '12px',
-                    border: '1px solid #2a2a2a',
-                    cursor: 'pointer',
-                    objectFit: 'cover',
-                    display: 'block',
-                  }}
-                  onClick={() => openLightbox(url, creatives, i)}
-                />
-              </div>
-            ))}
+          {/* ГАЛЕРЕЯ С ГОРИЗОНТАЛЬНЫМ СКРОЛЛОМ */}
+          <div style={{ marginTop: '40px' }}>
+            <h2 style={{ fontSize: '24px', fontWeight: 600, marginBottom: '16px' }}>
+              🎨 Примеры креативов
+            </h2>
+            <div
+              style={{
+                display: 'flex',
+                flexWrap: 'nowrap',
+                gap: '12px',
+                overflowX: 'auto',
+                paddingBottom: '8px',
+                WebkitOverflowScrolling: 'touch',
+              }}
+            >
+              {creatives.map((url, i) => (
+                <div key={i} style={{ flex: '0 0 auto' }}>
+                  <img
+                    src={url}
+                    alt={`Креатив ${i + 1}`}
+                    style={{
+                      width: '200px',
+                      height: '125px',
+                      borderRadius: '12px',
+                      border: '1px solid #2a2a2a',
+                      cursor: 'pointer',
+                      objectFit: 'cover',
+                      display: 'block',
+                    }}
+                    onClick={() => openLightbox(url, creatives, i)}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* ССЫЛКА НА КАНАЛ NDA HR TEAM */}
+          <div style={{ marginTop: '50px', textAlign: 'center' }}>
+            <a
+              href="https://t.me/ndahrteam"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                color: '#c4b5a0',
+                fontSize: '18px',
+                textDecoration: 'none',
+                borderBottom: '2px solid rgba(196, 181, 160, 0.3)',
+                paddingBottom: '6px',
+                transition: 'border-color 0.2s',
+                fontFamily: 'sans-serif',
+                fontWeight: 500,
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.borderColor = '#c4b5a0')}
+              onMouseLeave={(e) => (e.currentTarget.style.borderColor = 'rgba(196, 181, 160, 0.3)')}
+            >
+              📲 Телеграм канал NDA HR TEAM
+            </a>
+          </div>
+
+          {/* БЛОК "Хотите так же?" */}
+          <div style={{ marginTop: '40px', padding: '40px 20px', background: '#2a2a2a', borderRadius: '24px', textAlign: 'center' }}>
+            <h3 style={{ fontSize: '28px', fontWeight: 600, color: '#fff' }}>Хотите так же?</h3>
+            <p style={{ fontSize: '18px', color: '#b0b0b0', marginBottom: '16px' }}>
+              Расскажите о своём проекте — разработаем стратегию!
+            </p>
+            <button
+              style={{ background: '#7a2e2a', color: '#fff', padding: '14px 40px', border: 'none', borderRadius: '40px', fontSize: '17px', fontWeight: 600, cursor: 'pointer' }}
+              onClick={() => window.open('https://t.me/lawayasha', '_blank')}
+            >
+              Написать в Telegram
+            </button>
           </div>
         </div>
 
-        {/* ССЫЛКА НА КАНАЛ NDA HR TEAM */}
-        <div style={{ marginTop: '50px', textAlign: 'center' }}>
-          <a
-            href="https://t.me/ndahrteam"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              color: '#c4b5a0',
-              fontSize: '18px',
-              textDecoration: 'none',
-              borderBottom: '2px solid rgba(196, 181, 160, 0.3)',
-              paddingBottom: '6px',
-              transition: 'border-color 0.2s',
-              fontFamily: 'sans-serif',
-              fontWeight: 500,
-            }}
-            onMouseEnter={(e) => (e.currentTarget.style.borderColor = '#c4b5a0')}
-            onMouseLeave={(e) => (e.currentTarget.style.borderColor = 'rgba(196, 181, 160, 0.3)')}
-          >
-            📲 Телеграм канал NDA HR TEAM
-          </a>
-        </div>
+        <style jsx>{`
+          .case-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+          }
+        `}</style>
 
-        {/* БЛОК "Хотите так же?" */}
-        <div style={{ marginTop: '40px', padding: '40px 20px', background: '#2a2a2a', borderRadius: '24px', textAlign: 'center' }}>
-          <h3 style={{ fontSize: '28px', fontWeight: 600, color: '#fff' }}>Хотите так же?</h3>
-          <p style={{ fontSize: '18px', color: '#b0b0b0', marginBottom: '16px' }}>
-            Расскажите о своём проекте — разработаем стратегию!
-          </p>
-          <button
-            style={{ background: '#7a2e2a', color: '#fff', padding: '14px 40px', border: 'none', borderRadius: '40px', fontSize: '17px', fontWeight: 600, cursor: 'pointer' }}
-            onClick={() => window.open('https://t.me/lawayasha', '_blank')}
-          >
-            Написать в Telegram
-          </button>
-        </div>
-
-        {/* ЛАЙТБОКС */}
         {isOpen && (
           <div
             style={{
@@ -994,14 +1028,7 @@ export default function CasePage() {
             onClick={closeLightbox}
           >
             <div
-              style={{
-                position: 'relative',
-                maxWidth: '95vw',
-                maxHeight: '95vh',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}
+              style={{ position: 'relative', maxWidth: '95vw', maxHeight: '95vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
               onClick={(e) => e.stopPropagation()}
             >
               <button
@@ -1113,153 +1140,162 @@ export default function CasePage() {
 
     return (
       <div style={{ padding: '40px 20px', background: '#121212', color: '#fff', minHeight: '100vh' }}>
-        <Link href="/cases" style={{ color: '#c4b5a0', textDecoration: 'none' }}>
-          ← Все кейсы
-        </Link>
+        <div className="case-content">
+          <Link href="/cases" style={{ color: '#c4b5a0', textDecoration: 'none' }}>
+            ← Все кейсы
+          </Link>
 
-        <div style={{ marginTop: '40px' }}>
-          <span
-            style={{
-              display: 'inline-block',
-              background: '#2a7a7a',
-              color: '#fff',
-              padding: '4px 16px',
-              borderRadius: '40px',
-              fontSize: '13px',
-              fontWeight: 600,
-            }}
-          >
-            Беттинг / Маркетинг
-          </span>
-          <h1 style={{ fontSize: '48px', marginTop: '12px', marginBottom: '8px' }}>
-            SpinBetter
-          </h1>
-          <p style={{ fontSize: '20px', color: '#b0b0b0' }}>
-            Букмекерская компания
-          </p>
-        </div>
-
-        {/* СТРАТЕГИЯ РАЗВИТИЯ БРЕНДА */}
-        <div style={{ marginTop: '40px' }}>
-          <h2 style={{ fontSize: '24px', fontWeight: 600, marginBottom: '16px' }}>
-            📄 Стратегия развития бренда в социальных сетях
-          </h2>
-          <div
-            style={{
-              padding: '20px',
-              background: '#2a2a2a',
-              borderRadius: '12px',
-              border: '1px solid #2a7a7a',
-            }}
-          >
-            <p style={{ color: '#b0b0b0', fontSize: '16px', marginBottom: '12px' }}>
-              Разработана комплексная стратегия присутствия бренда в социальных сетях:
+          <div style={{ marginTop: '40px' }}>
+            <span
+              style={{
+                display: 'inline-block',
+                background: '#2a7a7a',
+                color: '#fff',
+                padding: '4px 16px',
+                borderRadius: '40px',
+                fontSize: '13px',
+                fontWeight: 600,
+              }}
+            >
+              Беттинг / Маркетинг
+            </span>
+            <h1 style={{ fontSize: '48px', marginTop: '12px', marginBottom: '8px' }}>
+              SpinBetter
+            </h1>
+            <p style={{ fontSize: '20px', color: '#b0b0b0' }}>
+              Букмекерская компания
             </p>
-            <ul style={{ color: '#b0b0b0', fontSize: '15px', paddingLeft: '20px' }}>
-              <li style={{ marginBottom: '6px' }}>🔹 Анализ целевой аудитории и конкурентов</li>
-              <li style={{ marginBottom: '6px' }}>🔹 Контент-план и визуальная стратегия</li>
-              <li style={{ marginBottom: '6px' }}>🔹 Система вовлечения и удержания подписчиков</li>
-            </ul>
+          </div>
 
-            {/* ССЫЛКА НА PDF СО СТРАТЕГИЕЙ */}
-            <div style={{ marginTop: '16px' }}>
-              <a
-                href="/cases/spinbetter/strategy.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  display: 'inline-block',
-                  padding: '12px 28px',
-                  background: '#2a7a7a',
-                  color: '#fff',
-                  borderRadius: '40px',
-                  textDecoration: 'none',
-                  fontSize: '15px',
-                  fontWeight: 500,
-                  transition: 'background 0.2s',
-                }}
-                onMouseEnter={(e) => (e.currentTarget.style.background = '#3a8a8a')}
-                onMouseLeave={(e) => (e.currentTarget.style.background = '#2a7a7a')}
-              >
-                📄 Открыть стратегию (PDF)
-              </a>
+          {/* СТРАТЕГИЯ РАЗВИТИЯ БРЕНДА */}
+          <div style={{ marginTop: '40px' }}>
+            <h2 style={{ fontSize: '24px', fontWeight: 600, marginBottom: '16px' }}>
+              📄 Стратегия развития бренда в социальных сетях
+            </h2>
+            <div
+              style={{
+                padding: '20px',
+                background: '#2a2a2a',
+                borderRadius: '12px',
+                border: '1px solid #2a7a7a',
+              }}
+            >
+              <p style={{ color: '#b0b0b0', fontSize: '16px', marginBottom: '12px' }}>
+                Разработана комплексная стратегия присутствия бренда в социальных сетях:
+              </p>
+              <ul style={{ color: '#b0b0b0', fontSize: '15px', paddingLeft: '20px' }}>
+                <li style={{ marginBottom: '6px' }}>🔹 Анализ целевой аудитории и конкурентов</li>
+                <li style={{ marginBottom: '6px' }}>🔹 Контент-план и визуальная стратегия</li>
+                <li style={{ marginBottom: '6px' }}>🔹 Система вовлечения и удержания подписчиков</li>
+              </ul>
+
+              {/* ССЫЛКА НА PDF СО СТРАТЕГИЕЙ */}
+              <div style={{ marginTop: '16px' }}>
+                <a
+                  href="/cases/spinbetter/strategy.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    display: 'inline-block',
+                    padding: '12px 28px',
+                    background: '#2a7a7a',
+                    color: '#fff',
+                    borderRadius: '40px',
+                    textDecoration: 'none',
+                    fontSize: '15px',
+                    fontWeight: 500,
+                    transition: 'background 0.2s',
+                  }}
+                  onMouseEnter={(e) => (e.currentTarget.style.background = '#3a8a8a')}
+                  onMouseLeave={(e) => (e.currentTarget.style.background = '#2a7a7a')}
+                >
+                  📄 Открыть стратегию (PDF)
+                </a>
+              </div>
             </div>
           </div>
-        </div>
 
-        {/* ВОРОНКА ДЛЯ ДЕПОЗИТОВ */}
-        <div style={{ marginTop: '40px' }}>
-          <h2 style={{ fontSize: '24px', fontWeight: 600, marginBottom: '16px' }}>
-            📊 Воронка для депозитов
-          </h2>
-          <div
-            style={{
-              padding: '20px',
-              background: '#2a2a2a',
-              borderRadius: '12px',
-              border: '1px solid #2a7a7a',
-            }}
-          >
-            <p style={{ color: '#b0b0b0', fontSize: '16px', marginBottom: '12px' }}>
-              Разработана эффективная воронка для привлечения и удержания депозитов:
+          {/* ВОРОНКА ДЛЯ ДЕПОЗИТОВ */}
+          <div style={{ marginTop: '40px' }}>
+            <h2 style={{ fontSize: '24px', fontWeight: 600, marginBottom: '16px' }}>
+              📊 Воронка для депозитов
+            </h2>
+            <div
+              style={{
+                padding: '20px',
+                background: '#2a2a2a',
+                borderRadius: '12px',
+                border: '1px solid #2a7a7a',
+              }}
+            >
+              <p style={{ color: '#b0b0b0', fontSize: '16px', marginBottom: '12px' }}>
+                Разработана эффективная воронка для привлечения и удержания депозитов:
+              </p>
+              <ul style={{ color: '#b0b0b0', fontSize: '15px', paddingLeft: '20px' }}>
+                <li style={{ marginBottom: '6px' }}>🔹 Привлечение трафика через соцсети</li>
+                <li style={{ marginBottom: '6px' }}>🔹 Лендинги и регистрация</li>
+                <li style={{ marginBottom: '6px' }}>🔹 Система бонусов и удержания</li>
+              </ul>
+            </div>
+          </div>
+
+          {/* ГАЛЕРЕЯ КРЕАТИВОВ (6 ШТУК) */}
+          <div style={{ marginTop: '48px' }}>
+            <h2 style={{ fontSize: '24px', fontWeight: 600 }}>🎨 Креативы для соцсетей</h2>
+            <div
+              style={{
+                display: 'flex',
+                flexWrap: 'nowrap',
+                gap: '12px',
+                overflowX: 'auto',
+                paddingBottom: '8px',
+                WebkitOverflowScrolling: 'touch',
+              }}
+            >
+              {spinImages.map((url, i) => (
+                <div key={i} style={{ flex: '0 0 auto' }}>
+                  <img
+                    src={url}
+                    alt={`Креатив ${i + 1}`}
+                    style={{
+                      width: '200px',
+                      height: '125px',
+                      borderRadius: '12px',
+                      border: '1px solid #2a2a2a',
+                      cursor: 'pointer',
+                      objectFit: 'cover',
+                      display: 'block',
+                    }}
+                    onClick={() => openLightbox(url, spinImages, i)}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* БЛОК "Хотите так же?" */}
+          <div style={{ marginTop: '60px', padding: '40px 20px', background: '#2a2a2a', borderRadius: '24px', textAlign: 'center' }}>
+            <h3 style={{ fontSize: '28px', fontWeight: 600, color: '#fff' }}>Хотите так же?</h3>
+            <p style={{ fontSize: '18px', color: '#b0b0b0', marginBottom: '16px' }}>
+              Расскажите о своём проекте — разработаем стратегию!
             </p>
-            <ul style={{ color: '#b0b0b0', fontSize: '15px', paddingLeft: '20px' }}>
-              <li style={{ marginBottom: '6px' }}>🔹 Привлечение трафика через соцсети</li>
-              <li style={{ marginBottom: '6px' }}>🔹 Лендинги и регистрация</li>
-              <li style={{ marginBottom: '6px' }}>🔹 Система бонусов и удержания</li>
-            </ul>
+            <button
+              style={{ background: '#2a7a7a', color: '#fff', padding: '14px 40px', border: 'none', borderRadius: '40px', fontSize: '17px', fontWeight: 600, cursor: 'pointer' }}
+              onClick={() => window.open('https://t.me/lawayasha', '_blank')}
+            >
+              Написать в Telegram
+            </button>
           </div>
         </div>
 
-        {/* ГАЛЕРЕЯ КРЕАТИВОВ (6 ШТУК) */}
-        <div style={{ marginTop: '48px' }}>
-          <h2 style={{ fontSize: '24px', fontWeight: 600 }}>🎨 Креативы для соцсетей</h2>
-          <div
-            style={{
-              display: 'flex',
-              flexWrap: 'nowrap',
-              gap: '12px',
-              overflowX: 'auto',
-              paddingBottom: '8px',
-              WebkitOverflowScrolling: 'touch',
-            }}
-          >
-            {spinImages.map((url, i) => (
-              <div key={i} style={{ flex: '0 0 auto' }}>
-                <img
-                  src={url}
-                  alt={`Креатив ${i + 1}`}
-                  style={{
-                    width: '200px',
-                    height: '125px',
-                    borderRadius: '12px',
-                    border: '1px solid #2a2a2a',
-                    cursor: 'pointer',
-                    objectFit: 'cover',
-                    display: 'block',
-                  }}
-                  onClick={() => openLightbox(url, spinImages, i)}
-                />
-              </div>
-            ))}
-          </div>
-        </div>
+        <style jsx>{`
+          .case-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+          }
+        `}</style>
 
-        {/* БЛОК "Хотите так же?" */}
-        <div style={{ marginTop: '60px', padding: '40px 20px', background: '#2a2a2a', borderRadius: '24px', textAlign: 'center' }}>
-          <h3 style={{ fontSize: '28px', fontWeight: 600, color: '#fff' }}>Хотите так же?</h3>
-          <p style={{ fontSize: '18px', color: '#b0b0b0', marginBottom: '16px' }}>
-            Расскажите о своём проекте — разработаем стратегию!
-          </p>
-          <button
-            style={{ background: '#2a7a7a', color: '#fff', padding: '14px 40px', border: 'none', borderRadius: '40px', fontSize: '17px', fontWeight: 600, cursor: 'pointer' }}
-            onClick={() => window.open('https://t.me/lawayasha', '_blank')}
-          >
-            Написать в Telegram
-          </button>
-        </div>
-
-        {/* ЛАЙТБОКС */}
         {isOpen && (
           <div
             style={{
@@ -1279,14 +1315,7 @@ export default function CasePage() {
             onClick={closeLightbox}
           >
             <div
-              style={{
-                position: 'relative',
-                maxWidth: '95vw',
-                maxHeight: '95vh',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}
+              style={{ position: 'relative', maxWidth: '95vw', maxHeight: '95vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
               onClick={(e) => e.stopPropagation()}
             >
               <button
@@ -1388,8 +1417,17 @@ export default function CasePage() {
   // --- КЕЙС НЕ НАЙДЕН ---
   return (
     <div style={{ padding: '40px', background: '#121212', color: '#fff' }}>
-      <h1>Кейс не найден</h1>
-      <Link href="/cases" style={{ color: '#c4b5a0' }}>← Вернуться</Link>
+      <div className="case-content">
+        <h1>Кейс не найден</h1>
+        <Link href="/cases" style={{ color: '#c4b5a0' }}>← Вернуться</Link>
+      </div>
+      <style jsx>{`
+        .case-content {
+          max-width: 800px;
+          margin: 0 auto;
+          padding: 0 20px;
+        }
+      `}</style>
     </div>
   );
 }
