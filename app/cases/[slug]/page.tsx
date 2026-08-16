@@ -71,7 +71,7 @@ export default function CasePage() {
               fontWeight: 600,
             }}
           >
-            Вирусный контент
+            IT / Платформа
           </span>
           <h1 style={{ fontSize: '48px', marginTop: '12px', marginBottom: '8px' }}>Яндекс Еда</h1>
           <p style={{ fontSize: '20px', color: '#b0b0b0' }}>Вирусный ролик с суммарным охватом 50+ млн</p>
@@ -149,6 +149,278 @@ export default function CasePage() {
           </button>
         </div>
 
+        {isOpen && (
+          <div
+            style={{
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              background: 'rgba(0,0,0,0.92)',
+              backdropFilter: 'blur(12px)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              zIndex: 9999,
+              padding: '10px',
+            }}
+            onClick={closeLightbox}
+          >
+            <div
+              style={{
+                position: 'relative',
+                maxWidth: '95vw',
+                maxHeight: '95vh',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                onClick={closeLightbox}
+                style={{
+                  position: 'absolute',
+                  top: '10px',
+                  right: '10px',
+                  background: 'rgba(0,0,0,0.5)',
+                  border: 'none',
+                  color: '#fff',
+                  fontSize: '24px',
+                  cursor: 'pointer',
+                  padding: '8px 14px',
+                  borderRadius: '50%',
+                  zIndex: 10,
+                }}
+              >
+                ✕
+              </button>
+
+              <button
+                onClick={(e) => { e.stopPropagation(); goToPrev(); }}
+                style={{
+                  position: 'absolute',
+                  left: '10px',
+                  top: '50%',
+                  transform: 'translateY(-50%)',
+                  background: 'rgba(0,0,0,0.5)',
+                  border: '1px solid rgba(255,255,255,0.2)',
+                  color: '#fff',
+                  fontSize: '28px',
+                  cursor: 'pointer',
+                  padding: '8px 14px',
+                  borderRadius: '50%',
+                  zIndex: 10,
+                  transition: 'background 0.2s',
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(255,255,255,0.2)')}
+                onMouseLeave={(e) => (e.currentTarget.style.background = 'rgba(0,0,0,0.5)')}
+              >
+                ‹
+              </button>
+
+              <button
+                onClick={(e) => { e.stopPropagation(); goToNext(); }}
+                style={{
+                  position: 'absolute',
+                  right: '10px',
+                  top: '50%',
+                  transform: 'translateY(-50%)',
+                  background: 'rgba(0,0,0,0.5)',
+                  border: '1px solid rgba(255,255,255,0.2)',
+                  color: '#fff',
+                  fontSize: '28px',
+                  cursor: 'pointer',
+                  padding: '8px 14px',
+                  borderRadius: '50%',
+                  zIndex: 10,
+                  transition: 'background 0.2s',
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(255,255,255,0.2)')}
+                onMouseLeave={(e) => (e.currentTarget.style.background = 'rgba(0,0,0,0.5)')}
+              >
+                ›
+              </button>
+
+              <img
+                src={currentImage}
+                alt="скриншот"
+                style={{
+                  maxWidth: '90vw',
+                  maxHeight: '85vh',
+                  borderRadius: '12px',
+                  objectFit: 'contain',
+                }}
+              />
+
+              <div
+                style={{
+                  position: 'absolute',
+                  bottom: '-40px',
+                  left: '50%',
+                  transform: 'translateX(-50%)',
+                  color: 'rgba(255,255,255,0.6)',
+                  fontSize: '14px',
+                  fontFamily: 'sans-serif',
+                }}
+              >
+                {currentIndex + 1} / {imagesList.length}
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+    );
+  }
+
+  // --- URENT (1 СКРИН + 2 ВИДЕО) ---
+  if (slug === 'urent') {
+    const urentImages = [
+      '/cases/urent/screenshot-1.jpg',
+    ];
+
+    const urentVideos = [
+      '/cases/urent/video-1.mp4',
+      '/cases/urent/video-2.mp4',
+    ];
+
+    return (
+      <div style={{ padding: '40px 20px', background: '#121212', color: '#fff', minHeight: '100vh' }}>
+        <Link href="/cases" style={{ color: '#c4b5a0', textDecoration: 'none' }}>
+          ← Все кейсы
+        </Link>
+
+        <div style={{ marginTop: '40px' }}>
+          <span
+            style={{
+              display: 'inline-block',
+              background: '#2a8a7a',
+              color: '#fff',
+              padding: '4px 16px',
+              borderRadius: '40px',
+              fontSize: '13px',
+              fontWeight: 600,
+            }}
+          >
+            Шеринг / Технологии
+          </span>
+          <h1 style={{ fontSize: '48px', marginTop: '12px', marginBottom: '8px' }}>
+            Urent
+          </h1>
+          <p style={{ fontSize: '20px', color: '#b0b0b0' }}>
+            Разработка стратегии продвижения для шеринга электросамокатов
+          </p>
+        </div>
+
+        {/* ОПИСАНИЕ ПРОЕКТА */}
+        <div style={{ marginTop: '40px' }}>
+          <h2 style={{ fontSize: '24px', fontWeight: 600, marginBottom: '16px' }}>
+            📱 О проекте
+          </h2>
+          <div
+            style={{
+              padding: '20px',
+              background: '#2a2a2a',
+              borderRadius: '12px',
+              border: '1px solid #2a8a7a',
+            }}
+          >
+            <p style={{ color: '#b0b0b0', fontSize: '16px', marginBottom: '12px' }}>
+              Разработана стратегия продвижения для сервиса аренды электросамокатов:
+            </p>
+            <ul style={{ color: '#b0b0b0', fontSize: '15px', paddingLeft: '20px' }}>
+              <li style={{ marginBottom: '6px' }}>🔹 Анализ рынка и конкурентов</li>
+              <li style={{ marginBottom: '6px' }}>🔹 Разработка контент-стратегии</li>
+              <li style={{ marginBottom: '6px' }}>🔹 Запуск рекламных кампаний</li>
+            </ul>
+          </div>
+        </div>
+
+        {/* ВИДЕО */}
+        <div style={{ marginTop: '40px' }}>
+          <h2 style={{ fontSize: '24px', fontWeight: 600, marginBottom: '16px' }}>
+            🎬 Видеокреативы
+          </h2>
+          <div
+            style={{
+              display: 'flex',
+              flexWrap: 'nowrap',
+              gap: '12px',
+              overflowX: 'auto',
+              paddingBottom: '8px',
+              WebkitOverflowScrolling: 'touch',
+            }}
+          >
+            {urentVideos.map((url, i) => (
+              <div key={i} style={{ flex: '0 0 auto' }}>
+                <video
+                  src={url}
+                  controls
+                  style={{
+                    width: '200px',
+                    height: '125px',
+                    borderRadius: '12px',
+                    border: '1px solid #2a2a2a',
+                    objectFit: 'cover',
+                    background: '#0a0a0a',
+                    display: 'block',
+                  }}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* ГАЛЕРЕЯ СКРИНШОТОВ */}
+        <div style={{ marginTop: '48px' }}>
+          <h2 style={{ fontSize: '24px', fontWeight: 600 }}>📸 Примеры креативов</h2>
+          <div
+            style={{
+              display: 'flex',
+              flexWrap: 'nowrap',
+              gap: '12px',
+              overflowX: 'auto',
+              paddingBottom: '8px',
+              WebkitOverflowScrolling: 'touch',
+            }}
+          >
+            {urentImages.map((url, i) => (
+              <div key={i} style={{ flex: '0 0 auto' }}>
+                <img
+                  src={url}
+                  alt={'скрин ' + (i + 1)}
+                  style={{
+                    width: '200px',
+                    height: '125px',
+                    borderRadius: '12px',
+                    border: '1px solid #2a2a2a',
+                    cursor: 'pointer',
+                    objectFit: 'cover',
+                    display: 'block',
+                  }}
+                  onClick={() => openLightbox(url, urentImages, i)}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* БЛОК "Хотите так же?" */}
+        <div style={{ marginTop: '60px', padding: '40px 20px', background: '#2a2a2a', borderRadius: '24px', textAlign: 'center' }}>
+          <h3 style={{ fontSize: '28px', fontWeight: 600, color: '#fff' }}>Хотите так же?</h3>
+          <p style={{ fontSize: '18px', color: '#b0b0b0', marginBottom: '16px' }}>
+            Расскажите о своём проекте — разработаем стратегию!
+          </p>
+          <button
+            style={{ background: '#2a8a7a', color: '#fff', padding: '14px 40px', border: 'none', borderRadius: '40px', fontSize: '17px', fontWeight: 600, cursor: 'pointer' }}
+            onClick={() => window.open('https://t.me/lawayasha', '_blank')}
+          >
+            Написать в Telegram
+          </button>
+        </div>
+
+        {/* ЛАЙТБОКС */}
         {isOpen && (
           <div
             style={{
@@ -462,7 +734,7 @@ export default function CasePage() {
               fontWeight: 600,
             }}
           >
-            IT / Разработка
+            IT / Майнинг
           </span>
           <h1 style={{ fontSize: '48px', marginTop: '12px', marginBottom: '8px' }}>
             Promminer
@@ -619,7 +891,7 @@ export default function CasePage() {
               fontWeight: 600,
             }}
           >
-            HR / Брендинг
+            HR / IGaming
           </span>
           <h1 style={{ fontSize: '48px', marginTop: '12px', marginBottom: '8px' }}>
             NDA HR TEAM
@@ -828,7 +1100,7 @@ export default function CasePage() {
     );
   }
 
-  // --- SPINBETTER (6 КРЕАТИВОВ + СТРАТЕГИЯ, БЕЗ БРЕНДБУКА) ---
+  // --- SPINBETTER ---
   if (slug === 'spinbetter') {
     const spinImages = [
       '/cases/spinbetter/creative-1.jpg',
