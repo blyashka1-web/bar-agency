@@ -23,16 +23,17 @@ export default function RootLayout({
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Показываем загрузку при первом открытии
+    // Загрузка только при первом открытии сайта
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 600);
+    }, 1000); // 1 секунда — достаточно, чтобы показать красивую загрузку
     return () => clearTimeout(timer);
   }, []);
 
   return (
     <html lang="ru">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        {/* Загрузчик — только при первом открытии */}
         {isLoading ? (
           <div className="loader-fullscreen">
             <div className="loader-ring" />
@@ -101,20 +102,6 @@ export default function RootLayout({
             to {
               opacity: 1;
               transform: translateY(0);
-            }
-          }
-
-          /* Скрываем загрузку плавно */
-          .loader-exit {
-            animation: fadeOut 0.4s ease forwards;
-          }
-
-          @keyframes fadeOut {
-            from {
-              opacity: 1;
-            }
-            to {
-              opacity: 0;
             }
           }
         `}</style>
