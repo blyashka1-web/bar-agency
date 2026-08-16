@@ -4,8 +4,11 @@ export default function ContactModal({ isOpen, onClose }) {
   if (!isOpen) return null;
 
   return (
-    <div className="modal-overlay" onClick={onClose}>
-      <div className="modal" onClick={(e) => e.stopPropagation()}>
+    <>
+      <div className="modal-overlay" onClick={onClose} />
+      <div className="modal">
+        <div className="modal-handle" />
+        
         <button className="close-btn" onClick={onClose}>✕</button>
 
         <h2>Свяжитесь с нами</h2>
@@ -36,40 +39,62 @@ export default function ContactModal({ isOpen, onClose }) {
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 9999;
-            padding: 40px 20px;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 9998;
+            animation: fadeIn 0.25s ease;
+          }
+
+          @keyframes fadeIn {
+            from {
+              opacity: 0;
+            }
+            to {
+              opacity: 1;
+            }
+          }
+
+          @keyframes slideUp {
+            from {
+              transform: translateY(100%);
+            }
+            to {
+              transform: translateY(0);
+            }
           }
 
           .modal {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
             background: #1a1a1a;
-            border: 1px solid #2a2a2a;
-            border-radius: 24px;
-            padding: 40px 36px 32px;
-            max-width: 400px;
-            width: 100%;
-            position: relative;
-            box-shadow: 0 30px 80px rgba(0,0,0,0.8);
-            max-height: 90vh;
-            overflow-y: auto;
+            border-radius: 24px 24px 0 0;
+            padding: 16px 24px 32px;
+            z-index: 9999;
+            max-width: 500px;
+            margin: 0 auto;
+            box-shadow: 0 -10px 40px rgba(0,0,0,0.5);
+            animation: slideUp 0.35s ease;
+          }
+
+          .modal-handle {
+            width: 40px;
+            height: 4px;
+            background: #444;
+            border-radius: 4px;
+            margin: 0 auto 16px;
           }
 
           .close-btn {
             position: absolute;
-            top: 14px;
-            right: 18px;
+            top: 16px;
+            right: 20px;
             background: none;
             border: none;
             color: #888;
-            font-size: 26px;
+            font-size: 24px;
             cursor: pointer;
             transition: color 0.2s;
-            line-height: 1;
             padding: 4px;
           }
 
@@ -78,18 +103,19 @@ export default function ContactModal({ isOpen, onClose }) {
           }
 
           h2 {
-            font-size: 26px;
+            font-size: 24px;
             font-weight: 700;
             color: #ffffff;
             font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
             margin-bottom: 4px;
+            margin-top: 4px;
           }
 
           .subtitle {
             font-size: 15px;
             color: #888;
             font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
-            margin-bottom: 28px;
+            margin-bottom: 24px;
           }
 
           .contacts {
@@ -140,23 +166,24 @@ export default function ContactModal({ isOpen, onClose }) {
 
           /* ТЕЛЕФОНЫ */
           @media (max-width: 480px) {
-            .modal-overlay {
-              padding: 20px 12px;
+            .modal {
+              padding: 14px 16px 24px;
+              border-radius: 20px 20px 0 0;
             }
 
-            .modal {
-              padding: 28px 18px 24px;
-              border-radius: 20px;
-              max-width: 100%;
+            .modal-handle {
+              width: 36px;
+              height: 4px;
+              margin-bottom: 12px;
             }
 
             h2 {
-              font-size: 22px;
+              font-size: 20px;
             }
 
             .subtitle {
               font-size: 14px;
-              margin-bottom: 20px;
+              margin-bottom: 18px;
             }
 
             .contact-item {
@@ -174,21 +201,26 @@ export default function ContactModal({ isOpen, onClose }) {
             }
 
             .close-btn {
-              font-size: 22px;
-              top: 10px;
-              right: 14px;
+              font-size: 20px;
+              top: 12px;
+              right: 16px;
             }
           }
 
           /* ПЛАНШЕТЫ И БОЛЬШИЕ ЭКРАНЫ */
           @media (min-width: 768px) {
             .modal {
-              padding: 44px 40px 36px;
-              max-width: 420px;
+              border-radius: 28px 28px 0 0;
+              padding: 20px 32px 36px;
+              max-width: 480px;
+            }
+
+            .modal-handle {
+              display: none;
             }
           }
         `}</style>
       </div>
-    </div>
+    </>
   );
 }
