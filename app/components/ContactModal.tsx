@@ -77,10 +77,10 @@ export default function ContactModal({ isOpen, onClose }) {
             width: 340px;
             max-width: calc(100vw - 40px);
             background: #1a1a1a;
-            border: 1px solid #2a2a2a;
+            border: 1px solid #333;
             border-radius: 20px;
             padding: 28px 24px 24px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.9);
             pointer-events: auto;
             animation: slideDown 0.25s ease;
             transform-origin: top right;
@@ -126,7 +126,7 @@ export default function ContactModal({ isOpen, onClose }) {
 
           .subtitle {
             font-size: 14px;
-            color: #888;
+            color: #999;
             font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
             margin-bottom: 20px;
           }
@@ -142,9 +142,9 @@ export default function ContactModal({ isOpen, onClose }) {
             align-items: center;
             gap: 12px;
             padding: 12px 16px;
-            background: #2a2a2a;
+            background: #252525;
             border-radius: 12px;
-            border: 1px solid #2a2a2a;
+            border: 1px solid #333;
             text-decoration: none;
             color: #fff;
             transition: all 0.25s ease;
@@ -152,7 +152,7 @@ export default function ContactModal({ isOpen, onClose }) {
 
           .contact-item:hover {
             border-color: #c4b5a0;
-            background: #333;
+            background: #2a2a2a;
           }
 
           .contact-icon {
@@ -189,7 +189,6 @@ export default function ContactModal({ isOpen, onClose }) {
             font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
           }
 
-          /* МОБИЛЬНЫЕ УСТРОЙСТВА */
           @media (max-width: 480px) {
             .modal {
               top: 60px;
@@ -231,7 +230,6 @@ export default function ContactModal({ isOpen, onClose }) {
             }
           }
 
-          /* ПЛАНШЕТЫ */
           @media (min-width: 768px) {
             .modal {
               top: 76px;
