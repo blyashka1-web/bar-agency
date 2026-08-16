@@ -31,7 +31,7 @@ export default function Home() {
             <div className="actions">
               <a href="/services" className="btn-outline">Услуги</a>
               <a href="/cases" className="btn-outline">Наши проекты</a>
-              <button onClick={() => window.open('https://t.me/bar_agency_smm_bot', '_blank')} className="btn-outline">
+              <button onClick={() => window.open('https://t.me/lawayasha', '_blank')} className="btn-outline">
                 Написать
               </button>
             </div>
