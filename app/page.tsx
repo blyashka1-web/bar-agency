@@ -22,14 +22,16 @@ export default function Home() {
 
             <p className="description">
               <span className="desktop-line">
-                Анализируем ваш бренд, разрабатываем стратегию,<br />
-                создаём контент и продвигаем в соцсетях
+                <span className="highlight">Анализируем</span> ваш бренд,<br />
+                <span className="highlight">разрабатываем</span> стратегию,<br />
+                <span className="highlight">создаём</span> контент<br />
+                и <span className="highlight">продвигаем</span> в соцсетях
               </span>
               <span className="mobile-lines">
-                Анализируем ваш бренд,<br />
-                разрабатываем стратегию,<br />
-                создаём контент<br />
-                и продвигаем в соцсетях
+                <span className="highlight">Анализируем</span> ваш бренд,<br />
+                <span className="highlight">разрабатываем</span> стратегию,<br />
+                <span className="highlight">создаём</span> контент<br />
+                и <span className="highlight">продвигаем</span> в соцсетях
               </span>
               <br />
               <span className="social-links">REELS | TikTok | YOUTUBE | SHORTS</span>
@@ -158,6 +160,11 @@ export default function Home() {
             max-width: 600px;
             margin: 0 auto 32px;
             letter-spacing: 0.02em;
+          }
+
+          .highlight {
+            color: #c4b5a0;
+            font-weight: 600;
           }
 
           .social-links {
