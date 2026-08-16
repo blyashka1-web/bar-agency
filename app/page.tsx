@@ -7,12 +7,7 @@ export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const clients = [
-    { name: 'Beauty Story', emoji: '🧴' },
-    { name: 'Moscow Coffee', emoji: '☕' },
-    { name: 'Urban Sneakers', emoji: '👟' },
-    { name: 'Luxe Jewelry', emoji: '💎' },
-    { name: 'Wine & People', emoji: '🍷' },
-    { name: 'AppVision', emoji: '📱' },
+    { name: 'Благотворительный фонд Родина', logo: '/rodina-logo.png' },
   ];
 
   return (
@@ -44,13 +39,17 @@ export default function Home() {
         {/* КЛИЕНТЫ */}
         <section className="clients">
           <div className="container">
-            <h2>Наши клиенты</h2>
-            <p className="clients-subtitle">Бренды, которым мы помогли вырасти</p>
+            <h2>С кем мы сотрудничаем сейчас</h2>
+            <p className="clients-subtitle">Наши партнеры и проекты</p>
             <div className="clients-grid">
               {clients.map((client, index) => (
                 <div key={index} className="client-card">
                   <div className="client-logo">
-                    <span className="client-emoji">{client.emoji}</span>
+                    {client.logo ? (
+                      <img src={client.logo} alt={client.name} className="client-image" />
+                    ) : (
+                      <span className="client-emoji">🤝</span>
+                    )}
                   </div>
                   <span className="client-name">{client.name}</span>
                 </div>
@@ -72,7 +71,6 @@ export default function Home() {
             padding: 0 30px;
           }
 
-          /* HERO */
           .hero {
             padding: 120px 0 80px;
             text-align: center;
@@ -151,7 +149,6 @@ export default function Home() {
             color: #ffffff;
           }
 
-          /* CLIENTS */
           .clients {
             padding: 80px 0;
             background: #121212;
@@ -176,24 +173,23 @@ export default function Home() {
           }
 
           .clients-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 32px;
-            justify-items: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
           }
 
           .client-card {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 12px;
-            padding: 20px 16px;
+            gap: 16px;
+            padding: 40px 50px;
             background: #1a1a1a;
             border-radius: 20px;
             border: 1px solid #2a2a2a;
             transition: all 0.3s ease;
+            max-width: 320px;
             width: 100%;
-            max-width: 150px;
           }
 
           .client-card:hover {
@@ -203,21 +199,35 @@ export default function Home() {
           }
 
           .client-logo {
-            width: 60px;
-            height: 60px;
+            width: 120px;
+            height: 120px;
             display: flex;
             align-items: center;
             justify-content: center;
             background: rgba(255,255,255,0.04);
-            border-radius: 50%;
+            border-radius: 16px;
+            overflow: hidden;
+            padding: 16px;
+          }
+
+          .client-image {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            filter: brightness(1);
+            transition: filter 0.3s ease;
+          }
+
+          .client-card:hover .client-image {
+            filter: brightness(1.1);
           }
 
           .client-emoji {
-            font-size: 28px;
+            font-size: 40px;
           }
 
           .client-name {
-            font-size: 13px;
+            font-size: 18px;
             font-weight: 500;
             color: #b0b0b0;
             text-align: center;
@@ -260,33 +270,18 @@ export default function Home() {
               padding: 60px 0;
             }
 
-            .clients-grid {
-              grid-template-columns: repeat(3, 1fr);
-              gap: 16px;
-            }
-
             .client-card {
               max-width: 100%;
-              padding: 16px 12px;
+              padding: 30px 20px;
             }
 
             .client-logo {
-              width: 48px;
-              height: 48px;
-            }
-
-            .client-emoji {
-              font-size: 24px;
+              width: 100px;
+              height: 100px;
             }
 
             .client-name {
-              font-size: 11px;
-            }
-          }
-
-          @media (max-width: 480px) {
-            .clients-grid {
-              grid-template-columns: repeat(2, 1fr);
+              font-size: 16px;
             }
           }
         `}</style>
