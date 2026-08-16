@@ -26,7 +26,8 @@ export default function Home() {
             <p className="subtitle">Креативное SMM-агентство</p>
 
             <p className="description">
-              Разрабатываем стратегии, создаём контент и продвигаем бренды в соцсетях.<br />
+              Разрабатываем стратегии, создаём контент<br />
+              и продвигаем бренды в социальных сетях<br />
               REELS | TikTok | YOUTUBE | SHORTS
             </p>
 
@@ -120,7 +121,7 @@ export default function Home() {
             font-size: 18px;
             color: #b0b0b0;
             font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
-            line-height: 1.6;
+            line-height: 1.8;
             max-width: 600px;
             margin: 0 auto 32px;
             letter-spacing: 0.02em;
