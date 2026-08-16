@@ -54,6 +54,8 @@ export default function ContactModal({ isOpen, onClose }) {
             width: 100%;
             position: relative;
             box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+            max-height: 90vh;
+            overflow-y: auto;
           }
 
           .close-btn {
@@ -134,6 +136,8 @@ export default function ContactModal({ isOpen, onClose }) {
           @media (max-width: 480px) {
             .modal {
               padding: 32px 20px 28px;
+              max-width: 95%;
+              border-radius: 20px;
             }
 
             h2 {
