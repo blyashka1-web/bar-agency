@@ -40,8 +40,8 @@ export default function Home() {
         {/* КЛИЕНТЫ */}
         <section className="clients">
           <div className="container">
-            <h2>С кем мы сотрудничаем сейчас</h2>
-            <p className="clients-subtitle">Наши партнеры и проекты</p>
+            <h2>Наши текущие партнеры</h2>
+            <p className="clients-subtitle">Компании, с которыми мы работаем сейчас</p>
             <div className="clients-grid">
               {clients.map((client, index) => (
                 <div key={index} className="client-card">
