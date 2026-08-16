@@ -20,22 +20,21 @@ export default function Home() {
             </h1>
             <p className="subtitle">Креативное SMM-агентство</p>
 
-            <p className="description">
-              <span className="desktop-line">
-                <span className="highlight">Анализируем</span> ваш бренд,<br />
-                <span className="highlight">разрабатываем</span> стратегию,<br />
-                <span className="highlight">создаём</span> контент<br />
+            <div className="description-wrapper">
+              <div className="description-line">
+                <span className="highlight">Анализируем</span> ваш бренд,
+              </div>
+              <div className="description-line">
+                <span className="highlight">разрабатываем</span> стратегию,
+              </div>
+              <div className="description-line">
+                <span className="highlight">создаём</span> контент
+              </div>
+              <div className="description-line">
                 и <span className="highlight">продвигаем</span> в соцсетях
-              </span>
-              <span className="mobile-lines">
-                <span className="highlight">Анализируем</span> ваш бренд,<br />
-                <span className="highlight">разрабатываем</span> стратегию,<br />
-                <span className="highlight">создаём</span> контент<br />
-                и <span className="highlight">продвигаем</span> в соцсетях
-              </span>
-              <br />
-              <span className="social-links">REELS | TikTok | YOUTUBE | SHORTS</span>
-            </p>
+              </div>
+              <div className="social-links">REELS | TikTok | YOUTUBE | SHORTS</div>
+            </div>
 
             <div className="actions">
               <a href="/services" className="btn-outline">Услуги</a>
@@ -152,14 +151,32 @@ export default function Home() {
             letter-spacing: 0.02em;
           }
 
-          .description {
+          /* НОВЫЙ ДИЗАЙН ОПИСАНИЯ */
+          .description-wrapper {
+            max-width: 600px;
+            margin: 0 auto 32px;
+            text-align: center;
+          }
+
+          .description-line {
             font-size: 18px;
             color: #b0b0b0;
             font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
             line-height: 1.8;
-            max-width: 600px;
-            margin: 0 auto 32px;
             letter-spacing: 0.02em;
+            position: relative;
+            padding: 0 20px;
+            transition: all 0.3s ease;
+          }
+
+          .description-line:not(:last-child)::after {
+            content: '';
+            display: block;
+            width: 24px;
+            height: 1px;
+            background: linear-gradient(to right, #c4b5a0, transparent);
+            margin: 2px auto 2px;
+            opacity: 0.3;
           }
 
           .highlight {
@@ -168,32 +185,18 @@ export default function Home() {
           }
 
           .social-links {
+            margin-top: 16px;
             color: #c4b5a0;
+            font-size: 16px;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
           }
 
-          .desktop-line {
-            display: inline;
-          }
-
-          .mobile-lines {
-            display: none;
-          }
-
-          @media (max-width: 480px) {
-            .description {
-              font-size: 15px;
-              max-width: 100%;
-              padding: 0 10px;
-              line-height: 1.6;
-            }
-
-            .desktop-line {
-              display: none;
-            }
-
-            .mobile-lines {
-              display: inline;
-            }
+          .social-links:hover {
+            opacity: 1;
           }
 
           .actions {
@@ -367,6 +370,15 @@ export default function Home() {
               font-size: 18px;
             }
 
+            .description-line {
+              font-size: 16px;
+              padding: 0 10px;
+            }
+
+            .social-links {
+              font-size: 14px;
+            }
+
             .actions {
               flex-direction: column;
               align-items: center;
@@ -405,6 +417,18 @@ export default function Home() {
               flex-direction: column;
               align-items: center;
               gap: 8px;
+            }
+          }
+
+          @media (max-width: 480px) {
+            .description-line {
+              font-size: 15px;
+              line-height: 1.6;
+            }
+
+            .description-line:not(:last-child)::after {
+              width: 18px;
+              margin: 2px auto 2px;
             }
           }
         `}</style>
