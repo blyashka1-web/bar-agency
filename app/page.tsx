@@ -19,12 +19,12 @@ export default function Home() {
         {/* HERO */}
         <section className="hero">
           <div className="container">
-            <span className="tagline">ВИРУСНЫЙ КОНТЕНТ • РЕАЛЬНЫЙ ОХВАТ</span>
+            <span className="tagline">ВИРУСНЫЙ КОНТЕНТ • СТРАТЕГИЯ • ПРОДВИЖЕНИЕ</span>
             <h1>BAR AGENCY</h1>
-            <p className="subtitle">Viral Content Company</p>
+            <p className="subtitle">Креативное SMM-агентство</p>
 
             <p className="description">
-              Создаем контент, который взрывает соцсети.<br />
+              Разрабатываем стратегии, создаём контент и продвигаем бренды в соцсетях.<br />
               REELS | TikTok | YOUTUBE | SHORTS
             </p>
 
@@ -115,7 +115,7 @@ export default function Home() {
             color: #b0b0b0;
             font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
             line-height: 1.6;
-            max-width: 500px;
+            max-width: 600px;
             margin: 0 auto 32px;
             letter-spacing: 0.02em;
           }
@@ -251,6 +251,7 @@ export default function Home() {
 
             .description {
               font-size: 16px;
+              max-width: 100%;
             }
 
             .actions {
