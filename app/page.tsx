@@ -69,6 +69,19 @@ export default function Home() {
           </div>
         </section>
 
+        {/* ФУТЕР */}
+        <footer className="footer">
+          <div className="container">
+            <div className="footer-content">
+              <div className="footer-links">
+                <a href="/privacy" className="footer-link">Политика конфиденциальности</a>
+                <a href="/offer" className="footer-link">Публичная оферта</a>
+              </div>
+              <p className="footer-copy">© 2026 BAR AGENCY. Все права защищены.</p>
+            </div>
+          </div>
+        </footer>
+
         <style jsx>{`
           * {
             margin: 0;
@@ -259,6 +272,46 @@ export default function Home() {
             color: #ffffff;
           }
 
+          /* FOOTER */
+          .footer {
+            padding: 40px 0 30px;
+            background: #121212;
+            border-top: 1px solid #2a2a2a;
+          }
+
+          .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+          }
+
+          .footer-links {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+            justify-content: center;
+          }
+
+          .footer-link {
+            color: #888;
+            font-size: 14px;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif;
+            text-decoration: none;
+            transition: color 0.2s;
+          }
+
+          .footer-link:hover {
+            color: #c4b5a0;
+          }
+
+          .footer-copy {
+            color: #555;
+            font-size: 13px;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif;
+            margin: 0;
+          }
+
           @media (max-width: 768px) {
             .hero {
               padding: 80px 0 60px;
@@ -309,6 +362,12 @@ export default function Home() {
 
             .client-name {
               font-size: 16px;
+            }
+
+            .footer-links {
+              flex-direction: column;
+              align-items: center;
+              gap: 8px;
             }
           }
         `}</style>
