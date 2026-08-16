@@ -136,7 +136,6 @@ export default function CasePage() {
             </div>
           </div>
 
-          {/* БЛОК "Хотите так же?" */}
           <div style={{ marginTop: '60px', padding: '40px 20px', background: '#2a2a2a', borderRadius: '24px', textAlign: 'center' }}>
             <h3 style={{ fontSize: '28px', fontWeight: 600, color: '#fff' }}>Хотите так же?</h3>
             <p style={{ fontSize: '18px', color: '#b0b0b0', marginBottom: '16px' }}>
@@ -299,7 +298,7 @@ export default function CasePage() {
             <span
               style={{
                 display: 'inline-block',
-                background: '#2a8a7a',
+                background: '#c4b5a0',
                 color: '#fff',
                 padding: '4px 16px',
                 borderRadius: '40px',
@@ -317,7 +316,6 @@ export default function CasePage() {
             </p>
           </div>
 
-          {/* ОПИСАНИЕ ПРОЕКТА */}
           <div style={{ marginTop: '40px' }}>
             <h2 style={{ fontSize: '24px', fontWeight: 600, marginBottom: '16px' }}>
               📱 О проекте
@@ -327,7 +325,7 @@ export default function CasePage() {
                 padding: '20px',
                 background: '#2a2a2a',
                 borderRadius: '12px',
-                border: '1px solid #2a8a7a',
+                border: `1px solid #c4b5a0`,
               }}
             >
               <p style={{ color: '#b0b0b0', fontSize: '16px', marginBottom: '12px' }}>
@@ -341,7 +339,6 @@ export default function CasePage() {
             </div>
           </div>
 
-          {/* ВИДЕО */}
           <div style={{ marginTop: '40px' }}>
             <h2 style={{ fontSize: '24px', fontWeight: 600, marginBottom: '16px' }}>
               🎬 Видеокреативы
@@ -376,7 +373,6 @@ export default function CasePage() {
             </div>
           </div>
 
-          {/* РЕПОСТЫ В КРУПНЫХ СООБЩЕСТВАХ */}
           <div style={{ marginTop: '48px' }}>
             <h2 style={{ fontSize: '24px', fontWeight: 600 }}>📢 Репосты в крупных сообществах</h2>
             <div
@@ -410,14 +406,13 @@ export default function CasePage() {
             </div>
           </div>
 
-          {/* БЛОК "Хотите так же?" */}
           <div style={{ marginTop: '60px', padding: '40px 20px', background: '#2a2a2a', borderRadius: '24px', textAlign: 'center' }}>
             <h3 style={{ fontSize: '28px', fontWeight: 600, color: '#fff' }}>Хотите так же?</h3>
             <p style={{ fontSize: '18px', color: '#b0b0b0', marginBottom: '16px' }}>
               Расскажите о своём проекте — разработаем стратегию!
             </p>
             <button
-              style={{ background: '#2a8a7a', color: '#fff', padding: '14px 40px', border: 'none', borderRadius: '40px', fontSize: '17px', fontWeight: 600, cursor: 'pointer' }}
+              style={{ background: '#c4b5a0', color: '#fff', padding: '14px 40px', border: 'none', borderRadius: '40px', fontSize: '17px', fontWeight: 600, cursor: 'pointer' }}
               onClick={() => window.open('https://t.me/lawayasha', '_blank')}
             >
               Написать в Telegram
@@ -583,7 +578,7 @@ export default function CasePage() {
             <span
               style={{
                 display: 'inline-block',
-                background: '#d4af37',
+                background: '#c4b5a0',
                 color: '#fff',
                 padding: '4px 16px',
                 borderRadius: '40px',
@@ -616,7 +611,7 @@ export default function CasePage() {
                   padding: '16px 20px',
                   background: '#2a2a2a',
                   borderRadius: '12px',
-                  border: '1px solid #d4af37',
+                  border: `1px solid #c4b5a0`,
                   color: '#fff',
                   textDecoration: 'none',
                   marginBottom: '12px',
@@ -696,14 +691,13 @@ export default function CasePage() {
             </div>
           </div>
 
-          {/* БЛОК "Хотите так же?" */}
           <div style={{ marginTop: '60px', padding: '40px 20px', background: '#2a2a2a', borderRadius: '24px', textAlign: 'center' }}>
             <h3 style={{ fontSize: '28px', fontWeight: 600, color: '#fff' }}>Хотите так же?</h3>
             <p style={{ fontSize: '18px', color: '#b0b0b0', marginBottom: '16px' }}>
               Расскажите о своём проекте — разработаем стратегию!
             </p>
             <button
-              style={{ background: '#d4af37', color: '#fff', padding: '14px 40px', border: 'none', borderRadius: '40px', fontSize: '17px', fontWeight: 600, cursor: 'pointer' }}
+              style={{ background: '#c4b5a0', color: '#fff', padding: '14px 40px', border: 'none', borderRadius: '40px', fontSize: '17px', fontWeight: 600, cursor: 'pointer' }}
               onClick={() => window.open('https://t.me/lawayasha', '_blank')}
             >
               Написать в Telegram
@@ -742,7 +736,7 @@ export default function CasePage() {
             <span
               style={{
                 display: 'inline-block',
-                background: '#6c5b7b',
+                background: '#c4b5a0',
                 color: '#fff',
                 padding: '4px 16px',
                 borderRadius: '40px',
@@ -775,7 +769,7 @@ export default function CasePage() {
                   padding: '16px 20px',
                   background: '#2a2a2a',
                   borderRadius: '12px',
-                  border: '1px solid #6c5b7b',
+                  border: `1px solid #c4b5a0`,
                   color: '#fff',
                   textDecoration: 'none',
                   marginBottom: '12px',
@@ -816,7 +810,6 @@ export default function CasePage() {
             </div>
           </div>
 
-          {/* СТРАТЕГИЯ РАЗВИТИЯ БРЕНДА */}
           <div style={{ marginTop: '40px' }}>
             <h2 style={{ fontSize: '24px', fontWeight: 600, marginBottom: '16px' }}>
               📄 Стратегия развития бренда
@@ -830,7 +823,7 @@ export default function CasePage() {
                 padding: '16px 20px',
                 background: '#2a2a2a',
                 borderRadius: '12px',
-                border: '1px solid #6c5b7b',
+                border: `1px solid #c4b5a0`,
                 color: '#fff',
                 textDecoration: 'none',
                 transition: 'background 0.2s',
@@ -847,29 +840,28 @@ export default function CasePage() {
               🚀 Результаты
             </h2>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-              <div style={{ background: '#2a2a2a', padding: '16px 20px', borderRadius: '12px', border: '1px solid #6c5b7b' }}>
+              <div style={{ background: '#2a2a2a', padding: '16px 20px', borderRadius: '12px', border: `1px solid #c4b5a0` }}>
                 <span style={{ fontSize: '18px', fontWeight: 600, color: '#fff' }}>📈 Рост вовлечения</span>
                 <p style={{ color: '#b0b0b0', margin: '4px 0 0 0' }}>Увеличение активности на 150% за 3 месяца</p>
               </div>
-              <div style={{ background: '#2a2a2a', padding: '16px 20px', borderRadius: '12px', border: '1px solid #6c5b7b' }}>
+              <div style={{ background: '#2a2a2a', padding: '16px 20px', borderRadius: '12px', border: `1px solid #c4b5a0` }}>
                 <span style={{ fontSize: '18px', fontWeight: 600, color: '#fff' }}>👥 Охват аудитории</span>
                 <p style={{ color: '#b0b0b0', margin: '4px 0 0 0' }}>Рост подписчиков с 2K до 12K</p>
               </div>
-              <div style={{ background: '#2a2a2a', padding: '16px 20px', borderRadius: '12px', border: '1px solid #6c5b7b' }}>
+              <div style={{ background: '#2a2a2a', padding: '16px 20px', borderRadius: '12px', border: `1px solid #c4b5a0` }}>
                 <span style={{ fontSize: '18px', fontWeight: 600, color: '#fff' }}>💼 Заявки</span>
                 <p style={{ color: '#b0b0b0', margin: '4px 0 0 0' }}>Более 150 коммерческих запросов за месяц</p>
               </div>
             </div>
           </div>
 
-          {/* БЛОК "Хотите так же?" */}
           <div style={{ marginTop: '60px', padding: '40px 20px', background: '#2a2a2a', borderRadius: '24px', textAlign: 'center' }}>
             <h3 style={{ fontSize: '28px', fontWeight: 600, color: '#fff' }}>Хотите так же?</h3>
             <p style={{ fontSize: '18px', color: '#b0b0b0', marginBottom: '16px' }}>
               Расскажите о своём проекте — разработаем стратегию!
             </p>
             <button
-              style={{ background: '#6c5b7b', color: '#fff', padding: '14px 40px', border: 'none', borderRadius: '40px', fontSize: '17px', fontWeight: 600, cursor: 'pointer' }}
+              style={{ background: '#c4b5a0', color: '#fff', padding: '14px 40px', border: 'none', borderRadius: '40px', fontSize: '17px', fontWeight: 600, cursor: 'pointer' }}
               onClick={() => window.open('https://t.me/lawayasha', '_blank')}
             >
               Написать в Telegram
@@ -909,7 +901,7 @@ export default function CasePage() {
             <span
               style={{
                 display: 'inline-block',
-                background: '#7a2e2a',
+                background: '#c4b5a0',
                 color: '#fff',
                 padding: '4px 16px',
                 borderRadius: '40px',
@@ -927,7 +919,6 @@ export default function CasePage() {
             </p>
           </div>
 
-          {/* ГАЛЕРЕЯ С ГОРИЗОНТАЛЬНЫМ СКРОЛЛОМ */}
           <div style={{ marginTop: '40px' }}>
             <h2 style={{ fontSize: '24px', fontWeight: 600, marginBottom: '16px' }}>
               🎨 Примеры креативов
@@ -963,7 +954,6 @@ export default function CasePage() {
             </div>
           </div>
 
-          {/* ССЫЛКА НА КАНАЛ NDA HR TEAM */}
           <div style={{ marginTop: '50px', textAlign: 'center' }}>
             <a
               href="https://t.me/ndahrteam"
@@ -973,27 +963,26 @@ export default function CasePage() {
                 color: '#c4b5a0',
                 fontSize: '18px',
                 textDecoration: 'none',
-                borderBottom: '2px solid rgba(196, 181, 160, 0.3)',
+                borderBottom: `2px solid #c4b5a0`,
                 paddingBottom: '6px',
                 transition: 'border-color 0.2s',
                 fontFamily: 'sans-serif',
                 fontWeight: 500,
               }}
               onMouseEnter={(e) => (e.currentTarget.style.borderColor = '#c4b5a0')}
-              onMouseLeave={(e) => (e.currentTarget.style.borderColor = 'rgba(196, 181, 160, 0.3)')}
+              onMouseLeave={(e) => (e.currentTarget.style.borderColor = '#c4b5a0')}
             >
               📲 Телеграм канал NDA HR TEAM
             </a>
           </div>
 
-          {/* БЛОК "Хотите так же?" */}
           <div style={{ marginTop: '40px', padding: '40px 20px', background: '#2a2a2a', borderRadius: '24px', textAlign: 'center' }}>
             <h3 style={{ fontSize: '28px', fontWeight: 600, color: '#fff' }}>Хотите так же?</h3>
             <p style={{ fontSize: '18px', color: '#b0b0b0', marginBottom: '16px' }}>
               Расскажите о своём проекте — разработаем стратегию!
             </p>
             <button
-              style={{ background: '#7a2e2a', color: '#fff', padding: '14px 40px', border: 'none', borderRadius: '40px', fontSize: '17px', fontWeight: 600, cursor: 'pointer' }}
+              style={{ background: '#c4b5a0', color: '#fff', padding: '14px 40px', border: 'none', borderRadius: '40px', fontSize: '17px', fontWeight: 600, cursor: 'pointer' }}
               onClick={() => window.open('https://t.me/lawayasha', '_blank')}
             >
               Написать в Telegram
@@ -1149,7 +1138,7 @@ export default function CasePage() {
             <span
               style={{
                 display: 'inline-block',
-                background: '#2a7a7a',
+                background: '#c4b5a0',
                 color: '#fff',
                 padding: '4px 16px',
                 borderRadius: '40px',
@@ -1167,7 +1156,6 @@ export default function CasePage() {
             </p>
           </div>
 
-          {/* СТРАТЕГИЯ РАЗВИТИЯ БРЕНДА */}
           <div style={{ marginTop: '40px' }}>
             <h2 style={{ fontSize: '24px', fontWeight: 600, marginBottom: '16px' }}>
               📄 Стратегия развития бренда в социальных сетях
@@ -1177,7 +1165,7 @@ export default function CasePage() {
                 padding: '20px',
                 background: '#2a2a2a',
                 borderRadius: '12px',
-                border: '1px solid #2a7a7a',
+                border: `1px solid #c4b5a0`,
               }}
             >
               <p style={{ color: '#b0b0b0', fontSize: '16px', marginBottom: '12px' }}>
@@ -1189,7 +1177,6 @@ export default function CasePage() {
                 <li style={{ marginBottom: '6px' }}>🔹 Система вовлечения и удержания подписчиков</li>
               </ul>
 
-              {/* ССЫЛКА НА PDF СО СТРАТЕГИЕЙ */}
               <div style={{ marginTop: '16px' }}>
                 <a
                   href="/cases/spinbetter/strategy.pdf"
@@ -1198,7 +1185,7 @@ export default function CasePage() {
                   style={{
                     display: 'inline-block',
                     padding: '12px 28px',
-                    background: '#2a7a7a',
+                    background: '#c4b5a0',
                     color: '#fff',
                     borderRadius: '40px',
                     textDecoration: 'none',
@@ -1206,8 +1193,8 @@ export default function CasePage() {
                     fontWeight: 500,
                     transition: 'background 0.2s',
                   }}
-                  onMouseEnter={(e) => (e.currentTarget.style.background = '#3a8a8a')}
-                  onMouseLeave={(e) => (e.currentTarget.style.background = '#2a7a7a')}
+                  onMouseEnter={(e) => (e.currentTarget.style.background = '#c4b5a0')}
+                  onMouseLeave={(e) => (e.currentTarget.style.background = '#c4b5a0')}
                 >
                   📄 Открыть стратегию (PDF)
                 </a>
@@ -1215,7 +1202,6 @@ export default function CasePage() {
             </div>
           </div>
 
-          {/* ВОРОНКА ДЛЯ ДЕПОЗИТОВ */}
           <div style={{ marginTop: '40px' }}>
             <h2 style={{ fontSize: '24px', fontWeight: 600, marginBottom: '16px' }}>
               📊 Воронка для депозитов
@@ -1225,7 +1211,7 @@ export default function CasePage() {
                 padding: '20px',
                 background: '#2a2a2a',
                 borderRadius: '12px',
-                border: '1px solid #2a7a7a',
+                border: `1px solid #c4b5a0`,
               }}
             >
               <p style={{ color: '#b0b0b0', fontSize: '16px', marginBottom: '12px' }}>
@@ -1239,7 +1225,6 @@ export default function CasePage() {
             </div>
           </div>
 
-          {/* ГАЛЕРЕЯ КРЕАТИВОВ (6 ШТУК) */}
           <div style={{ marginTop: '48px' }}>
             <h2 style={{ fontSize: '24px', fontWeight: 600 }}>🎨 Креативы для соцсетей</h2>
             <div
@@ -1273,14 +1258,13 @@ export default function CasePage() {
             </div>
           </div>
 
-          {/* БЛОК "Хотите так же?" */}
           <div style={{ marginTop: '60px', padding: '40px 20px', background: '#2a2a2a', borderRadius: '24px', textAlign: 'center' }}>
             <h3 style={{ fontSize: '28px', fontWeight: 600, color: '#fff' }}>Хотите так же?</h3>
             <p style={{ fontSize: '18px', color: '#b0b0b0', marginBottom: '16px' }}>
               Расскажите о своём проекте — разработаем стратегию!
             </p>
             <button
-              style={{ background: '#2a7a7a', color: '#fff', padding: '14px 40px', border: 'none', borderRadius: '40px', fontSize: '17px', fontWeight: 600, cursor: 'pointer' }}
+              style={{ background: '#c4b5a0', color: '#fff', padding: '14px 40px', border: 'none', borderRadius: '40px', fontSize: '17px', fontWeight: 600, cursor: 'pointer' }}
               onClick={() => window.open('https://t.me/lawayasha', '_blank')}
             >
               Написать в Telegram
