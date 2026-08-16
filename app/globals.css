@@ -24,66 +24,54 @@ html, body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: var(--foreground);
-}
-
-/* === ФОН С АНИМАЦИЕЙ === */
-body {
-  background: #121212;
   position: relative;
-  overflow-x: hidden;
 }
 
-body::before {
-  content: '';
+/* === АНИМИРОВАННЫЙ ФОН === */
+.animated-bg {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   z-index: 0;
+  pointer-events: none;
   background: 
-    radial-gradient(ellipse at 20% 50%, rgba(196, 181, 160, 0.04) 0%, transparent 60%),
+    radial-gradient(ellipse at 20% 50%, rgba(196, 181, 160, 0.05) 0%, transparent 60%),
     radial-gradient(ellipse at 80% 20%, rgba(196, 181, 160, 0.03) 0%, transparent 50%),
     radial-gradient(ellipse at 50% 80%, rgba(122, 46, 42, 0.04) 0%, transparent 50%),
     radial-gradient(ellipse at 10% 80%, rgba(212, 175, 55, 0.02) 0%, transparent 40%),
     radial-gradient(ellipse at 90% 70%, rgba(196, 181, 160, 0.03) 0%, transparent 40%);
   background-blend-mode: overlay;
   animation: backgroundMove 20s ease-in-out infinite alternate;
-  pointer-events: none;
 }
 
 @keyframes backgroundMove {
   0% {
-    background-position: 0% 0%;
     transform: scale(1) rotate(0deg);
   }
   25% {
-    background-position: 10% 5%;
     transform: scale(1.02) rotate(1deg);
   }
   50% {
-    background-position: -5% 10%;
     transform: scale(1.05) rotate(-1deg);
   }
   75% {
-    background-position: 5% -5%;
     transform: scale(1.02) rotate(0.5deg);
   }
   100% {
-    background-position: 0% 0%;
     transform: scale(1) rotate(0deg);
   }
 }
 
-/* === ДОПОЛНИТЕЛЬНЫЕ ТОЧКИ === */
-body::after {
+/* === ТОЧКИ === */
+.animated-bg::after {
   content: '';
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 0;
   pointer-events: none;
   background-image: 
     radial-gradient(circle at 10% 20%, rgba(196, 181, 160, 0.06) 1px, transparent 1px),
