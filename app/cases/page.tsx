@@ -11,6 +11,14 @@ export default function CasesPage() {
       bg: '#2a2a2a',
     },
     {
+      slug: 'urent',
+      logo: '/cases/urent/logo.png',
+      tag: 'Шеринг / Технологии',
+      title: 'Urent',
+      desc: 'Разработка стратегии продвижения для шеринга электросамокатов',
+      bg: '#1a3a2a',
+    },
+    {
       slug: 'deportivo',
       logo: '/cases/deportivo/logo.png',
       tag: 'Спорт / Lifestyle',
@@ -39,7 +47,7 @@ export default function CasesPage() {
       logo: '/cases/spinbetter/logo.png',
       tag: 'Беттинг / Маркетинг',
       title: 'SpinBetter',
-      desc: 'Букмекерская компания: стратегия развития бренда в соцсетях',
+      desc: 'Букмекерская компания',
       bg: '#1a2a2a',
     },
   ];
