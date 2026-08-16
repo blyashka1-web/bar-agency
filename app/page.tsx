@@ -29,6 +29,7 @@ export default function Home() {
             </p>
 
             <div className="actions">
+              <a href="/services" className="btn-outline">Услуги</a>
               <a href="/cases" className="btn-outline">Наши проекты</a>
               <button onClick={() => setIsModalOpen(true)} className="btn-outline">
                 Написать
