@@ -56,11 +56,10 @@ export default function ContactModal({ isOpen, onClose }) {
             position: fixed;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
+            width: 100%;
+            height: 100%;
             background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(6px);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -70,25 +69,13 @@ export default function ContactModal({ isOpen, onClose }) {
 
           .modal {
             background: #1a1a1a;
-            border: 1px solid #333;
+            border: 1px solid #444;
             border-radius: 24px;
             padding: 36px 32px 32px;
             max-width: 420px;
             width: 100%;
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.9);
             position: relative;
-            animation: fadeIn 0.25s ease;
-          }
-
-          @keyframes fadeIn {
-            from {
-              opacity: 0;
-              transform: scale(0.96);
-            }
-            to {
-              opacity: 1;
-              transform: scale(1);
-            }
           }
 
           .close-btn {
@@ -100,9 +87,8 @@ export default function ContactModal({ isOpen, onClose }) {
             color: #888;
             font-size: 24px;
             cursor: pointer;
-            transition: color 0.2s;
-            line-height: 1;
             padding: 4px;
+            line-height: 1;
           }
 
           .close-btn:hover {
@@ -112,17 +98,17 @@ export default function ContactModal({ isOpen, onClose }) {
           h2 {
             font-size: 24px;
             font-weight: 700;
-            color: #ffffff;
-            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
+            color: #fff;
             margin-bottom: 4px;
             padding-right: 24px;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
           }
 
           .subtitle {
             font-size: 15px;
             color: #999;
-            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
             margin-bottom: 24px;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif;
           }
 
           .contacts {
@@ -141,69 +127,48 @@ export default function ContactModal({ isOpen, onClose }) {
             border: 1px solid #333;
             text-decoration: none;
             color: #fff;
-            transition: all 0.25s ease;
+            transition: 0.2s;
           }
 
           .contact-item:hover {
             border-color: #c4b5a0;
             background: #2a2a2a;
-            transform: translateX(4px);
           }
 
           .contact-icon {
             font-size: 26px;
-            flex-shrink: 0;
             width: 36px;
             text-align: center;
           }
 
           .contact-label {
             font-size: 12px;
-            font-weight: 500;
             color: #888;
-            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
           }
 
           .contact-value {
             font-size: 15px;
             font-weight: 500;
             color: #fff;
-            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
           }
 
           @media (max-width: 480px) {
             .modal {
-              padding: 28px 20px 24px;
+              padding: 24px 18px 20px;
               border-radius: 20px;
-              max-width: 95%;
             }
-
             h2 {
-              font-size: 22px;
+              font-size: 20px;
             }
-
             .subtitle {
               font-size: 14px;
-              margin-bottom: 20px;
             }
-
-            .contact-item {
-              padding: 12px 14px;
-            }
-
             .contact-icon {
               font-size: 22px;
               width: 32px;
             }
-
             .contact-value {
               font-size: 14px;
-            }
-
-            .close-btn {
-              font-size: 22px;
-              top: 12px;
-              right: 16px;
             }
           }
         `}</style>
