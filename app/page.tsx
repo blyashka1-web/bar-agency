@@ -14,7 +14,7 @@ export default function Home() {
         {/* HERO */}
         <section className="hero">
           <div className="container">
-            <span className="tagline">ВИРУСНЫЙ КОНТЕНТ • СТРАТЕГИЯ • ПРОДВИЖЕНИЕ</span>
+            <span className="tagline">АНАЛИЗ → СТРАТЕГИЯ → ПРОДВИЖЕНИЕ</span>
             <h1>
               BAR <span className="logo-accent">AGENCY</span>
             </h1>
@@ -110,7 +110,7 @@ export default function Home() {
             color: #c4b5a0;
             font-size: 14px;
             font-weight: 600;
-            letter-spacing: 0.15em;
+            letter-spacing: 0.1em;
             text-transform: uppercase;
             font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
             margin-bottom: 16px;
