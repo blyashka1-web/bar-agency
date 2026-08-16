@@ -20,7 +20,9 @@ export default function Home() {
         <section className="hero">
           <div className="container">
             <span className="tagline">ВИРУСНЫЙ КОНТЕНТ • СТРАТЕГИЯ • ПРОДВИЖЕНИЕ</span>
-            <h1>BAR AGENCY</h1>
+            <h1>
+              BAR <span className="logo-accent">AGENCY</span>
+            </h1>
             <p className="subtitle">Креативное SMM-агентство</p>
 
             <p className="description">
@@ -99,6 +101,10 @@ export default function Home() {
             font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
             margin: 0;
             line-height: 1.05;
+          }
+
+          .logo-accent {
+            color: #c4b5a0;
           }
 
           .subtitle {
