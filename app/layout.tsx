@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { usePathname } from 'next/navigation';
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "./components/Header";
@@ -21,16 +20,15 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const pathname = usePathname();
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    setIsLoading(true);
+    // Показываем загрузку только при первом открытии
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 400);
+    }, 500);
     return () => clearTimeout(timer);
-  }, [pathname]);
+  }, []);
 
   return (
     <html lang="ru">
@@ -57,7 +55,6 @@ export default function RootLayout({
             justify-content: center;
             background: #121212;
             z-index: 99999;
-            transition: opacity 0.2s ease;
           }
 
           .loader-ring {
