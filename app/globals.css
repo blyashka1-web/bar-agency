@@ -26,7 +26,6 @@ html, body {
   color: var(--foreground);
 }
 
-/* ГЛОБАЛЬНЫЕ КЛАССЫ */
 .text-haki { color: #c4b5a0; }
 .text-burgundy { color: #7a2e2a; }
 .text-gold { color: #d4af37; }
@@ -34,7 +33,6 @@ html, body {
 .bg-burgundy { background: #7a2e2a; }
 .bg-gold { background: #d4af37; }
 
-/* АНИМАЦИЯ ПОЯВЛЕНИЯ */
 main {
   animation: fadeIn 0.3s ease;
 }
