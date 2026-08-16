@@ -1,212 +1,293 @@
 'use client';
 
-export default function CasesPage() {
-  const cases = [
-    {
-      slug: 'yandex-food',
-      logo: '/cases/yandex-food/logo.png',
-      tag: 'IT / Платформа',
-      title: 'Яндекс Еда',
-      desc: 'Вирусный ролик с суммарным охватом 50+ млн',
-      bg: '#2a2a2a',
-    },
-    {
-      slug: 'urent',
-      logo: '/cases/urent/logo.png',
-      tag: 'Шеринг / Технологии',
-      title: 'Urent',
-      desc: 'Создание и продвижение маскота Юрентик',
-      bg: '#1a3a2a',
-    },
-    {
-      slug: 'deportivo',
-      logo: '/cases/deportivo/logo.png',
-      tag: 'Спорт / Lifestyle',
-      title: 'DEPORTIVO MOSCÚ',
-      desc: 'Публикации в мировых СМИ и репортажи',
-      bg: '#2a2a1a',
-    },
-    {
-      slug: 'promminer',
-      logo: '/cases/promminer/logo.png',
-      tag: 'IT / Майнинг',
-      title: 'Promminer',
-      desc: 'Разработка и реализация стратегии для соцсетей',
-      bg: '#2a2a2a',
-    },
-    {
-      slug: 'nda-hr-team',
-      logo: '/cases/nda-hr-team/logo.png',
-      tag: 'HR / IGaming',
-      title: 'NDA HR TEAM',
-      desc: 'Построение HR-бренда с нуля: стратегия, контент, коммуникация',
-      bg: '#2a1a1a',
-    },
-    {
-      slug: 'spinbetter',
-      logo: '/cases/spinbetter/logo.png',
-      tag: 'Беттинг / Маркетинг',
-      title: 'SpinBetter',
-      desc: 'Букмекерская компания',
-      bg: '#1a2a2a',
-    },
+import { useState } from 'react';
+import ContactModal from './components/ContactModal';
+
+export default function Home() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const clients = [
+    { name: 'Благотворительный фонд Родина', logo: '/rodina-logo.png' },
   ];
 
   return (
-    <main>
-      <section className="cases-page">
-        <div className="container">
-          <h1>Кейсы</h1>
-          <p className="subtitle">Все проекты, которыми мы гордимся</p>
-          <div className="cases-grid">
-            {cases.map((c) => (
-              <a href={`/cases/${c.slug}`} key={c.slug} className="case-card" style={{ background: c.bg }}>
-                {c.logo ? (
-                  <img src={c.logo} alt={c.title} className="case-logo-thumb" />
-                ) : (
-                  <span className="case-emoji">📁</span>
-                )}
-                <span className="case-tag">{c.tag}</span>
-                <h3>{c.title}</h3>
-                <p>{c.desc}</p>
-                <span className="case-link">Подробнее →</span>
-              </a>
-            ))}
+    <>
+      <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+
+      <main>
+        {/* HERO */}
+        <section className="hero">
+          <div className="container">
+            <span className="tagline">ВИРУСНЫЙ КОНТЕНТ • РЕАЛЬНЫЙ ОХВАТ</span>
+            <h1>BAR AGENCY</h1>
+            <p className="subtitle">Viral Content Company</p>
+
+            <p className="description">
+              Создаем контент, который взрывает соцсети.<br />
+              REELS | TikTok | YOUTUBE | SHORTS
+            </p>
+
+            <div className="actions">
+              <a href="/cases" className="btn-outline">Наши проекты</a>
+              <button onClick={() => setIsModalOpen(true)} className="btn-outline">
+                Написать
+              </button>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <style jsx>{`
-        * {
-          margin: 0;
-          padding: 0;
-          box-sizing: border-box;
-        }
+        {/* КЛИЕНТЫ */}
+        <section className="clients">
+          <div className="container">
+            <h2>С кем мы сотрудничаем сейчас</h2>
+            <p className="clients-subtitle">Наши партнеры и проекты</p>
+            <div className="clients-grid">
+              {clients.map((client, index) => (
+                <div key={index} className="client-card">
+                  <div className="client-logo">
+                    {client.logo ? (
+                      <img src={client.logo} alt={client.name} className="client-image" />
+                    ) : (
+                      <span className="client-emoji">🤝</span>
+                    )}
+                  </div>
+                  <span className="client-name">{client.name}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
 
-        .container {
-          max-width: 1100px;
-          margin: 0 auto;
-          padding: 0 30px;
-        }
-
-        .cases-page {
-          padding: 120px 0 100px;
-          background: #121212;
-          min-height: 100vh;
-        }
-
-        h1 {
-          font-size: 64px;
-          font-weight: 700;
-          letter-spacing: -0.03em;
-          color: #ffffff;
-          font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
-        }
-
-        .subtitle {
-          font-size: 20px;
-          color: #b0b0b0;
-          margin-bottom: 48px;
-          font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
-        }
-
-        .cases-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-          gap: 32px;
-        }
-
-        .case-card {
-          padding: 32px 24px;
-          border-radius: 28px;
-          border: 1px solid #2a2a2a;
-          text-decoration: none;
-          color: inherit;
-          transition: all 0.3s ease;
-          display: block;
-        }
-
-        .case-card:hover {
-          transform: translateY(-6px);
-          box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-          border-color: #c4b5a0;
-        }
-
-        .case-emoji {
-          font-size: 44px;
-          display: block;
-          margin-bottom: 12px;
-        }
-
-        .case-logo-thumb {
-          max-width: 80px;
-          height: auto;
-          margin-bottom: 12px;
-          display: block;
-        }
-
-        .case-tag {
-          display: inline-block;
-          background: rgba(255, 255, 255, 0.06);
-          padding: 4px 14px;
-          border-radius: 40px;
-          font-size: 12px;
-          font-weight: 500;
-          color: #b0b0b0;
-          letter-spacing: 0.04em;
-          text-transform: uppercase;
-          margin-bottom: 8px;
-          font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
-        }
-
-        .case-card h3 {
-          font-size: 22px;
-          font-weight: 600;
-          color: #ffffff;
-          margin-bottom: 4px;
-          font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
-        }
-
-        .case-card p {
-          font-size: 16px;
-          color: #b0b0b0;
-          margin-bottom: 16px;
-          font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
-        }
-
-        .case-link {
-          font-weight: 500;
-          color: #c4b5a0;
-          border-bottom: 2px solid #2a2a2a;
-          padding-bottom: 2px;
-          transition: 0.2s;
-          font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
-          font-size: 14px;
-          letter-spacing: 0.02em;
-        }
-
-        .case-link:hover {
-          border-bottom-color: #c4b5a0;
-        }
-
-        @media (max-width: 768px) {
-          .cases-page {
-            padding: 80px 0 60px;
+        <style jsx>{`
+          * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
           }
+
+          .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 30px;
+          }
+
+          /* HERO */
+          .hero {
+            padding: 120px 0 80px;
+            text-align: center;
+            background: #121212;
+            border-bottom: 1px solid #2a2a2a;
+          }
+
+          .tagline {
+            display: inline-block;
+            color: #c4b5a0;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
+            margin-bottom: 16px;
+            padding: 6px 20px;
+            border: 1px solid #2a2a2a;
+            border-radius: 40px;
+          }
+
           h1 {
+            font-size: clamp(64px, 12vw, 140px);
+            font-weight: 700;
+            letter-spacing: -0.04em;
+            color: #ffffff;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
+            margin: 0;
+            line-height: 1.05;
+          }
+
+          .subtitle {
+            font-size: 22px;
+            color: #6e6e6e;
+            font-weight: 400;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
+            margin-top: 8px;
+            letter-spacing: 0.02em;
+          }
+
+          .description {
+            font-size: 18px;
+            color: #b0b0b0;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            max-width: 500px;
+            margin: 0 auto 32px;
+            letter-spacing: 0.02em;
+          }
+
+          .actions {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+          }
+
+          .btn-outline {
+            display: inline-block;
+            background: transparent;
+            color: #ffffff;
+            padding: 16px 44px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 17px;
+            transition: all 0.25s ease;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
+            border: 1px solid #2a2a2a;
+            cursor: pointer;
+          }
+
+          .btn-outline:hover {
+            border-color: #c4b5a0;
+            background: rgba(196, 181, 160, 0.1);
+            color: #ffffff;
+          }
+
+          /* CLIENTS */
+          .clients {
+            padding: 80px 0;
+            background: #121212;
+            border-bottom: 1px solid #2a2a2a;
+          }
+
+          .clients h2 {
+            font-size: 36px;
+            font-weight: 700;
+            color: #ffffff;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
+            text-align: center;
+            margin-bottom: 8px;
+          }
+
+          .clients-subtitle {
+            font-size: 18px;
+            color: #6e6e6e;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
+            text-align: center;
+            margin-bottom: 48px;
+          }
+
+          .clients-grid {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+
+          .client-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+            padding: 40px 50px;
+            background: #1a1a1a;
+            border-radius: 20px;
+            border: 1px solid #2a2a2a;
+            transition: all 0.3s ease;
+            max-width: 320px;
+            width: 100%;
+          }
+
+          .client-card:hover {
+            transform: translateY(-4px);
+            border-color: #c4b5a0;
+            box-shadow: 0 12px 32px rgba(0,0,0,0.3);
+          }
+
+          .client-logo {
+            width: 120px;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,0.04);
+            border-radius: 16px;
+            overflow: hidden;
+            padding: 16px;
+          }
+
+          .client-image {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            filter: brightness(1);
+            transition: filter 0.3s ease;
+          }
+
+          .client-card:hover .client-image {
+            filter: brightness(1.1);
+          }
+
+          .client-emoji {
             font-size: 40px;
           }
-          .cases-grid {
-            grid-template-columns: 1fr;
+
+          .client-name {
+            font-size: 18px;
+            font-weight: 500;
+            color: #b0b0b0;
+            text-align: center;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
           }
-          .subtitle {
-            font-size: 17px;
+
+          .client-card:hover .client-name {
+            color: #ffffff;
           }
-          .case-logo-thumb {
-            max-width: 60px;
+
+          @media (max-width: 768px) {
+            .hero {
+              padding: 80px 0 60px;
+            }
+
+            h1 {
+              font-size: 56px;
+            }
+
+            .subtitle {
+              font-size: 18px;
+            }
+
+            .description {
+              font-size: 16px;
+            }
+
+            .actions {
+              flex-direction: column;
+              align-items: center;
+            }
+
+            .btn-outline {
+              width: 100%;
+              max-width: 280px;
+              text-align: center;
+            }
+
+            .clients {
+              padding: 60px 0;
+            }
+
+            .client-card {
+              max-width: 100%;
+              padding: 30px 20px;
+            }
+
+            .client-logo {
+              width: 100px;
+              height: 100px;
+            }
+
+            .client-name {
+              font-size: 16px;
+            }
           }
-        }
-      `}</style>
-    </main>
+        `}</style>
+      </main>
+    </>
   );
 }
