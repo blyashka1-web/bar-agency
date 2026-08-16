@@ -36,38 +36,39 @@ export default function RootLayout({
     return (
       <html lang="ru">
         <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-          <div style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            minHeight: '100vh',
-            background: '#121212',
-            gap: '20px',
-            fontFamily: '-apple-system, BlinkMacSystemFont, SF Pro Display, sans-serif',
-          }}>
-            <div style={{
-              width: '44px',
-              height: '44px',
-              border: '3px solid #2a2a2a',
-              borderTop: '3px solid #c4b5a0',
-              borderRadius: '50%',
-              animation: 'spin 0.8s linear infinite',
-            }} />
-            <p style={{
-              color: '#b0b0b0',
-              fontSize: '15px',
-              fontWeight: 400,
-              margin: 0,
-            }}>
-              Загрузка...
-            </p>
-            <style jsx>{`
-              @keyframes spin {
-                to { transform: rotate(360deg); }
-              }
-            `}</style>
+          <div className="loader-container">
+            <div className="loader-spinner" />
+            <p>Загрузка...</p>
           </div>
+          <style jsx>{`
+            .loader-container {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              min-height: 100vh;
+              background: #121212;
+              gap: 20px;
+              font-family: -apple-system, BlinkMacSystemFont, SF Pro Display, sans-serif;
+            }
+            .loader-spinner {
+              width: 44px;
+              height: 44px;
+              border: 3px solid #2a2a2a;
+              border-top: 3px solid #c4b5a0;
+              border-radius: 50%;
+              animation: spin 0.8s linear infinite;
+            }
+            @keyframes spin {
+              to { transform: rotate(360deg); }
+            }
+            .loader-container p {
+              color: #b0b0b0;
+              font-size: 15px;
+              font-weight: 400;
+              margin: 0;
+            }
+          `}</style>
         </body>
       </html>
     );
@@ -76,6 +77,9 @@ export default function RootLayout({
   return (
     <html lang="ru">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        {/* АНИМИРОВАННЫЙ ФОН */}
+        <div className="animated-bg" />
+        
         <Header />
         {children}
       </body>
