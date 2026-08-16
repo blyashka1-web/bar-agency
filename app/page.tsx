@@ -15,18 +15,15 @@ export default function Home() {
       <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
 
       <main>
-        {/* HERO */}
         <section className="hero">
           <div className="container">
             <span className="tagline">ВИРУСНЫЙ КОНТЕНТ • РЕАЛЬНЫЙ ОХВАТ</span>
             <h1>BAR AGENCY</h1>
             <p className="subtitle">Viral Content Company</p>
-
             <p className="description">
               Создаем контент, который взрывает соцсети.<br />
               REELS | TikTok | YOUTUBE | SHORTS
             </p>
-
             <div className="actions">
               <a href="/cases" className="btn-outline">Наши проекты</a>
               <button onClick={() => setIsModalOpen(true)} className="btn-outline">
@@ -36,7 +33,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* КЛИЕНТЫ */}
         <section className="clients">
           <div className="container">
             <h2>С кем мы сотрудничаем сейчас</h2>
@@ -45,11 +41,7 @@ export default function Home() {
               {clients.map((client, index) => (
                 <div key={index} className="client-card">
                   <div className="client-logo">
-                    {client.logo ? (
-                      <img src={client.logo} alt={client.name} className="client-image" />
-                    ) : (
-                      <span className="client-emoji">🤝</span>
-                    )}
+                    <img src={client.logo} alt={client.name} className="client-image" />
                   </div>
                   <span className="client-name">{client.name}</span>
                 </div>
@@ -220,10 +212,6 @@ export default function Home() {
 
           .client-card:hover .client-image {
             filter: brightness(1.1);
-          }
-
-          .client-emoji {
-            font-size: 40px;
           }
 
           .client-name {
