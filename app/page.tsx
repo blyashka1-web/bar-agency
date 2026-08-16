@@ -28,7 +28,7 @@ export default function Home() {
             <p className="description">
               Разрабатываем стратегии, создаём контент<br />
               и продвигаем бренды в социальных сетях<br />
-              REELS | TikTok | YOUTUBE | SHORTS
+              <span className="social-links">REELS | TikTok | YOUTUBE | SHORTS</span>
             </p>
 
             <div className="actions">
@@ -125,6 +125,10 @@ export default function Home() {
             max-width: 600px;
             margin: 0 auto 32px;
             letter-spacing: 0.02em;
+          }
+
+          .social-links {
+            color: #c4b5a0;
           }
 
           .actions {
