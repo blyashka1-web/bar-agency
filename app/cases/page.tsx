@@ -15,7 +15,7 @@ export default function CasesPage() {
       logo: '/cases/urent/logo.png',
       tag: 'Шеринг / Технологии',
       title: 'Urent',
-      desc: 'Разработка стратегии продвижения для шеринга электросамокатов',
+      desc: 'Создание и продвижение маскота Юрентик',
       bg: '#1a3a2a',
     },
     {

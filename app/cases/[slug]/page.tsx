@@ -309,7 +309,7 @@ export default function CasePage() {
             Urent
           </h1>
           <p style={{ fontSize: '20px', color: '#b0b0b0' }}>
-            Разработка стратегии продвижения для шеринга электросамокатов
+            Создание и продвижение маскота Юрентик
           </p>
         </div>
 
@@ -327,12 +327,12 @@ export default function CasePage() {
             }}
           >
             <p style={{ color: '#b0b0b0', fontSize: '16px', marginBottom: '12px' }}>
-              Разработана стратегия продвижения для сервиса аренды электросамокатов:
+              Мы создали маскота <strong>Юрентика</strong> для компании и сняли вирусные видео:
             </p>
             <ul style={{ color: '#b0b0b0', fontSize: '15px', paddingLeft: '20px' }}>
-              <li style={{ marginBottom: '6px' }}>🔹 Анализ рынка и конкурентов</li>
-              <li style={{ marginBottom: '6px' }}>🔹 Разработка контент-стратегии</li>
-              <li style={{ marginBottom: '6px' }}>🔹 Запуск рекламных кампаний</li>
+              <li style={{ marginBottom: '6px' }}>🔹 Разработка персонажа и его характера</li>
+              <li style={{ marginBottom: '6px' }}>🔹 Создание вирусных видеороликов</li>
+              <li style={{ marginBottom: '6px' }}>🔹 Интеграция в соцсети и рекламные кампании</li>
             </ul>
           </div>
         </div>
@@ -372,9 +372,9 @@ export default function CasePage() {
           </div>
         </div>
 
-        {/* ГАЛЕРЕЯ СКРИНШОТОВ */}
+        {/* РЕПОСТЫ В КРУПНЫХ СООБЩЕСТВАХ */}
         <div style={{ marginTop: '48px' }}>
-          <h2 style={{ fontSize: '24px', fontWeight: 600 }}>📸 Примеры креативов</h2>
+          <h2 style={{ fontSize: '24px', fontWeight: 600 }}>📢 Репосты в крупных сообществах</h2>
           <div
             style={{
               display: 'flex',
