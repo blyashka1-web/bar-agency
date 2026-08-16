@@ -21,14 +21,8 @@ export default function Home() {
             <p className="subtitle">Креативное SMM-агентство</p>
 
             <p className="description">
-              <span className="desktop-text">
-                Анализируем бренд, создаём стратегию, делаем вирусный контент
-              </span>
-              <span className="mobile-text">
-                Анализируем бренд,<br />
-                создаём стратегию,<br />
-                делаем вирусный контент
-              </span>
+              Анализируем бренд, создаём стратегию<br />
+              и достигаем результатов
               <br />
               <span className="social-links">REELS | TikTok | YOUTUBE | SHORTS</span>
             </p>
@@ -160,14 +154,6 @@ export default function Home() {
 
           .social-links {
             color: #c4b5a0;
-          }
-
-          .desktop-text {
-            display: inline;
-          }
-
-          .mobile-text {
-            display: none;
           }
 
           .actions {
@@ -346,14 +332,6 @@ export default function Home() {
               max-width: 100%;
               padding: 0 10px;
               line-height: 1.6;
-            }
-
-            .desktop-text {
-              display: none;
-            }
-
-            .mobile-text {
-              display: inline;
             }
 
             .actions {
