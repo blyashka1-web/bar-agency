@@ -16,6 +16,7 @@ export default function Header() {
           </a>
           <nav className="nav">
             <a href="/" className="nav-link">Главная</a>
+            <a href="/services" className="nav-link">Услуги</a>
             <a href="/cases" className="nav-link">Кейсы</a>
             <button onClick={() => setIsModalOpen(true)} className="nav-link contact-btn">
               Контакты
