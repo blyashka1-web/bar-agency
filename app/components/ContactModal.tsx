@@ -43,35 +43,34 @@ export default function ContactModal({ isOpen, onClose }) {
             align-items: center;
             justify-content: center;
             z-index: 9999;
-            padding: 30px;
+            padding: 40px 20px;
           }
 
           .modal {
             background: #1a1a1a;
             border: 1px solid #2a2a2a;
-            border-radius: 28px;
-            padding: 48px 40px 40px;
-            max-width: 480px;
+            border-radius: 24px;
+            padding: 40px 36px 32px;
+            max-width: 400px;
             width: 100%;
             position: relative;
             box-shadow: 0 30px 80px rgba(0,0,0,0.8);
             max-height: 90vh;
             overflow-y: auto;
-            margin: 0 auto;
-            transform: translateY(0);
           }
 
           .close-btn {
             position: absolute;
-            top: 16px;
-            right: 20px;
+            top: 14px;
+            right: 18px;
             background: none;
             border: none;
             color: #888;
-            font-size: 28px;
+            font-size: 26px;
             cursor: pointer;
             transition: color 0.2s;
             line-height: 1;
+            padding: 4px;
           }
 
           .close-btn:hover {
@@ -79,7 +78,7 @@ export default function ContactModal({ isOpen, onClose }) {
           }
 
           h2 {
-            font-size: 28px;
+            font-size: 26px;
             font-weight: 700;
             color: #ffffff;
             font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
@@ -87,25 +86,25 @@ export default function ContactModal({ isOpen, onClose }) {
           }
 
           .subtitle {
-            font-size: 16px;
+            font-size: 15px;
             color: #888;
             font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
-            margin-bottom: 32px;
+            margin-bottom: 28px;
           }
 
           .contacts {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 10px;
           }
 
           .contact-item {
             display: flex;
             align-items: center;
-            gap: 16px;
-            padding: 16px 20px;
+            gap: 14px;
+            padding: 14px 18px;
             background: #2a2a2a;
-            border-radius: 16px;
+            border-radius: 14px;
             border: 1px solid #2a2a2a;
             text-decoration: none;
             color: #fff;
@@ -119,56 +118,55 @@ export default function ContactModal({ isOpen, onClose }) {
           }
 
           .contact-icon {
-            font-size: 28px;
+            font-size: 24px;
             flex-shrink: 0;
-            width: 40px;
+            width: 36px;
             text-align: center;
           }
 
           .contact-label {
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 500;
             color: #888;
             font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
           }
 
           .contact-value {
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 500;
             color: #fff;
             font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
           }
 
-          /* ДЛЯ ТЕЛЕФОНОВ */
+          /* ТЕЛЕФОНЫ */
           @media (max-width: 480px) {
             .modal-overlay {
-              padding: 16px;
-              align-items: center;
+              padding: 20px 12px;
             }
 
             .modal {
-              padding: 32px 20px 28px;
+              padding: 28px 18px 24px;
               border-radius: 20px;
               max-width: 100%;
-              margin: 0 8px;
             }
 
             h2 {
-              font-size: 24px;
+              font-size: 22px;
             }
 
             .subtitle {
-              font-size: 15px;
-              margin-bottom: 24px;
+              font-size: 14px;
+              margin-bottom: 20px;
             }
 
             .contact-item {
-              padding: 14px 16px;
+              padding: 12px 14px;
+              gap: 12px;
             }
 
             .contact-icon {
-              font-size: 24px;
-              width: 36px;
+              font-size: 20px;
+              width: 32px;
             }
 
             .contact-value {
@@ -176,16 +174,17 @@ export default function ContactModal({ isOpen, onClose }) {
             }
 
             .close-btn {
-              font-size: 24px;
-              top: 12px;
-              right: 16px;
+              font-size: 22px;
+              top: 10px;
+              right: 14px;
             }
           }
 
-          /* ДЛЯ БОЛЬШИХ ЭКРАНОВ */
+          /* ПЛАНШЕТЫ И БОЛЬШИЕ ЭКРАНЫ */
           @media (min-width: 768px) {
             .modal {
-              padding: 56px 48px 48px;
+              padding: 44px 40px 36px;
+              max-width: 420px;
             }
           }
         `}</style>
