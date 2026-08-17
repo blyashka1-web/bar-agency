@@ -11,9 +11,9 @@ export default function ContactForm() {
   });
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
 
-  // ⚠️ ВСТАВЬТЕ СВОЙ ТОКЕН И CHAT ID
-  const TELEGRAM_BOT_TOKEN = '8125252819:AAH8JEx4VNaGf5n6z1a8kZR8v4RwJ3xZ2cE'; // ТОКЕН ВАШЕГО БОТА
-  const TELEGRAM_CHAT_ID = '88005553535'; // ВАШ ID (узнать у @userinfobot)
+  // ВАШИ ДАННЫЕ (уже вставлены)
+  const TELEGRAM_BOT_TOKEN = '8913665812:AAFzBGmD1QArtj-80dZc4RD6iCFMgDJ0SEM';
+  const TELEGRAM_CHAT_ID = '905351152';
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value, type } = e.target;
