@@ -66,10 +66,14 @@ export default function OfferPage() {
           </section>
 
           <section>
-            <h2>8. Реквизиты</h2>
-            <p>Исполнитель: BAR AGENCY</p>
-            <p>ИНН: по запросу</p>
-            <p>Контактные данные: <a href="https://t.me/lawayasha" target="_blank" rel="noopener noreferrer">@lawayasha</a></p>
+            <h2>8. Реквизиты исполнителя</h2>
+            <p><strong>Самозанятый</strong></p>
+            <p>ИНН: 772456452113</p>
+            <p>Статус: Самозанятый</p>
+            <p>Чеки выдаются через приложение «Мой налог»</p>
+            <p>Контактный телефон: +7 (999) 123-45-67</p>
+            <p>Email: <a href="mailto:blyashka1@gmail.com">blyashka1@gmail.com</a></p>
+            <p>Telegram: <a href="https://t.me/lawayasha" target="_blank" rel="noopener noreferrer">@lawayasha</a></p>
           </section>
         </div>
       </div>
