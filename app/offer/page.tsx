@@ -71,7 +71,7 @@ export default function OfferPage() {
             <p>ИНН: 772456452113</p>
             <p>Статус: Самозанятый</p>
             <p>Чеки выдаются через приложение «Мой налог»</p>
-            <p>Контактный телефон: +7 (999) 123-45-67</p>
+            <p>Контактный телефон: <a href="tel:+79801511488">+7 (980) 151-14-88</a></p>
             <p>Email: <a href="mailto:blyashka1@gmail.com">blyashka1@gmail.com</a></p>
             <p>Telegram: <a href="https://t.me/lawayasha" target="_blank" rel="noopener noreferrer">@lawayasha</a></p>
           </section>
