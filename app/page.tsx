@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import ContactModal from './components/ContactModal';
+import ContactForm from './components/ContactForm';
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -77,6 +78,15 @@ export default function Home() {
           </div>
         </section>
 
+        {/* ФОРМА СВЯЗИ */}
+        <section className="contact-section">
+          <div className="container">
+            <h2>Оставьте заявку</h2>
+            <p className="contact-subtitle">Мы свяжемся с вами в ближайшее время</p>
+            <ContactForm />
+          </div>
+        </section>
+
         {/* ФУТЕР */}
         <footer className="footer">
           <div className="container">
@@ -85,6 +95,10 @@ export default function Home() {
                 <a href="/privacy" className="footer-link">Политика конфиденциальности</a>
                 <a href="/offer" className="footer-link">Публичная оферта</a>
                 <a href="/faq" className="footer-link">Часто задаваемые вопросы</a>
+              </div>
+              <div className="footer-legal">
+                <span className="self-employed-badge">⚖️ Самозанятый</span>
+                <span className="footer-inn">ИНН: 772456452113</span>
               </div>
               <p className="footer-copy">© 2026 BAR AGENCY. Все права защищены.</p>
             </div>
@@ -159,12 +173,11 @@ export default function Home() {
             letter-spacing: 0.02em;
           }
 
-          /* МЕТРИКИ */
           .metrics-wrapper {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 18px;
+            gap: 32px;
             max-width: 600px;
             margin: 0 auto 32px;
             flex-wrap: wrap;
@@ -187,10 +200,9 @@ export default function Home() {
 
           .metric-divider {
             color: #c4b5a0;
-            font-size: 20px;
+            font-size: 24px;
             font-weight: 300;
-            opacity: 0.3;
-            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
+            opacity: 0.4;
             user-select: none;
           }
 
@@ -312,9 +324,33 @@ export default function Home() {
             color: #ffffff;
           }
 
+          /* ФОРМА СВЯЗИ */
+          .contact-section {
+            padding: 60px 0;
+            background: #121212;
+            border-bottom: 1px solid #2a2a2a;
+          }
+
+          .contact-section h2 {
+            font-size: 36px;
+            font-weight: 700;
+            color: #ffffff;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
+            text-align: center;
+            margin-bottom: 4px;
+          }
+
+          .contact-subtitle {
+            text-align: center;
+            color: #888;
+            font-size: 18px;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif;
+            margin-bottom: 32px;
+          }
+
           /* FOOTER */
           .footer {
-            padding: 40px 0 30px;
+            padding: 30px 0 20px;
             background: #121212;
             border-top: 1px solid #2a2a2a;
           }
@@ -323,7 +359,7 @@ export default function Home() {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 12px;
+            gap: 8px;
           }
 
           .footer-links {
@@ -343,6 +379,32 @@ export default function Home() {
 
           .footer-link:hover {
             color: #c4b5a0;
+          }
+
+          .footer-legal {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 4px;
+          }
+
+          .self-employed-badge {
+            display: inline-block;
+            padding: 4px 14px;
+            background: rgba(196, 181, 160, 0.1);
+            border: 1px solid rgba(196, 181, 160, 0.2);
+            border-radius: 20px;
+            font-size: 12px;
+            color: #c4b5a0;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif;
+          }
+
+          .footer-inn {
+            font-size: 12px;
+            color: #555;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif;
           }
 
           .footer-copy {
@@ -373,7 +435,7 @@ export default function Home() {
             }
 
             .metrics-wrapper {
-              gap: 12px;
+              gap: 16px;
               max-width: 100%;
               padding: 0 10px;
             }
@@ -384,7 +446,7 @@ export default function Home() {
             }
 
             .metric-divider {
-              font-size: 16px;
+              display: none;
             }
 
             .actions {
@@ -418,6 +480,18 @@ export default function Home() {
             }
 
             .client-name {
+              font-size: 16px;
+            }
+
+            .contact-section {
+              padding: 40px 0;
+            }
+
+            .contact-section h2 {
+              font-size: 28px;
+            }
+
+            .contact-subtitle {
               font-size: 16px;
             }
 
