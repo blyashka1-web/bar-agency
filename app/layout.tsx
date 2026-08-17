@@ -14,27 +14,13 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   title: 'BAR AGENCY — Креативное SMM-агентство',
-  description: 'Разрабатываем стратегии, создаём вирусный контент и продвигаем бренды в соцсетях. REELS | TikTok | YouTube | SHORTS',
+  description: 'BAR AGENCY — креативное SMM-агентство. Разрабатываем стратегии, создаём вирусный контент и продвигаем бренды в соцсетях.',
   openGraph: {
     title: 'BAR AGENCY — Креативное SMM-агентство',
-    description: 'Разрабатываем стратегии, создаём вирусный контент и продвигаем бренды в соцсетях.',
     url: 'https://bar-agency-srz4.vercel.app',
     siteName: 'BAR AGENCY',
-    images: [
-      {
-        url: '/og-image.png',
-        width: 1200,
-        height: 630,
-      },
-    ],
     locale: 'ru_RU',
     type: 'website',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'BAR AGENCY — Креативное SMM-агентство',
-    description: 'Разрабатываем стратегии, создаём вирусный контент и продвигаем бренды в соцсетях.',
-    images: ['/og-image.png'],
   },
 };
 
