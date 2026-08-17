@@ -11,7 +11,7 @@ export default function ContactForm() {
   });
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
 
-  // ВАШ НОВЫЙ ТОКЕН
+  // ВАШ ТОКЕН И ID (уже вставлены)
   const TELEGRAM_BOT_TOKEN = '8913665812:AAFzBGmD1QArtj-80dZc4RD6iCFMgDJ0SEM';
   const TELEGRAM_CHAT_ID = '905351152';
 
@@ -125,6 +125,8 @@ export default function ContactForm() {
         {status === 'sending' ? 'Отправка...' : 'Отправить заявку'}
       </button>
 
+      <p className="vpn-note">Включите VPN перед отправкой</p>
+
       {status === 'success' && (
         <p className="status-message success">✅ Заявка отправлена! Мы свяжемся с вами в ближайшее время.</p>
       )}
@@ -230,6 +232,15 @@ export default function ContactForm() {
           opacity: 0.6;
           cursor: not-allowed;
           transform: none;
+        }
+
+        .vpn-note {
+          text-align: center;
+          font-size: 12px;
+          color: #666;
+          font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif;
+          margin-top: -8px;
+          margin-bottom: 0;
         }
 
         .status-message {
