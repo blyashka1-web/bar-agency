@@ -23,9 +23,13 @@ export default function Home() {
             <p className="description">
               Анализируем бренд и создаём стратегию<br />
               для достижения результатов
-              <br />
-              <span className="social-links">ER | CTR | ROI | ROMI</span>
             </p>
+            <div className="metrics-wrapper">
+              <span className="metric-item">ER</span>
+              <span className="metric-item">CTR</span>
+              <span className="metric-item">ROI</span>
+              <span className="metric-item">ROMI</span>
+            </div>
 
             <div className="actions">
               <a href="/services" className="btn-outline">Услуги</a>
@@ -148,13 +152,45 @@ export default function Home() {
             font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
             line-height: 1.8;
             max-width: 600px;
-            margin: 0 auto 32px;
+            margin: 0 auto 8px;
             letter-spacing: 0.02em;
           }
 
-          .social-links {
+          /* МЕТРИКИ — КРУПНЫЕ И РАСТЯНУТЫЕ */
+          .metrics-wrapper {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            max-width: 600px;
+            margin: 0 auto 32px;
+            flex-wrap: wrap;
+          }
+
+          .metric-item {
+            font-size: 28px;
+            font-weight: 700;
             color: #c4b5a0;
-            font-weight: 500;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
+            letter-spacing: 0.15em;
+            padding: 0 8px;
+            position: relative;
+            transition: all 0.3s ease;
+          }
+
+          .metric-item::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(to right, #c4b5a0, transparent);
+            opacity: 0.3;
+          }
+
+          .metric-item:hover {
+            transform: scale(1.05);
+            color: #d4c5b0;
           }
 
           .actions {
@@ -333,6 +369,18 @@ export default function Home() {
               max-width: 100%;
               padding: 0 10px;
               line-height: 1.5;
+            }
+
+            .metrics-wrapper {
+              gap: 16px;
+              max-width: 100%;
+              padding: 0 10px;
+            }
+
+            .metric-item {
+              font-size: 20px;
+              letter-spacing: 0.1em;
+              padding: 0 4px;
             }
 
             .actions {
