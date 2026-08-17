@@ -52,7 +52,13 @@ export default function ContactModal({ isOpen, onClose }) {
             <span className="contact-name">Instagram</span>
           </a>
 
-          <a href="mailto:blyashka1@gmail.com" className="contact-item email-item">
+          <a href="mailto:blyashka1@gmail.com" className="contact-item">
+            <div className="contact-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#c4b5a0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="icon-svg">
+                <rect x="2" y="4" width="20" height="16" rx="2" />
+                <path d="M22 6L12 13L2 6" />
+              </svg>
+            </div>
             <span className="contact-name">Email</span>
           </a>
         </div>
@@ -180,19 +186,6 @@ export default function ContactModal({ isOpen, onClose }) {
             font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
           }
 
-          .email-item {
-            justify-content: center;
-          }
-
-          .email-item .contact-name {
-            font-size: 15px;
-            color: #c4b5a0;
-          }
-
-          .email-item:hover .contact-name {
-            color: #d4c5b0;
-          }
-
           @media (max-width: 480px) {
             .modal {
               top: 60px;
@@ -224,10 +217,6 @@ export default function ContactModal({ isOpen, onClose }) {
             }
 
             .contact-name {
-              font-size: 14px;
-            }
-
-            .email-item .contact-name {
               font-size: 14px;
             }
 
