@@ -344,7 +344,7 @@ export default function Home() {
             text-align: center;
             color: #888;
             font-size: 18px;
-            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
             margin-bottom: 32px;
           }
 
@@ -443,10 +443,6 @@ export default function Home() {
             .metric-item {
               font-size: 20px;
               letter-spacing: 0.06em;
-            }
-
-            .metric-divider {
-              display: none;
             }
 
             .actions {
