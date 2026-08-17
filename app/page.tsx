@@ -164,7 +164,7 @@ export default function Home() {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 24px;
+            gap: 32px;
             max-width: 600px;
             margin: 0 auto 32px;
             flex-wrap: wrap;
@@ -177,19 +177,7 @@ export default function Home() {
             font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
             letter-spacing: 0.15em;
             padding: 0 4px;
-            position: relative;
             transition: all 0.3s ease;
-          }
-
-          .metric-item::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(to right, #c4b5a0, transparent);
-            opacity: 0.3;
           }
 
           .metric-item:hover {
@@ -198,9 +186,10 @@ export default function Home() {
           }
 
           .metric-divider {
-            color: rgba(255, 255, 255, 0.2);
+            color: #c4b5a0;
             font-size: 24px;
             font-weight: 300;
+            opacity: 0.4;
             font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
             user-select: none;
           }
@@ -384,7 +373,7 @@ export default function Home() {
             }
 
             .metrics-wrapper {
-              gap: 12px;
+              gap: 16px;
               max-width: 100%;
               padding: 0 10px;
             }
