@@ -14,13 +14,42 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   title: 'BAR AGENCY — Креативное SMM-агентство',
-  description: 'BAR AGENCY — креативное SMM-агентство. Разрабатываем стратегии, создаём вирусный контент и продвигаем бренды в соцсетях.',
+  description: 'BAR AGENCY — креативное SMM-агентство. Создаём вирусный контент и продвигаем бренды в соцсетях.',
+  applicationName: 'BAR AGENCY',
+  authors: [{ name: 'BAR AGENCY' }],
+  generator: 'Next.js',
+  keywords: ['SMM', 'маркетинг', 'вирусный контент', 'продвижение', 'соцсети'],
+  referrer: 'origin-when-cross-origin',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   openGraph: {
     title: 'BAR AGENCY — Креативное SMM-агентство',
+    description: 'BAR AGENCY — креативное SMM-агентство. Создаём вирусный контент и продвигаем бренды в соцсетях.',
     url: 'https://bar-agency-srz4.vercel.app',
     siteName: 'BAR AGENCY',
     locale: 'ru_RU',
     type: 'website',
+    // Принудительно добавляем параметр, чтобы сбросить кэш
+    determiner: 'auto',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    nocache: true, // ← важно для сброса кэша
+    googleBot: {
+      index: true,
+      follow: true,
+      noimageindex: false,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  verification: {
+    google: 'ваш-код-верификации', // если есть
   },
 };
 
