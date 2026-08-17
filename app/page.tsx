@@ -26,8 +26,11 @@ export default function Home() {
             </p>
             <div className="metrics-wrapper">
               <span className="metric-item">ER</span>
+              <span className="metric-divider">|</span>
               <span className="metric-item">CTR</span>
+              <span className="metric-divider">|</span>
               <span className="metric-item">ROI</span>
+              <span className="metric-divider">|</span>
               <span className="metric-item">ROMI</span>
             </div>
 
@@ -156,11 +159,12 @@ export default function Home() {
             letter-spacing: 0.02em;
           }
 
-          /* МЕТРИКИ — КРУПНЫЕ И РАСТЯНУТЫЕ */
+          /* МЕТРИКИ */
           .metrics-wrapper {
             display: flex;
             justify-content: center;
-            gap: 32px;
+            align-items: center;
+            gap: 24px;
             max-width: 600px;
             margin: 0 auto 32px;
             flex-wrap: wrap;
@@ -172,7 +176,7 @@ export default function Home() {
             color: #c4b5a0;
             font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
             letter-spacing: 0.15em;
-            padding: 0 8px;
+            padding: 0 4px;
             position: relative;
             transition: all 0.3s ease;
           }
@@ -191,6 +195,14 @@ export default function Home() {
           .metric-item:hover {
             transform: scale(1.05);
             color: #d4c5b0;
+          }
+
+          .metric-divider {
+            color: rgba(255, 255, 255, 0.2);
+            font-size: 24px;
+            font-weight: 300;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
+            user-select: none;
           }
 
           .actions {
@@ -372,7 +384,7 @@ export default function Home() {
             }
 
             .metrics-wrapper {
-              gap: 16px;
+              gap: 12px;
               max-width: 100%;
               padding: 0 10px;
             }
@@ -380,7 +392,10 @@ export default function Home() {
             .metric-item {
               font-size: 20px;
               letter-spacing: 0.1em;
-              padding: 0 4px;
+            }
+
+            .metric-divider {
+              font-size: 18px;
             }
 
             .actions {
