@@ -11,7 +11,7 @@ export default function ContactForm() {
   });
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
 
-  // ВАШИ ДАННЫЕ (уже вставлены)
+  // ВАШ НОВЫЙ ТОКЕН
   const TELEGRAM_BOT_TOKEN = '8913665812:AAFzBGmD1QArtj-80dZc4RD6iCFMgDJ0SEM';
   const TELEGRAM_CHAT_ID = '905351152';
 
