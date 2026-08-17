@@ -11,6 +11,9 @@ export default function ContactForm() {
   });
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
 
+  // Ссылка на вашу Google Форму
+  const GOOGLE_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSfwqDN0dI0vpDfHtCxn_u4XbPassnFpW3kwFghdqu0JdFRV8Q/viewform';
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value, type } = e.target;
     const checked = (e.target as HTMLInputElement).checked;
@@ -30,18 +33,21 @@ export default function ContactForm() {
 
     setStatus('sending');
 
-    // Имитация отправки (замените на реальный Telegram-бот или API)
     try {
-      // Здесь будет отправка через Telegram-бота
-      const message = `Новая заявка с сайта:\nИмя: ${formData.name}\nТелефон: ${formData.phone}\nСообщение: ${formData.message}`;
-      console.log('Отправлено:', message);
-      
-      setTimeout(() => {
-        setStatus('success');
-        setFormData({ name: '', phone: '', message: '', agreement: false });
-        setTimeout(() => setStatus('idle'), 3000);
-      }, 1000);
+      // Формируем URL для Google Forms с параметрами
+      const formUrl = new URL(GOOGLE_FORM_URL);
+      formUrl.searchParams.append('entry.1940570108', formData.name);
+      formUrl.searchParams.append('entry.1181006372', formData.phone);
+      formUrl.searchParams.append('entry.2045929200', formData.message);
+
+      // Открываем форму в новом окне
+      window.open(formUrl.toString(), '_blank');
+
+      setStatus('success');
+      setFormData({ name: '', phone: '', message: '', agreement: false });
+      setTimeout(() => setStatus('idle'), 3000);
     } catch (error) {
+      console.error('Ошибка:', error);
       setStatus('error');
       setTimeout(() => setStatus('idle'), 3000);
     }
