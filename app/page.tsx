@@ -164,18 +164,18 @@ export default function Home() {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 32px;
+            gap: 18px;
             max-width: 600px;
             margin: 0 auto 32px;
             flex-wrap: wrap;
           }
 
           .metric-item {
-            font-size: 28px;
-            font-weight: 700;
+            font-size: 26px;
+            font-weight: 400;
             color: #c4b5a0;
             font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
-            letter-spacing: 0.15em;
+            letter-spacing: 0.08em;
             padding: 0 4px;
             transition: all 0.3s ease;
           }
@@ -187,9 +187,9 @@ export default function Home() {
 
           .metric-divider {
             color: #c4b5a0;
-            font-size: 24px;
+            font-size: 20px;
             font-weight: 300;
-            opacity: 0.4;
+            opacity: 0.3;
             font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
             user-select: none;
           }
@@ -373,18 +373,18 @@ export default function Home() {
             }
 
             .metrics-wrapper {
-              gap: 16px;
+              gap: 12px;
               max-width: 100%;
               padding: 0 10px;
             }
 
             .metric-item {
               font-size: 20px;
-              letter-spacing: 0.1em;
+              letter-spacing: 0.06em;
             }
 
             .metric-divider {
-              font-size: 18px;
+              font-size: 16px;
             }
 
             .actions {
