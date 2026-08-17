@@ -24,7 +24,7 @@ export default function Home() {
               Анализируем бренд и создаём стратегию<br />
               для достижения результатов
               <br />
-              <span className="social-links">REELS | TikTok | YOUTUBE | SHORTS</span>
+              <span className="social-links">ER | CTR | ROI | ROMI</span>
             </p>
 
             <div className="actions">
@@ -154,6 +154,7 @@ export default function Home() {
 
           .social-links {
             color: #c4b5a0;
+            font-weight: 500;
           }
 
           .actions {
