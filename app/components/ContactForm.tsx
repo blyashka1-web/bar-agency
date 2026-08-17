@@ -12,8 +12,8 @@ export default function ContactForm() {
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
   const iframeRef = useRef<HTMLIFrameElement>(null);
 
-  // Ссылка на вашу Google Форму
-  const GOOGLE_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSfwqDN0dI0vpDfHtCxn_u4XbPassnFpW3kwFghdqu0JdFRV8Q/formResponse';
+  // ⚠️ НОВАЯ ССЫЛКА НА ФОРМУ
+  const GOOGLE_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSeNgLERoYYK7zV3sElRlSuXeg5DAku7VFmk-QDsiaL8Tak95w/formResponse';
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value, type } = e.target;
@@ -35,18 +35,18 @@ export default function ContactForm() {
     setStatus('sending');
 
     try {
-      // Создаём скрытую форму
+      // Создаём скрытую форму для отправки
       const form = document.createElement('form');
       form.method = 'POST';
       form.action = GOOGLE_FORM_URL;
       form.target = 'hidden-iframe';
       form.style.display = 'none';
 
-      // Добавляем поля
+      // Добавляем поля с правильными ID
       const fields = {
-        'entry.1940570108': formData.name,
-        'entry.1181006372': formData.phone,
-        'entry.2045929200': formData.message,
+        'entry.2135765205': formData.name,
+        'entry.1162700332': formData.phone,
+        'entry.1314968223': formData.message,
       };
 
       for (const [name, value] of Object.entries(fields)) {
