@@ -55,8 +55,8 @@ export default function ContactModal({ isOpen, onClose }) {
           <a href="mailto:blyashka1@gmail.com" className="contact-item">
             <div className="contact-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#c4b5a0" className="icon-svg">
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                <polyline points="22,6 12,13 2,6"/>
+                <rect x="2" y="4" width="20" height="16" rx="2" ry="2" />
+                <polyline points="2,6 12,13 22,6" />
               </svg>
             </div>
             <span className="contact-name">Email</span>
