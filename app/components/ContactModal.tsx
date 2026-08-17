@@ -53,7 +53,7 @@ export default function ContactModal({ isOpen, onClose }) {
           </a>
 
           <a href="mailto:blyashka1@gmail.com" className="contact-item email-item">
-            <span className="contact-name">✉️ Email</span>
+            <span className="contact-name">Email</span>
           </a>
         </div>
 
