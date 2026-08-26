@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import ContactForm from '../components/ContactForm';
 
 export default function ServicesPage() {
   const services = [
@@ -49,12 +50,11 @@ export default function ServicesPage() {
           ))}
         </div>
 
-        <div className="cta-section">
-          <h2>Нужна консультация?</h2>
-          <p>Оставьте заявку, и мы подберём идеальное решение для вашего бизнеса</p>
-          <a href="https://t.me/lawayasha" target="_blank" rel="noopener noreferrer" className="cta-button">
-            Написать в Telegram
-          </a>
+        {/* ФОРМА СВЯЗИ */}
+        <div className="contact-section">
+          <h2>Оставьте заявку</h2>
+          <p className="contact-subtitle">Мы свяжемся с вами в ближайшее время</p>
+          <ContactForm />
         </div>
       </div>
 
@@ -146,45 +146,28 @@ export default function ServicesPage() {
           margin: 0;
         }
 
-        .cta-section {
-          text-align: center;
-          padding: 48px 32px;
-          background: #1a1a1a;
-          border-radius: 24px;
-          border: 1px solid #2a2a2a;
+        .contact-section {
+          padding: 60px 0 20px;
+          background: #121212;
+          border-top: 1px solid #2a2a2a;
+          margin-top: 20px;
         }
 
-        .cta-section h2 {
-          font-size: 32px;
+        .contact-section h2 {
+          font-size: 36px;
           font-weight: 700;
           color: #ffffff;
           font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
-          margin-bottom: 8px;
+          text-align: center;
+          margin-bottom: 4px;
         }
 
-        .cta-section p {
+        .contact-subtitle {
+          text-align: center;
+          color: #888;
           font-size: 18px;
-          color: #b0b0b0;
           font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
-          margin-bottom: 24px;
-        }
-
-        .cta-button {
-          display: inline-block;
-          background: #c4b5a0;
-          color: #121212;
-          padding: 16px 44px;
-          border-radius: 40px;
-          text-decoration: none;
-          font-weight: 600;
-          font-size: 17px;
-          transition: all 0.25s ease;
-          font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
-        }
-
-        .cta-button:hover {
-          background: #d4c5b0;
-          transform: scale(1.02);
+          margin-bottom: 32px;
         }
 
         @media (max-width: 768px) {
@@ -213,17 +196,12 @@ export default function ServicesPage() {
             font-size: 20px;
           }
 
-          .cta-section {
-            padding: 32px 20px;
+          .contact-section h2 {
+            font-size: 28px;
           }
 
-          .cta-section h2 {
-            font-size: 26px;
-          }
-
-          .cta-button {
-            width: 100%;
-            text-align: center;
+          .contact-subtitle {
+            font-size: 16px;
           }
         }
       `}</style>
