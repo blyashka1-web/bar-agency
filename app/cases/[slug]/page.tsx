@@ -1118,15 +1118,6 @@ export default function CasePage() {
 
   // --- IGAMING COMPANY (NDA) ---
   if (slug === 'spinbetter') {
-    const spinImages = [
-      '/cases/spinbetter/creative-1.jpg',
-      '/cases/spinbetter/creative-2.jpg',
-      '/cases/spinbetter/creative-3.jpg',
-      '/cases/spinbetter/creative-4.jpg',
-      '/cases/spinbetter/creative-5.jpg',
-      '/cases/spinbetter/creative-6.jpg',
-    ];
-
     return (
       <div style={{ padding: '40px 20px', background: '#121212', color: '#fff', minHeight: '100vh' }}>
         <div className="case-content">
@@ -1156,6 +1147,7 @@ export default function CasePage() {
             </p>
           </div>
 
+          {/* СТРАТЕГИЯ РАЗВИТИЯ БРЕНДА */}
           <div style={{ marginTop: '40px' }}>
             <h2 style={{ fontSize: '24px', fontWeight: 600, marginBottom: '16px' }}>
               📄 Стратегия развития бренда в социальных сетях
@@ -1202,6 +1194,7 @@ export default function CasePage() {
             </div>
           </div>
 
+          {/* ВОРОНКА ДЛЯ ДЕПОЗИТОВ */}
           <div style={{ marginTop: '40px' }}>
             <h2 style={{ fontSize: '24px', fontWeight: 600, marginBottom: '16px' }}>
               📊 Воронка для депозитов
@@ -1225,39 +1218,30 @@ export default function CasePage() {
             </div>
           </div>
 
+          {/* ЗАГЛУШКА ВМЕСТО ГАЛЕРЕИ */}
           <div style={{ marginTop: '48px' }}>
             <h2 style={{ fontSize: '24px', fontWeight: 600 }}>🎨 Креативы для соцсетей</h2>
             <div
               style={{
-                display: 'flex',
-                flexWrap: 'nowrap',
-                gap: '12px',
-                overflowX: 'auto',
-                paddingBottom: '8px',
-                WebkitOverflowScrolling: 'touch',
+                padding: '40px 20px',
+                background: '#1a1a1a',
+                borderRadius: '16px',
+                border: '1px solid #2a2a2a',
+                textAlign: 'center',
+                color: '#666',
+                fontSize: '16px',
+                fontFamily: '-apple-system, BlinkMacSystemFont, SF Pro Text, sans-serif',
               }}
             >
-              {spinImages.map((url, i) => (
-                <div key={i} style={{ flex: '0 0 auto' }}>
-                  <img
-                    src={url}
-                    alt={`Креатив ${i + 1}`}
-                    style={{
-                      width: '200px',
-                      height: '125px',
-                      borderRadius: '12px',
-                      border: '1px solid #2a2a2a',
-                      cursor: 'pointer',
-                      objectFit: 'cover',
-                      display: 'block',
-                    }}
-                    onClick={() => openLightbox(url, spinImages, i)}
-                  />
-                </div>
-              ))}
+              <div style={{ fontSize: '48px', marginBottom: '12px' }}>🔒</div>
+              <p style={{ margin: 0 }}>Контент доступен по NDA</p>
+              <p style={{ margin: '4px 0 0 0', fontSize: '14px', color: '#444' }}>
+                Обратитесь за деталями
+              </p>
             </div>
           </div>
 
+          {/* БЛОК "Хотите так же?" */}
           <div style={{ marginTop: '60px', padding: '40px 20px', background: '#2a2a2a', borderRadius: '24px', textAlign: 'center' }}>
             <h3 style={{ fontSize: '28px', fontWeight: 600, color: '#fff' }}>Хотите так же?</h3>
             <p style={{ fontSize: '18px', color: '#b0b0b0', marginBottom: '16px' }}>
@@ -1279,121 +1263,6 @@ export default function CasePage() {
             padding: 0 20px;
           }
         `}</style>
-
-        {isOpen && (
-          <div
-            style={{
-              position: 'fixed',
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
-              background: 'rgba(0,0,0,0.92)',
-              backdropFilter: 'blur(12px)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              zIndex: 9999,
-              padding: '10px',
-            }}
-            onClick={closeLightbox}
-          >
-            <div
-              style={{ position: 'relative', maxWidth: '95vw', maxHeight: '95vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-              onClick={(e) => e.stopPropagation()}
-            >
-              <button
-                onClick={closeLightbox}
-                style={{
-                  position: 'absolute',
-                  top: '10px',
-                  right: '10px',
-                  background: 'rgba(0,0,0,0.5)',
-                  border: 'none',
-                  color: '#fff',
-                  fontSize: '24px',
-                  cursor: 'pointer',
-                  padding: '8px 14px',
-                  borderRadius: '50%',
-                  zIndex: 10,
-                }}
-              >
-                ✕
-              </button>
-
-              <button
-                onClick={(e) => { e.stopPropagation(); goToPrev(); }}
-                style={{
-                  position: 'absolute',
-                  left: '10px',
-                  top: '50%',
-                  transform: 'translateY(-50%)',
-                  background: 'rgba(0,0,0,0.5)',
-                  border: '1px solid rgba(255,255,255,0.2)',
-                  color: '#fff',
-                  fontSize: '28px',
-                  cursor: 'pointer',
-                  padding: '8px 14px',
-                  borderRadius: '50%',
-                  zIndex: 10,
-                  transition: 'background 0.2s',
-                }}
-                onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(255,255,255,0.2)')}
-                onMouseLeave={(e) => (e.currentTarget.style.background = 'rgba(0,0,0,0.5)')}
-              >
-                ‹
-              </button>
-
-              <button
-                onClick={(e) => { e.stopPropagation(); goToNext(); }}
-                style={{
-                  position: 'absolute',
-                  right: '10px',
-                  top: '50%',
-                  transform: 'translateY(-50%)',
-                  background: 'rgba(0,0,0,0.5)',
-                  border: '1px solid rgba(255,255,255,0.2)',
-                  color: '#fff',
-                  fontSize: '28px',
-                  cursor: 'pointer',
-                  padding: '8px 14px',
-                  borderRadius: '50%',
-                  zIndex: 10,
-                  transition: 'background 0.2s',
-                }}
-                onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(255,255,255,0.2)')}
-                onMouseLeave={(e) => (e.currentTarget.style.background = 'rgba(0,0,0,0.5)')}
-              >
-                ›
-              </button>
-
-              <img
-                src={currentImage}
-                alt="креатив"
-                style={{
-                  maxWidth: '90vw',
-                  maxHeight: '85vh',
-                  borderRadius: '12px',
-                  objectFit: 'contain',
-                }}
-              />
-
-              <div
-                style={{
-                  position: 'absolute',
-                  bottom: '-40px',
-                  left: '50%',
-                  transform: 'translateX(-50%)',
-                  color: 'rgba(255,255,255,0.6)',
-                  fontSize: '14px',
-                  fontFamily: 'sans-serif',
-                }}
-              >
-                {currentIndex + 1} / {imagesList.length}
-              </div>
-            </div>
-          </div>
-        )}
       </div>
     );
   }

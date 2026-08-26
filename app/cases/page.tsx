@@ -44,10 +44,10 @@ export default function CasesPage() {
     },
     {
       slug: 'spinbetter',
-      logo: '/cases/spinbetter/logo.png',
+      logo: '',
       tag: 'Беттинг / Маркетинг',
-      title: 'SpinBetter',
-      desc: 'Букмекерская компания',
+      title: 'iGaming Company (NDA)',
+      desc: 'Разработка стратегии для букмекерской компании',
       bg: '#1a2a2a',
     },
   ];
