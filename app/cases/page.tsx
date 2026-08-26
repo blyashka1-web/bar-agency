@@ -50,6 +50,14 @@ export default function CasesPage() {
       desc: 'Разработка стратегии для букмекерской компании',
       bg: '#1a2a2a',
     },
+    {
+      slug: 'fullhouse',
+      logo: '/cases/fullhouse/logo.png',
+      tag: 'SMM / Видеопродакшн',
+      title: 'Клуб «Фулл Хаус»',
+      desc: 'Ведение Telegram-канала и создание YouTube Shorts для гемблинг-проекта',
+      bg: '#1a2a2a',
+    },
   ];
 
   return (
