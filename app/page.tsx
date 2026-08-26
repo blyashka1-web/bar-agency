@@ -74,6 +74,18 @@ export default function Home() {
                 </div>
                 <span className="client-name">NDA HR TEAM</span>
               </a>
+
+              <a 
+                href="https://moscu.team" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="client-card"
+              >
+                <div className="client-logo">
+                  <img src="/deportivo-logo.png" alt="DEPORTIVO MOSCÚ" className="client-image" />
+                </div>
+                <span className="client-name">DEPORTIVO MOSCÚ</span>
+              </a>
             </div>
           </div>
         </section>
@@ -443,6 +455,10 @@ export default function Home() {
             .metric-item {
               font-size: 20px;
               letter-spacing: 0.06em;
+            }
+
+            .metric-divider {
+              display: none;
             }
 
             .actions {
