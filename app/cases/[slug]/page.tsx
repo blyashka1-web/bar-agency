@@ -716,127 +716,6 @@ export default function CasePage() {
     );
   }
 
-  // --- FULL HOUSE (5-й по счету) ---
-  if (slug === 'fullhouse') {
-    const videos = [
-      '/cases/fullhouse/video-1.mp4',
-      '/cases/fullhouse/video-2.mp4',
-      '/cases/fullhouse/video-3.mp4',
-      '/cases/fullhouse/video-4.mp4',
-    ];
-
-    return (
-      <div style={{ padding: '40px 20px', background: '#121212', color: '#fff', minHeight: '100vh' }}>
-        <div className="case-content">
-          <Link href="/cases" style={{ color: '#c4b5a0', textDecoration: 'none' }}>
-            ← Все кейсы
-          </Link>
-
-          <div style={{ marginTop: '40px' }}>
-            <span
-              style={{
-                display: 'inline-block',
-                background: '#c4b5a0',
-                color: '#fff',
-                padding: '4px 16px',
-                borderRadius: '40px',
-                fontSize: '13px',
-                fontWeight: 600,
-              }}
-            >
-              SMM / Видеопродакшн
-            </span>
-            <h1 style={{ fontSize: '48px', marginTop: '12px', marginBottom: '8px' }}>
-              Клуб «Фулл Хаус»
-            </h1>
-            <p style={{ fontSize: '20px', color: '#b0b0b0' }}>
-              Ведение Telegram-канала и создание YouTube Shorts
-            </p>
-          </div>
-
-          <div style={{ marginTop: '40px' }}>
-            <h2 style={{ fontSize: '24px', fontWeight: 600, marginBottom: '16px' }}>
-              📱 О проекте
-            </h2>
-            <div
-              style={{
-                padding: '20px',
-                background: '#2a2a2a',
-                borderRadius: '12px',
-                border: `1px solid #c4b5a0`,
-              }}
-            >
-              <p style={{ color: '#b0b0b0', fontSize: '16px', marginBottom: '12px' }}>
-                Разработана стратегия ведения Telegram-канала и создание видео для YouTube Shorts:
-              </p>
-              <ul style={{ color: '#b0b0b0', fontSize: '15px', paddingLeft: '20px' }}>
-                <li style={{ marginBottom: '6px' }}>🔹 Разработка контент-стратегии для Telegram</li>
-                <li style={{ marginBottom: '6px' }}>🔹 Создание визуального стиля и структуры постов</li>
-                <li style={{ marginBottom: '6px' }}>🔹 Съемка и монтаж видео для YouTube Shorts</li>
-                <li style={{ marginBottom: '6px' }}>🔹 Интеграция контента в общую стратегию продвижения</li>
-              </ul>
-            </div>
-          </div>
-
-          <div style={{ marginTop: '40px' }}>
-            <h2 style={{ fontSize: '24px', fontWeight: 600, marginBottom: '16px' }}>
-              🎬 YouTube Shorts
-            </h2>
-            <div
-              style={{
-                display: 'flex',
-                flexWrap: 'nowrap',
-                gap: '12px',
-                overflowX: 'auto',
-                paddingBottom: '8px',
-                WebkitOverflowScrolling: 'touch',
-              }}
-            >
-              {videos.map((url, i) => (
-                <div key={i} style={{ flex: '0 0 auto' }}>
-                  <video
-                    src={url}
-                    controls
-                    style={{
-                      width: '200px',
-                      height: '125px',
-                      borderRadius: '12px',
-                      border: '1px solid #2a2a2a',
-                      objectFit: 'cover',
-                      background: '#0a0a0a',
-                      display: 'block',
-                    }}
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div style={{ marginTop: '60px', padding: '40px 20px', background: '#2a2a2a', borderRadius: '24px', textAlign: 'center' }}>
-            <h3 style={{ fontSize: '28px', fontWeight: 600, color: '#fff' }}>Хотите так же?</h3>
-            <p style={{ fontSize: '18px', color: '#b0b0b0', marginBottom: '16px' }}>
-              Расскажите о своём проекте — разработаем стратегию!
-            </p>
-            <button
-              style={{ background: '#c4b5a0', color: '#fff', padding: '14px 40px', border: 'none', borderRadius: '40px', fontSize: '17px', fontWeight: 600, cursor: 'pointer' }}
-              onClick={() => window.open('https://t.me/lawayasha', '_blank')}
-            >
-              Написать в Telegram
-            </button>
-          </div>
-        </div>
-
-        <style jsx>{`
-          .case-content {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 20px;
-          }
-        `}</style>
-      </div>
-    );
-  }
-
   // --- PROMINNER ---
   if (slug === 'promminer') {
     const articles = [
@@ -973,6 +852,89 @@ export default function CasePage() {
                 <span style={{ fontSize: '18px', fontWeight: 600, color: '#fff' }}>💼 Заявки</span>
                 <p style={{ color: '#b0b0b0', margin: '4px 0 0 0' }}>Более 150 коммерческих запросов за месяц</p>
               </div>
+            </div>
+          </div>
+
+          <div style={{ marginTop: '60px', padding: '40px 20px', background: '#2a2a2a', borderRadius: '24px', textAlign: 'center' }}>
+            <h3 style={{ fontSize: '28px', fontWeight: 600, color: '#fff' }}>Хотите так же?</h3>
+            <p style={{ fontSize: '18px', color: '#b0b0b0', marginBottom: '16px' }}>
+              Расскажите о своём проекте — разработаем стратегию!
+            </p>
+            <button
+              style={{ background: '#c4b5a0', color: '#fff', padding: '14px 40px', border: 'none', borderRadius: '40px', fontSize: '17px', fontWeight: 600, cursor: 'pointer' }}
+              onClick={() => window.open('https://t.me/lawayasha', '_blank')}
+            >
+              Написать в Telegram
+            </button>
+          </div>
+        </div>
+
+        <style jsx>{`
+          .case-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+          }
+        `}</style>
+      </div>
+    );
+  }
+
+  // --- FULL HOUSE ---
+  if (slug === 'fullhouse') {
+    return (
+      <div style={{ padding: '40px 20px', background: '#121212', color: '#fff', minHeight: '100vh' }}>
+        <div className="case-content">
+          <Link href="/cases" style={{ color: '#c4b5a0', textDecoration: 'none' }}>
+            ← Все кейсы
+          </Link>
+
+          <div style={{ marginTop: '40px' }}>
+            <span
+              style={{
+                display: 'inline-block',
+                background: '#c4b5a0',
+                color: '#fff',
+                padding: '4px 16px',
+                borderRadius: '40px',
+                fontSize: '13px',
+                fontWeight: 600,
+              }}
+            >
+              iGaming / SMM
+            </span>
+            <h1 style={{ fontSize: '48px', marginTop: '12px', marginBottom: '8px' }}>
+              Клуб «Фулл Хаус»
+            </h1>
+            <p style={{ fontSize: '20px', color: '#b0b0b0' }}>
+              Ведение Telegram-канала и создание YouTube Shorts
+            </p>
+          </div>
+
+          <div style={{ marginTop: '40px' }}>
+            <h2 style={{ fontSize: '24px', fontWeight: 600, marginBottom: '16px' }}>
+              📱 О проекте
+            </h2>
+            <div
+              style={{
+                padding: '20px',
+                background: '#2a2a2a',
+                borderRadius: '12px',
+                border: `1px solid #c4b5a0`,
+              }}
+            >
+              <p style={{ color: '#b0b0b0', fontSize: '16px', marginBottom: '12px' }}>
+                Разработана стратегия ведения Telegram-канала и создание видео для YouTube Shorts:
+              </p>
+              <ul style={{ color: '#b0b0b0', fontSize: '15px', paddingLeft: '20px' }}>
+                <li style={{ marginBottom: '6px' }}>🔹 Разработка контент-стратегии для Telegram</li>
+                <li style={{ marginBottom: '6px' }}>🔹 Создание визуального стиля и структуры постов</li>
+                <li style={{ marginBottom: '6px' }}>🔹 Съемка и монтаж видео для YouTube Shorts</li>
+                <li style={{ marginBottom: '6px' }}>🔹 Интеграция контента в общую стратегию продвижения</li>
+              </ul>
+              <p style={{ color: '#b0b0b0', fontSize: '15px', marginTop: '16px' }}>
+                📲 Результат: Telegram-канал <a href="https://t.me/clubfullhouse" target="_blank" rel="noopener noreferrer" style={{ color: '#c4b5a0', textDecoration: 'none', borderBottom: '1px solid rgba(196, 181, 160, 0.3)' }}>@clubfullhouse</a> — 1 700+ подписчиков
+              </p>
             </div>
           </div>
 
@@ -1337,7 +1299,6 @@ export default function CasePage() {
             </div>
           </div>
 
-          {/* ЗАГЛУШКА ВМЕСТО ГАЛЕРЕИ */}
           <div style={{ marginTop: '48px' }}>
             <h2 style={{ fontSize: '24px', fontWeight: 600 }}>🎨 Креативы для соцсетей</h2>
             <div
