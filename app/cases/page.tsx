@@ -27,20 +27,20 @@ export default function CasesPage() {
       bg: '#2a2a1a',
     },
     {
-      slug: 'fullhouse',
-      logo: '/cases/fullhouse/logo.png',
-      tag: 'iGaming / SMM',
-      title: 'Клуб «Фулл Хаус»',
-      desc: 'Ведение Telegram-канала и создание YouTube Shorts для гемблинг-проекта',
-      bg: '#1a2a2a',
-    },
-    {
       slug: 'promminer',
       logo: '/cases/promminer/logo.png',
       tag: 'IT / Майнинг',
       title: 'Promminer',
       desc: 'Разработка и реализация стратегии для соцсетей',
       bg: '#2a2a2a',
+    },
+    {
+      slug: 'fullhouse',
+      logo: '/cases/fullhouse/logo.png',
+      tag: 'iGaming / SMM',
+      title: 'Клуб «Фулл Хаус»',
+      desc: 'Ведение Telegram-канала и создание YouTube Shorts для гемблинг-проекта',
+      bg: '#1a2a2a',
     },
     {
       slug: 'nda-hr-team',
