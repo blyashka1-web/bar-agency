@@ -880,8 +880,14 @@ export default function CasePage() {
     );
   }
 
-  // --- FULL HOUSE ---
+  // --- FULL HOUSE (3 ВИДЕО: 1, 2, 4) ---
   if (slug === 'fullhouse') {
+    const videos = [
+      '/cases/fullhouse/video-1.mp4',
+      '/cases/fullhouse/video-2.mp4',
+      '/cases/fullhouse/video-4.mp4',
+    ];
+
     return (
       <div style={{ padding: '40px 20px', background: '#121212', color: '#fff', minHeight: '100vh' }}>
         <div className="case-content">
@@ -932,9 +938,40 @@ export default function CasePage() {
                 <li style={{ marginBottom: '6px' }}>🔹 Съемка и монтаж видео для YouTube Shorts</li>
                 <li style={{ marginBottom: '6px' }}>🔹 Интеграция контента в общую стратегию продвижения</li>
               </ul>
-              <p style={{ color: '#b0b0b0', fontSize: '15px', marginTop: '16px' }}>
-                📲 Результат: Telegram-канал <a href="https://t.me/clubfullhouse" target="_blank" rel="noopener noreferrer" style={{ color: '#c4b5a0', textDecoration: 'none', borderBottom: '1px solid rgba(196, 181, 160, 0.3)' }}>@clubfullhouse</a> — 1 700+ подписчиков
-              </p>
+            </div>
+          </div>
+
+          <div style={{ marginTop: '40px' }}>
+            <h2 style={{ fontSize: '24px', fontWeight: 600, marginBottom: '16px' }}>
+              🎬 YouTube Shorts
+            </h2>
+            <div
+              style={{
+                display: 'flex',
+                flexWrap: 'nowrap',
+                gap: '12px',
+                overflowX: 'auto',
+                paddingBottom: '8px',
+                WebkitOverflowScrolling: 'touch',
+              }}
+            >
+              {videos.map((url, i) => (
+                <div key={i} style={{ flex: '0 0 auto' }}>
+                  <video
+                    src={url}
+                    controls
+                    style={{
+                      width: '200px',
+                      height: '125px',
+                      borderRadius: '12px',
+                      border: '1px solid #2a2a2a',
+                      objectFit: 'cover',
+                      background: '#0a0a0a',
+                      display: 'block',
+                    }}
+                  />
+                </div>
+              ))}
             </div>
           </div>
 
