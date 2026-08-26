@@ -271,27 +271,28 @@ export default function Home() {
           }
 
           .clients-grid {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 32px;
+            max-width: 900px;
+            margin: 0 auto;
           }
 
           .client-card {
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
             gap: 16px;
-            padding: 40px 50px;
+            padding: 30px 20px;
             background: #1a1a1a;
             border-radius: 20px;
             border: 1px solid #2a2a2a;
             transition: all 0.3s ease;
-            max-width: 320px;
-            width: 100%;
             text-decoration: none;
             cursor: pointer;
+            min-height: 200px;
+            width: 100%;
           }
 
           .client-card:hover {
@@ -301,15 +302,16 @@ export default function Home() {
           }
 
           .client-logo {
-            width: 120px;
-            height: 120px;
+            width: 80px;
+            height: 80px;
             display: flex;
             align-items: center;
             justify-content: center;
             background: rgba(255,255,255,0.04);
             border-radius: 16px;
             overflow: hidden;
-            padding: 16px;
+            padding: 12px;
+            flex-shrink: 0;
           }
 
           .client-image {
@@ -325,11 +327,12 @@ export default function Home() {
           }
 
           .client-name {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 500;
             color: #b0b0b0;
             text-align: center;
             font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
+            line-height: 1.4;
           }
 
           .client-card:hover .client-name {
@@ -477,22 +480,24 @@ export default function Home() {
             }
 
             .clients-grid {
-              flex-direction: column;
-              gap: 20px;
+              grid-template-columns: 1fr;
+              gap: 16px;
+              max-width: 100%;
             }
 
             .client-card {
-              max-width: 100%;
-              padding: 30px 20px;
+              min-height: 160px;
+              padding: 20px 16px;
             }
 
             .client-logo {
-              width: 100px;
-              height: 100px;
+              width: 60px;
+              height: 60px;
+              padding: 8px;
             }
 
             .client-name {
-              font-size: 16px;
+              font-size: 14px;
             }
 
             .contact-section {
