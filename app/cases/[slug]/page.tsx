@@ -969,7 +969,7 @@ export default function CasePage() {
                 fontFamily: 'sans-serif',
                 fontWeight: 500,
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.borderColor = '#c4b5a0')}
+              onMouseEnter={(e) => (e.currentTarget.style.borderColor = '#d4c5b0')}
               onMouseLeave={(e) => (e.currentTarget.style.borderColor = '#c4b5a0')}
             >
               📲 Телеграм канал NDA HR TEAM
@@ -1116,7 +1116,7 @@ export default function CasePage() {
     );
   }
 
-  // --- SPINBETTER ---
+  // --- IGAMING COMPANY (NDA) ---
   if (slug === 'spinbetter') {
     const spinImages = [
       '/cases/spinbetter/creative-1.jpg',
@@ -1149,7 +1149,7 @@ export default function CasePage() {
               Беттинг / Маркетинг
             </span>
             <h1 style={{ fontSize: '48px', marginTop: '12px', marginBottom: '8px' }}>
-              SpinBetter
+              iGaming Company (NDA)
             </h1>
             <p style={{ fontSize: '20px', color: '#b0b0b0' }}>
               Букмекерская компания
@@ -1193,7 +1193,7 @@ export default function CasePage() {
                     fontWeight: 500,
                     transition: 'background 0.2s',
                   }}
-                  onMouseEnter={(e) => (e.currentTarget.style.background = '#c4b5a0')}
+                  onMouseEnter={(e) => (e.currentTarget.style.background = '#d4c5b0')}
                   onMouseLeave={(e) => (e.currentTarget.style.background = '#c4b5a0')}
                 >
                   📄 Открыть стратегию (PDF)
