@@ -880,7 +880,7 @@ export default function CasePage() {
     );
   }
 
-  // --- FULL HOUSE (3 ВИДЕО: 1, 2, 4) ---
+    // --- FULL HOUSE (3 ВИДЕО + ССЫЛКА НА TELEGRAM) ---
   if (slug === 'fullhouse') {
     const videos = [
       '/cases/fullhouse/video-1.mp4',
@@ -938,6 +938,9 @@ export default function CasePage() {
                 <li style={{ marginBottom: '6px' }}>🔹 Съемка и монтаж видео для YouTube Shorts</li>
                 <li style={{ marginBottom: '6px' }}>🔹 Интеграция контента в общую стратегию продвижения</li>
               </ul>
+              <p style={{ color: '#b0b0b0', fontSize: '15px', marginTop: '16px' }}>
+                📲 Результат: Telegram-канал <a href="https://t.me/clubfullhouse" target="_blank" rel="noopener noreferrer" style={{ color: '#c4b5a0', textDecoration: 'none', borderBottom: '1px solid rgba(196, 181, 160, 0.3)' }}>@clubfullhouse</a> — 1 700+ подписчиков
+              </p>
             </div>
           </div>
 
