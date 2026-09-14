@@ -1,0 +1,16 @@
+{
+  "layers": [
+    {
+      "name": "static",
+      "target": "STATIC",
+      "directory": "."
+    }
+  ],
+  "routes": [
+    {
+      "pattern": "^/_next/static/.*",
+      "layer": "static",
+      "priority": 100
+    }
+  ]
+}
