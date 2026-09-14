@@ -17,7 +17,7 @@ export default function Home() {
           <div className="container">
             <span className="tagline">АНАЛИЗ → СТРАТЕГИЯ → ПРОДВИЖЕНИЕ</span>
             <h1>
-              BAR <span className="logo-accent">AGENCY</span>
+              BLYASHKA <span className="logo-accent">AGENCY</span>
             </h1>
             <p className="subtitle">Креативное SMM-агентство</p>
 
@@ -112,7 +112,7 @@ export default function Home() {
                 <span className="self-employed-badge">⚖️ Самозанятый</span>
                 <span className="footer-inn">ИНН: 772456452113</span>
               </div>
-              <p className="footer-copy">© 2026 BAR AGENCY. Все права защищены.</p>
+              <p className="footer-copy">© 2026 BLYASHKA AGENCY. Все права защищены.</p>
             </div>
           </div>
         </footer>
