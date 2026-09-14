@@ -17,7 +17,7 @@ export default function Home() {
           <div className="container">
             <span className="tagline">АНАЛИЗ → СТРАТЕГИЯ → ПРОДВИЖЕНИЕ</span>
             <h1>
-              BLYASHKA <span className="logo-accent">AGENCY</span>
+              BAR <span className="logo-accent">AGENCY</span>
             </h1>
             <p className="subtitle">Креативное SMM-агентство</p>
 

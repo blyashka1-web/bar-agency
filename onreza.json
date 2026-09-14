@@ -1,0 +1,9 @@
+{
+  "rewrites": [
+    {
+      "source": "/((?!_next/).*)",
+      "destination": "/_next/server/app/:path*"
+    }
+  ]
+}
+ 
