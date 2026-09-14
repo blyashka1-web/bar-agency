@@ -1,0 +1,32 @@
+{
+  "layers": [
+    {
+      "name": "static",
+      "target": "STATIC",
+      "directory": "."
+    },
+    {
+      "name": "compute",
+      "target": "COMPUTE",
+      "directory": ".next/standalone",
+      "entry": "server.js"
+    }
+  ],
+  "routes": [
+    {
+      "pattern": "^/_next/static/.*",
+      "layer": "static",
+      "priority": 100
+    },
+    {
+      "pattern": "^/.*\\.(?:css|js|png|jpg|jpeg|gif|svg|ico|woff|woff2|ttf|otf|webp|avif)$",
+      "layer": "static",
+      "priority": 90
+    },
+    {
+      "pattern": "^/.*$",
+      "layer": "compute",
+      "priority": 0
+    }
+  ]
+}
