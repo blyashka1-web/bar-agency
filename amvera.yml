@@ -1,20 +1,18 @@
----
 meta:
   environment: nodejs
   toolchain:
     name: npm
     version: 20
 build:
-  skip: false
   additionalCommands: npm run build
   artifacts:
-    '*': /
+    "*": /
 run:
-  persistenceMount: /data
   scriptName: ""
   scriptArguments: null
   nodeArguments: null
   command: npm run start -- -H 0.0.0.0 -p 80
   containerPort: 80
+  persistenceMount: /data
   singleton: false
   zeroDowntime: true
