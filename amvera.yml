@@ -5,13 +5,8 @@ meta:
     version: 20
 build:
   additionalCommands: npm run build
-  artifacts:
-    "*": /
 run:
-  scriptName: ""
-  scriptArguments: null
-  nodeArguments: null
-  command: npm run start -- -H 0.0.0.0 -p 80
+  command: node .next/standalone/server.js
   containerPort: 80
   persistenceMount: /data
   singleton: false
